@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Késsia Boutique | Moda Feminina Pavuna RJ | Roupas e Acessórios</title>
+<meta name="description" content="Késsia Boutique — Moda feminina com atitude em Pavuna, RJ. 44 mil seguidoras. Novidades toda semana. Animal print, conjuntos, bolsas e muito mais. Enviamos para todo Brasil!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#D4AF37;--gold-light:#E8CC6E;--gold-dark:#B8960C;
+--black:#0A0A0A;--dark:#111;--card:#1A1A1A;--card2:#222;
+--white:#F5F5F5;--text:#E0E0E0;--gray:#888;--muted:#444;
+--leopard:url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23D4AF37' fill-opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3Ccircle cx='60' cy='40' r='6'/%3E%3Ccircle cx='30' cy='60' r='7'/%3E%3Ccircle cx='70' cy='15' r='5'/%3E%3Ccircle cx='10' cy='45' r='4'/%3E%3Ccircle cx='50' cy='70' r='6'/%3E%3C/g%3E%3C/svg%3E");
+--font:'Poppins',sans-serif;--font-display:'Bebas Neue',sans-serif;
+--radius:12px;--transition:all .3s ease;
+}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--black);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;transition:opacity .8s}.loader.hide{opacity:0;pointer-events:none}
+.loader-logo{width:80px;height:80px;border-radius:50%;background:var(--black);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.loader-logo span{font-family:var(--font-display);font-size:2.2rem;color:var(--gold);line-height:1}
+.loader-logo small{font-size:.4rem;color:var(--gold);text-transform:uppercase;letter-spacing:3px;margin-top:-2px}
+.loader-bar{width:50px;height:2px;background:var(--muted);margin-top:12px;overflow:hidden;border-radius:2px}.loader-bar::after{content:'';display:block;width:50%;height:100%;background:var(--gold);animation:slide .7s ease-in-out infinite}@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(300%)}}
+
+/* TOP BAR */
+.topbar{background:var(--gold);color:var(--black);text-align:center;padding:8px 16px;font-size:.7rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+
+/* NAV */
+.nav{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;padding:12px 0;border-bottom:1px solid rgba(212,175,55,.1)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo{width:44px;height:44px;border-radius:50%;background:var(--black);border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;flex-direction:column}
+.nav-logo span{font-family:var(--font-display);font-size:1.3rem;color:var(--gold);line-height:1}
+.nav-logo small{font-size:.28rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-top:-1px}
+.nav-name{font-family:var(--font-display);font-size:1.4rem;color:var(--white);letter-spacing:3px}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:.72rem;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-icon{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray);text-decoration:none;transition:var(--transition);font-size:.85rem;border:1px solid transparent}
+.nav-icon:hover{color:var(--gold);border-color:rgba(212,175,55,.2)}
+.nav-cta{background:var(--gold);color:var(--black);padding:9px 18px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.68rem;text-transform:uppercase;letter-spacing:1px;transition:var(--transition);display:flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--gold-light);transform:translateY(-1px)}
+.menu-toggle{display:none;background:none;border:none;font-size:1.2rem;color:var(--white);cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--black)}
+.hero::before{content:'';position:absolute;inset:0;background:var(--leopard)}
+.hero::after{content:'';position:absolute;top:-30%;right:-15%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(212,175,55,.06),transparent 70%)}
+.hero-inner{position:relative;z-index:2;width:100%;padding:120px 24px 80px}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;max-width:1200px;margin:0 auto}
+.hero-text{max-width:540px}
+.hero-fire{display:inline-flex;align-items:center;gap:8px;background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.2);padding:6px 16px;border-radius:50px;font-size:.65rem;font-weight:600;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:20px}
+.hero h1{font-family:var(--font-display);font-size:clamp(3rem,7vw,5.5rem);color:var(--white);line-height:.95;letter-spacing:2px;margin-bottom:16px}
+.hero h1 span{color:var(--gold);display:block}
+.hero-sub{color:var(--gray);font-size:.95rem;line-height:1.7;margin-bottom:28px;font-weight:300}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.btn-fire{background:var(--gold);color:var(--black);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
+.btn-fire:hover{background:var(--gold-light);transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,175,55,.25)}
+.btn-ghost{background:transparent;color:var(--white);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:8px;transition:var(--transition);border:1px solid var(--muted)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-numbers{display:flex;gap:32px}
+.hero-num{text-align:center}.hero-num strong{font-family:var(--font-display);font-size:2.4rem;color:var(--gold);display:block;letter-spacing:1px}.hero-num small{font-size:.6rem;color:var(--gray);text-transform:uppercase;letter-spacing:2px}
+.hero-visual{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero-img{border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;background:var(--card)}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+.hero-img:first-child{transform:translateY(-20px)}
+.hero-img:last-child{transform:translateY(20px)}
+
+/* SECTION */
+.section{padding:80px 24px}.section-head{text-align:center;margin-bottom:48px}
+.sec-tag{font-size:.6rem;color:var(--gold);text-transform:uppercase;letter-spacing:4px;font-weight:600;margin-bottom:6px;display:block}
+.sec-title{font-family:var(--font-display);font-size:clamp(2rem,4vw,3.2rem);color:var(--white);letter-spacing:2px;margin-bottom:8px}
+.sec-title span{color:var(--gold)}
+.sec-desc{color:var(--gray);font-size:.85rem;max-width:500px;margin:0 auto;line-height:1.6}
+
+/* CATEGORIES */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1200px;margin:0 auto}
+.cat-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;cursor:pointer;text-decoration:none;display:block}
+.cat-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:brightness(.85)}
+.cat-item:hover img{transform:scale(1.06);filter:brightness(.7)}
+.cat-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,transparent 50%)}
+.cat-label{position:absolute;bottom:16px;left:16px;z-index:2}
+.cat-label h3{font-family:var(--font-display);font-size:1.6rem;color:var(--white);letter-spacing:2px;line-height:1}
+.cat-label span{font-size:.55rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-weight:600}
+.cat-item:hover .cat-label h3{color:var(--gold)}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1200px;margin:0 auto}
+.prod-card{background:var(--card);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:var(--text);display:block;border:1px solid transparent}
+.prod-card:hover{border-color:rgba(212,175,55,.2);transform:translateY(-4px)}
+.prod-thumb{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--card2)}
+.prod-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prod-card:hover .prod-thumb img{transform:scale(1.05)}
+.prod-tag{position:absolute;top:10px;left:10px;background:var(--gold);color:var(--black);padding:3px 10px;border-radius:50px;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;z-index:2}
+.prod-heart{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:.7rem;z-index:2}
+.prod-info{padding:14px}
+.prod-info .seg{font-size:.55rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:4px;display:block}
+.prod-info h3{font-size:.82rem;font-weight:600;color:var(--white);margin-bottom:6px}
+.prod-prices{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.prod-prices .from{font-size:.72rem;color:var(--gray);text-decoration:line-through}
+.prod-prices .to{font-size:1rem;font-weight:700;color:var(--white)}
+.prod-prices .pix{font-size:.6rem;color:var(--gold-dark);background:rgba(212,175,55,.1);padding:2px 8px;border-radius:4px}
+.prod-buy{display:block;text-align:center;background:var(--gold);color:var(--black);padding:10px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;transition:var(--transition)}
+.prod-buy:hover{background:var(--gold-light)}
+
+/* ABOUT */
+.about{background:var(--card)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:480px;max-width:1200px;margin:0 auto;border-radius:var(--radius);overflow:hidden}
+.about-img{overflow:hidden}.about-img img{width:100%;height:100%;object-fit:cover}
+.about-txt{padding:50px 40px;display:flex;flex-direction:column;justify-content:center}
+.about-txt h2{font-family:var(--font-display);font-size:clamp(2rem,3.5vw,3rem);color:var(--white);letter-spacing:2px;margin-bottom:14px;line-height:1}
+.about-txt h2 span{color:var(--gold)}
+.about-txt p{color:var(--gray);font-size:.88rem;line-height:1.8;margin-bottom:20px}
+
+/* TRUST */
+.trust{background:var(--gold);padding:36px 24px}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1200px;margin:0 auto;text-align:center}
+.trust-item i{font-size:1.3rem;color:var(--black);margin-bottom:6px;display:block}
+.trust-item h4{font-size:.78rem;color:var(--black);font-weight:700}
+.trust-item p{font-size:.6rem;color:rgba(0,0,0,.5)}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1200px;margin:0 auto}
+.rev-card{background:var(--card);border:1px solid var(--muted);border-radius:var(--radius);padding:24px}
+.rev-stars{color:var(--gold);font-size:.8rem;letter-spacing:2px;margin-bottom:10px}
+.rev-card p{font-size:.85rem;color:var(--text);line-height:1.6;margin-bottom:12px;font-style:italic}
+.rev-card strong{font-size:.75rem;color:var(--white);display:block}
+.rev-card small{font-size:.6rem;color:var(--gray)}
+
+/* INSTA */
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.insta-item{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+.insta-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s;filter:brightness(.9)}
+.insta-item:hover img{transform:scale(1.06);filter:brightness(.6)}
+.insta-item::after{content:'\f16d';font-family:'Font Awesome 6 Brands';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--gold);font-size:1.2rem;opacity:0;transition:opacity .3s}
+.insta-item:hover::after{opacity:1}
+
+/* CTA */
+.final-cta{background:var(--card);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background:var(--leopard)}
+.final-cta h2{font-family:var(--font-display);font-size:clamp(2rem,5vw,3.5rem);color:var(--white);letter-spacing:2px;margin-bottom:10px;position:relative;z-index:2}
+.final-cta h2 span{color:var(--gold)}
+.final-cta p{color:var(--gray);font-size:.9rem;margin-bottom:24px;position:relative;z-index:2}
+
+/* FOOTER */
+.footer{background:var(--black);padding:40px 24px 16px;border-top:1px solid rgba(212,175,55,.1)}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;max-width:1200px;margin:0 auto 24px}
+.footer h4{font-family:var(--font-display);font-size:1.1rem;color:var(--gold);letter-spacing:2px;margin-bottom:10px}
+.footer a{color:var(--gray);text-decoration:none;font-size:.75rem;display:block;margin-bottom:5px;transition:color .3s}.footer a:hover{color:var(--gold)}
+.ft-brand p{font-size:.75rem;color:var(--gray);line-height:1.6;margin-bottom:10px}
+.ft-social{display:flex;gap:8px}
+.ft-social a{width:32px;height:32px;border-radius:50%;border:1px solid var(--muted);display:flex;align-items:center;justify-content:center;font-size:.8rem;margin:0;color:var(--gray)}
+.ft-social a:hover{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.ft-bottom{border-top:1px solid var(--muted);padding-top:14px;display:flex;justify-content:space-between;max-width:1200px;margin:0 auto;font-size:.65rem;color:var(--muted);flex-wrap:wrap;gap:8px}
+
+/* WPP FLOAT */
+.wpp-float{position:fixed;bottom:20px;right:20px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tip{background:var(--white);color:var(--black);padding:8px 14px;border-radius:12px 12px 4px 12px;box-shadow:0 4px 20px rgba(0,0,0,.3);font-size:.75rem;font-weight:600;transform:translateY(8px);opacity:0;transition:var(--transition);pointer-events:none}
+.wpp-float:hover .wpp-tip{transform:translateY(0);opacity:1}
+.wpp-btn{width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.3);transition:var(--transition);animation:pulse 2.5s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:all .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}.cat-grid,.prod-grid{grid-template-columns:1fr 1fr}.trust-row{grid-template-columns:1fr 1fr}.rev-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.insta-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1rem}.nav-cta{display:none}.menu-toggle{display:block;z-index:201}.hero-btns{flex-direction:column}.btn-fire,.btn-ghost{width:100%;max-width:300px;justify-content:center}.hero-numbers{justify-content:center}.cat-grid,.prod-grid{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr 1fr}.trust-row{grid-template-columns:1fr 1fr}.insta-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+<div class="loader-logo"><span>K</span><small>Boutique</small></div>
+<div class="loader-bar"></div>
+</div>
+
+<div class="topbar">🔥 Novidades toda semana | Enviamos para todo Brasil 🚚 | Parcele em até 6x</div>
+
+<nav class="nav"><div class="container nav-inner">
+<a href="#" class="nav-brand">
+<div class="nav-logo"><span>K</span><small>Boutique</small></div>
+<div class="nav-name">KÉSSIA BOUTIQUE</div>
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#novidades" onclick="closeMenu()">Novidades</a></li>
+<li><a href="#produtos" onclick="closeMenu()">Produtos</a></li>
+<li><a href="#sobre" onclick="closeMenu()">A Késsia</a></li>
+<li><a href="#avaliacoes" onclick="closeMenu()">Avaliações</a></li>
+</ul>
+<div class="nav-right">
+<a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+<a href="#" class="nav-icon"><i class="far fa-heart"></i></a>
+<a href="#" class="nav-icon"><i class="fas fa-bag-shopping"></i></a>
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Vi o site e quero ver as novidades da semana!" class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+</div>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<section class="hero">
+<div class="hero-inner"><div class="hero-grid">
+<div class="hero-text">
+<div class="hero-fire">🔥 +44 mil seguidoras no Instagram</div>
+<h1>MODA COM<span>ATITUDE</span></h1>
+<p class="hero-sub">Peças que gritam personalidade. Novidades toda semana, do jeitinho que você ama. Direto de Pavuna pro Brasil inteiro.</p>
+<div class="hero-btns">
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero ver as novidades da semana!" class="btn-fire" target="_blank"><i class="fab fa-whatsapp"></i> Ver Novidades</a>
+<a href="#novidades" class="btn-ghost"><i class="fas fa-fire"></i> Explorar Coleção</a>
+</div>
+<div class="hero-numbers">
+<div class="hero-num"><strong>44.7K</strong><small>Seguidoras</small></div>
+<div class="hero-num"><strong>3.4K</strong><small>Publicações</small></div>
+<div class="hero-num"><strong>5★</strong><small>Nota Máxima</small></div>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=400&q=80" alt="Look Késsia" loading="lazy"></div>
+<div class="hero-img"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Look Késsia" loading="lazy"></div>
+</div>
+</div></div>
+</section>
+
+<section class="section" id="novidades">
+<div class="section-head reveal"><span class="sec-tag">Explore por estilo</span><h2 class="sec-title">ENCONTRE SEU <span>LOOK</span></h2><p class="sec-desc">Cada peça escolhida pra mulher que sabe o que quer. Ousada, confiante, real.</p></div>
+<div class="cat-grid">
+<a href="https://wa.me/5521976259464?text=Oi! Quero ver os vestidos e conjuntos novos!" class="cat-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80" alt="Conjuntos"><div class="cat-label"><span>Tendência</span><h3>CONJUNTOS</h3></div></a>
+<a href="https://wa.me/5521976259464?text=Oi! Quero ver as peças animal print!" class="cat-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=400&q=80" alt="Animal Print"><div class="cat-label"><span>Mais pedido</span><h3>ANIMAL PRINT</h3></div></a>
+<a href="https://wa.me/5521976259464?text=Oi! Quero ver os cropped e blusas!" class="cat-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&q=80" alt="Cropped"><div class="cat-label"><span>Em alta</span><h3>CROPPED & BLUSAS</h3></div></a>
+<a href="https://wa.me/5521976259464?text=Oi! Quero ver as bolsas e acessórios!" class="cat-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400&q=80" alt="Bags"><div class="cat-label"><span>New bags</span><h3>BOLSAS</h3></div></a>
+</div>
+</section>
+
+<section class="section" id="produtos" style="background:var(--card)">
+<div class="section-head reveal"><span class="sec-tag">🔥 Peças da semana</span><h2 class="sec-title">AS MAIS <span>DESEJADAS</span></h2></div>
+<div class="prod-grid">
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero o Conjunto Animal Print!" class="prod-card reveal" target="_blank"><div class="prod-thumb"><img src="https://images.unsplash.com/photo-1612336307429-8a898d10e223?w=400&q=80" alt="Conjunto Animal Print"><span class="prod-tag">🔥 Hit</span><span class="prod-heart"><i class="far fa-heart"></i></span></div><div class="prod-info"><span class="seg">Conjuntos</span><h3>Conjunto Animal Print Completo</h3><div class="prod-prices"><span class="to">R$ 189,90</span><span class="pix">5% Pix</span></div></div><div class="prod-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero o Vestido Midi!" class="prod-card reveal" target="_blank"><div class="prod-thumb"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Vestido Midi"><span class="prod-tag">Novo</span><span class="prod-heart"><i class="far fa-heart"></i></span></div><div class="prod-info"><span class="seg">Vestidos</span><h3>Vestido Midi Justo com Fenda</h3><div class="prod-prices"><span class="from">R$ 229,90</span><span class="to">R$ 179,90</span><span class="pix">5% Pix</span></div></div><div class="prod-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero o Cropped com Saia!" class="prod-card reveal" target="_blank"><div class="prod-thumb"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a00?w=400&q=80" alt="Cropped"><span class="prod-tag">Últimas</span><span class="prod-heart"><i class="far fa-heart"></i></span></div><div class="prod-info"><span class="seg">Cropped</span><h3>Cropped Floral + Saia Midi</h3><div class="prod-prices"><span class="to">R$ 159,90</span><span class="pix">5% Pix</span></div></div><div class="prod-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero a Bolsa Estruturada!" class="prod-card reveal" target="_blank"><div class="prod-thumb"><img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400&q=80" alt="Bolsa"><span class="prod-tag">New Bag</span><span class="prod-heart"><i class="far fa-heart"></i></span></div><div class="prod-info"><span class="seg">Bolsas</span><h3>Bolsa Estruturada Dourada</h3><div class="prod-prices"><span class="to">R$ 139,90</span><span class="pix">5% Pix</span></div></div><div class="prod-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+</div>
+</section>
+
+<section class="about" id="sobre">
+<div class="about-grid">
+<div class="about-img reveal"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Késsia Boutique"></div>
+<div class="about-txt reveal">
+<span class="sec-tag" style="text-align:left;margin-bottom:8px">Quem somos</span>
+<h2>DE PAVUNA PRO <span>BRASIL INTEIRO</span></h2>
+<p>A Késsia Boutique é mais que uma loja. É um movimento de 44 mil mulheres que acreditam que moda é sobre se sentir poderosa. Novidades toda semana porque a gente sabe que você não quer o mesmo de sempre. Animal print, conjuntos que param o trânsito, bolsas que completam o look. Tudo com a cara de quem tem atitude.</p>
+<p>📍 Pavuna, Rio de Janeiro<br>📲 (21) 97625-9464<br>🚚 Enviamos para todo Brasil</p>
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero conhecer a loja!" class="btn-fire" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Késsia</a>
+</div>
+</div>
+</section>
+
+<div class="trust"><div class="trust-row">
+<div class="trust-item reveal"><i class="fas fa-truck-fast"></i><h4>Envio Todo Brasil</h4><p>Rastreio em tempo real</p></div>
+<div class="trust-item reveal"><i class="fas fa-shield-halved"></i><h4>Compra Segura</h4><p>100% protegida</p></div>
+<div class="trust-item reveal"><i class="fas fa-arrows-rotate"></i><h4>Troca Garantida</h4><p>7 dias sem burocracia</p></div>
+<div class="trust-item reveal"><i class="fas fa-credit-card"></i><h4>6x Sem Juros</h4><p>Cartão ou Pix</p></div>
+</div></div>
+
+<section class="section" id="avaliacoes">
+<div class="section-head reveal"><span class="sec-tag">Nossas clientes</span><h2 class="sec-title">+44 MIL MULHERES <span>APROVAM</span></h2></div>
+<div class="rev-grid">
+<div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"As peças são TUDO! Compro toda semana. O animal print delas é viciante, sempre recebo elogios. Entrega rapidíssima!"</p><strong>Thayná S.</strong><small>Pavuna, RJ</small></div>
+<div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Sou do interior de SP e compro online. Nunca me decepcionei. As peças são iguais às fotos e a qualidade surpreende pelo preço!"</p><strong>Jessica M.</strong><small>Campinas, SP</small></div>
+<div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"A Késsia tem um olho pra moda incrível. Toda coleção nova é melhor que a anterior. Sou cliente fiel há 2 anos!"</p><strong>Camila R.</strong><small>Belo Horizonte, MG</small></div>
+</div>
+</section>
+
+<section class="section" style="padding-bottom:0">
+<div class="section-head reveal"><span class="sec-tag">@kessiaboutique</span><h2 class="sec-title">SIGA NO <span>INSTAGRAM</span></h2></div>
+<div class="insta-grid">
+<a href="https://instagram.com/kessiaboutique" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/kessiaboutique" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/kessiaboutique" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/kessiaboutique" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/kessiaboutique" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/kessiaboutique" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&q=80" alt="Look"></a>
+</div>
+</section>
+
+<section class="final-cta">
+<h2>PRONTA PRA <span>ARRASAR?</span></h2>
+<p>Chama no WhatsApp e veja as novidades da semana. Atendimento exclusivo e rápido.</p>
+<a href="https://wa.me/5521976259464?text=Oi Késsia! Quero ver o que chegou de novo!" class="btn-fire" style="position:relative;z-index:2" target="_blank"><i class="fab fa-whatsapp"></i> Quero as Novidades 🔥</a>
+</section>
+
+<footer class="footer">
+<div class="ft-grid">
+<div class="ft-brand"><h4>KÉSSIA BOUTIQUE</h4><p>Moda feminina com atitude. De Pavuna pro Brasil inteiro. 44 mil mulheres já confiam na gente. Novidades toda semana 🔥</p><div class="ft-social"><a href="https://instagram.com/kessiaboutique" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5521976259464" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+<div><h4>NAVEGUE</h4><a href="#novidades">Coleção</a><a href="#produtos">Produtos</a><a href="#sobre">A Késsia</a><a href="#avaliacoes">Avaliações</a></div>
+<div><h4>AJUDA</h4><a href="#">Trocas e Devoluções</a><a href="#">Prazo de Entrega</a><a href="#">Política de Privacidade</a><a href="#">Termos de Uso</a></div>
+<div><h4>CONTATO</h4><a href="https://wa.me/5521976259464" target="_blank"><i class="fab fa-whatsapp"></i> (21) 97625-9464</a><a href="https://instagram.com/kessiaboutique" target="_blank"><i class="fab fa-instagram"></i> @kessiaboutique</a><a href="#">📍 Pavuna, Rio de Janeiro, RJ</a></div>
+</div>
+<div class="ft-bottom"><span>© 2026 Késsia Boutique. Todos os direitos reservados.</span><span><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-pix"></i> Boleto</span></div>
+</footer>
+
+<div class="wpp-float"><div class="wpp-tip">Oi! Bora ver as novidades? 🔥</div><a href="https://wa.me/5521976259464?text=Oi Késsia! Vi o site e quero comprar!" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('hide');setTimeout(function(){document.getElementById('loader').style.display='none'},800)},700)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');var i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');var i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(h==='#')return;e.preventDefault();var t=document.querySelector(h);if(t){var y=t.getBoundingClientRect().top+window.pageYOffset-60;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>

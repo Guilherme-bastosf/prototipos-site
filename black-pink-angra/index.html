@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Pink | Moda Feminina em Angra dos Reis | Loja Física e Online</title>
+<meta name="description" content="Black Pink — Moda feminina em Angra dos Reis. Loja física no Centro. Vestidos, looks, jeans e acessórios. 11 mil seguidoras. Enviamos para todo Brasil!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--pink:#E91E63;--pink-light:#F48FB1;--pink-soft:#FCE4EC;--pink-dark:#C2185B;
+--black:#1A1A1A;--dark:#222;--charcoal:#333;
+--white:#FFFFFF;--bg:#FAFAFA;--cream:#F5F2EF;
+--text:#2D2D2D;--gray:#777;--light:#BBB;--border:#EBEBEB;
+--font:'DM Sans',sans-serif;--font-display:'Playfair Display',Georgia,serif;
+--shadow:0 2px 16px rgba(0,0,0,.04);--shadow-md:0 6px 24px rgba(0,0,0,.07);
+--radius:12px;--transition:all .3s ease;
+}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.container{max-width:1180px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--white);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;transition:opacity .8s}.loader.hide{opacity:0;pointer-events:none}
+.loader-bp{font-family:var(--font-display);font-size:3.2rem;font-weight:400;color:var(--black);letter-spacing:6px;line-height:1}
+.loader-bp span{color:var(--pink)}
+.loader-line{width:40px;height:1px;background:var(--pink);animation:grow 1.2s ease-in-out infinite}
+@keyframes grow{0%,100%{width:40px;opacity:.3}50%{width:80px;opacity:1}}
+
+/* TOPBAR */
+.topbar{background:var(--black);color:var(--white);text-align:center;padding:10px;font-size:.68rem;letter-spacing:1.5px;font-weight:400}
+.topbar strong{color:var(--pink-light)}
+
+/* NAV */
+.nav{background:var(--white);border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;padding:16px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-brand{text-decoration:none;display:flex;align-items:center;gap:6px}
+.nav-bp{font-family:var(--font-display);font-size:1.8rem;font-weight:400;color:var(--black);letter-spacing:4px;line-height:1}
+.nav-bp span{font-weight:300;color:var(--light);margin:0 2px}
+.nav-sub{font-size:.42rem;color:var(--light);text-transform:uppercase;letter-spacing:4px}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:.72rem;font-weight:500;letter-spacing:1px;transition:color .3s}
+.nav-links a:hover{color:var(--pink)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.nav-icon{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gray);text-decoration:none;transition:var(--transition);font-size:.85rem}
+.nav-icon:hover{color:var(--pink);background:var(--pink-soft)}
+.nav-cta{background:var(--pink);color:var(--white);padding:9px 20px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.7rem;letter-spacing:.5px;transition:var(--transition);display:flex;align-items:center;gap:6px}
+.nav-cta:hover{background:var(--pink-dark);transform:translateY(-1px)}
+.menu-toggle{display:none;background:none;border:none;font-size:1.2rem;color:var(--black);cursor:pointer}
+
+/* HERO */
+.hero{padding:80px 24px 60px;background:var(--bg)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;max-width:1180px;margin:0 auto}
+.hero-text h1{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.8rem);color:var(--black);line-height:1.1;margin-bottom:16px;font-weight:400}
+.hero-text h1 em{color:var(--pink);font-style:italic}
+.hero-text p{color:var(--gray);font-size:.92rem;line-height:1.8;margin-bottom:24px;max-width:440px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.btn-pink{background:var(--pink);color:var(--white);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.76rem;letter-spacing:.5px;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
+.btn-pink:hover{background:var(--pink-dark);transform:translateY(-2px);box-shadow:0 6px 20px rgba(233,30,99,.2)}
+.btn-line{background:transparent;color:var(--black);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:500;font-size:.76rem;letter-spacing:.5px;display:inline-flex;align-items:center;gap:8px;transition:var(--transition);border:1px solid var(--border)}
+.btn-line:hover{border-color:var(--pink);color:var(--pink)}
+.hero-info{display:flex;gap:28px}
+.hero-info div{text-align:center}.hero-info strong{font-family:var(--font-display);font-size:1.8rem;color:var(--black);display:block}.hero-info small{font-size:.58rem;color:var(--gray);text-transform:uppercase;letter-spacing:1.5px}
+.hero-mosaic{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hero-pic{border-radius:var(--radius);overflow:hidden;background:var(--border)}
+.hero-pic img{width:100%;height:100%;object-fit:cover;display:block}
+.hero-pic:first-child{aspect-ratio:3/4;grid-row:span 2}
+.hero-pic:nth-child(2){aspect-ratio:4/3}
+.hero-pic:nth-child(3){aspect-ratio:4/3}
+
+/* SECTION */
+.section{padding:70px 24px}.section-head{text-align:center;margin-bottom:44px}
+.s-tag{font-size:.58rem;color:var(--pink);text-transform:uppercase;letter-spacing:4px;font-weight:600;margin-bottom:6px;display:block}
+.s-title{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--black);margin-bottom:8px;font-weight:400}
+.s-title span{color:var(--pink);font-style:italic}
+.s-desc{color:var(--gray);font-size:.84rem;max-width:480px;margin:0 auto;line-height:1.6}
+
+/* CATEGORIES */
+.cat-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1180px;margin:0 auto}
+.cat-box{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:2/3;text-decoration:none;display:block}
+.cat-box img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.cat-box:hover img{transform:scale(1.05)}
+.cat-box::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6),transparent 50%)}
+.cat-box .label{position:absolute;bottom:16px;left:16px;z-index:2}
+.cat-box .label h3{font-family:var(--font-display);font-size:1.3rem;color:var(--white);font-weight:400;font-style:italic}
+.cat-box .label span{font-size:.55rem;color:var(--pink-light);text-transform:uppercase;letter-spacing:2px;font-weight:600}
+
+/* PRODUCTS */
+.prod-flex{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1180px;margin:0 auto}
+.p-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:var(--text);display:block}
+.p-card:hover{box-shadow:var(--shadow-md);transform:translateY(-4px);border-color:var(--pink-soft)}
+.p-img{aspect-ratio:3/4;overflow:hidden;position:relative;background:var(--bg)}
+.p-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.p-card:hover .p-img img{transform:scale(1.04)}
+.p-tag{position:absolute;top:10px;left:10px;background:var(--pink);color:var(--white);padding:3px 10px;border-radius:50px;font-size:.55rem;font-weight:700;letter-spacing:.5px;z-index:2}
+.p-fav{position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--gray);box-shadow:var(--shadow);z-index:2}
+.p-body{padding:14px}
+.p-body .cat{font-size:.55rem;color:var(--pink);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:3px;display:block}
+.p-body h3{font-size:.82rem;font-weight:500;color:var(--black);margin-bottom:6px}
+.p-row{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.p-row .old{font-size:.72rem;color:var(--light);text-decoration:line-through}
+.p-row .price{font-size:1rem;font-weight:700;color:var(--black)}
+.p-row .pix{font-size:.58rem;color:var(--pink-dark);background:var(--pink-soft);padding:2px 6px;border-radius:4px}
+.p-buy{display:block;text-align:center;background:var(--black);color:var(--white);padding:10px;font-size:.68rem;font-weight:600;letter-spacing:1px;text-decoration:none;transition:var(--transition)}
+.p-buy:hover{background:var(--pink)}
+
+/* EDITORIAL */
+.editorial{background:var(--cream)}
+.edit-wrap{display:grid;grid-template-columns:1fr 1fr;max-width:1180px;margin:0 auto;min-height:460px;border-radius:var(--radius);overflow:hidden}
+.edit-photo{overflow:hidden}.edit-photo img{width:100%;height:100%;object-fit:cover}
+.edit-content{padding:50px 40px;display:flex;flex-direction:column;justify-content:center}
+.edit-content h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--black);margin-bottom:14px;font-weight:400;line-height:1.15}
+.edit-content h2 em{color:var(--pink);font-style:italic}
+.edit-content p{color:var(--gray);font-size:.86rem;line-height:1.8;margin-bottom:20px}
+
+/* TRUST */
+.trust{padding:36px 24px;background:var(--pink-soft)}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;max-width:1180px;margin:0 auto;text-align:center}
+.trust-item i{font-size:1.2rem;color:var(--pink);margin-bottom:6px;display:block}
+.trust-item h4{font-size:.76rem;color:var(--black);font-weight:600}
+.trust-item p{font-size:.6rem;color:var(--gray)}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1180px;margin:0 auto}
+.rev-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:24px}
+.rev-stars{color:var(--pink);font-size:.8rem;letter-spacing:2px;margin-bottom:8px}
+.rev-card p{font-size:.84rem;color:var(--text);line-height:1.6;margin-bottom:12px;font-style:italic}
+.rev-card strong{font-size:.75rem;color:var(--black)}
+.rev-card small{font-size:.6rem;color:var(--gray);display:block}
+
+/* INSTA */
+.insta-row{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.insta-pic{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+.insta-pic img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.insta-pic:hover img{transform:scale(1.06);filter:brightness(.7)}
+.insta-pic::after{content:'\f16d';font-family:'Font Awesome 6 Brands';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--pink-light);font-size:1.1rem;opacity:0;transition:opacity .3s}
+.insta-pic:hover::after{opacity:1}
+
+/* CTA FINAL */
+.cta-final{background:var(--black);padding:80px 24px;text-align:center}
+.cta-final h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);margin-bottom:10px;font-weight:400}
+.cta-final h2 em{color:var(--pink);font-style:italic}
+.cta-final p{color:rgba(255,255,255,.5);font-size:.88rem;margin-bottom:24px}
+.btn-white{background:var(--white);color:var(--black);padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
+.btn-white:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.2)}
+
+/* FOOTER */
+.footer{background:var(--bg);padding:40px 24px 16px;border-top:1px solid var(--border)}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;max-width:1180px;margin:0 auto 24px}
+.footer h4{font-family:var(--font-display);font-size:1rem;color:var(--black);margin-bottom:10px;font-weight:500;font-style:italic}
+.footer a{color:var(--gray);text-decoration:none;font-size:.74rem;display:block;margin-bottom:5px;transition:color .3s}.footer a:hover{color:var(--pink)}
+.ft-brand p{font-size:.74rem;color:var(--gray);line-height:1.6;margin-bottom:10px}
+.ft-social{display:flex;gap:8px}.ft-social a{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.75rem;margin:0;color:var(--gray)}.ft-social a:hover{background:var(--pink);color:var(--white);border-color:var(--pink)}
+.ft-bottom{border-top:1px solid var(--border);padding-top:12px;display:flex;justify-content:space-between;max-width:1180px;margin:0 auto;font-size:.62rem;color:var(--light);flex-wrap:wrap;gap:8px}
+
+/* WPP */
+.wpp-float{position:fixed;bottom:20px;right:20px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tip{background:var(--white);color:var(--black);padding:8px 14px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow-md);font-size:.74rem;font-weight:600;transform:translateY(8px);opacity:0;transition:var(--transition);pointer-events:none}
+.wpp-float:hover .wpp-tip{transform:translateY(0);opacity:1}
+.wpp-btn{width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.3);transition:var(--transition);animation:pulse 2.5s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.hero-grid{grid-template-columns:1fr}.hero-mosaic{display:none}.cat-strip,.prod-flex{grid-template-columns:1fr 1fr}.trust-row{grid-template-columns:1fr 1fr}.rev-grid{grid-template-columns:1fr}.edit-wrap{grid-template-columns:1fr}.insta-row{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--black)!important;font-size:1rem}.nav-cta{display:none}.menu-toggle{display:block;z-index:201}.hero-btns{flex-direction:column}.btn-pink,.btn-line{width:100%;max-width:300px;justify-content:center}.hero-info{justify-content:center}.cat-strip,.prod-flex{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr 1fr}.edit-content{padding:32px 24px}.insta-row{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><div class="loader-bp">B<span>|</span>P</div><div class="loader-line"></div></div>
+
+<div class="topbar">Loja física no <strong>Centro de Angra dos Reis</strong> | Enviamos para <strong>todo Brasil</strong> 🇧🇷 | Parcele em até <strong>6x</strong></div>
+
+<nav class="nav"><div class="container nav-inner">
+<a href="#" class="nav-brand"><div><div class="nav-bp">B<span>|</span>P</div><div class="nav-sub">Black Pink</div></div></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#colecao" onclick="closeMenu()">Coleção</a></li>
+<li><a href="#looks" onclick="closeMenu()">Looks</a></li>
+<li><a href="#sobre" onclick="closeMenu()">A Loja</a></li>
+<li><a href="#avaliacoes" onclick="closeMenu()">Clientes</a></li>
+</ul>
+<div class="nav-right">
+<a href="#" class="nav-icon"><i class="fas fa-search"></i></a>
+<a href="#" class="nav-icon"><i class="far fa-heart"></i></a>
+<a href="#" class="nav-icon"><i class="fas fa-bag-shopping"></i></a>
+<a href="https://wa.me/5524999999999?text=Oi! Vi o site da Black Pink e quero ver as novidades!" class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+</div>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<section class="hero">
+<div class="hero-grid">
+<div class="hero-text reveal">
+<span class="s-tag" style="text-align:left;margin-bottom:12px">Reinaugurada | Centro de Angra</span>
+<h1>Moda feminina com a <em>delicadeza</em> que você merece</h1>
+<p>Looks selecionados pela Thamiris com o carinho de quem entende moda. Loja física no Centro de Angra dos Reis com envio para todo Brasil.</p>
+<div class="hero-btns">
+<a href="https://wa.me/5524999999999?text=Oi! Quero ver a coleção nova da Black Pink!" class="btn-pink" target="_blank"><i class="fab fa-whatsapp"></i> Ver Coleção Nova</a>
+<a href="#colecao" class="btn-line"><i class="fas fa-eye"></i> Explorar Looks</a>
+</div>
+<div class="hero-info">
+<div><strong>11.4K</strong><small>Seguidoras</small></div>
+<div><strong>4K+</strong><small>Posts</small></div>
+<div><strong>📍</strong><small>Angra dos Reis</small></div>
+</div>
+</div>
+<div class="hero-mosaic reveal">
+<div class="hero-pic"><img src="https://images.unsplash.com/photo-1581044777550-4cfa60707998?w=400&q=80" alt="Black Pink Look" loading="lazy"></div>
+<div class="hero-pic"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=400&q=80" alt="Black Pink Look" loading="lazy"></div>
+<div class="hero-pic"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=400&q=80" alt="Black Pink Look" loading="lazy"></div>
+</div>
+</div>
+</section>
+
+<section class="section" id="colecao">
+<div class="section-head reveal"><span class="s-tag">Categorias</span><h2 class="s-title">Encontre o <span>look perfeito</span></h2><p class="s-desc">Peças para cada ocasião, do dia a dia ao evento especial.</p></div>
+<div class="cat-strip">
+<a href="https://wa.me/5524999999999?text=Oi! Quero ver os vestidos da Black Pink!" class="cat-box reveal" target="_blank"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&q=80" alt="Vestidos"><div class="label"><span>Novos</span><h3>Vestidos</h3></div></a>
+<a href="https://wa.me/5524999999999?text=Oi! Quero ver os looks completos!" class="cat-box reveal" target="_blank"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=400&q=80" alt="Looks"><div class="label"><span>Favoritos</span><h3>Looks Completos</h3></div></a>
+<a href="https://wa.me/5524999999999?text=Oi! Quero ver os jeans da Black Pink!" class="cat-box reveal" target="_blank"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=400&q=80" alt="Jeans"><div class="label"><span>Essencial</span><h3>Jeans</h3></div></a>
+<a href="https://wa.me/5524999999999?text=Oi! Quero ver as blusas e tops!" class="cat-box reveal" target="_blank"><img src="https://images.unsplash.com/photo-1564257631407-4deb1f99d992?w=400&q=80" alt="Blusas"><div class="label"><span>Chegando</span><h3>Blusas & Tops</h3></div></a>
+</div>
+</section>
+
+<section class="section" id="looks" style="background:var(--bg)">
+<div class="section-head reveal"><span class="s-tag">Seleção da Thamiris</span><h2 class="s-title">Peças <span>escolhidas a dedo</span></h2></div>
+<div class="prod-flex">
+<a href="https://wa.me/5524999999999?text=Oi! Quero saber sobre o Vestido Midi Canelado!" class="p-card reveal" target="_blank"><div class="p-img"><img src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=400&q=80" alt="Vestido"><span class="p-tag">Novo</span><span class="p-fav"><i class="far fa-heart"></i></span></div><div class="p-body"><span class="cat">Vestidos</span><h3>Vestido Midi Canelado</h3><div class="p-row"><span class="price">R$ 169,90</span><span class="pix">5% Pix</span></div></div><div class="p-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+<a href="https://wa.me/5524999999999?text=Oi! Quero saber sobre o Conjunto Alfaiataria!" class="p-card reveal" target="_blank"><div class="p-img"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Conjunto"><span class="p-tag">Favorito</span><span class="p-fav"><i class="far fa-heart"></i></span></div><div class="p-body"><span class="cat">Conjuntos</span><h3>Conjunto Alfaiataria Rosa</h3><div class="p-row"><span class="old">R$ 239,90</span><span class="price">R$ 199,90</span><span class="pix">5% Pix</span></div></div><div class="p-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+<a href="https://wa.me/5524999999999?text=Oi! Quero saber sobre a Calça Wide Leg!" class="p-card reveal" target="_blank"><div class="p-img"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=400&q=80" alt="Calça"><span class="p-tag">Tendência</span><span class="p-fav"><i class="far fa-heart"></i></span></div><div class="p-body"><span class="cat">Calças</span><h3>Wide Leg Jeans Premium</h3><div class="p-row"><span class="price">R$ 149,90</span><span class="pix">5% Pix</span></div></div><div class="p-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+<a href="https://wa.me/5524999999999?text=Oi! Quero saber sobre a Blusa Decote V!" class="p-card reveal" target="_blank"><div class="p-img"><img src="https://images.unsplash.com/photo-1434389677669-e08b4cda3a00?w=400&q=80" alt="Blusa"><span class="p-tag">Últimas</span><span class="p-fav"><i class="far fa-heart"></i></span></div><div class="p-body"><span class="cat">Blusas</span><h3>Blusa Decote V Elegante</h3><div class="p-row"><span class="price">R$ 89,90</span><span class="pix">5% Pix</span></div></div><div class="p-buy"><i class="fab fa-whatsapp"></i> Comprar pelo WhatsApp</div></a>
+</div>
+</section>
+
+<section class="editorial" id="sobre">
+<div class="edit-wrap">
+<div class="edit-photo reveal"><img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80" alt="Black Pink Loja"></div>
+<div class="edit-content reveal">
+<span class="s-tag" style="text-align:left;margin-bottom:8px">Nossa história</span>
+<h2>A <em>Black Pink</em> é o reflexo da mulher de Angra</h2>
+<p>Criada pela Thamiris com a missão de trazer moda feminina de qualidade para Angra dos Reis. Nossa loja no Centro foi recentemente reinaugurada e ampliada, porque o amor das nossas clientes pedia mais espaço, mais peças, mais estilo.</p>
+<p>📍 Rua do Comércio, 214, Loja 09 | Centro<br>🕐 Seg a Sáb | Delivery disponível</p>
+<a href="https://wa.me/5524999999999?text=Oi Thamiris! Quero conhecer a loja Black Pink!" class="btn-pink" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Thamiris</a>
+</div>
+</div>
+</section>
+
+<div class="trust"><div class="trust-row">
+<div class="trust-item reveal"><i class="fas fa-store"></i><h4>Loja Física</h4><p>Centro de Angra dos Reis</p></div>
+<div class="trust-item reveal"><i class="fas fa-truck-fast"></i><h4>Envio Nacional</h4><p>Para todo o Brasil</p></div>
+<div class="trust-item reveal"><i class="fas fa-motorcycle"></i><h4>Delivery Local</h4><p>Entregamos em Angra</p></div>
+<div class="trust-item reveal"><i class="fas fa-credit-card"></i><h4>Parcele em 6x</h4><p>Sem juros no cartão</p></div>
+</div></div>
+
+<section class="section" id="avaliacoes">
+<div class="section-head reveal"><span class="s-tag">Nossas clientes</span><h2 class="s-title">Amadas em <span>Angra dos Reis</span></h2></div>
+<div class="rev-grid">
+<div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"A Black Pink é minha loja favorita em Angra! A Thamiris sempre me ajuda a montar looks incríveis. Peças lindas e preço justo."</p><strong>Mariana N.</strong><small>Centro, Angra dos Reis</small></div>
+<div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Amei a reinauguração! A loja ficou ainda mais linda. Comprei 3 vestidos e todos ficaram perfeitos. Atendimento nota 10!"</p><strong>Juliana A.</strong><small>Japuíba, Angra dos Reis</small></div>
+<div class="rev-card reveal"><div class="rev-stars">★★★★★</div><p>"Compro online e recebo super rápido. As peças são exatamente como nas fotos. A Black Pink não decepciona nunca!"</p><strong>Fernanda L.</strong><small>São Paulo, SP</small></div>
+</div>
+</section>
+
+<section class="section" style="padding-bottom:0">
+<div class="section-head reveal"><span class="s-tag">@black_pink_angra</span><h2 class="s-title">Nos siga no <span>Instagram</span></h2></div>
+<div class="insta-row">
+<a href="https://instagram.com/black_pink_angra" class="insta-pic reveal" target="_blank"><img src="https://images.unsplash.com/photo-1558171813-4c088753af8f?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/black_pink_angra" class="insta-pic reveal" target="_blank"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/black_pink_angra" class="insta-pic reveal" target="_blank"><img src="https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/black_pink_angra" class="insta-pic reveal" target="_blank"><img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/black_pink_angra" class="insta-pic reveal" target="_blank"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=300&q=80" alt="Look"></a>
+<a href="https://instagram.com/black_pink_angra" class="insta-pic reveal" target="_blank"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=300&q=80" alt="Look"></a>
+</div>
+</section>
+
+<section class="cta-final">
+<h2>Encontre seu <em>look ideal</em></h2>
+<p>Chama a Thamiris no WhatsApp. Atendimento personalizado na loja ou online.</p>
+<a href="https://wa.me/5524999999999?text=Oi Thamiris! Quero ajuda pra montar um look!" class="btn-white" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Thamiris</a>
+</section>
+
+<footer class="footer">
+<div class="ft-grid">
+<div class="ft-brand"><h4>Black Pink</h4><p>Moda feminina com delicadeza e estilo em Angra dos Reis. Loja física no Centro, recém-reinaugurada. Enviamos para todo Brasil.</p><div class="ft-social"><a href="https://instagram.com/black_pink_angra" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div><h4>Navegação</h4><a href="#colecao">Coleção</a><a href="#looks">Looks</a><a href="#sobre">A Loja</a><a href="#avaliacoes">Clientes</a></div>
+<div><h4>Informações</h4><a href="#">Trocas e Devoluções</a><a href="#">Prazo de Entrega</a><a href="#">Política de Privacidade</a></div>
+<div><h4>Contato</h4><a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="https://instagram.com/black_pink_angra" target="_blank"><i class="fab fa-instagram"></i> @black_pink_angra</a><a href="#">📍 R. do Comércio, 214, lj 09</a><a href="#">📍 Centro, Angra dos Reis</a></div>
+</div>
+<div class="ft-bottom"><span>© 2026 Black Pink | Moda Feminina. Todos os direitos reservados.</span><span><i class="fab fa-cc-visa"></i> <i class="fab fa-cc-mastercard"></i> <i class="fab fa-pix"></i> Boleto</span></div>
+</footer>
+
+<div class="wpp-float"><div class="wpp-tip">Fale com a Thamiris!</div><a href="https://wa.me/5524999999999?text=Oi! Vi o site da Black Pink!" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('hide');setTimeout(function(){document.getElementById('loader').style.display='none'},800)},700)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');var i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');var i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(h==='#')return;e.preventDefault();var t=document.querySelector(h);if(t){var y=t.getBoundingClientRect().top+window.pageYOffset-60;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
