@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recompor Casa | Cama, Mesa, Banho e Decoração</title>
+<meta name="description" content="Cama, mesa e banho com estética leve e elegante. Decoração com inspiração em bem-estar e tranquilidade. Soluções que valorizam o seu espaço.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--black:#1A1A1A;
+--dark:#2D2D2D;
+--gold:#C9A96E;
+--gold-light:#D4B97E;
+--gold-dark:#A88B52;
+--cream:#FAF7F2;
+--warm:#F5EDE3;
+--beige:#E8DFD3;
+--white:#FFFFFF;
+--gray:#8A8A8A;
+--light-gray:#B5B5B5;
+--text:#3D3D3D;
+--font-display:'Cormorant Garamond',Georgia,serif;
+--font-body:'Montserrat',sans-serif;
+--shadow:0 4px 20px rgba(0,0,0,.06);
+--shadow-lg:0 10px 40px rgba(0,0,0,.1);
+--radius:12px;
+--transition:all .3s ease;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--white);overflow-x:hidden}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity .8s}
+.loader.hide{opacity:0;pointer-events:none}
+.loader-logo{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--black);letter-spacing:2px}
+.loader-logo span{color:var(--gold)}
+.loader-bar{width:120px;height:2px;background:var(--beige);border-radius:2px;overflow:hidden}
+.loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--gold);animation:loading 1s ease-in-out infinite}
+@keyframes loading{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+
+/* ANNOUNCEMENT BAR */
+.announce{background:var(--black);color:var(--white);text-align:center;padding:10px 24px;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;font-weight:500}
+.announce a{color:var(--gold);text-decoration:none;font-weight:600}
+
+/* NAV */
+.nav{background:var(--white);border-bottom:1px solid rgba(0,0,0,.06);position:sticky;top:0;z-index:100;padding:16px 0;transition:var(--transition)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;text-align:center}
+.nav-logo h1{font-family:var(--font-display);font-size:1.8rem;font-weight:700;color:var(--black);letter-spacing:1px;line-height:1}
+.nav-logo h1 span{color:var(--gold)}
+.nav-logo small{font-family:var(--font-body);font-size:.6rem;color:var(--gray);text-transform:uppercase;letter-spacing:3px;display:block;margin-top:2px}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:var(--text);text-decoration:none;font-size:.82rem;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;transition:color .3s;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-6px;left:0;width:0;height:1.5px;background:var(--gold);transition:width .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a:hover::after{width:100%}
+.nav-icons{display:flex;align-items:center;gap:18px}
+.nav-icons a{color:var(--text);font-size:1.1rem;transition:color .3s;text-decoration:none}
+.nav-icons a:hover{color:var(--gold)}
+.menu-toggle{display:none;background:none;border:none;font-size:1.3rem;color:var(--black);cursor:pointer}
+
+/* HERO */
+.hero{position:relative;height:85vh;min-height:550px;overflow:hidden}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.2s ease;background-size:cover;background-position:center}
+.hero-slide.active{opacity:1}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.45) 0%,rgba(0,0,0,.15) 60%,transparent 100%)}
+.hero-content{position:absolute;inset:0;display:flex;align-items:center;z-index:2}
+.hero-text{max-width:550px;padding-left:max(40px,calc((100vw - 1240px)/2 + 24px))}
+.hero-tag{font-family:var(--font-body);font-size:.72rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:30px;height:1.5px;background:var(--gold)}
+.hero h2{font-family:var(--font-display);font-size:clamp(2.5rem,5.5vw,4rem);font-weight:700;color:var(--white);line-height:1.1;margin-bottom:18px}
+.hero-desc{color:rgba(255,255,255,.8);font-size:.95rem;line-height:1.7;margin-bottom:30px;font-weight:300}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:14px 32px;border-radius:0;font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:var(--transition);cursor:pointer;border:none}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.btn-outline-white{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.4)}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+.hero-dots{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);display:flex;gap:10px;z-index:3}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3);cursor:pointer;transition:var(--transition)}
+.hero-dot.active{background:var(--gold);transform:scale(1.2)}
+
+/* CATEGORIES */
+.categories{padding:80px 24px}
+.section-header{text-align:center;margin-bottom:50px}
+.section-header .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px}
+.section-header .tag::before,.section-header .tag::after{content:'';width:30px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:700;color:var(--black);margin-bottom:10px}
+.section-desc{color:var(--gray);font-size:.9rem;max-width:500px;margin:0 auto;line-height:1.6;font-weight:300}
+.cat-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+.cat-item{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:3/4;cursor:pointer;group:true}
+.cat-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.cat-item:hover img{transform:scale(1.08)}
+.cat-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.6) 0%,transparent 60%);transition:background .3s}
+.cat-item:hover::after{background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(0,0,0,.1) 80%)}
+.cat-info{position:absolute;bottom:20px;left:20px;z-index:2}
+.cat-info h3{font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.cat-info span{font-size:.75rem;color:rgba(255,255,255,.7);text-transform:uppercase;letter-spacing:1px}
+
+/* FEATURED PRODUCTS */
+.products{background:var(--cream);padding:80px 24px}
+.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);position:relative}
+.product-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-6px)}
+.product-img{aspect-ratio:1;overflow:hidden;position:relative}
+.product-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.product-card:hover .product-img img{transform:scale(1.06)}
+.product-tag{position:absolute;top:12px;left:12px;background:var(--gold);color:var(--white);padding:4px 12px;font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:1px;z-index:2}
+.product-wishlist{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;color:var(--gray);font-size:.9rem;z-index:2;cursor:pointer;transition:var(--transition);border:none}
+.product-wishlist:hover{color:#E74C3C;transform:scale(1.1)}
+.product-body{padding:18px}
+.product-cat{font-size:.68rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--gold);margin-bottom:6px}
+.product-body h3{font-family:var(--font-display);font-size:1.15rem;font-weight:600;color:var(--black);margin-bottom:8px;line-height:1.3}
+.product-price{display:flex;align-items:baseline;gap:8px}
+.product-price .current{font-size:1.1rem;font-weight:700;color:var(--black)}
+.product-price .old{font-size:.85rem;color:var(--light-gray);text-decoration:line-through}
+.product-price .pix{font-size:.72rem;color:var(--gold-dark);font-weight:600;margin-top:4px;display:block}
+
+/* ABOUT / BRAND STORY */
+.about{padding:80px 24px}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-images{position:relative;height:520px}
+.about-img-main{position:absolute;top:0;left:0;width:65%;height:75%;border-radius:var(--radius);overflow:hidden}
+.about-img-main img{width:100%;height:100%;object-fit:cover}
+.about-img-secondary{position:absolute;bottom:0;right:0;width:50%;height:50%;border-radius:var(--radius);overflow:hidden;border:4px solid var(--white);box-shadow:var(--shadow-lg)}
+.about-img-secondary img{width:100%;height:100%;object-fit:cover}
+.about-badge{position:absolute;top:50%;right:25%;transform:translate(50%,-50%);width:100px;height:100px;border-radius:50%;background:var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--white);box-shadow:var(--shadow-lg);z-index:2}
+.about-badge strong{font-family:var(--font-display);font-size:1.8rem;font-weight:700;line-height:1}
+.about-badge span{font-size:.55rem;text-transform:uppercase;letter-spacing:1px}
+.about-content .tag{font-size:.72rem;text-transform:uppercase;letter-spacing:3px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.about-content .tag::before{content:'';width:30px;height:1.5px;background:var(--gold)}
+.about-content h2{font-family:var(--font-display);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:700;color:var(--black);margin-bottom:18px;line-height:1.2}
+.about-content p{color:var(--gray);font-size:.92rem;line-height:1.8;margin-bottom:16px;font-weight:300}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:24px}
+.about-value{display:flex;align-items:center;gap:10px}
+.about-value i{color:var(--gold);font-size:1rem}
+.about-value span{font-size:.85rem;font-weight:500;color:var(--dark)}
+
+/* LIFESTYLE BANNER */
+.lifestyle{position:relative;height:400px;overflow:hidden}
+.lifestyle img{width:100%;height:100%;object-fit:cover}
+.lifestyle::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.4)}
+.lifestyle-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:2;text-align:center;padding:24px}
+.lifestyle-content h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);color:var(--white);font-weight:700;margin-bottom:12px}
+.lifestyle-content p{color:rgba(255,255,255,.8);font-size:1rem;margin-bottom:24px;font-weight:300;max-width:500px}
+.btn-gold-outline{background:transparent;color:var(--white);padding:14px 32px;border:1.5px solid var(--gold);font-size:.8rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;text-decoration:none;transition:var(--transition)}
+.btn-gold-outline:hover{background:var(--gold);color:var(--white)}
+
+/* TESTIMONIALS */
+.testimonials{padding:80px 24px;background:var(--warm)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:var(--white);border-radius:var(--radius);padding:32px;text-align:center;transition:var(--transition)}
+.test-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.test-stars{color:var(--gold);font-size:.9rem;letter-spacing:2px;margin-bottom:14px}
+.test-card blockquote{font-family:var(--font-display);font-size:1.1rem;font-style:italic;color:var(--dark);line-height:1.6;margin-bottom:18px;position:relative}
+.test-card blockquote::before{content:'\201C';font-family:var(--font-display);font-size:3rem;color:var(--gold);position:absolute;top:-20px;left:50%;transform:translateX(-50%);opacity:.3}
+.test-author{display:flex;flex-direction:column;align-items:center;gap:4px}
+.test-author img{width:50px;height:50px;border-radius:50%;object-fit:cover;margin-bottom:8px;border:2px solid var(--gold)}
+.test-author strong{font-size:.85rem;color:var(--dark)}
+.test-author span{font-size:.75rem;color:var(--gray)}
+
+/* INSTAGRAM */
+.instagram{padding:60px 24px}
+.insta-header{text-align:center;margin-bottom:30px}
+.insta-header h2{font-family:var(--font-display);font-size:1.8rem;color:var(--black);margin-bottom:6px}
+.insta-header a{color:var(--gold);text-decoration:none;font-size:.85rem;font-weight:500}
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
+.insta-item{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+.insta-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.insta-item:hover img{transform:scale(1.1)}
+.insta-item::after{content:'\f16d';font-family:'Font Awesome 6 Brands';position:absolute;inset:0;background:rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.5rem;opacity:0;transition:opacity .3s}
+.insta-item:hover::after{opacity:1}
+
+/* NEWSLETTER */
+.newsletter{background:var(--black);padding:60px 24px;text-align:center}
+.newsletter h2{font-family:var(--font-display);font-size:1.8rem;color:var(--white);margin-bottom:8px}
+.newsletter p{color:var(--light-gray);font-size:.88rem;margin-bottom:24px;font-weight:300}
+.newsletter-form{display:flex;max-width:480px;margin:0 auto;gap:0}
+.newsletter-form input{flex:1;padding:14px 20px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:var(--white);font-size:.85rem;font-family:var(--font-body);outline:none;transition:border .3s}
+.newsletter-form input::placeholder{color:var(--gray)}
+.newsletter-form input:focus{border-color:var(--gold)}
+.newsletter-form button{background:var(--gold);color:var(--white);padding:14px 28px;border:none;font-size:.78rem;font-weight:600;text-transform:uppercase;letter-spacing:2px;cursor:pointer;font-family:var(--font-body);transition:var(--transition)}
+.newsletter-form button:hover{background:var(--gold-dark)}
+
+/* FOOTER */
+.footer{background:var(--cream);padding:60px 24px 24px;border-top:1px solid var(--beige)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.5fr;gap:40px;margin-bottom:40px}
+.footer-brand h3{font-family:var(--font-display);font-size:1.5rem;color:var(--black);margin-bottom:10px}
+.footer-brand h3 span{color:var(--gold)}
+.footer-brand p{color:var(--gray);font-size:.84rem;line-height:1.6;margin-bottom:14px;font-weight:300}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:38px;height:38px;border-radius:50%;border:1px solid var(--beige);display:flex;align-items:center;justify-content:center;color:var(--gray);text-decoration:none;transition:var(--transition);font-size:.85rem}
+.footer-social a:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+.footer-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;color:var(--black);margin-bottom:16px;font-weight:600}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:10px}
+.footer-col a{color:var(--gray);text-decoration:none;font-size:.84rem;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid var(--beige);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.75rem;color:var(--light-gray);flex-wrap:wrap;gap:8px}
+.footer-payments{display:flex;gap:8px;align-items:center}
+.footer-payments i{font-size:1.4rem;color:var(--gray)}
+
+/* WHATSAPP FLOAT */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:var(--radius) var(--radius) 4px var(--radius);box-shadow:var(--shadow-lg);font-size:.82rem;font-weight:500;transform:translateY(8px);opacity:0;transition:var(--transition);white-space:nowrap;pointer-events:none}
+.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}
+.wpp-btn{width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.6rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:var(--transition);animation:wppPulse 2s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes wppPulse{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* SCROLL REVEAL */
+.reveal{opacity:0;transform:translateY(25px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.cat-grid{grid-template-columns:repeat(3,1fr)}
+.cat-item:nth-child(4),.cat-item:nth-child(5){grid-column:span 1}
+.products-grid{grid-template-columns:repeat(2,1fr)}
+.about-grid{grid-template-columns:1fr}
+.about-images{height:400px;margin-bottom:20px}
+.footer-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:768px){
+.announce{font-size:.7rem;letter-spacing:1px}
+.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,.98);backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}
+.nav-links.open{display:flex}
+.nav-links a{font-size:1rem;color:var(--black)!important}
+.nav-icons{gap:12px}
+.menu-toggle{display:block;z-index:201}
+.hero{height:70vh;min-height:450px}
+.hero-text{padding:24px}
+.hero h2{font-size:2rem}
+.hero-buttons{flex-direction:column}
+.btn{width:100%;justify-content:center}
+.cat-grid{grid-template-columns:repeat(2,1fr)}
+.cat-item:last-child{grid-column:span 2}
+.products-grid{grid-template-columns:1fr 1fr}
+.test-grid{grid-template-columns:1fr}
+.insta-grid{grid-template-columns:repeat(3,1fr)}
+.about-images{height:300px}
+.footer-grid{grid-template-columns:1fr}
+.newsletter-form{flex-direction:column}
+.newsletter-form button{width:100%}
+.lifestyle{height:300px}
+}
+@media(max-width:480px){
+.products-grid{grid-template-columns:1fr}
+.cat-grid{grid-template-columns:1fr 1fr}
+.cat-item:last-child{grid-column:span 1}
+.hero{height:65vh}
+}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+<div class="loader-logo">Recompor <span>Casa</span></div>
+<div class="loader-bar"></div>
+</div>
+
+<!-- ANNOUNCEMENT BAR -->
+<div class="announce">
+Frete grátis acima de R$299 &nbsp;|&nbsp; Parcele em até 6x sem juros &nbsp;|&nbsp; <a href="https://wa.me/message/EAPENQ67CVE" target="_blank">Peça pelo WhatsApp</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="container nav-inner">
+<a href="#" class="nav-logo">
+<h1>Recompor <span>Casa</span></h1>
+<small>cama &bull; mesa &bull; banho &bull; decor</small>
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#categorias" onclick="closeMenu()">Categorias</a></li>
+<li><a href="#produtos" onclick="closeMenu()">Produtos</a></li>
+<li><a href="#sobre" onclick="closeMenu()">Nossa História</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
+<li><a href="https://www.instagram.com/recomporcasa" target="_blank" onclick="closeMenu()">Instagram</a></li>
+</ul>
+<div class="nav-icons">
+<a href="https://www.instagram.com/recomporcasa" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/message/EAPENQ67CVE" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-slide active" style="background-image:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1400&q=80')"></div>
+<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=1400&q=80')"></div>
+<div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=1400&q=80')"></div>
+<div class="hero-content">
+<div class="hero-text">
+<div class="hero-tag">Recompor Casa</div>
+<h2>Transforme seu lar em um refúgio de elegância</h2>
+<p class="hero-desc">Cama, mesa e banho com estética leve e elegante. Peças que inspiram bem-estar, tranquilidade e valorizam cada cantinho do seu espaço.</p>
+<div class="hero-buttons">
+<a href="https://wa.me/message/EAPENQ67CVE" class="btn btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Comprar Agora</a>
+<a href="#categorias" class="btn btn-outline-white">Ver Coleção</a>
+</div>
+</div>
+</div>
+<div class="hero-dots">
+<span class="hero-dot active" onclick="goSlide(0)"></span>
+<span class="hero-dot" onclick="goSlide(1)"></span>
+<span class="hero-dot" onclick="goSlide(2)"></span>
+</div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="categorias">
+<div class="container">
+<div class="section-header reveal">
+<div class="tag">Nossas categorias</div>
+<h2 class="section-title">Explore por ambiente</h2>
+<p class="section-desc">Cada espaço do seu lar merece peças que combinam beleza, conforto e qualidade.</p>
+</div>
+<div class="cat-grid">
+<div class="cat-item reveal">
+<img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&q=80" alt="Cama" loading="lazy">
+<div class="cat-info"><h3>Cama</h3><span>Jogos, edredons, almofadas</span></div>
+</div>
+<div class="cat-item reveal">
+<img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80" alt="Banho" loading="lazy">
+<div class="cat-info"><h3>Banho</h3><span>Toalhas, tapetes, roupões</span></div>
+</div>
+<div class="cat-item reveal">
+<img src="https://images.unsplash.com/photo-1449247709967-d4461a6a6103?w=500&q=80" alt="Mesa" loading="lazy">
+<div class="cat-info"><h3>Mesa</h3><span>Jogos americanos, trilhos</span></div>
+</div>
+<div class="cat-item reveal">
+<img src="https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=500&q=80" alt="Perfumaria" loading="lazy">
+<div class="cat-info"><h3>Perfumaria</h3><span>Velas, aromas, difusores</span></div>
+</div>
+<div class="cat-item reveal">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=500&q=80" alt="Decoração" loading="lazy">
+<div class="cat-info"><h3>Decoração</h3><span>Quadros, vasos, mantas</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section products" id="produtos">
+<div class="section-header reveal">
+<div class="tag">Destaques</div>
+<h2 class="section-title">Mais vendidos</h2>
+<p class="section-desc">As peças favoritas dos nossos clientes para transformar cada ambiente.</p>
+</div>
+<div class="container">
+<div class="products-grid">
+<div class="product-card reveal">
+<div class="product-img">
+<span class="product-tag">Novo</span>
+<button class="product-wishlist"><i class="far fa-heart"></i></button>
+<img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80" alt="Jogo de Cama Queen" loading="lazy">
+</div>
+<div class="product-body">
+<div class="product-cat">Cama</div>
+<h3>Jogo de Cama Queen 400 fios</h3>
+<div class="product-price">
+<span class="current">R$ 289,90</span>
+<span class="old">R$ 349,90</span>
+</div>
+<span class="product-price pix">R$ 275,40 no PIX (5% off)</span>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="product-img">
+<span class="product-tag">Bestseller</span>
+<button class="product-wishlist"><i class="far fa-heart"></i></button>
+<img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=500&q=80" alt="Kit Toalhas Premium" loading="lazy">
+</div>
+<div class="product-body">
+<div class="product-cat">Banho</div>
+<h3>Kit Toalhas Premium 500g/m²</h3>
+<div class="product-price">
+<span class="current">R$ 189,90</span>
+<span class="old">R$ 229,90</span>
+</div>
+<span class="product-price pix">R$ 180,40 no PIX (5% off)</span>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="product-img">
+<button class="product-wishlist"><i class="far fa-heart"></i></button>
+<img src="https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=500&q=80" alt="Kit Aromatizador" loading="lazy">
+</div>
+<div class="product-body">
+<div class="product-cat">Perfumaria</div>
+<h3>Kit Aromatizador + Vela Artesanal</h3>
+<div class="product-price">
+<span class="current">R$ 129,90</span>
+</div>
+<span class="product-price pix">R$ 123,40 no PIX (5% off)</span>
+</div>
+</div>
+<div class="product-card reveal">
+<div class="product-img">
+<span class="product-tag">Exclusivo</span>
+<button class="product-wishlist"><i class="far fa-heart"></i></button>
+<img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&q=80" alt="Kit Decoração" loading="lazy">
+</div>
+<div class="product-body">
+<div class="product-cat">Decoração</div>
+<h3>Manta Decorativa Tricot</h3>
+<div class="product-price">
+<span class="current">R$ 159,90</span>
+<span class="old">R$ 199,90</span>
+</div>
+<span class="product-price pix">R$ 151,90 no PIX (5% off)</span>
+</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:40px" class="reveal">
+<a href="https://wa.me/message/EAPENQ67CVE" class="btn btn-gold" target="_blank" style="background:var(--black)"><i class="fab fa-whatsapp"></i> Ver Catálogo Completo</a>
+</div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="sobre">
+<div class="container">
+<div class="about-grid">
+<div class="about-images reveal">
+<div class="about-img-main">
+<img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=700&q=80" alt="Ambiente Recompor Casa" loading="lazy">
+</div>
+<div class="about-img-secondary">
+<img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=500&q=80" alt="Detalhes" loading="lazy">
+</div>
+<div class="about-badge">
+<strong>4.8K</strong>
+<span>Seguidores</span>
+</div>
+</div>
+<div class="about-content reveal">
+<div class="tag">Nossa história</div>
+<h2>Mais do que produtos. Uma experiência de bem-estar.</h2>
+<p>A Recompor Casa nasceu da paixão por transformar ambientes em espaços de acolhimento e tranquilidade. Cada peça é escolhida com carinho para trazer beleza, conforto e qualidade ao seu dia a dia.</p>
+<p>Acreditamos que o lar é o lugar mais importante do mundo. Por isso, selecionamos peças com estética leve e elegante, inspiradas em bem-estar e que valorizam cada cantinho do seu espaço.</p>
+<div class="about-values">
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Curadoria especial</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Qualidade premium</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Envio cuidadoso</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Atendimento humano</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- LIFESTYLE BANNER -->
+<div class="lifestyle">
+<img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=1400&q=80" alt="Lifestyle Recompor Casa" loading="lazy">
+<div class="lifestyle-content">
+<h2>Personalize com amor</h2>
+<p>Toalhas bordadas, kits presenteáveis e itens personalizados para ocasiões especiais.</p>
+<a href="https://wa.me/message/EAPENQ67CVE" class="btn-gold-outline" target="_blank">Encomendar Agora</a>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+<div class="container">
+<div class="section-header reveal">
+<div class="tag">Depoimentos</div>
+<h2 class="section-title">O que nossos clientes dizem</h2>
+<p class="section-desc">A satisfação de quem já transformou seu lar com a Recompor Casa.</p>
+</div>
+<div class="test-grid">
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<blockquote>"As toalhas são maravilhosas! Macias, felpudas e com um acabamento perfeito. Meu banheiro ficou parecendo de hotel. Já voltei para comprar mais!"</blockquote>
+<div class="test-author">
+<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Mariana" loading="lazy">
+<strong>Mariana Costa</strong>
+<span>Cliente desde 2024</span>
+</div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<blockquote>"Comprei o jogo de cama para presentear minha mãe e ela amou! A qualidade do tecido é incrível e o bordado personalizado ficou lindo demais."</blockquote>
+<div class="test-author">
+<img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Lucas" loading="lazy">
+<strong>Lucas Mendes</strong>
+<span>Comprou para presente</span>
+</div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<blockquote>"Atendimento excepcional! Me ajudaram a montar um kit completo de enxoval. Tudo chegou embalado com muito cuidado. Super recomendo!"</blockquote>
+<div class="test-author">
+<img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Camila" loading="lazy">
+<strong>Camila Oliveira</strong>
+<span>Enxoval completo</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- INSTAGRAM -->
+<section class="instagram" id="instagram">
+<div class="insta-header">
+<h2 style="font-family:var(--font-display)">Siga-nos no Instagram</h2>
+<a href="https://www.instagram.com/recomporcasa" target="_blank">@recomporcasa</a>
+</div>
+<div class="insta-grid">
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=300&q=80" alt="Instagram 1" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=300&q=80" alt="Instagram 2" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=300&q=80" alt="Instagram 3" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1602028915047-37269d1a73f7?w=300&q=80" alt="Instagram 4" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=300&q=80" alt="Instagram 5" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=300&q=80" alt="Instagram 6" loading="lazy"></div>
+</div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+<div class="container">
+<h2 style="font-family:var(--font-display)">Receba nossas novidades</h2>
+<p>Cadastre-se e ganhe 10% de desconto na primeira compra.</p>
+<form class="newsletter-form" onsubmit="event.preventDefault();this.querySelector('button').textContent='Cadastrado!';this.querySelector('input').value=''">
+<input type="email" placeholder="Seu melhor e-mail" required>
+<button type="submit">Cadastrar</button>
+</form>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3 style="font-family:var(--font-display)">Recompor <span>Casa</span></h3>
+<p>Cama, mesa e banho com estética leve e elegante. Decoração com inspiração em bem-estar e tranquilidade. Soluções que valorizam o seu espaço.</p>
+<div class="footer-social">
+<a href="https://www.instagram.com/recomporcasa" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/message/EAPENQ67CVE" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="#"><i class="fab fa-facebook-f"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Categorias</h4>
+<ul>
+<li><a href="#categorias">Cama</a></li>
+<li><a href="#categorias">Mesa</a></li>
+<li><a href="#categorias">Banho</a></li>
+<li><a href="#categorias">Perfumaria</a></li>
+<li><a href="#categorias">Decoração</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Navegação</h4>
+<ul>
+<li><a href="#produtos">Produtos</a></li>
+<li><a href="#sobre">Nossa História</a></li>
+<li><a href="#depoimentos">Depoimentos</a></li>
+<li><a href="https://www.instagram.com/recomporcasa" target="_blank">Instagram</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Atendimento</h4>
+<ul>
+<li><a href="https://wa.me/message/EAPENQ67CVE" target="_blank"><i class="fab fa-whatsapp"></i>&nbsp; Fale pelo WhatsApp</a></li>
+<li><a href="https://www.instagram.com/recomporcasa" target="_blank"><i class="fab fa-instagram"></i>&nbsp; @recomporcasa</a></li>
+<li><a href="#"><i class="fas fa-truck"></i>&nbsp; Frete grátis acima de R$299</a></li>
+<li><a href="#"><i class="fas fa-credit-card"></i>&nbsp; Até 6x sem juros</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Recompor Casa. Todos os direitos reservados.</p>
+<div class="footer-payments">
+<i class="fab fa-cc-visa"></i>
+<i class="fab fa-cc-mastercard"></i>
+<i class="fab fa-pix"></i>
+<i class="fas fa-barcode"></i>
+</div>
+</div>
+</div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<div class="wpp-float">
+<div class="wpp-tooltip">Compre pelo WhatsApp!</div>
+<a href="https://wa.me/message/EAPENQ67CVE" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',800)},600)});
+
+// Mobile menu
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+
+// Hero slider
+let currentSlide=0;const slides=document.querySelectorAll('.hero-slide');const dots=document.querySelectorAll('.hero-dot');
+function goSlide(n){slides[currentSlide].classList.remove('active');dots[currentSlide].classList.remove('active');currentSlide=n;slides[currentSlide].classList.add('active');dots[currentSlide].classList.add('active')}
+setInterval(()=>{goSlide((currentSlide+1)%slides.length)},5000);
+
+// Wishlist toggle
+document.querySelectorAll('.product-wishlist').forEach(btn=>{btn.addEventListener('click',()=>{const i=btn.querySelector('i');i.classList.toggle('far');i.classList.toggle('fas');if(i.classList.contains('fas'))i.style.color='#E74C3C';else i.style.color=''})});
+
+// Scroll reveal
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gram'Art | Grama Sintética e Móveis Decorativos — Maricá/RJ</title>
+<meta name="description" content="Grama sintética e móveis decorativos em Itaipuaçu/Maricá. Traga a beleza da natureza para dentro de casa. Orçamento grátis pelo WhatsApp!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--green:#2E7D32;
+--green-dark:#1B5E20;
+--green-light:#4CAF50;
+--emerald:#00897B;
+--gold:#C9A96E;
+--gold-light:#D4B97E;
+--cream:#F9FBF2;
+--leaf:#E8F5E9;
+--white:#FFF;
+--dark:#1A2E1A;
+--text:#333;
+--gray:#6B7B6B;
+--font:'Poppins',sans-serif;
+--font-display:'Playfair Display',Georgia,serif;
+--shadow:0 4px 20px rgba(46,125,50,.08);
+--shadow-lg:0 10px 40px rgba(46,125,50,.12);
+--radius:16px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;transition:opacity .6s}
+.loader.hide{opacity:0;pointer-events:none}
+.loader-text{font-size:1.6rem;font-weight:700;color:var(--white);letter-spacing:2px}
+.loader-text span{color:var(--green-light)}
+.loader-leaf{font-size:2rem;animation:spin 2s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 15px rgba(0,0,0,.06);padding:10px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--green),var(--green-light));border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--white);font-weight:800;font-size:1.2rem}
+.nav-logo-text{font-size:1.2rem;font-weight:700;color:var(--white);transition:color .3s}
+.nav-logo-text span{color:var(--green-light)}
+.nav.scrolled .nav-logo-text{color:var(--dark)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.75);text-decoration:none;font-size:.84rem;font-weight:500;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--gray)}
+.nav-links a:hover{color:var(--green-light)}
+.nav-btn{background:var(--green);color:var(--white);padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.84rem;transition:all .3s;display:flex;align-items:center;gap:8px}
+.nav-btn:hover{background:var(--green-dark);transform:translateY(-2px)}
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer}
+.nav.scrolled .menu-toggle{color:var(--dark)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1558904541-efa843a96f01?w=1400&q=80') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(26,46,26,.9) 0%,rgba(46,125,50,.6) 50%,rgba(0,137,123,.3) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:650px;padding:120px 0 80px;padding-left:max(24px,calc((100vw - 1200px)/2 + 24px))}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(76,175,80,.4);padding:8px 18px;border-radius:50px;color:var(--green-light);font-size:.78rem;font-weight:600;letter-spacing:1px;margin-bottom:20px}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.5rem);color:var(--white);line-height:1.15;margin-bottom:18px}
+.hero h1 span{color:var(--green-light)}
+.hero-desc{color:rgba(255,255,255,.75);font-size:1rem;line-height:1.7;margin-bottom:30px;font-weight:300}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn{padding:15px 30px;border-radius:50px;font-weight:600;font-size:.88rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer}
+.btn-green{background:var(--green);color:var(--white)}
+.btn-green:hover{background:var(--green-dark);transform:translateY(-3px);box-shadow:0 8px 25px rgba(46,125,50,.3)}
+.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.3)}
+.btn-outline:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+.hero-features{display:flex;gap:24px;flex-wrap:wrap}
+.hero-feat{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.65);font-size:.82rem}
+.hero-feat i{color:var(--green-light)}
+
+/* BENEFITS BAR */
+.benefits-bar{background:var(--white);position:relative;z-index:5;margin-top:-50px}
+.benefits-inner{background:var(--white);border-radius:20px;box-shadow:var(--shadow-lg);padding:32px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.benefit{text-align:center;padding:10px}
+.benefit-icon{width:56px;height:56px;border-radius:50%;background:var(--leaf);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.3rem;color:var(--green)}
+.benefit h4{font-size:.9rem;font-weight:600;color:var(--dark);margin-bottom:4px}
+.benefit p{font-size:.78rem;color:var(--gray);line-height:1.4}
+
+/* SECTION */
+.section{padding:80px 24px}
+.section-header{text-align:center;max-width:600px;margin:0 auto 50px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--leaf);color:var(--green);padding:6px 16px;border-radius:50px;font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--dark);margin-bottom:12px;line-height:1.2}
+.section-title span{color:var(--green)}
+.section-desc{color:var(--gray);font-size:.9rem;line-height:1.7;font-weight:300}
+
+/* SERVICES */
+.services{background:var(--cream)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:all .4s;border:1px solid #e8ede8}
+.svc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.svc-img{height:220px;overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.svc-card:hover .svc-img img{transform:scale(1.08)}
+.svc-body{padding:24px}
+.svc-body h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.svc-body p{color:var(--gray);font-size:.85rem;line-height:1.6;margin-bottom:14px;font-weight:300}
+.svc-link{color:var(--green);font-weight:600;font-size:.84rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.svc-link:hover{gap:10px}
+
+/* GALLERY */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,250px);gap:12px}
+.gallery-grid .item:first-child{grid-row:span 2}
+.gallery-item{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gallery-item:hover img{transform:scale(1.08)}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 40%);opacity:0;transition:opacity .3s}
+.gallery-item:hover::after{opacity:1}
+.gallery-item span{position:absolute;bottom:14px;left:14px;color:var(--white);font-size:.82rem;font-weight:600;z-index:2;opacity:0;transition:opacity .3s}
+.gallery-item:hover span{opacity:1}
+
+/* PRODUCTS */
+.products{background:var(--cream)}
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.prod-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:all .3s;border:1px solid #e8ede8}
+.prod-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.prod-img{aspect-ratio:1;overflow:hidden}
+.prod-img img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+.prod-card:hover .prod-img img{transform:scale(1.06)}
+.prod-body{padding:16px}
+.prod-body h3{font-size:.95rem;font-weight:600;color:var(--dark);margin-bottom:6px}
+.prod-body p{font-size:.78rem;color:var(--gray);margin-bottom:10px;line-height:1.4}
+.prod-cta{display:block;width:100%;padding:12px;background:var(--green);color:var(--white);text-align:center;text-decoration:none;font-size:.78rem;font-weight:600;transition:background .3s;border:none;cursor:pointer;font-family:var(--font);border-radius:0 0 16px 16px}
+.prod-cta:hover{background:var(--green-dark)}
+
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.test-card{background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid #e8ede8;transition:all .3s}
+.test-card:hover{box-shadow:var(--shadow);border-color:var(--green)}
+.test-stars{color:var(--gold);font-size:.85rem;letter-spacing:2px;margin-bottom:10px}
+.test-card p{font-size:.88rem;color:var(--text);line-height:1.6;margin-bottom:14px;font-weight:300;font-style:italic}
+.test-author{display:flex;align-items:center;gap:10px}
+.test-avatar{width:42px;height:42px;border-radius:50%;overflow:hidden;border:2px solid var(--leaf)}
+.test-avatar img{width:100%;height:100%;object-fit:cover}
+.test-info strong{font-size:.82rem;color:var(--dark);display:block}
+.test-info span{font-size:.72rem;color:var(--gray)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--green-dark),var(--green),var(--emerald));padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}
+.cta-inner{max-width:650px;margin:0 auto;position:relative;z-index:2}
+.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);margin-bottom:14px}
+.cta p{color:rgba(255,255,255,.8);font-size:1rem;margin-bottom:30px;line-height:1.6;font-weight:300}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:var(--white);color:var(--green);padding:15px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.15)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,.5);padding:50px 24px 20px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:30px}
+.footer-brand h3{font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:10px}
+.footer-brand h3 span{color:var(--green-light)}
+.footer-brand p{font-size:.82rem;line-height:1.6;margin-bottom:14px;font-weight:300}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s;font-size:.85rem}
+.footer-social a:hover{background:var(--green);color:var(--white);border-color:var(--green)}
+.footer-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:14px}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.82rem;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--green-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:16px;text-align:center;font-size:.75rem;color:rgba(255,255,255,.25)}
+
+/* WPP */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow-lg);font-size:.82rem;font-weight:500;transform:translateY(8px);opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
+.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}
+.wpp-btn{width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.6rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.4);transition:all .3s;animation:wppP 2s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes wppP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(25px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.services-grid{grid-template-columns:1fr 1fr}.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.gallery-grid .item:first-child{grid-row:auto}.prod-grid{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(26,46,26,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1.1rem}.menu-toggle{display:block;z-index:201}.nav-btn{display:none}.hero{min-height:85vh}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.benefits-inner{grid-template-columns:1fr 1fr;margin-top:-25px}.services-grid{grid-template-columns:1fr}.gallery-grid{grid-template-columns:1fr 1fr}.prod-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.cta-buttons{flex-direction:column;align-items:center}.btn-white{width:100%;max-width:320px;justify-content:center}}
+@media(max-width:480px){.benefits-inner{grid-template-columns:1fr}.prod-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><div class="loader-text">GRAM'<span>ART</span></div><div class="loader-leaf">🌿</div></div>
+
+<nav class="nav" id="nav">
+<div class="container nav-inner">
+<a href="#" class="nav-logo"><div class="nav-logo-icon">G</div><div class="nav-logo-text">Gram'<span>Art</span></div></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#servicos" onclick="closeMenu()">Serviços</a></li>
+<li><a href="#galeria" onclick="closeMenu()">Projetos</a></li>
+<li><a href="#produtos" onclick="closeMenu()">Produtos</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
+</ul>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="nav-btn" target="_blank"><i class="fab fa-whatsapp"></i> Orçamento Grátis</a>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-inner">
+<div class="hero-tag"><i class="fas fa-leaf"></i> Grama Sintética + Móveis Decorativos</div>
+<h1>Traga a <span>beleza da natureza</span> para dentro de casa</h1>
+<p class="hero-desc">Grama sintética de alta qualidade e móveis decorativos para transformar seu espaço. Jardins, varandas, áreas de lazer e ambientes internos que encantam.</p>
+<div class="hero-buttons">
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="btn btn-green" target="_blank"><i class="fab fa-whatsapp"></i> Pedir Orçamento Grátis</a>
+<a href="#galeria" class="btn btn-outline"><i class="fas fa-images"></i> Ver Projetos</a>
+</div>
+<div class="hero-features">
+<div class="hero-feat"><i class="fas fa-check-circle"></i> Instalação profissional</div>
+<div class="hero-feat"><i class="fas fa-check-circle"></i> Itaipuaçu/Maricá</div>
+<div class="hero-feat"><i class="fas fa-check-circle"></i> Entrega e montagem</div>
+</div>
+</div>
+</section>
+
+<div class="benefits-bar">
+<div class="container">
+<div class="benefits-inner">
+<div class="benefit reveal"><div class="benefit-icon"><i class="fas fa-droplet-slash"></i></div><h4>Zero Manutenção</h4><p>Sem regar, sem podar, sempre verde</p></div>
+<div class="benefit reveal"><div class="benefit-icon"><i class="fas fa-sun"></i></div><h4>Resistente ao Sol</h4><p>Proteção UV, não desbota</p></div>
+<div class="benefit reveal"><div class="benefit-icon"><i class="fas fa-child"></i></div><h4>Seguro para Crianças</h4><p>Atóxico e antialérgico</p></div>
+<div class="benefit reveal"><div class="benefit-icon"><i class="fas fa-clock"></i></div><h4>Durabilidade</h4><p>+10 anos de vida útil</p></div>
+</div>
+</div>
+</div>
+
+<section class="section services" id="servicos">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-leaf"></i> Nossos serviços</span>
+<h2 class="section-title">Transformamos <span>espaços</span></h2>
+<p class="section-desc">Da grama ao mobiliário, criamos ambientes que unem beleza, conforto e natureza.</p>
+</div>
+<div class="container">
+<div class="services-grid">
+<div class="svc-card reveal">
+<div class="svc-img"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=600&q=80" alt="Grama Sintética" loading="lazy"></div>
+<div class="svc-body">
+<h3>Grama Sintética</h3>
+<p>Instalação profissional para jardins, varandas, playgrounds, áreas de lazer e espaços comerciais. Diversos modelos e alturas.</p>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="svc-link" target="_blank">Pedir orçamento <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Móveis Decorativos" loading="lazy"></div>
+<div class="svc-body">
+<h3>Móveis Decorativos</h3>
+<p>Peças exclusivas para ambientes internos e externos. Vasos, cachepots, bancos, mesas e itens que transformam qualquer cantinho.</p>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="svc-link" target="_blank">Ver catálogo <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img"><img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&q=80" alt="Paisagismo" loading="lazy"></div>
+<div class="svc-body">
+<h3>Projetos Personalizados</h3>
+<p>Desenvolvemos projetos sob medida para residências, empresas e eventos. Do planejamento à instalação completa.</p>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="svc-link" target="_blank">Solicitar projeto <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="galeria">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-images"></i> Nossos projetos</span>
+<h2 class="section-title">Inspiração em cada <span>detalhe</span></h2>
+<p class="section-desc">Veja como transformamos espaços comuns em ambientes extraordinários.</p>
+</div>
+<div class="container">
+<div class="gallery-grid">
+<div class="gallery-item item reveal"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=700&q=80" alt="Jardim residencial" loading="lazy"><span>Jardim Residencial</span></div>
+<div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&q=80" alt="Área de lazer" loading="lazy"><span>Área de Lazer</span></div>
+<div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Varanda decorada" loading="lazy"><span>Varanda Decorada</span></div>
+<div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=500&q=80" alt="Espaço gourmet" loading="lazy"><span>Espaço Gourmet</span></div>
+<div class="gallery-item reveal"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=500&q=80" alt="Playground" loading="lazy"><span>Playground</span></div>
+</div>
+</div>
+</section>
+
+<section class="section products" id="produtos">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-shopping-bag"></i> Produtos</span>
+<h2 class="section-title">Destaques do nosso <span>catálogo</span></h2>
+</div>
+<div class="container">
+<div class="prod-grid">
+<div class="prod-card reveal">
+<div class="prod-img"><img src="https://images.unsplash.com/photo-1558904541-efa843a96f01?w=400&q=80" alt="Grama 20mm" loading="lazy"></div>
+<div class="prod-body"><h3>Grama Sintética 20mm</h3><p>Ideal para jardins e áreas decorativas</p></div>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="prod-cta" target="_blank"><i class="fab fa-whatsapp"></i> Consultar Preço</a>
+</div>
+<div class="prod-card reveal">
+<div class="prod-img"><img src="https://images.unsplash.com/photo-1616046229478-9901c5536a45?w=400&q=80" alt="Grama 30mm" loading="lazy"></div>
+<div class="prod-body"><h3>Grama Sintética 30mm</h3><p>Premium para áreas de lazer e playground</p></div>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="prod-cta" target="_blank"><i class="fab fa-whatsapp"></i> Consultar Preço</a>
+</div>
+<div class="prod-card reveal">
+<div class="prod-img"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=400&q=80" alt="Kit Decorativo" loading="lazy"></div>
+<div class="prod-body"><h3>Kit Terra Cota</h3><p>Vasos + suporte em fibra natural</p></div>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="prod-cta" target="_blank"><i class="fab fa-whatsapp"></i> Consultar Preço</a>
+</div>
+<div class="prod-card reveal">
+<div class="prod-img"><img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&q=80" alt="Móveis" loading="lazy"></div>
+<div class="prod-body"><h3>Móveis para Área Externa</h3><p>Mesas, bancos e cadeiras decorativas</p></div>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="prod-cta" target="_blank"><i class="fab fa-whatsapp"></i> Consultar Preço</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="depoimentos">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-star"></i> Depoimentos</span>
+<h2 class="section-title">Clientes que <span>amaram</span></h2>
+</div>
+<div class="container">
+<div class="test-grid">
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<p>"Colocaram grama no meu quintal e ficou incrível! Parece grama de verdade e não preciso me preocupar com manutenção. As crianças adoraram!"</p>
+<div class="test-author"><div class="test-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Fernanda" loading="lazy"></div><div class="test-info"><strong>Fernanda Lima</strong><span>Residência — Maricá</span></div></div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<p>"Os vasos decorativos que comprei transformaram minha varanda. Qualidade excelente e preço justo. O atendimento foi super atencioso!"</p>
+<div class="test-author"><div class="test-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Bruno" loading="lazy"></div><div class="test-info"><strong>Bruno Oliveira</strong><span>Apartamento — Itaipuaçu</span></div></div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<p>"Montaram o espaço para o aniversário do meu filho e ficou maravilhoso! Tudo muito bem feito, do início ao fim. Já recomendei para vários amigos."</p>
+<div class="test-author"><div class="test-avatar"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="Patricia" loading="lazy"></div><div class="test-info"><strong>Patricia Santos</strong><span>Evento — Maricá</span></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="cta-inner reveal">
+<h2>Transforme seu espaço hoje</h2>
+<p>Peça seu orçamento gratuito pelo WhatsApp. Atendemos Itaipuaçu, Maricá e região com instalação profissional e preço justo.</p>
+<div class="cta-buttons">
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="btn-white" target="_blank"><i class="fab fa-whatsapp"></i> Orçamento Grátis</a>
+<a href="https://www.instagram.com/gramart_gramasintetica" class="btn btn-outline" target="_blank"><i class="fab fa-instagram"></i> Ver no Instagram</a>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>Gram'<span>Art</span></h3><p>Grama sintética e móveis decorativos em Itaipuaçu/Maricá. Traga a beleza da natureza para dentro de casa.</p>
+<div class="footer-social"><a href="https://www.instagram.com/gramart_gramasintetica" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/message/L55FA52WY4Z4A1" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div class="footer-col"><h4>Serviços</h4><ul><li><a href="#servicos">Grama Sintética</a></li><li><a href="#servicos">Móveis Decorativos</a></li><li><a href="#servicos">Projetos</a></li></ul></div>
+<div class="footer-col"><h4>Navegação</h4><ul><li><a href="#galeria">Projetos</a></li><li><a href="#produtos">Produtos</a></li><li><a href="#depoimentos">Depoimentos</a></li></ul></div>
+<div class="footer-col"><h4>Contato</h4><ul><li><a href="https://wa.me/message/L55FA52WY4Z4A1" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li><li><a href="https://www.instagram.com/gramart_gramasintetica" target="_blank"><i class="fab fa-instagram"></i> @gramart_gramasintetica</a></li><li><a href="#"><i class="fas fa-map-marker-alt"></i> Itaipuaçu/Maricá, RJ</a></li></ul></div>
+</div>
+<div class="footer-bottom">&copy; 2026 Gram'Art. Todos os direitos reservados.</div>
+</div>
+</footer>
+
+<div class="wpp-float">
+<div class="wpp-tooltip">Peça seu orçamento!</div>
+<a href="https://wa.me/message/L55FA52WY4Z4A1" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',600)},500)});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Planejados Andrade | Móveis Planejados sob Medida — Recreio, RJ</title>
+<meta name="description" content="Móveis planejados sob medida no Recreio dos Bandeirantes e Barra da Tijuca. Closets, cozinhas, banheiros e quartos. Garantia em contrato. Orçamento grátis!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--olive:#3B4A2F;--olive-dark:#2A3520;--olive-light:#5A6E47;
+--gold:#C4A265;--gold-light:#D4B87A;--gold-dark:#A88B4E;
+--cream:#FAF8F4;--warm:#F3EDE3;--sand:#E8DFD0;--beige:#D5C9B8;
+--white:#FFF;--dark:#1E1E1E;--text:#3D3D3D;--gray:#8A8A7A;--light:#B5B0A5;
+--font-display:'Cormorant Garamond',Georgia,serif;--font:'Montserrat',sans-serif;
+--shadow:0 4px 24px rgba(59,74,47,.06);--shadow-lg:0 12px 48px rgba(59,74,47,.1);--radius:16px;
+}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;transition:opacity .8s}
+.loader.hide{opacity:0;pointer-events:none}
+.loader-logo{font-family:var(--font-display);font-size:2.5rem;color:var(--olive);font-weight:700;letter-spacing:2px}
+.loader-sub{font-size:.62rem;color:var(--light);text-transform:uppercase;letter-spacing:5px}
+.loader-line{width:50px;height:1px;background:var(--gold);animation:sh 1.5s infinite}
+@keyframes sh{0%,100%{opacity:.3}50%{opacity:1}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.04);padding:12px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;display:flex;align-items:center;gap:10px}
+.nav-logo-mark{font-family:var(--font-display);font-size:2.2rem;font-weight:700;color:var(--white);line-height:1;transition:color .3s}
+.nav.scrolled .nav-logo-mark{color:var(--olive)}
+.nav-logo-text{font-size:.7rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:2.5px;font-weight:500;transition:color .3s}
+.nav.scrolled .nav-logo-text{color:var(--gray)}
+.nav-links{display:flex;gap:28px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.6);text-decoration:none;font-size:.78rem;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--gray)}
+.nav-links a:hover{color:var(--gold)}
+.nav-btn{background:var(--gold);color:var(--white);padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:1px;transition:all .3s;display:flex;align-items:center;gap:8px}
+.nav-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer}
+.nav.scrolled .menu-toggle{color:var(--olive)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=1400&q=80') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(30,30,30,.88) 0%,rgba(30,30,30,.5) 50%,rgba(30,30,30,.15) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:560px;padding:120px 0 80px;padding-left:max(24px,calc((100vw - 1160px)/2 + 24px))}
+.hero-tag{font-size:.65rem;color:var(--gold);text-transform:uppercase;letter-spacing:4px;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.hero-tag::before{content:'';width:30px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.8rem);color:var(--white);line-height:1.1;margin-bottom:18px;font-weight:600}
+.hero h1 em{color:var(--gold);font-style:italic}
+.hero-desc{color:rgba(255,255,255,.6);font-size:.95rem;line-height:1.8;margin-bottom:30px;font-weight:300}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn{padding:15px 32px;border-radius:50px;font-weight:600;font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;text-transform:uppercase;letter-spacing:1.5px;border:none;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-3px);box-shadow:0 8px 25px rgba(196,162,101,.3)}
+.btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2)}
+.btn-outline:hover{background:rgba(255,255,255,.06);border-color:var(--gold)}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap}
+.hero-trust span{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.4);font-size:.78rem}
+.hero-trust i{color:var(--gold)}
+
+/* STATS */
+.stats{background:var(--white);position:relative;z-index:5;margin-top:-50px}
+.stats-inner{background:var(--white);border-radius:20px;box-shadow:var(--shadow-lg);padding:34px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;position:relative}
+.stat:not(:last-child)::after{content:'';position:absolute;right:0;top:15%;height:70%;width:1px;background:var(--sand)}
+.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--olive);line-height:1}
+.stat-num span{color:var(--gold)}
+.stat-label{color:var(--gray);font-size:.78rem;margin-top:6px}
+
+/* SECTION */
+.section{padding:80px 24px}
+.section-header{text-align:center;max-width:560px;margin:0 auto 50px}
+.stag{font-size:.65rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px}
+.stag::before,.stag::after{content:'';width:25px;height:1px;background:var(--gold)}
+.stitle{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--dark);margin-bottom:10px;line-height:1.2;font-weight:600}
+.stitle em{color:var(--olive);font-style:italic}
+.sdesc{color:var(--gray);font-size:.88rem;line-height:1.7;font-weight:300}
+
+/* SPECIALTIES */
+.specs{background:var(--cream)}
+.spec-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.spec-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:all .4s;border:1px solid var(--sand);position:relative}
+.spec-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.spec-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--olive),var(--gold));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.spec-card:hover::before{transform:scaleX(1)}
+.spec-img{height:230px;overflow:hidden;position:relative}
+.spec-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.spec-card:hover .spec-img img{transform:scale(1.08)}
+.spec-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 40%)}
+.spec-body{padding:24px}
+.spec-body h3{font-family:var(--font-display);font-size:1.2rem;color:var(--dark);margin-bottom:8px;font-weight:600}
+.spec-body p{font-size:.84rem;color:var(--gray);line-height:1.6;margin-bottom:14px;font-weight:300}
+.spec-link{color:var(--olive);font-weight:600;font-size:.78rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.spec-link:hover{gap:10px;color:var(--gold)}
+
+/* PORTFOLIO */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(2,250px);gap:12px}
+.port-grid .big{grid-row:span 2}
+.port-item{border-radius:var(--radius);overflow:hidden;position:relative;cursor:pointer}
+.port-item img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.port-item:hover img{transform:scale(1.08)}
+.port-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(42,53,32,.7),transparent 50%);opacity:0;transition:opacity .3s}
+.port-item:hover::after{opacity:1}
+.port-item .info{position:absolute;bottom:16px;left:16px;z-index:2;opacity:0;transition:opacity .3s}
+.port-item:hover .info{opacity:1}
+.port-item .info h3{font-family:var(--font-display);color:var(--white);font-size:1.1rem;font-weight:600}
+.port-item .info span{font-size:.72rem;color:rgba(255,255,255,.7)}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative}
+.about-img-main{border-radius:20px;overflow:hidden;height:480px}
+.about-img-main img{width:100%;height:100%;object-fit:cover}
+.about-badge{position:absolute;bottom:20px;right:20px;background:var(--gold);color:var(--white);padding:14px 22px;border-radius:14px;font-weight:700;display:flex;align-items:center;gap:8px;font-size:.85rem;box-shadow:var(--shadow-lg)}
+.about-content .tag{font-size:.65rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.about-content .tag::before{content:'';width:25px;height:1.5px;background:var(--gold)}
+.about-content h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);color:var(--dark);margin-bottom:16px;line-height:1.25;font-weight:600}
+.about-content h2 em{color:var(--olive);font-style:italic}
+.about-content p{color:var(--gray);font-size:.9rem;line-height:1.8;margin-bottom:12px;font-weight:300}
+.about-values{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+.about-value{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--cream);border-radius:10px}
+.about-value i{color:var(--gold);font-size:1rem}
+.about-value span{font-size:.82rem;font-weight:500;color:var(--dark)}
+
+/* PROCESS */
+.process{background:var(--olive-dark);color:var(--white)}
+.process .stag::before,.process .stag::after{background:var(--gold)}
+.process .stitle{color:var(--white)}
+.process .stitle em{color:var(--gold);font-style:italic}
+.process .sdesc{color:rgba(255,255,255,.5)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.proc-grid::before{content:'';position:absolute;top:44px;left:10%;right:10%;height:1px;background:rgba(196,162,101,.2)}
+.proc-step{text-align:center;position:relative}
+.proc-num{width:60px;height:60px;border-radius:50%;border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--font-display);font-size:1.4rem;font-weight:700;color:var(--gold);background:var(--olive-dark);position:relative;z-index:2}
+.proc-step h3{font-size:.95rem;font-weight:600;margin-bottom:6px}
+.proc-step p{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.5;font-weight:300}
+
+/* MATERIALS */
+.mat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.mat-card{text-align:center;padding:24px 16px;border-radius:var(--radius);background:var(--cream);border:1px solid var(--sand);transition:all .3s}
+.mat-card:hover{border-color:var(--gold);box-shadow:var(--shadow)}
+.mat-card img{width:60px;height:60px;border-radius:50%;object-fit:cover;margin-bottom:12px;border:2px solid var(--gold)}
+.mat-card h4{font-family:var(--font-display);font-size:1rem;color:var(--dark);margin-bottom:4px;font-weight:600}
+.mat-card p{font-size:.75rem;color:var(--gray);line-height:1.4}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--cream)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.test-card{background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid var(--sand);transition:all .3s;text-align:center;position:relative}
+.test-card:hover{box-shadow:var(--shadow);border-color:var(--olive)}
+.test-card::before{content:'\201C';font-family:var(--font-display);font-size:4rem;color:rgba(196,162,101,.12);position:absolute;top:8px;right:18px;line-height:1}
+.test-stars{color:var(--gold);font-size:.85rem;letter-spacing:2px;margin-bottom:12px}
+.test-card blockquote{font-family:var(--font-display);font-size:1rem;font-style:italic;color:var(--text);line-height:1.6;margin-bottom:16px;font-weight:400}
+.test-author strong{font-size:.82rem;color:var(--dark);display:block}
+.test-author span{font-size:.7rem;color:var(--gray)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:flex-start}
+.faq-image{border-radius:20px;overflow:hidden;height:420px;position:sticky;top:100px}
+.faq-image img{width:100%;height:100%;object-fit:cover}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border:1px solid var(--sand);border-radius:14px;overflow:hidden;transition:all .3s}
+.faq-item.active{border-color:var(--olive);box-shadow:0 4px 15px rgba(59,74,47,.06)}
+.faq-q{width:100%;padding:18px 20px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--dark);text-align:left;font-family:var(--font);gap:12px}
+.faq-q i{color:var(--olive);transition:transform .3s;font-size:.8rem;min-width:20px}
+.faq-item.active .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+.faq-a p{padding:0 20px 18px;color:var(--gray);font-size:.86rem;line-height:1.7;font-weight:300}
+
+/* CTA */
+.cta{background:var(--olive);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(196,162,101,.08)}
+.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:2}
+.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);margin-bottom:14px;font-weight:600}
+.cta h2 em{color:var(--gold);font-style:italic}
+.cta p{color:rgba(255,255,255,.6);font-size:.92rem;margin-bottom:30px;line-height:1.6;font-weight:300}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:var(--white);color:var(--olive);padding:15px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s;text-transform:uppercase;letter-spacing:1.5px}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+.btn-outline-white{background:transparent;color:var(--white);padding:15px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:1.5px solid rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:1.5px}
+.btn-outline-white:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.5)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,.45);padding:60px 24px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:32px}
+.footer-brand h3{font-family:var(--font-display);font-size:1.3rem;color:var(--white);margin-bottom:10px;font-weight:600}
+.footer-brand p{font-size:.82rem;line-height:1.6;margin-bottom:14px;font-weight:300}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.35);text-decoration:none;transition:all .3s;font-size:.82rem}
+.footer-social a:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+.footer-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:14px;font-weight:600}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.82rem;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.2)}
+
+/* WPP */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:14px 14px 4px 14px;box-shadow:var(--shadow-lg);font-size:.82rem;font-weight:500;transform:translateY(8px);opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
+.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}
+.wpp-btn{width:58px;height:58px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.6rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:all .3s;animation:wppP 2s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes wppP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.spec-grid{grid-template-columns:1fr 1fr}.port-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}.port-grid .big{grid-row:auto}.about-grid{grid-template-columns:1fr}.about-img-main{height:350px}.proc-grid{grid-template-columns:1fr 1fr}.proc-grid::before{display:none}.mat-grid{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.faq-grid{grid-template-columns:1fr}.faq-image{display:none}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(30,30,30,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1rem}.nav-btn{display:none}.menu-toggle{display:block;z-index:201}.hero{min-height:85vh}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.stats-inner{grid-template-columns:1fr 1fr;margin-top:-25px}.stat:nth-child(2)::after{display:none}.spec-grid{grid-template-columns:1fr}.port-grid{grid-template-columns:1fr 1fr}.about-values{grid-template-columns:1fr}.mat-grid{grid-template-columns:1fr 1fr}.footer-grid{grid-template-columns:1fr}.cta-buttons{flex-direction:column;align-items:center}.btn-white,.btn-outline-white{width:100%;max-width:300px;justify-content:center}}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader"><div class="loader-logo">PA</div><div class="loader-sub">Planejados Andrade</div><div class="loader-line"></div></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+<div class="container nav-inner">
+<a href="#" class="nav-logo"><div class="nav-logo-mark">PA</div><div class="nav-logo-text">Planejados Andrade</div></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#especialidades" onclick="closeMenu()">Especialidades</a></li>
+<li><a href="#portfolio" onclick="closeMenu()">Portfólio</a></li>
+<li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
+<li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+</ul>
+<a href="https://www.instagram.com/planejadosandrades" class="nav-btn" target="_blank"><i class="fab fa-whatsapp"></i> Orçamento Grátis</a>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-inner">
+<div class="hero-tag">Marcenaria sob Medida</div>
+<h1>Cada espaço merece um móvel <em>perfeito</em></h1>
+<p class="hero-desc">Móveis planejados sob medida que transformam cada ambiente da sua casa. Closets, cozinhas, banheiros e quartos com design exclusivo, materiais de primeira linha e garantia em contrato. Recreio e Barra da Tijuca.</p>
+<div class="hero-buttons">
+<a href="https://www.instagram.com/planejadosandrades" class="btn btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Orçamento Grátis</a>
+<a href="#portfolio" class="btn btn-outline"><i class="fas fa-images"></i> Ver Projetos</a>
+</div>
+<div class="hero-trust">
+<span><i class="fas fa-shield-halved"></i> Garantia em contrato</span>
+<span><i class="fas fa-bolt"></i> Rapidez na entrega</span>
+<span><i class="fas fa-map-marker-alt"></i> Recreio, RJ</span>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<div class="stats"><div class="container"><div class="stats-inner">
+<div class="stat reveal"><div class="stat-num">50<span>+</span></div><div class="stat-label">Projetos entregues</div></div>
+<div class="stat reveal"><div class="stat-num">5.000<span>h</span></div><div class="stat-label">Horas trabalhadas</div></div>
+<div class="stat reveal"><div class="stat-num">100<span>%</span></div><div class="stat-label">Com garantia</div></div>
+<div class="stat reveal"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Avaliação média</div></div>
+</div></div></div>
+
+<!-- SPECIALTIES -->
+<section class="section specs" id="especialidades">
+<div class="section-header reveal"><div class="stag">Nossas especialidades</div><h2 class="stitle">Ambientes que <em>inspiram</em></h2><p class="sdesc">Cada projeto é único, pensado exclusivamente para o espaço e o estilo de vida do cliente.</p></div>
+<div class="container"><div class="spec-grid">
+<div class="spec-card reveal">
+<div class="spec-img"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&q=80" alt="Closets" loading="lazy"></div>
+<div class="spec-body"><h3>Closets sob Medida</h3><p>Closets que aproveitam cada centímetro. Gavetas, prateleiras, cabideiros e iluminação integrada. Design funcional e elegante.</p><a href="https://www.instagram.com/planejadosandrades" class="spec-link" target="_blank">Pedir orçamento <i class="fas fa-arrow-right"></i></a></div>
+</div>
+<div class="spec-card reveal">
+<div class="spec-img"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80" alt="Banheiros" loading="lazy"></div>
+<div class="spec-body"><h3>Banheiros Premium</h3><p>Gabinetes, bancadas e nichos sob medida. Materiais resistentes à umidade com acabamento impecável para banheiros de alto padrão.</p><a href="https://www.instagram.com/planejadosandrades" class="spec-link" target="_blank">Pedir orçamento <i class="fas fa-arrow-right"></i></a></div>
+</div>
+<div class="spec-card reveal">
+<div class="spec-img"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80" alt="Cozinhas" loading="lazy"></div>
+<div class="spec-body"><h3>Cozinhas Planejadas</h3><p>Cozinhas funcionais e bonitas. Armários, bancadas, ilhas e painéis que transformam o ambiente mais importante da casa.</p><a href="https://www.instagram.com/planejadosandrades" class="spec-link" target="_blank">Pedir orçamento <i class="fas fa-arrow-right"></i></a></div>
+</div>
+<div class="spec-card reveal">
+<div class="spec-img"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=600&q=80" alt="Quartos" loading="lazy"></div>
+<div class="spec-body"><h3>Quartos e Home Office</h3><p>Guarda-roupas, cômodas, estações de trabalho e painéis de TV. Ambientes que unem conforto, organização e estilo.</p><a href="https://www.instagram.com/planejadosandrades" class="spec-link" target="_blank">Pedir orçamento <i class="fas fa-arrow-right"></i></a></div>
+</div>
+<div class="spec-card reveal">
+<div class="spec-img"><img src="https://images.unsplash.com/photo-1600210491892-03d54c0aaf87?w=600&q=80" alt="Salas" loading="lazy"></div>
+<div class="spec-body"><h3>Salas e Painéis</h3><p>Painéis de TV, estantes, aparadores e móveis de sala sob medida. O ponto focal que transforma o living.</p><a href="https://www.instagram.com/planejadosandrades" class="spec-link" target="_blank">Pedir orçamento <i class="fas fa-arrow-right"></i></a></div>
+</div>
+<div class="spec-card reveal">
+<div class="spec-img"><img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&q=80" alt="Reparos" loading="lazy"></div>
+<div class="spec-body"><h3>Reparos e Montagem</h3><p>Conserto, ajuste e restauração de móveis. Montagem e desmontagem profissional. Dobradiças, gavetas e acabamentos.</p><a href="https://www.instagram.com/planejadosandrades" class="spec-link" target="_blank">Solicitar reparo <i class="fas fa-arrow-right"></i></a></div>
+</div>
+</div></div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section" id="portfolio">
+<div class="section-header reveal"><div class="stag">Portfólio</div><h2 class="stitle">Projetos que nos <em>orgulham</em></h2><p class="sdesc">Cada detalhe é pensado com carinho para entregar o móvel perfeito para cada cliente.</p></div>
+<div class="container"><div class="port-grid">
+<div class="port-item big reveal"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=700&q=80" alt="Closet sob medida" loading="lazy"><div class="info"><h3>Closet Master</h3><span>Recreio dos Bandeirantes</span></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=500&q=80" alt="Banheiro premium" loading="lazy"><div class="info"><h3>Banheiro Premium</h3><span>Barra da Tijuca</span></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=500&q=80" alt="Cozinha planejada" loading="lazy"><div class="info"><h3>Cozinha Integrada</h3><span>Recreio</span></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=500&q=80" alt="Quarto" loading="lazy"><div class="info"><h3>Suíte Master</h3><span>Jacarepaguá</span></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=500&q=80" alt="Home office" loading="lazy"><div class="info"><h3>Home Office</h3><span>Barra da Tijuca</span></div></div>
+</div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" style="background:var(--cream)" id="sobre">
+<div class="container"><div class="about-grid">
+<div class="about-img reveal-left">
+<div class="about-img-main"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=700&q=80" alt="Carlos Vinicius - Planejados Andrade" loading="lazy"></div>
+<div class="about-badge"><i class="fas fa-shield-halved"></i> Garantia em contrato</div>
+</div>
+<div class="about-content reveal-right">
+<div class="tag">Sobre nós</div>
+<h2>Mais do que móveis. São <em>ambientes que transformam vidas.</em></h2>
+<p>A Planejados Andrade nasceu da paixão por marcenaria e do desejo de criar ambientes que unem beleza e funcionalidade. Liderada por Carlos Vinicius, cada projeto recebe atenção artesanal e compromisso com a perfeição.</p>
+<p>Trabalhamos com materiais de primeira linha, ferragens de qualidade e acabamento impecável. Do primeiro contato à instalação, cuidamos de cada detalhe para entregar um resultado que supere suas expectativas.</p>
+<p>Atendemos Recreio dos Bandeirantes, Barra da Tijuca, Jacarepaguá e toda a Zona Oeste do Rio de Janeiro. Todos os projetos com garantia formalizada em contrato.</p>
+<div class="about-values">
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Garantia em contrato</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Materiais premium</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Rapidez na entrega</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Responsabilidade total</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Orçamento detalhado</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Pós-venda ativo</span></div>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process">
+<div class="section-header reveal"><div class="stag">Nosso processo</div><h2 class="stitle">Do sonho ao móvel <em>pronto</em></h2><p class="sdesc">Processo transparente do início ao fim. Sem surpresas.</p></div>
+<div class="container"><div class="proc-grid">
+<div class="proc-step reveal"><div class="proc-num">1</div><h3>Conversa Inicial</h3><p>Entendemos seu espaço, estilo, necessidades e orçamento. Medição no local.</p></div>
+<div class="proc-step reveal"><div class="proc-num">2</div><h3>Projeto + Orçamento</h3><p>Criamos o design sob medida com orçamento detalhado. Aprovação antes de fabricar.</p></div>
+<div class="proc-step reveal"><div class="proc-num">3</div><h3>Fabricação</h3><p>Produção artesanal com materiais de qualidade, ferragens de primeira e acabamento impecável.</p></div>
+<div class="proc-step reveal"><div class="proc-num">4</div><h3>Instalação + Garantia</h3><p>Entrega, instalação com limpeza total e garantia formal em contrato assinado.</p></div>
+</div></div>
+</section>
+
+<!-- MATERIALS -->
+<section class="section">
+<div class="section-header reveal"><div class="stag">Qualidade</div><h2 class="stitle">Materiais de <em>primeira linha</em></h2><p class="sdesc">Trabalhamos apenas com os melhores materiais e ferragens do mercado.</p></div>
+<div class="container"><div class="mat-grid">
+<div class="mat-card reveal"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=100&q=80" alt="MDF" loading="lazy"><h4>MDF Premium</h4><p>Resistente, durável e acabamento uniforme</p></div>
+<div class="mat-card reveal"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=100&q=80" alt="Ferragens" loading="lazy"><h4>Ferragens Importadas</h4><p>Dobradiças e corrediças de alta performance</p></div>
+<div class="mat-card reveal"><img src="https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=100&q=80" alt="Acabamento" loading="lazy"><h4>Acabamento Fino</h4><p>Laca, fórmica e revestimento de qualidade</p></div>
+<div class="mat-card reveal"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=100&q=80" alt="LED" loading="lazy"><h4>Iluminação LED</h4><p>Integrada nos projetos para destaque e funcionalidade</p></div>
+</div></div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+<div class="section-header reveal"><div class="stag">Depoimentos</div><h2 class="stitle">Clientes que <em>amaram</em></h2><p class="sdesc">A satisfação de quem confiou na Planejados Andrade para transformar seus ambientes.</p></div>
+<div class="container"><div class="test-grid">
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><blockquote>"Meu closet ficou perfeito! O Carlos mediu tudo com precisão milimétrica e aproveitou cada centímetro. O acabamento é impecável e entregou 3 dias antes do prazo. Super recomendo!"</blockquote><div class="test-author"><strong>Patricia M.</strong><span>Closet sob Medida — Recreio</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><blockquote>"Fizeram toda a marcenaria do meu banheiro e cozinha. Material de primeira qualidade, ferragens premium e tudo com garantia em contrato. Profissionalismo do início ao fim!"</blockquote><div class="test-author"><strong>Bruno A.</strong><span>Banheiro + Cozinha — Barra</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><blockquote>"Precisava de um reparo urgente no guarda-roupas e o atendimento foi rápido e eficiente. Resolveram em um dia e ficou como novo. Preço justo e muita responsabilidade!"</blockquote><div class="test-author"><strong>Fernanda L.</strong><span>Reparo — Recreio</span></div></div>
+</div></div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+<div class="container"><div class="faq-grid">
+<div class="faq-image reveal-left"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Marcenaria Planejados Andrade" loading="lazy"></div>
+<div>
+<div class="section-header reveal" style="text-align:left;margin:0 0 28px"><div class="stag" style="justify-content:flex-start"><span style="width:25px;height:1px;background:var(--gold);display:inline-block"></span> Dúvidas frequentes</div><h2 class="stitle">Tire suas <em>dúvidas</em></h2></div>
+<div class="faq-list">
+<div class="faq-item active reveal"><button class="faq-q">Quanto tempo leva para fabricar? <i class="fas fa-chevron-down"></i></button><div class="faq-a" style="max-height:120px"><p>O prazo médio é de 15 a 30 dias úteis, dependendo da complexidade do projeto. Projetos mais simples podem ser entregues em menos tempo. Informamos o prazo exato no orçamento.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Vocês fazem medição no local? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Sim! A medição é feita presencialmente no seu imóvel, sem custo. Precisão milimétrica para garantir que o móvel se encaixe perfeitamente no espaço.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">A garantia é formalizada? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Sim! Todos os nossos projetos possuem garantia formal em contrato assinado. Se surgir qualquer problema dentro do prazo de garantia, resolvemos sem custo adicional.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Qual a forma de pagamento? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Trabalhamos com PIX, transferência e parcelamento. O pagamento é dividido: sinal na aprovação do projeto, parcela na fabricação e restante na entrega/instalação.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Atendem em quais regiões? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Atendemos Recreio dos Bandeirantes, Barra da Tijuca, Jacarepaguá, Vargem Grande, Vargem Pequena e toda a Zona Oeste do Rio de Janeiro.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Fazem reparos em móveis que não são de vocês? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Sim! Fazemos reparos, ajustes e restauração em qualquer tipo de móvel — dobradiças, gavetas, prateleiras, acabamentos e montagem/desmontagem.</p></div></div>
+</div>
+</div>
+</div></div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<div class="cta-inner reveal">
+<h2>Seu projeto <em>começa aqui</em></h2>
+<p>Peça seu orçamento grátis pelo WhatsApp ou Instagram. Medição no local, projeto detalhado e garantia em contrato. Atendemos Recreio, Barra e toda Zona Oeste.</p>
+<div class="cta-buttons">
+<a href="https://www.instagram.com/planejadosandrades" class="btn-white" target="_blank"><i class="fab fa-whatsapp"></i> Orçamento Grátis</a>
+<a href="https://www.instagram.com/planejadosandrades" class="btn-outline-white" target="_blank"><i class="fab fa-instagram"></i> Ver no Instagram</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>Planejados Andrade</h3><p>Móveis planejados sob medida no Recreio dos Bandeirantes. Rapidez, responsabilidade e garantia com contrato. Materiais premium e acabamento impecável.</p><div class="footer-social"><a href="https://www.instagram.com/planejadosandrades" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
+<div class="footer-col"><h4>Especialidades</h4><ul><li><a href="#especialidades">Closets</a></li><li><a href="#especialidades">Banheiros</a></li><li><a href="#especialidades">Cozinhas</a></li><li><a href="#especialidades">Quartos</a></li><li><a href="#especialidades">Salas</a></li><li><a href="#especialidades">Reparos</a></li></ul></div>
+<div class="footer-col"><h4>Navegação</h4><ul><li><a href="#portfolio">Portfólio</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#depoimentos">Depoimentos</a></li><li><a href="#faq">FAQ</a></li></ul></div>
+<div class="footer-col"><h4>Contato</h4><ul><li><a href="https://www.instagram.com/planejadosandrades" target="_blank"><i class="fab fa-instagram"></i> @planejadosandrades</a></li><li><a href="#"><i class="fas fa-map-marker-alt"></i> Recreio, RJ</a></li><li><a href="#"><i class="fas fa-shield-halved"></i> Garantia em contrato</a></li></ul></div>
+</div>
+<div class="footer-bottom">&copy; 2026 Planejados Andrade — Carlos Vinicius. Todos os direitos reservados.</div>
+</div></footer>
+
+<!-- WPP -->
+<div class="wpp-float"><div class="wpp-tooltip">Peça seu orçamento grátis!</div><a href="https://www.instagram.com/planejadosandrades" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',800)},500)});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const was=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');i.querySelector('.faq-a').style.maxHeight=null});if(!was){item.classList.add('active');const a=item.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px'}})});
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>

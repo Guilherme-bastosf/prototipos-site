@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sacolé Thatha Gourmet | O Melhor Sacolé de Angra dos Reis</title>
+<meta name="description" content="Sacolé gourmet artesanal em Angra dos Reis. Nutella, Biscoff, KitKat, Ferrero Rocher e muito mais. Delivery Garatucaia 11h-22h. Peça pelo WhatsApp!">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%23D81B60'/><text x='16' y='23' text-anchor='middle' font-size='18'>🍦</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pink:#D81B60;--pink-light:#F06292;--pink-dark:#AD1457;--pink-pale:#FCE4EC;--magenta:#E91E63;--cream:#FFF8F0;--peach:#FFF0E6;--white:#FFF;--dark:#2D1620;--text:#4A2D3A;--gray:#9E7A8A;--light:#C9A8B5;--muted:#E8D0DA;--gold:#FFD700;--mint:#A8E6CF;--lavender:#D4B5E0;--font:'Poppins',sans-serif;--font-script:'Pacifico',cursive;--shadow:0 4px 24px rgba(216,27,96,.06);--shadow-lg:0 16px 56px rgba(216,27,96,.12);--radius:18px;--transition:all .35s cubic-bezier(.4,0,.2,1)}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--pink-pale);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;transition:opacity .8s}.loader.hide{opacity:0;pointer-events:none}.loader-emoji{font-size:3rem;animation:bounce 1s infinite}@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}.loader-text{font-family:var(--font-script);font-size:1.8rem;color:var(--pink)}.loader-sub{font-size:.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:4px}
+
+/* ANNOUNCE */
+.announce{background:var(--pink);color:var(--white);text-align:center;padding:10px 24px;font-size:.76rem;font-weight:600;letter-spacing:.5px}.announce i{margin-right:4px}
+
+/* NAV */
+.nav{background:var(--white);border-bottom:1px solid rgba(216,27,96,.06);position:sticky;top:0;z-index:100;padding:12px 0}.nav-inner{display:flex;align-items:center;justify-content:space-between}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo-emoji{font-size:1.8rem}.nav-logo-text{font-family:var(--font-script);font-size:1.3rem;color:var(--pink)}.nav-logo-text span{font-family:var(--font);font-size:.55rem;color:var(--gray);display:block;text-transform:uppercase;letter-spacing:3px;font-weight:500;margin-top:-2px}.nav-links{display:flex;gap:24px;list-style:none}.nav-links a{color:var(--text);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .3s}.nav-links a:hover{color:var(--pink)}.nav-cta{background:var(--pink);color:var(--white);padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;transition:var(--transition);display:flex;align-items:center;gap:8px}.nav-cta:hover{background:var(--pink-dark);transform:translateY(-2px)}.menu-toggle{display:none;background:none;border:none;font-size:1.2rem;color:var(--dark);cursor:pointer}
+
+/* HERO */
+.hero{background:linear-gradient(135deg,var(--pink-pale) 0%,var(--peach) 50%,var(--cream) 100%);position:relative;overflow:hidden;padding:80px 24px 60px}.hero::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:rgba(216,27,96,.04)}.hero::after{content:'';position:absolute;bottom:-80px;left:-80px;width:300px;height:300px;border-radius:50%;background:rgba(255,215,0,.06)}.hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--white);border:1px solid var(--muted);padding:8px 18px;border-radius:50px;color:var(--pink);font-size:.78rem;font-weight:600;margin-bottom:16px;box-shadow:var(--shadow)}.hero h1{font-size:clamp(2rem,4.5vw,3.2rem);color:var(--dark);line-height:1.1;margin-bottom:6px;font-weight:800}.hero h1 span{font-family:var(--font-script);color:var(--pink);font-weight:400;font-size:clamp(2.5rem,5.5vw,4rem)}.hero-tagline{font-family:var(--font-script);color:var(--pink);font-size:1.2rem;margin-bottom:16px}.hero-desc{color:var(--gray);font-size:.95rem;line-height:1.7;margin-bottom:28px}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}.btn{padding:15px 30px;border-radius:50px;font-weight:700;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:var(--transition);border:none;cursor:pointer}.btn-pink{background:var(--pink);color:var(--white)}.btn-pink:hover{background:var(--pink-dark);transform:translateY(-3px);box-shadow:0 8px 25px rgba(216,27,96,.25)}.btn-outline{background:var(--white);color:var(--pink);border:2px solid var(--pink)}.btn-outline:hover{background:var(--pink-pale)}.hero-stats{display:flex;gap:24px}.hero-stat{text-align:center}.hero-stat strong{font-size:1.4rem;color:var(--dark);display:block;font-weight:800}.hero-stat span{font-size:.68rem;color:var(--gray)}.hero-visual{position:relative;text-align:center}.hero-visual img{width:100%;max-width:450px;border-radius:24px;box-shadow:var(--shadow-lg)}.hero-float{position:absolute;background:var(--white);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:10px;animation:floatY 4s ease-in-out infinite}.hero-float-1{top:8%;right:-10px}.hero-float-2{bottom:12%;left:-10px;animation-delay:2s}.hero-float strong{font-size:.8rem;color:var(--dark);display:block}.hero-float span{font-size:.62rem;color:var(--gray)}@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* SECTIONS */
+.section{padding:80px 24px}.section-header{text-align:center;max-width:560px;margin:0 auto 50px}.stag{display:inline-flex;align-items:center;gap:6px;background:var(--pink-pale);color:var(--pink);padding:6px 16px;border-radius:50px;font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}.stitle{font-size:clamp(1.7rem,3.5vw,2.5rem);color:var(--dark);margin-bottom:10px;font-weight:800}.stitle span{font-family:var(--font-script);color:var(--pink);font-weight:400}.sdesc{color:var(--gray);font-size:.88rem;line-height:1.7}
+
+/* FLAVORS */
+.flavors{background:var(--cream)}.flavor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.flavor-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:var(--transition);border:1px solid var(--muted);position:relative;text-align:center}.flavor-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:var(--pink)}.flavor-img{aspect-ratio:1;overflow:hidden;position:relative;background:var(--peach)}.flavor-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.flavor-card:hover .flavor-img img{transform:scale(1.08)}.flavor-badge{position:absolute;top:10px;right:10px;background:var(--pink);color:var(--white);padding:4px 10px;border-radius:50px;font-size:.6rem;font-weight:700;text-transform:uppercase;z-index:2}.flavor-body{padding:18px}.flavor-body h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:4px}.flavor-body p{font-size:.75rem;color:var(--gray);margin-bottom:10px}.flavor-price{font-size:1.1rem;font-weight:800;color:var(--pink)}.flavor-btn{display:block;width:100%;padding:12px;background:var(--pink);color:var(--white);text-align:center;text-decoration:none;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;transition:var(--transition);border:none;cursor:pointer;font-family:var(--font)}.flavor-btn:hover{background:var(--pink-dark)}
+
+/* CELEBS */
+.celebs{background:linear-gradient(135deg,var(--dark),#3D1A2E);color:var(--white);position:relative;overflow:hidden}.celebs::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(216,27,96,.08)}.celebs .stag{background:rgba(216,27,96,.15);color:var(--pink-light)}.celebs .stitle{color:var(--white)}.celebs .stitle span{color:var(--pink-light)}.celebs .sdesc{color:var(--light)}.celeb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.celeb-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:var(--radius);padding:28px;text-align:center;transition:var(--transition)}.celeb-card:hover{border-color:var(--pink);background:rgba(216,27,96,.05)}.celeb-emoji{font-size:2.5rem;margin-bottom:12px}.celeb-card h3{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px}.celeb-card p{font-size:.82rem;color:var(--light);line-height:1.5;font-style:italic}.celeb-card .handle{font-size:.72rem;color:var(--pink-light);margin-top:8px;font-weight:600}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}.about-img{border-radius:24px;overflow:hidden;height:480px;position:relative}.about-img img{width:100%;height:100%;object-fit:cover}.about-img-badge{position:absolute;bottom:20px;left:20px;background:var(--pink);color:var(--white);padding:12px 20px;border-radius:14px;font-weight:700;display:flex;align-items:center;gap:8px;font-size:.85rem;box-shadow:var(--shadow-lg)}.about-content .tag{font-size:.65rem;text-transform:uppercase;letter-spacing:4px;color:var(--pink);margin-bottom:12px;display:flex;align-items:center;gap:10px}.about-content .tag::before{content:'';width:25px;height:1.5px;background:var(--pink)}.about-content h2{font-size:clamp(1.6rem,3vw,2.3rem);color:var(--dark);margin-bottom:16px;line-height:1.25;font-weight:800}.about-content h2 span{font-family:var(--font-script);color:var(--pink);font-weight:400}.about-content p{color:var(--gray);font-size:.9rem;line-height:1.8;margin-bottom:12px}.about-values{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}.about-value{display:flex;align-items:center;gap:10px;padding:12px 16px;background:var(--pink-pale);border-radius:12px}.about-value i{color:var(--pink);font-size:.9rem}.about-value span{font-size:.82rem;font-weight:600;color:var(--dark)}
+
+/* DELIVERY */
+.delivery{background:var(--pink-pale)}.del-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.del-card{background:var(--white);border-radius:var(--radius);padding:24px;text-align:center;transition:var(--transition)}.del-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}.del-icon{width:56px;height:56px;border-radius:50%;background:var(--pink-pale);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;color:var(--pink)}.del-card h4{font-size:.92rem;font-weight:700;color:var(--dark);margin-bottom:4px}.del-card p{font-size:.78rem;color:var(--gray);line-height:1.4}
+
+/* PROCESS */
+.process{background:var(--pink);color:var(--white);padding:70px 24px}.proc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;position:relative}.proc-grid::before{content:'';position:absolute;top:40px;left:15%;right:15%;height:2px;background:rgba(255,255,255,.15)}.proc-step{text-align:center;position:relative}.proc-num{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:1.3rem;font-weight:800;position:relative;z-index:2}.proc-step h3{font-size:.95rem;font-weight:700;margin-bottom:4px}.proc-step p{font-size:.78rem;color:rgba(255,255,255,.7)}
+
+/* TESTIMONIALS */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.test-card{background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid var(--muted);transition:var(--transition);text-align:center;position:relative}.test-card:hover{box-shadow:var(--shadow);border-color:var(--pink)}.test-card::before{content:'\\201C';font-size:4rem;color:var(--pink-pale);position:absolute;top:5px;right:18px;line-height:1;font-family:serif}.test-stars{color:var(--gold);font-size:.85rem;letter-spacing:2px;margin-bottom:10px}.test-card p{font-size:.88rem;color:var(--text);line-height:1.6;margin-bottom:14px;font-style:italic}.test-info strong{font-size:.82rem;color:var(--dark);display:block}.test-info span{font-size:.7rem;color:var(--gray)}
+
+/* INSTAGRAM */
+.insta{padding:50px 24px;text-align:center}.insta h2{font-size:1.6rem;color:var(--dark);margin-bottom:4px;font-weight:800}.insta a{font-family:var(--font-script);color:var(--pink);text-decoration:none;font-size:1rem;display:inline-block;margin-bottom:24px}.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.insta-item{aspect-ratio:1;overflow:hidden;border-radius:10px;cursor:pointer;position:relative}.insta-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s}.insta-item:hover img{transform:scale(1.1)}.insta-item::after{content:'\\f16d';font-family:'Font Awesome 6 Brands';position:absolute;inset:0;background:rgba(216,27,96,.5);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.3rem;opacity:0;transition:opacity .3s;border-radius:10px}.insta-item:hover::after{opacity:1}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--pink-dark),var(--pink),var(--magenta));padding:80px 24px;text-align:center;position:relative;overflow:hidden}.cta::before{content:'';position:absolute;top:-100px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.05)}.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:2}.cta-emoji{font-size:3rem;margin-bottom:16px}.cta h2{font-size:clamp(1.8rem,4.5vw,2.8rem);color:var(--white);margin-bottom:12px;font-weight:800}.cta p{color:rgba(255,255,255,.8);font-size:1rem;margin-bottom:28px;line-height:1.6}.btn-white{background:var(--white);color:var(--pink);padding:16px 34px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.88rem;display:inline-flex;align-items:center;gap:10px;transition:var(--transition)}.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.15)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,.5);padding:50px 24px 20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.3fr;gap:40px;margin-bottom:28px}.footer-brand h3{font-family:var(--font-script);font-size:1.3rem;color:var(--pink-light);margin-bottom:8px}.footer-brand p{font-size:.8rem;line-height:1.6;margin-bottom:12px}.footer-social{display:flex;gap:10px}.footer-social a{width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:var(--transition);font-size:.82rem}.footer-social a:hover{background:var(--pink);color:var(--white)}.footer-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:12px;font-weight:600}.footer-col ul{list-style:none}.footer-col li{margin-bottom:8px}.footer-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.8rem;transition:color .3s}.footer-col a:hover{color:var(--pink-light)}.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:14px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.25)}
+
+/* POPUP */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(6px);z-index:999;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .4s}.popup-overlay.show{opacity:1;pointer-events:auto}.popup{background:var(--white);border-radius:24px;padding:40px;max-width:400px;width:90%;text-align:center;position:relative;transform:scale(.9);transition:transform .4s}.popup-overlay.show .popup{transform:scale(1)}.popup-close{position:absolute;top:12px;right:12px;background:none;border:none;color:var(--gray);font-size:1.1rem;cursor:pointer}.popup-emoji{font-size:3rem;margin-bottom:12px}.popup h3{font-size:1.3rem;color:var(--dark);margin-bottom:8px;font-weight:800}.popup p{color:var(--gray);font-size:.85rem;margin-bottom:20px;line-height:1.5}.popup .btn-pink{width:100%;justify-content:center}
+
+/* TOAST */
+.toast{position:fixed;bottom:90px;left:24px;background:var(--white);border:1px solid var(--muted);border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:12px;z-index:98;transform:translateX(-120%);transition:transform .5s;max-width:300px;box-shadow:var(--shadow-lg)}.toast.show{transform:translateX(0)}.toast-emoji{font-size:1.5rem}.toast-text{font-size:.78rem;color:var(--text);line-height:1.4}.toast-text strong{color:var(--pink);display:block}.toast-text .time{color:var(--gray);font-size:.65rem;margin-top:2px}
+
+/* WPP */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:10px}.wpp-tooltip{background:var(--white);color:var(--dark);padding:12px 18px;border-radius:16px 16px 4px 16px;box-shadow:var(--shadow-lg);font-size:.82rem;font-weight:600;transform:translateY(10px);opacity:0;transition:var(--transition);white-space:nowrap;pointer-events:none}.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}.wpp-btn{width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.7rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.35);transition:var(--transition);animation:wppP 2.5s infinite}.wpp-btn:hover{transform:scale(1.1)}@keyframes wppP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 16px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(25px);transition:all .7s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-visual{display:none}.flavor-grid{grid-template-columns:repeat(2,1fr)}.celeb-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.about-img{height:350px}.del-grid{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.insta-grid{grid-template-columns:repeat(3,1fr)}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.announce{font-size:.7rem}.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(45,22,32,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1.1rem}.nav-cta{display:none}.menu-toggle{display:block;z-index:201}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.flavor-grid{grid-template-columns:1fr 1fr}.del-grid{grid-template-columns:1fr 1fr}.proc-grid{grid-template-columns:1fr}.proc-grid::before{display:none}.about-values{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.toast{max-width:260px;bottom:100px}}
+@media(max-width:480px){.flavor-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="loader" id="loader"><div class="loader-emoji">🍦</div><div class="loader-text">Sacolé Thatha</div><div class="loader-sub">Gourmet</div></div>
+
+<div class="popup-overlay" id="popup"><div class="popup"><button class="popup-close" onclick="closePopup()"><i class="fas fa-times"></i></button><div class="popup-emoji">🍦</div><h3>Bem-vindo(a)!</h3><p>Peça agora pelo WhatsApp e ganhe um sacolé extra no seu primeiro pedido!</p><a href="https://wa.me/5521979516613?text=Oi! Vim pelo site e quero pedir sacolé gourmet! 🍦" class="btn btn-pink" target="_blank"><i class="fab fa-whatsapp"></i> Pedir Agora</a></div></div>
+
+<div class="toast" id="toast"><div class="toast-emoji" id="toastEmoji">🍫</div><div class="toast-text"><strong id="toastName">Maria acabou de pedir</strong><span id="toastProduct">Kit Nutella + Biscoff</span><div class="time" id="toastTime">há 3 min — Garatucaia</div></div></div>
+
+<div class="announce"><i class="fas fa-clock"></i> DELIVERY GARATUCAIA — 11h às 22h &nbsp;|&nbsp; <i class="fab fa-whatsapp"></i> PEÇA PELO WHATSAPP &nbsp;|&nbsp; <i class="fas fa-fire"></i> 13 MIL SEGUIDORES</div>
+
+<nav class="nav"><div class="container nav-inner">
+<a href="#" class="nav-logo"><span class="nav-logo-emoji">🍦</span><div class="nav-logo-text">Sacolé Thatha<span>Gourmet</span></div></a>
+<ul class="nav-links" id="navLinks"><li><a href="#sabores" onclick="closeMenu()">Sabores</a></li><li><a href="#celebridades" onclick="closeMenu()">Celebridades</a></li><li><a href="#sobre" onclick="closeMenu()">Sobre</a></li><li><a href="#delivery" onclick="closeMenu()">Delivery</a></li></ul>
+<a href="https://wa.me/5521979516613?text=Oi! Quero pedir sacolé gourmet! 🍦" class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<section class="hero">
+<div class="container hero-inner">
+<div class="hero-content">
+<div class="hero-badge">🏆 O Melhor Sacolé Gourmet de Angra</div>
+<h1>O sacolé que virou <span>febre</span></h1>
+<p class="hero-tagline">Gourmet de verdade ✨</p>
+<p class="hero-desc">Sacolés artesanais feitos com Nutella, Biscoff, KitKat, Ferrero Rocher e muito mais. Tão bom que até as celebridades pedem! Delivery em Garatucaia, Angra dos Reis.</p>
+<div class="hero-buttons">
+<a href="https://wa.me/5521979516613?text=Oi! Quero ver o cardápio de sacolés! 🍦" class="btn btn-pink" target="_blank"><i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp</a>
+<a href="#sabores" class="btn btn-outline">🍫 Ver Sabores</a>
+</div>
+<div class="hero-stats">
+<div class="hero-stat"><strong>13K+</strong><span>Seguidores</span></div>
+<div class="hero-stat"><strong>50+</strong><span>Sabores</span></div>
+<div class="hero-stat"><strong>⭐ 5.0</strong><span>Avaliação</span></div>
+</div>
+</div>
+<div class="hero-visual">
+<img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=500&q=80" alt="Sacolé Gourmet" loading="eager">
+<div class="hero-float hero-float-1"><span>🍫</span><div><strong>Nutella</strong><span>Mais pedido!</span></div></div>
+<div class="hero-float hero-float-2"><span>⭐</span><div><strong>13 mil fãs</strong><span>no Instagram</span></div></div>
+</div>
+</div>
+</section>
+
+<section class="section flavors" id="sabores">
+<div class="section-header reveal"><span class="stag">🍦 Sabores</span><h2 class="stitle">Qual vai ser o <span>seu?</span></h2><p class="sdesc">Feitos com os melhores ingredientes. Cada mordida é uma explosão de sabor!</p></div>
+<div class="container"><div class="flavor-grid">
+<div class="flavor-card reveal"><div class="flavor-img"><span class="flavor-badge">Mais pedido</span><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=400&q=80" alt="Nutella" loading="lazy"></div><div class="flavor-body"><h3>🍫 Sacolé de Nutella</h3><p>Nutella cremosa de verdade em cada pedaço</p><div class="flavor-price">R$ 8,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de NUTELLA! 🍫" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><span class="flavor-badge" style="background:var(--gold);color:var(--dark)">Premium</span><img src="https://images.unsplash.com/photo-1558024920-b41e1887dc32?w=400&q=80" alt="Biscoff" loading="lazy"></div><div class="flavor-body"><h3>🍪 Sacolé de Biscoff</h3><p>Lotus Biscoff importado com creme especial</p><div class="flavor-price">R$ 10,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de BISCOFF! 🍪" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><img src="https://images.unsplash.com/photo-1582176604856-e1dce602ed2c?w=400&q=80" alt="KitKat" loading="lazy"></div><div class="flavor-body"><h3>🍫 Sacolé de KitKat</h3><p>Pedacinhos crocantes de KitKat no sacolé</p><div class="flavor-price">R$ 8,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de KITKAT! 🍫" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><span class="flavor-badge">Luxo</span><img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=400&q=80" alt="Ferrero Rocher" loading="lazy"></div><div class="flavor-body"><h3>🌰 Sacolé Ferrero Rocher</h3><p>O requinte do Ferrero no seu sacolé gourmet</p><div class="flavor-price">R$ 12,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé FERRERO ROCHER! 🌰" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400&q=80" alt="Nescau" loading="lazy"></div><div class="flavor-body"><h3>🥛 Sacolé de Nescau</h3><p>Achocolatado cremoso que lembra a infância</p><div class="flavor-price">R$ 6,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de NESCAU! 🥛" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><img src="https://images.unsplash.com/photo-1587132137056-bfbf0166836e?w=400&q=80" alt="Galak" loading="lazy"></div><div class="flavor-body"><h3>🤍 Sacolé de Galak</h3><p>Chocolate branco Galak cremoso e irresistível</p><div class="flavor-price">R$ 7,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de GALAK! 🤍" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80" alt="Alpino" loading="lazy"></div><div class="flavor-body"><h3>🍬 Sacolé de Alpino</h3><p>O clássico Alpino em formato gelado gourmet</p><div class="flavor-price">R$ 7,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de ALPINO! 🍬" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+<div class="flavor-card reveal"><div class="flavor-img"><span class="flavor-badge" style="background:var(--mint);color:var(--dark)">Novidade</span><img src="https://images.unsplash.com/photo-1541783245831-57d6fb0926d3?w=400&q=80" alt="Paçoquinha" loading="lazy"></div><div class="flavor-body"><h3>🥜 Sacolé de Paçoquinha</h3><p>Paçoca crocante em sacolé cremoso</p><div class="flavor-price">R$ 7,00</div></div><a href="https://wa.me/5521979516613?text=Oi! Quero sacolé de PAÇOQUINHA! 🥜" class="flavor-btn" target="_blank"><i class="fab fa-whatsapp"></i> Pedir</a></div>
+</div>
+<div style="text-align:center;margin-top:36px" class="reveal"><a href="https://wa.me/5521979516613?text=Oi! Quero ver todos os sabores de sacolé! 🍦" class="btn btn-pink" target="_blank"><i class="fab fa-whatsapp"></i> Ver Cardápio Completo</a></div>
+</div>
+</section>
+
+<section class="section celebs" id="celebridades">
+<div class="section-header reveal"><span class="stag">⭐ Aprovado por</span><h2 class="stitle">Celebridades que <span>amam</span></h2><p class="sdesc">Tão bom que até os famosos pedem! Veja quem já provou o Sacolé Thatha.</p></div>
+<div class="container"><div class="celeb-grid">
+<div class="celeb-card reveal"><div class="celeb-emoji">👑</div><h3>Jojo Todynho</h3><p>"Esse sacolé é MARAVILHOSO! Não tem igual!"</p><div class="handle">Nos Destaques do Instagram</div></div>
+<div class="celeb-card reveal"><div class="celeb-emoji">🎤</div><h3>Negblack</h3><p>"Viciei nos sacolés da Thatha. Sabor incomparável!"</p><div class="handle">Nos Destaques do Instagram</div></div>
+<div class="celeb-card reveal"><div class="celeb-emoji">🌟</div><h3>Fé Valença</h3><p>"O melhor sacolé gourmet que eu já provei na vida!"</p><div class="handle">Nos Destaques do Instagram</div></div>
+</div></div>
+</section>
+
+<section class="section" id="sobre">
+<div class="container"><div class="about-grid">
+<div class="about-img reveal"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=700&q=80" alt="Sacolé Thatha Gourmet" loading="lazy"><div class="about-img-badge"><i class="fas fa-heart"></i> 13K+ seguidores</div></div>
+<div class="about-content reveal">
+<div class="tag">Nossa história</div>
+<h2>De Garatucaia para o <span>coração de Angra</span></h2>
+<p>O Sacolé Thatha nasceu do amor por criar sabores únicos. Cada sacolé é feito artesanalmente com ingredientes de verdade — nada de essência, nada de artificial. Quando a gente fala Nutella, é Nutella DE VERDADE. Quando fala KitKat, é KitKat DE VERDADE.</p>
+<p>Começamos em Garatucaia e hoje atendemos toda a região com delivery. Com mais de 13 mil seguidores no Instagram e aprovação de celebridades, nos tornamos referência em sacolé gourmet em Angra dos Reis.</p>
+<p>Nosso segredo? Ingredientes reais, receitas exclusivas e muito carinho em cada unidade.</p>
+<div class="about-values">
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Ingredientes reais</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>13K+ seguidores</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Aprovado por celebridades</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>50+ sabores</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Feito artesanalmente</span></div>
+<div class="about-value"><i class="fas fa-check-circle"></i><span>Delivery 11h-22h</span></div>
+</div>
+</div>
+</div></div>
+</section>
+
+<section class="section delivery" id="delivery">
+<div class="section-header reveal"><span class="stag">🛵 Delivery</span><h2 class="stitle">Como <span>receber</span> o seu</h2></div>
+<div class="container"><div class="del-grid">
+<div class="del-card reveal"><div class="del-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Região</h4><p>Garatucaia e região de Angra dos Reis</p></div>
+<div class="del-card reveal"><div class="del-icon"><i class="fas fa-clock"></i></div><h4>Horário</h4><p>Todos os dias, 11h às 22h</p></div>
+<div class="del-card reveal"><div class="del-icon"><i class="fab fa-whatsapp"></i></div><h4>Como pedir</h4><p>Mande mensagem no WhatsApp!</p></div>
+<div class="del-card reveal"><div class="del-icon"><i class="fas fa-credit-card"></i></div><h4>Pagamento</h4><p>PIX, dinheiro e cartão</p></div>
+</div></div>
+</section>
+
+<section class="process"><div class="container">
+<div class="section-header reveal" style="color:var(--white)"><span class="stag" style="background:rgba(255,255,255,.15);color:var(--white)">📲 Como pedir</span><h2 class="stitle" style="color:var(--white)">Fácil, rápido e <span style="color:var(--gold)">delicioso</span></h2></div>
+<div class="proc-grid">
+<div class="proc-step reveal"><div class="proc-num">1</div><h3>Chame no WhatsApp</h3><p>Mande "Oi" e veja o cardápio completo</p></div>
+<div class="proc-step reveal"><div class="proc-num">2</div><h3>Escolha os sabores</h3><p>Nutella, Biscoff, KitKat... o que preferir!</p></div>
+<div class="proc-step reveal"><div class="proc-num">3</div><h3>Receba em casa!</h3><p>Entregamos geladinho na sua porta</p></div>
+</div>
+</div></section>
+
+<section class="section" style="background:var(--cream)">
+<div class="section-header reveal"><span class="stag">💜 Clientes</span><h2 class="stitle">Quem prova, <span>vicia</span></h2></div>
+<div class="container"><div class="test-grid">
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"O de Nutella é ABSURDO de bom! Nunca comi um sacolé tão gostoso na vida. Pedi 10 e acabou no mesmo dia. Já tô viciada!"</p><div class="test-info"><strong>Larissa M.</strong><span>Sacolé de Nutella — Garatucaia</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"O de Biscoff é SURREAL. Cremoso, saboroso e com pedacinhos do biscoito. Parece uma sobremesa de restaurante. Melhor sacolé de Angra!"</p><div class="test-info"><strong>Felipe R.</strong><span>Sacolé de Biscoff — Angra</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Pedi o kit degustação pra experimentar e AMEI todos. O de Ferrero Rocher e o de KitKat são meus favoritos. Delivery super rápido!"</p><div class="test-info"><strong>Camila S.</strong><span>Kit Degustação — Garatucaia</span></div></div>
+</div></div>
+</section>
+
+<section class="insta">
+<h2>Siga no Instagram</h2>
+<a href="https://www.instagram.com/sacolethatha" target="_blank">@sacolethatha</a>
+<div class="insta-grid">
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?w=250&q=80" alt="" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1558024920-b41e1887dc32?w=250&q=80" alt="" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=250&q=80" alt="" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=250&q=80" alt="" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?w=250&q=80" alt="" loading="lazy"></div>
+<div class="insta-item"><img src="https://images.unsplash.com/photo-1582176604856-e1dce602ed2c?w=250&q=80" alt="" loading="lazy"></div>
+</div>
+</section>
+
+<section class="cta">
+<div class="cta-inner reveal">
+<div class="cta-emoji">🍦</div>
+<h2>Tá esperando o quê?</h2>
+<p>Peça agora pelo WhatsApp e prove o sacolé que conquistou 13 mil pessoas e até celebridades. Delivery em Garatucaia, 11h às 22h!</p>
+<a href="https://wa.me/5521979516613?text=Oi! Quero pedir sacolé gourmet! 🍦" class="btn-white" target="_blank"><i class="fab fa-whatsapp"></i> Pedir Agora pelo WhatsApp</a>
+</div>
+</section>
+
+<footer class="footer"><div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>Sacolé Thatha Gourmet</h3><p>O melhor sacolé gourmet de Angra dos Reis. Feito com ingredientes reais e muito carinho. Delivery Garatucaia 11h-22h.</p><div class="footer-social"><a href="https://www.instagram.com/sacolethatha" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5521979516613" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div class="footer-col"><h4>Sabores</h4><ul><li><a href="#sabores">Nutella</a></li><li><a href="#sabores">Biscoff</a></li><li><a href="#sabores">KitKat</a></li><li><a href="#sabores">Ferrero Rocher</a></li><li><a href="#sabores">E muito mais!</a></li></ul></div>
+<div class="footer-col"><h4>Navegação</h4><ul><li><a href="#sabores">Sabores</a></li><li><a href="#celebridades">Celebridades</a></li><li><a href="#sobre">Sobre</a></li><li><a href="#delivery">Delivery</a></li></ul></div>
+<div class="footer-col"><h4>Contato</h4><ul><li><a href="https://wa.me/5521979516613" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li><li><a href="https://www.instagram.com/sacolethatha" target="_blank"><i class="fab fa-instagram"></i> @sacolethatha</a></li><li><a href="#delivery"><i class="fas fa-map-marker-alt"></i> Garatucaia, Angra</a></li><li><a href="#delivery"><i class="fas fa-clock"></i> 11h às 22h</a></li></ul></div>
+</div>
+<div class="footer-bottom">&copy; 2026 Sacolé Thatha Gourmet. Todos os direitos reservados.</div>
+</div></footer>
+
+<div class="wpp-float"><div class="wpp-tooltip">Peça seu sacolé! 🍦</div><a href="https://wa.me/5521979516613?text=Oi! Quero pedir sacolé gourmet! 🍦" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('loader').classList.add('hide');setTimeout(function(){document.getElementById('loader').style.display='none'},800)},800)});
+setTimeout(function(){document.getElementById('popup').classList.add('show')},5000);
+function closePopup(){document.getElementById('popup').classList.remove('show')}
+document.getElementById('popup').addEventListener('click',function(e){if(e.target===this)closePopup()});
+var toasts=[{emoji:'🍫',name:'Maria pediu agora',product:'Sacolé de Nutella x3',time:'há 2 min — Garatucaia'},{emoji:'🍪',name:'Lucas acabou de pedir',product:'Kit Biscoff + KitKat',time:'há 5 min — Angra'},{emoji:'🌰',name:'Ana pediu agora',product:'Sacolé Ferrero Rocher x2',time:'há 7 min — Garatucaia'},{emoji:'🥜',name:'Pedro acabou de pedir',product:'Kit Degustação 6 sabores',time:'há 10 min — Angra'}];
+var ti=0;function showToast(){var t=toasts[ti%toasts.length];document.getElementById('toastEmoji').textContent=t.emoji;document.getElementById('toastName').textContent=t.name;document.getElementById('toastProduct').textContent=t.product;document.getElementById('toastTime').textContent=t.time;var el=document.getElementById('toast');el.classList.add('show');setTimeout(function(){el.classList.remove('show')},4000);ti++}
+setTimeout(showToast,10000);setInterval(showToast,16000);
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');var i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');var i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+var observer=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){a.addEventListener('click',function(e){var h=a.getAttribute('href');if(h==='#')return;e.preventDefault();var t=document.querySelector(h);if(t){var y=t.getBoundingClientRect().top+window.pageYOffset-60;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>

@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dra. Dhara Lima | Harmonização Facial — Barra da Tijuca, RJ</title>
+<meta name="description" content="Clínica de Harmonização Facial na Barra da Tijuca. Dra. Dhara Lima CRO-RJ 55500. Preenchimento labial, botox, bioestimuladores. Agende sua avaliação!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#B8956A;
+--gold-light:#D4B088;
+--gold-dark:#9A7752;
+--nude:#F5EDE4;
+--cream:#FAF7F3;
+--rose:#F8E8E0;
+--white:#FFF;
+--dark:#2A2118;
+--text:#4A3F35;
+--gray:#8A8078;
+--light:#C5BBB0;
+--font-display:'Cormorant Garamond',Georgia,serif;
+--font-body:'Montserrat',sans-serif;
+--shadow:0 4px 20px rgba(184,149,106,.08);
+--shadow-lg:0 10px 40px rgba(184,149,106,.12);
+--radius:12px;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--text);background:var(--white);overflow-x:hidden}
+.container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+.loader{position:fixed;inset:0;background:var(--cream);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:12px;transition:opacity .8s}
+.loader.hide{opacity:0;pointer-events:none}
+.loader-logo{font-family:var(--font-display);font-size:2rem;color:var(--gold);font-weight:600;letter-spacing:3px}
+.loader-sub{font-size:.7rem;color:var(--light);text-transform:uppercase;letter-spacing:4px}
+.loader-line{width:50px;height:1px;background:var(--gold);animation:shimmer 1.5s infinite}
+@keyframes shimmer{0%,100%{opacity:.3}50%{opacity:1}}
+
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:all .4s}
+.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.04);padding:12px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{text-decoration:none;text-align:center}
+.nav-logo span{font-family:var(--font-display);font-size:1.4rem;color:var(--white);font-weight:600;display:block;transition:color .3s;letter-spacing:2px}
+.nav-logo small{font-size:.55rem;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:4px;transition:color .3s}
+.nav.scrolled .nav-logo span{color:var(--gold)}
+.nav.scrolled .nav-logo small{color:var(--light)}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;font-weight:500;text-transform:uppercase;letter-spacing:1.5px;transition:color .3s}
+.nav.scrolled .nav-links a{color:var(--gray)}
+.nav-links a:hover{color:var(--gold)}
+.nav-btn{background:var(--gold);color:var(--white);padding:10px 24px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;transition:all .3s;display:flex;align-items:center;gap:8px}
+.nav-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer}
+.nav.scrolled .menu-toggle{color:var(--gold)}
+
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=1400&q=80') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(42,33,24,.85) 0%,rgba(42,33,24,.5) 50%,rgba(42,33,24,.2) 100%)}
+.hero-inner{position:relative;z-index:2;max-width:560px;padding:120px 0 80px;padding-left:max(24px,calc((100vw - 1100px)/2 + 24px))}
+.hero-cro{font-size:.7rem;color:var(--gold-light);text-transform:uppercase;letter-spacing:3px;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.hero-cro::before{content:'';width:25px;height:1px;background:var(--gold)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.4rem,5vw,3.8rem);color:var(--white);line-height:1.1;margin-bottom:18px;font-weight:600}
+.hero h1 em{color:var(--gold-light);font-style:italic}
+.hero-desc{color:rgba(255,255,255,.65);font-size:.95rem;line-height:1.8;margin-bottom:30px;font-weight:300}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap}
+.btn{padding:15px 32px;border-radius:50px;font-weight:600;font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;text-transform:uppercase;letter-spacing:1.5px;border:none;cursor:pointer}
+.btn-gold{background:var(--gold);color:var(--white)}
+.btn-gold:hover{background:var(--gold-dark);transform:translateY(-3px);box-shadow:0 8px 20px rgba(184,149,106,.3)}
+.btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.25)}
+.btn-outline:hover{background:rgba(255,255,255,.06);border-color:var(--gold)}
+
+.trust-bar{background:var(--cream);padding:30px 24px;border-bottom:1px solid rgba(184,149,106,.1)}
+.trust-inner{display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+.trust-item{display:flex;align-items:center;gap:8px;color:var(--gray);font-size:.8rem;font-weight:500}
+.trust-item i{color:var(--gold)}
+
+.section{padding:80px 24px}
+.section-header{text-align:center;max-width:550px;margin:0 auto 50px}
+.section-tag{font-size:.68rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:10px}
+.section-tag::before,.section-tag::after{content:'';width:25px;height:1px;background:var(--gold)}
+.section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--dark);margin-bottom:12px;line-height:1.2;font-weight:600}
+.section-title em{color:var(--gold);font-style:italic}
+.section-desc{color:var(--gray);font-size:.88rem;line-height:1.7;font-weight:300}
+
+.procedures{background:var(--cream)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.proc-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:all .4s;border:1px solid rgba(184,149,106,.1);text-align:center}
+.proc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}
+.proc-img{height:200px;overflow:hidden}
+.proc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.proc-card:hover .proc-img img{transform:scale(1.06)}
+.proc-body{padding:20px}
+.proc-body h3{font-family:var(--font-display);font-size:1.15rem;color:var(--dark);margin-bottom:6px;font-weight:600}
+.proc-body p{font-size:.78rem;color:var(--gray);line-height:1.5;margin-bottom:12px;font-weight:300}
+.proc-link{color:var(--gold);font-weight:600;font-size:.75rem;text-decoration:none;text-transform:uppercase;letter-spacing:1px;display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.proc-link:hover{gap:10px}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{position:relative;border-radius:20px;overflow:hidden;height:500px}
+.about-img img{width:100%;height:100%;object-fit:cover}
+.about-img::after{content:'';position:absolute;inset:0;border:1px solid rgba(184,149,106,.2);border-radius:20px}
+.about-badge{position:absolute;bottom:20px;right:20px;background:var(--gold);color:var(--white);padding:12px 20px;border-radius:12px;font-size:.78rem;font-weight:600;display:flex;align-items:center;gap:8px}
+.about-content .tag{font-size:.68rem;text-transform:uppercase;letter-spacing:4px;color:var(--gold);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+.about-content .tag::before{content:'';width:25px;height:1px;background:var(--gold)}
+.about-content h2{font-family:var(--font-display);font-size:clamp(1.6rem,3vw,2.3rem);color:var(--dark);margin-bottom:16px;line-height:1.25;font-weight:600}
+.about-content h2 em{color:var(--gold);font-style:italic}
+.about-content p{color:var(--gray);font-size:.88rem;line-height:1.8;margin-bottom:12px;font-weight:300}
+.about-credentials{display:flex;gap:16px;margin-top:20px;flex-wrap:wrap}
+.about-cred{display:flex;align-items:center;gap:8px;padding:10px 16px;background:var(--cream);border-radius:10px;font-size:.78rem;font-weight:500;color:var(--dark)}
+.about-cred i{color:var(--gold)}
+
+.diff{background:var(--nude)}
+.diff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.diff-card{text-align:center;padding:36px 24px;background:var(--white);border-radius:var(--radius);transition:all .3s}
+.diff-card:hover{box-shadow:var(--shadow);transform:translateY(-4px)}
+.diff-icon{width:60px;height:60px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.3rem;color:var(--gold)}
+.diff-card h3{font-family:var(--font-display);font-size:1.1rem;color:var(--dark);margin-bottom:6px;font-weight:600}
+.diff-card p{font-size:.8rem;color:var(--gray);line-height:1.6;font-weight:300}
+
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.test-card{background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid rgba(184,149,106,.1);transition:all .3s;text-align:center}
+.test-card:hover{box-shadow:var(--shadow);border-color:var(--gold)}
+.test-stars{color:var(--gold);font-size:.85rem;letter-spacing:2px;margin-bottom:12px}
+.test-card blockquote{font-family:var(--font-display);font-size:1rem;font-style:italic;color:var(--text);line-height:1.6;margin-bottom:16px;font-weight:400}
+.test-author strong{font-size:.82rem;color:var(--dark);display:block}
+.test-author span{font-size:.7rem;color:var(--gray)}
+
+.cta{background:var(--dark);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=1200&q=60') center/cover;opacity:.1}
+.cta-inner{position:relative;z-index:2;max-width:600px;margin:0 auto}
+.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);margin-bottom:14px;font-weight:600}
+.cta h2 em{color:var(--gold-light);font-style:italic}
+.cta p{color:rgba(255,255,255,.55);font-size:.92rem;margin-bottom:30px;line-height:1.6;font-weight:300}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:var(--white);color:var(--gold-dark);padding:15px 32px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.82rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s;text-transform:uppercase;letter-spacing:1.5px}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+
+.footer{background:var(--cream);padding:50px 24px 20px;border-top:1px solid rgba(184,149,106,.1)}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:30px}
+.footer-brand h3{font-family:var(--font-display);font-size:1.3rem;color:var(--dark);margin-bottom:8px;font-weight:600}
+.footer-brand h3 span{color:var(--gold)}
+.footer-brand p{font-size:.8rem;color:var(--gray);line-height:1.6;margin-bottom:12px;font-weight:300}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(184,149,106,.2);display:flex;align-items:center;justify-content:center;color:var(--gray);text-decoration:none;transition:all .3s;font-size:.82rem}
+.footer-social a:hover{background:var(--gold);color:var(--white);border-color:var(--gold)}
+.footer-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--dark);margin-bottom:12px;font-weight:600}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:var(--gray);text-decoration:none;font-size:.8rem;transition:color .3s;font-weight:300}
+.footer-col a:hover{color:var(--gold)}
+.footer-bottom{border-top:1px solid rgba(184,149,106,.1);padding-top:16px;text-align:center;font-size:.72rem;color:var(--light)}
+
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow-lg);font-size:.8rem;font-weight:500;transform:translateY(8px);opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
+.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}
+.wpp-btn{width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.5rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.35);transition:all .3s;animation:wppP 2s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes wppP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.proc-grid{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}.about-img{height:350px}.diff-grid{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(42,33,24,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1rem}.nav-btn{display:none}.menu-toggle{display:block;z-index:201}.hero{min-height:85vh}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.proc-grid{grid-template-columns:1fr}.trust-inner{gap:20px}.about-credentials{flex-direction:column}.footer-grid{grid-template-columns:1fr}.cta-buttons{flex-direction:column;align-items:center}.btn-white{width:100%;max-width:300px;justify-content:center}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><div class="loader-logo">DL</div><div class="loader-sub">Dra. Dhara Lima</div><div class="loader-line"></div></div>
+
+<nav class="nav" id="nav">
+<div class="container nav-inner">
+<a href="#" class="nav-logo"><span>Dra. Dhara Lima</span><small>Clínica Integrada</small></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#procedimentos" onclick="closeMenu()">Procedimentos</a></li>
+<li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+<li><a href="#diferenciais" onclick="closeMenu()">Diferenciais</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Resultados</a></li>
+</ul>
+<a href="https://wa.link/kj61a9" class="nav-btn" target="_blank"><i class="fab fa-whatsapp"></i> Agendar</a>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div>
+</nav>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-inner">
+<div class="hero-cro">CRO-RJ 55500</div>
+<h1>Eu transformo a sua <em>autoestima</em></h1>
+<p class="hero-desc">Harmonização facial com naturalidade, técnica e sensibilidade. Resultados que realçam a sua beleza única, sem padronização. Clínica na Barra da Tijuca.</p>
+<div class="hero-buttons">
+<a href="https://wa.link/kj61a9" class="btn btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Agendar Avaliação</a>
+<a href="#procedimentos" class="btn btn-outline">Procedimentos</a>
+</div>
+</div>
+</section>
+
+<div class="trust-bar">
+<div class="trust-inner">
+<div class="trust-item"><i class="fas fa-award"></i> CRO-RJ 55500</div>
+<div class="trust-item"><i class="fas fa-shield-halved"></i> Procedimentos seguros</div>
+<div class="trust-item"><i class="fas fa-gem"></i> Resultados naturais</div>
+<div class="trust-item"><i class="fas fa-map-marker-alt"></i> Barra da Tijuca, RJ</div>
+</div>
+</div>
+
+<section class="section procedures" id="procedimentos">
+<div class="section-header reveal">
+<div class="section-tag">Procedimentos</div>
+<h2 class="section-title">Realce a sua <em>beleza natural</em></h2>
+<p class="section-desc">Cada rosto é único. Por isso, cada tratamento é personalizado para valorizar o que você tem de mais bonito.</p>
+</div>
+<div class="container">
+<div class="proc-grid">
+<div class="proc-card reveal">
+<div class="proc-img"><img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=80" alt="Harmonização Facial" loading="lazy"></div>
+<div class="proc-body">
+<h3>Harmonização Facial</h3>
+<p>Equilíbrio e harmonia entre os traços do rosto com técnicas avançadas e resultado natural.</p>
+<a href="https://wa.link/kj61a9" class="proc-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="proc-card reveal">
+<div class="proc-img"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=80" alt="Preenchimento Labial" loading="lazy"></div>
+<div class="proc-body">
+<h3>Preenchimento Labial</h3>
+<p>Lábios com volume natural, definição e simetria. Resultado sutil ou marcante, como você preferir.</p>
+<a href="https://wa.link/kj61a9" class="proc-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="proc-card reveal">
+<div class="proc-img"><img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?w=400&q=80" alt="Bioestimuladores" loading="lazy"></div>
+<div class="proc-body">
+<h3>Bioestimuladores</h3>
+<p>Estímulo natural de colágeno para rejuvenescimento progressivo e duradouro.</p>
+<a href="https://wa.link/kj61a9" class="proc-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="proc-card reveal">
+<div class="proc-img"><img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=400&q=80" alt="Toxina Botulínica" loading="lazy"></div>
+<div class="proc-body">
+<h3>Toxina Botulínica</h3>
+<p>Suavização de linhas de expressão com naturalidade. Aparência descansada e rejuvenescida.</p>
+<a href="https://wa.link/kj61a9" class="proc-link" target="_blank">Saiba mais <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="sobre">
+<div class="container">
+<div class="about-grid">
+<div class="about-img reveal">
+<img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=700&q=80" alt="Dra. Dhara Lima" loading="lazy">
+<div class="about-badge"><i class="fas fa-award"></i> CRO-RJ 55500</div>
+</div>
+<div class="about-content reveal">
+<div class="tag">Sobre a Dra. Dhara</div>
+<h2>Mais do que estética. É sobre como você se <em>sente.</em></h2>
+<p>A Dra. Dhara Lima é especialista em harmonização facial com foco em resultados naturais e personalizados. Cada paciente recebe um protocolo exclusivo, desenvolvido para valorizar seus traços únicos.</p>
+<p>Com formação sólida, atualização constante nas mais modernas técnicas e um olhar atento à individualidade de cada rosto, a Dra. Dhara entrega resultados que transformam a autoestima sem padronizar.</p>
+<p>Sua clínica na Barra da Tijuca oferece um ambiente acolhedor, seguro e discreto para que você se sinta à vontade durante todo o processo.</p>
+<div class="about-credentials">
+<div class="about-cred"><i class="fas fa-graduation-cap"></i> Especialista em Harmonização</div>
+<div class="about-cred"><i class="fas fa-shield-halved"></i> CRO-RJ 55500</div>
+<div class="about-cred"><i class="fas fa-map-marker-alt"></i> Barra da Tijuca</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section diff" id="diferenciais">
+<div class="section-header reveal">
+<div class="section-tag">Diferenciais</div>
+<h2 class="section-title">Por que escolher a <em>Dra. Dhara</em></h2>
+</div>
+<div class="container">
+<div class="diff-grid">
+<div class="diff-card reveal">
+<div class="diff-icon"><i class="fas fa-wand-magic-sparkles"></i></div>
+<h3>Naturalidade</h3>
+<p>Resultados que realçam sua beleza sem parecer artificial. A naturalidade é o nosso padrão.</p>
+</div>
+<div class="diff-card reveal">
+<div class="diff-icon"><i class="fas fa-user-check"></i></div>
+<h3>Protocolo Personalizado</h3>
+<p>Cada rosto é único. Seu tratamento é planejado exclusivamente para valorizar os seus traços.</p>
+</div>
+<div class="diff-card reveal">
+<div class="diff-icon"><i class="fas fa-shield-halved"></i></div>
+<h3>Segurança Total</h3>
+<p>Produtos de primeira linha, ambiente seguro e estéril. Seu bem-estar é a nossa prioridade.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section" id="depoimentos">
+<div class="section-header reveal">
+<div class="section-tag">Resultados</div>
+<h2 class="section-title">Pacientes que <em>se transformaram</em></h2>
+</div>
+<div class="container">
+<div class="test-grid">
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<blockquote>"Eu sempre tive insegurança com meus lábios. A Dra. Dhara fez um preenchimento tão natural que até minhas amigas ficaram em dúvida se eu tinha feito algo. Amei!"</blockquote>
+<div class="test-author"><strong>Camila R.</strong><span>Preenchimento Labial</span></div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<blockquote>"A harmonização transformou minha autoestima. Ela é muito cuidadosa, explicou tudo antes e o resultado ficou lindo. Me sinto outra pessoa!"</blockquote>
+<div class="test-author"><strong>Fernanda M.</strong><span>Harmonização Facial</span></div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<blockquote>"Fiz botox pela primeira vez e estava com medo de ficar com cara de 'congelada'. A Dra. Dhara acertou na dose perfeita — natural e lindo!"</blockquote>
+<div class="test-author"><strong>Juliana S.</strong><span>Toxina Botulínica</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="cta">
+<div class="cta-inner reveal">
+<h2>Pronta para se <em>transformar?</em></h2>
+<p>Agende sua avaliação personalizada pelo WhatsApp. A Dra. Dhara vai entender seus desejos e criar o protocolo ideal para você.</p>
+<div class="cta-buttons">
+<a href="https://wa.link/kj61a9" class="btn-white" target="_blank"><i class="fab fa-whatsapp"></i> Agendar Avaliação</a>
+<a href="https://www.instagram.com/clinicadradharalima" class="btn btn-outline" target="_blank"><i class="fab fa-instagram"></i> Ver Resultados</a>
+</div>
+</div>
+</section>
+
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><h3>Dra. Dhara <span>Lima</span></h3><p>Clínica Integrada — Harmonização Facial na Barra da Tijuca. CRO-RJ 55500. Resultados naturais que transformam a autoestima.</p>
+<div class="footer-social"><a href="https://www.instagram.com/clinicadradharalima" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.link/kj61a9" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div class="footer-col"><h4>Procedimentos</h4><ul><li><a href="#procedimentos">Harmonização Facial</a></li><li><a href="#procedimentos">Preenchimento Labial</a></li><li><a href="#procedimentos">Bioestimuladores</a></li><li><a href="#procedimentos">Toxina Botulínica</a></li></ul></div>
+<div class="footer-col"><h4>Contato</h4><ul><li><a href="https://wa.link/kj61a9" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a></li><li><a href="https://www.instagram.com/clinicadradharalima" target="_blank"><i class="fab fa-instagram"></i> @clinicadradharalima</a></li><li><a href="#"><i class="fas fa-map-marker-alt"></i> Barra da Tijuca, RJ</a></li></ul></div>
+</div>
+<div class="footer-bottom">&copy; 2026 Clínica Dra. Dhara Lima. CRO-RJ 55500. Todos os direitos reservados.</div>
+</div>
+</footer>
+
+<div class="wpp-float">
+<div class="wpp-tooltip">Agende sua avaliação!</div>
+<a href="https://wa.link/kj61a9" class="wpp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',800)},600)});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>

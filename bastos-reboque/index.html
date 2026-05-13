@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bastos Reboque | Guincho e Assistência 24h — Costa Verde, Mangaratiba, RJ</title>
+<meta name="description" content="Guincho, reboque e assistência rodoviária 24 horas na Costa Verde e Mangaratiba. Transporte de veículos, motos e embarcações. Aceitamos cartão. Ligue agora!">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--orange:#E67E22;--orange-dark:#D35400;--orange-light:#F39C12;--amber:#FFF3E0;
+--dark:#0C0C0C;--charcoal:#1A1A1A;--slate:#2D2D2D;
+--white:#FFF;--off-white:#FAFAFA;--gray:#777;--light:#AAA;
+--red:#E74C3C;--green:#27AE60;
+--font:'Inter',sans-serif;--font-display:'Plus Jakarta Sans',sans-serif;
+--shadow:0 4px 24px rgba(230,126,34,.08);--shadow-lg:0 12px 48px rgba(230,126,34,.14);--radius:16px;
+}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--dark);background:var(--white);overflow-x:hidden}.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;transition:opacity .6s}
+.loader.hide{opacity:0;pointer-events:none}
+.loader-icon{font-size:2.5rem;color:var(--orange);animation:bounce 1s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.loader-text{font-family:var(--font-display);font-size:1.4rem;color:var(--white);letter-spacing:2px;font-weight:800}
+.loader-text span{color:var(--orange)}
+
+/* EMERGENCY BAR */
+.emergency-bar{background:var(--orange);color:var(--white);padding:10px 24px;display:flex;justify-content:center;align-items:center;gap:24px;flex-wrap:wrap;font-size:.8rem;font-weight:600}
+.emergency-bar .pulse{width:8px;height:8px;background:var(--white);border-radius:50%;animation:p 1.5s infinite;display:inline-block}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+.emergency-bar a{color:var(--white);text-decoration:none;font-weight:800;display:flex;align-items:center;gap:4px}
+
+/* NAV */
+.nav{background:var(--dark);position:sticky;top:0;z-index:100;padding:14px 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none}
+.nav-logo-icon{width:44px;height:44px;background:var(--orange);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;color:var(--white)}
+.nav-logo-text{font-family:var(--font-display);font-size:1.15rem;color:var(--white);font-weight:800;letter-spacing:1px}
+.nav-logo-text span{color:var(--orange)}
+.nav-links{display:flex;gap:26px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--orange)}
+.nav-cta{display:flex;gap:10px}
+.nav-btn{padding:10px 20px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;display:flex;align-items:center;gap:8px;transition:all .3s}
+.nav-btn-orange{background:var(--orange);color:var(--white)}
+.nav-btn-orange:hover{background:var(--orange-dark);transform:translateY(-2px)}
+.nav-btn-outline{background:transparent;color:var(--white);border:1px solid rgba(255,255,255,.2)}
+.nav-btn-outline:hover{background:rgba(255,255,255,.05)}
+.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.4rem;cursor:pointer}
+
+/* HERO */
+.hero{background:var(--dark);position:relative;overflow:hidden}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;min-height:85vh;align-items:center}
+.hero-content{padding:80px 0 80px;padding-left:max(24px,calc((100vw - 1200px)/2 + 24px));padding-right:40px;position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(230,126,34,.12);border:1px solid rgba(230,126,34,.25);padding:8px 18px;border-radius:50px;color:var(--orange);font-size:.78rem;font-weight:700;margin-bottom:18px}
+.hero-badge .live{width:8px;height:8px;background:var(--green);border-radius:50%;animation:p 1.5s infinite}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.5rem);color:var(--white);line-height:1.08;margin-bottom:16px;font-weight:800}
+.hero h1 span{color:var(--orange)}
+.hero-desc{color:var(--gray);font-size:1rem;line-height:1.7;margin-bottom:28px;max-width:480px}
+.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn{padding:16px 32px;border-radius:50px;font-weight:700;font-size:.9rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer}
+.btn-orange{background:var(--orange);color:var(--white)}
+.btn-orange:hover{background:var(--orange-dark);transform:translateY(-3px);box-shadow:0 8px 25px rgba(230,126,34,.35)}
+.btn-dark{background:var(--charcoal);color:var(--white);border:1px solid var(--slate)}
+.btn-dark:hover{background:var(--slate);transform:translateY(-3px)}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap}
+.hero-trust-item{display:flex;align-items:center;gap:8px;color:rgba(255,255,255,.45);font-size:.8rem}
+.hero-trust-item i{color:var(--orange)}
+.hero-image{position:relative;height:100%;overflow:hidden}
+.hero-image img{width:100%;height:100%;object-fit:cover}
+.hero-image::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,var(--dark) 0%,transparent 40%);z-index:1}
+.hero-float{position:absolute;z-index:2;background:var(--white);border-radius:14px;padding:14px 18px;box-shadow:var(--shadow-lg);display:flex;align-items:center;gap:12px;animation:floatY 4s ease-in-out infinite}
+.hero-float-1{bottom:30%;right:40px}
+.hero-float-2{top:25%;right:30px;animation-delay:2s}
+.hero-float .ic{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.hero-float .ic.green{background:rgba(39,174,96,.1);color:var(--green)}
+.hero-float .ic.orange{background:var(--amber);color:var(--orange)}
+.hero-float strong{font-size:.88rem;color:var(--dark);display:block}
+.hero-float span{font-size:.68rem;color:var(--gray)}
+@keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* STATS */
+.stats{background:var(--white);position:relative;z-index:5;margin-top:-50px}
+.stats-inner{background:var(--white);border-radius:20px;box-shadow:var(--shadow-lg);padding:32px 40px;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center;position:relative}
+.stat:not(:last-child)::after{content:'';position:absolute;right:0;top:15%;height:70%;width:1px;background:#eee}
+.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--dark);line-height:1}
+.stat-num span{color:var(--orange)}
+.stat-label{color:var(--gray);font-size:.78rem;margin-top:6px}
+
+/* SECTION */
+.section{padding:80px 24px}
+.section-header{text-align:center;max-width:600px;margin:0 auto 50px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;background:var(--amber);color:var(--orange);padding:6px 16px;border-radius:50px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.5vw,2.5rem);color:var(--dark);margin-bottom:10px;font-weight:800}
+.section-title span{color:var(--orange)}
+.section-desc{color:var(--gray);font-size:.9rem;line-height:1.7}
+
+/* SERVICES */
+.services{background:var(--off-white)}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.svc-card{background:var(--white);border-radius:var(--radius);overflow:hidden;transition:all .4s;border:1px solid #eee;position:relative}
+.svc-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-light));transform:scaleX(0);transition:transform .4s;transform-origin:left}
+.svc-card:hover::before{transform:scaleX(1)}
+.svc-img{height:210px;overflow:hidden;position:relative}
+.svc-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.svc-card:hover .svc-img img{transform:scale(1.08)}
+.svc-img::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.35),transparent 50%)}
+.svc-badge{position:absolute;top:14px;left:14px;background:var(--orange);color:var(--white);padding:5px 12px;border-radius:8px;font-size:.7rem;font-weight:700;text-transform:uppercase;z-index:2}
+.svc-body{padding:24px}
+.svc-body h3{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.svc-body p{color:var(--gray);font-size:.86rem;line-height:1.6;margin-bottom:16px}
+.svc-link{color:var(--orange);font-weight:600;font-size:.86rem;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:gap .3s}
+.svc-link:hover{gap:10px}
+
+/* WHY US */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.why-image{position:relative;border-radius:20px;overflow:hidden;height:480px}
+.why-image img{width:100%;height:100%;object-fit:cover}
+.why-image-badge{position:absolute;bottom:20px;left:20px;background:var(--orange);color:var(--white);padding:14px 22px;border-radius:14px;font-weight:700;display:flex;align-items:center;gap:10px;font-size:.9rem}
+.why-list{display:flex;flex-direction:column;gap:16px}
+.why-item{display:flex;gap:16px;align-items:flex-start;padding:18px;border-radius:var(--radius);background:var(--white);border:1px solid #eee;transition:all .3s}
+.why-item:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(230,126,34,.08);transform:translateX(6px)}
+.why-icon{width:50px;height:50px;min-width:50px;border-radius:14px;background:var(--amber);display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--orange);transition:all .3s}
+.why-item:hover .why-icon{background:var(--orange);color:var(--white)}
+.why-item h3{font-size:.98rem;font-weight:700;margin-bottom:4px;color:var(--dark)}
+.why-item p{color:var(--gray);font-size:.82rem;line-height:1.5}
+
+/* PROCESS */
+.process{background:var(--dark)}
+.process .section-tag{background:rgba(230,126,34,.12);color:var(--orange)}
+.process .section-title{color:var(--white)}
+.process .section-title span{color:var(--orange)}
+.process .section-desc{color:var(--gray)}
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative}
+.proc-grid::before{content:'';position:absolute;top:45px;left:10%;right:10%;height:2px;background:rgba(230,126,34,.15)}
+.proc-step{text-align:center;position:relative}
+.proc-num{width:64px;height:64px;border-radius:50%;background:rgba(230,126,34,.1);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;margin:0 auto 18px;font-family:var(--font-display);font-size:1.4rem;font-weight:800;color:var(--orange);position:relative;z-index:2}
+.proc-step h3{color:var(--white);font-size:1rem;font-weight:700;margin-bottom:6px}
+.proc-step p{color:var(--gray);font-size:.82rem;line-height:1.5}
+
+/* COVERAGE */
+.coverage{background:var(--off-white)}
+.coverage-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.coverage-item{background:var(--white);border-radius:12px;padding:18px;text-align:center;border:1px solid #eee;transition:all .3s}
+.coverage-item:hover{border-color:var(--orange);box-shadow:var(--shadow)}
+.coverage-item i{color:var(--orange);font-size:1.2rem;margin-bottom:8px;display:block}
+.coverage-item h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.coverage-item span{font-size:.72rem;color:var(--gray)}
+
+/* FLEET */
+.fleet-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.fleet-item{border-radius:14px;overflow:hidden;position:relative;aspect-ratio:4/3;cursor:pointer}
+.fleet-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.fleet-item:hover img{transform:scale(1.08)}
+.fleet-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 40%);opacity:0;transition:opacity .3s}
+.fleet-item:hover::after{opacity:1}
+.fleet-item span{position:absolute;bottom:12px;left:12px;color:var(--white);font-size:.8rem;font-weight:600;z-index:2;opacity:0;transition:opacity .3s}
+.fleet-item:hover span{opacity:1}
+
+/* TESTIMONIALS */
+.testimonials{background:var(--off-white)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.test-card{background:var(--white);border-radius:var(--radius);padding:28px;border:1px solid #eee;transition:all .3s;position:relative}
+.test-card:hover{box-shadow:var(--shadow);border-color:var(--orange)}
+.test-card::before{content:'\201C';font-family:var(--font-display);font-size:4rem;color:rgba(230,126,34,.1);position:absolute;top:8px;right:18px;line-height:1}
+.test-stars{color:var(--orange-light);font-size:.88rem;letter-spacing:2px;margin-bottom:10px}
+.test-card p{font-size:.9rem;color:var(--dark);line-height:1.6;margin-bottom:16px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:10px}
+.test-avatar{width:44px;height:44px;border-radius:50%;overflow:hidden}
+.test-avatar img{width:100%;height:100%;object-fit:cover}
+.test-name strong{font-size:.85rem;color:var(--dark);display:block}
+.test-name span{font-size:.72rem;color:var(--gray)}
+
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:flex-start}
+.faq-image{border-radius:20px;overflow:hidden;height:420px;position:sticky;top:100px}
+.faq-image img{width:100%;height:100%;object-fit:cover}
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{background:var(--white);border:1px solid #eee;border-radius:14px;overflow:hidden;transition:all .3s}
+.faq-item.active{border-color:var(--orange);box-shadow:0 4px 15px rgba(230,126,34,.08)}
+.faq-q{width:100%;padding:18px 20px;background:none;border:none;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:.92rem;font-weight:600;color:var(--dark);text-align:left;font-family:var(--font);gap:12px}
+.faq-q i{color:var(--orange);transition:transform .3s;font-size:.8rem;min-width:20px}
+.faq-item.active .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s}
+.faq-a p{padding:0 20px 18px;color:var(--gray);font-size:.86rem;line-height:1.7}
+
+/* PAYMENT */
+.payment{background:var(--dark);padding:40px 24px}
+.payment-inner{display:flex;justify-content:center;align-items:center;gap:40px;flex-wrap:wrap}
+.payment-label{color:var(--gray);font-size:.82rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px}
+.payment-icons{display:flex;gap:16px;align-items:center}
+.payment-icons i{font-size:1.8rem;color:rgba(255,255,255,.35)}
+.payment-icons span{font-size:.82rem;color:rgba(255,255,255,.4);font-weight:600}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--orange-dark),var(--orange),var(--orange-light));padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;top:-100px;right:-60px;width:400px;height:400px;border-radius:50%;background:rgba(255,255,255,.05)}
+.cta::after{content:'';position:absolute;bottom:-80px;left:-40px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.03)}
+.cta-inner{max-width:700px;margin:0 auto;position:relative;z-index:2}
+.cta-icon{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:2rem;color:var(--white)}
+.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,4.5vw,3rem);color:var(--white);margin-bottom:14px;font-weight:800}
+.cta p{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:32px;line-height:1.6}
+.cta-buttons{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-white{background:var(--white);color:var(--orange-dark);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.95rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s}
+.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 25px rgba(0,0,0,.2)}
+.btn-outline-white{background:transparent;color:var(--white);padding:16px 36px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.95rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:2px solid rgba(255,255,255,.3)}
+.btn-outline-white:hover{background:rgba(255,255,255,.1);border-color:var(--white)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,.5);padding:60px 24px 24px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.2fr;gap:40px;margin-bottom:32px}
+.footer-brand h3{font-family:var(--font-display);font-size:1.2rem;color:var(--white);font-weight:800;margin-bottom:10px;letter-spacing:1px}
+.footer-brand h3 span{color:var(--orange)}
+.footer-brand p{font-size:.82rem;line-height:1.6;margin-bottom:14px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.05);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s;font-size:.9rem}
+.footer-social a:hover{background:var(--orange);color:var(--white)}
+.footer-col h4{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:14px;font-weight:700}
+.footer-col ul{list-style:none}
+.footer-col li{margin-bottom:8px}
+.footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.82rem;transition:color .3s;display:flex;align-items:center;gap:6px}
+.footer-col a:hover{color:var(--orange)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:18px;text-align:center;font-size:.75rem;color:rgba(255,255,255,.25)}
+
+/* WPP + MOBILE */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow-lg);font-size:.82rem;font-weight:600;transform:translateY(8px);opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}
+.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}
+.wpp-btn{width:60px;height:60px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.8rem;text-decoration:none;box-shadow:0 4px 20px rgba(230,126,34,.4);transition:all .3s;animation:pulse 2s infinite}
+.wpp-btn:hover{transform:scale(1.1)}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(230,126,34,.4)}70%{box-shadow:0 0 0 15px rgba(230,126,34,0)}100%{box-shadow:0 0 0 0 rgba(230,126,34,0)}}
+
+.mobile-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--white);padding:12px 16px;box-shadow:0 -4px 20px rgba(0,0,0,.1);z-index:98;gap:10px}
+.mobile-cta a{flex:1;padding:14px;border-radius:12px;text-align:center;font-weight:700;font-size:.88rem;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:8px}
+.mobile-cta .btn-call{background:var(--dark);color:var(--white)}
+.mobile-cta .btn-ig{background:var(--orange);color:var(--white)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(30px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){.hero-inner{grid-template-columns:1fr}.hero-content{padding:100px 24px 60px}.hero-image{display:none}.svc-grid{grid-template-columns:repeat(2,1fr)}.why-grid{grid-template-columns:1fr}.why-image{height:300px}.proc-grid{grid-template-columns:repeat(2,1fr)}.proc-grid::before{display:none}.coverage-grid{grid-template-columns:repeat(2,1fr)}.fleet-grid{grid-template-columns:repeat(3,1fr)}.test-grid{grid-template-columns:repeat(2,1fr)}.faq-grid{grid-template-columns:1fr}.faq-image{display:none}.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:768px){.emergency-bar{font-size:.72rem;gap:12px}.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(12,12,12,.97);backdrop-filter:blur(12px);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1.2rem}.nav-cta{display:none}.menu-toggle{display:block;z-index:201}.stats-inner{grid-template-columns:repeat(2,1fr);margin-top:-25px}.stat:nth-child(2)::after{display:none}.svc-grid{grid-template-columns:1fr}.test-grid{grid-template-columns:1fr}.coverage-grid{grid-template-columns:1fr 1fr}.fleet-grid{grid-template-columns:repeat(2,1fr)}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.cta-buttons{flex-direction:column;align-items:center}.btn-white,.btn-outline-white{width:100%;max-width:320px;justify-content:center}.footer-grid{grid-template-columns:1fr}.wpp-float{bottom:80px}.mobile-cta{display:flex}}
+@media(max-width:480px){.stats-inner{padding:20px;gap:14px}.stat-num{font-size:1.5rem}.payment-inner{gap:20px}.fleet-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- LOADER -->
+<div class="loader" id="loader">
+<div class="loader-icon"><i class="fas fa-truck-pickup"></i></div>
+<div class="loader-text">BASTOS <span>REBOQUE</span></div>
+</div>
+
+<!-- EMERGENCY BAR -->
+<div class="emergency-bar">
+<span><span class="pulse"></span> ASSISTÊNCIA 24 HORAS — DISPONÍVEL AGORA</span>
+<span><i class="fas fa-credit-card"></i> ACEITAMOS CARTÕES</span>
+<a href="https://www.instagram.com/reboquemangaratiba" target="_blank"><i class="fab fa-instagram"></i> CHAMAR GUINCHO</a>
+</div>
+
+<!-- NAV -->
+<nav class="nav">
+<div class="container nav-inner">
+<a href="#" class="nav-logo">
+<div class="nav-logo-icon"><i class="fas fa-truck-pickup"></i></div>
+<div class="nav-logo-text">BASTOS <span>REBOQUE</span></div>
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#servicos" onclick="closeMenu()">Serviços</a></li>
+<li><a href="#diferenciais" onclick="closeMenu()">Por Que Nós</a></li>
+<li><a href="#cobertura" onclick="closeMenu()">Cobertura</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
+<li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+</ul>
+<div class="nav-cta">
+<a href="https://www.instagram.com/reboquemangaratiba" class="nav-btn nav-btn-orange" target="_blank"><i class="fas fa-phone"></i> Chamar Agora</a>
+</div>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-inner">
+<div class="hero-content">
+<div class="hero-badge"><span class="live"></span> Disponível 24 horas — Costa Verde</div>
+<h1>Ficou na estrada? A gente <span>te tira daí.</span></h1>
+<p class="hero-desc">Guincho, reboque e assistência rodoviária 24 horas na Costa Verde e Mangaratiba. Atendimento rápido, profissional e que aceita cartão de crédito. Conte conosco para continuar sua viagem.</p>
+<div class="hero-buttons">
+<a href="https://www.instagram.com/reboquemangaratiba" class="btn btn-orange" target="_blank"><i class="fas fa-phone"></i> Chamar Guincho Agora</a>
+<a href="#servicos" class="btn btn-dark"><i class="fas fa-truck-pickup"></i> Nossos Serviços</a>
+</div>
+<div class="hero-trust">
+<div class="hero-trust-item"><i class="fas fa-clock"></i> 24 horas, 7 dias</div>
+<div class="hero-trust-item"><i class="fas fa-credit-card"></i> Aceita cartão</div>
+<div class="hero-trust-item"><i class="fas fa-bolt"></i> Chegada em ~30min</div>
+</div>
+</div>
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1449965408869-ebd13bc9e5d8?w=800&q=80" alt="Guincho Bastos Reboque" loading="eager">
+<div class="hero-float hero-float-1">
+<div class="ic green"><i class="fas fa-check-circle"></i></div>
+<div><strong>Resgate concluído!</strong><span>Cliente satisfeito ★★★★★</span></div>
+</div>
+<div class="hero-float hero-float-2">
+<div class="ic orange"><i class="fas fa-clock"></i></div>
+<div><strong>~30 minutos</strong><span>Tempo médio de chegada</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+<div class="container">
+<div class="stats-inner">
+<div class="stat reveal"><div class="stat-num">24<span>h</span></div><div class="stat-label">Disponibilidade total</div></div>
+<div class="stat reveal"><div class="stat-num">1.000<span>+</span></div><div class="stat-label">Resgates realizados</div></div>
+<div class="stat reveal"><div class="stat-num">30<span>min</span></div><div class="stat-label">Tempo médio de chegada</div></div>
+<div class="stat reveal"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Avaliação dos clientes</div></div>
+</div>
+</div>
+</div>
+
+<!-- SERVICES -->
+<section class="section services" id="servicos">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-truck"></i> Nossos serviços</span>
+<h2 class="section-title">Cobertura completa para <span>qualquer situação</span></h2>
+<p class="section-desc">Da pane na estrada ao transporte de embarcações, estamos prontos para resolver.</p>
+</div>
+<div class="container">
+<div class="svc-grid">
+<div class="svc-card reveal">
+<div class="svc-img">
+<span class="svc-badge">Mais solicitado</span>
+<img src="https://images.unsplash.com/photo-1449965408869-ebd13bc9e5d8?w=600&q=80" alt="Guincho plataforma" loading="lazy">
+</div>
+<div class="svc-body">
+<h3>Guincho Plataforma</h3>
+<p>Transporte seguro do seu veículo em plataforma. Sem contato com o solo, sem risco de danos. Carros, SUVs e utilitários.</p>
+<a href="https://www.instagram.com/reboquemangaratiba" class="svc-link" target="_blank">Chamar guincho <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img">
+<img src="https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&q=80" alt="Assistência rodoviária" loading="lazy">
+</div>
+<div class="svc-body">
+<h3>Assistência Rodoviária</h3>
+<p>Pneu furado, bateria descarregada, pane seca, superaquecimento. Resolvemos no local quando possível, sem precisar rebocar.</p>
+<a href="https://www.instagram.com/reboquemangaratiba" class="svc-link" target="_blank">Pedir assistência <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img">
+<img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=600&q=80" alt="Transporte de veículos" loading="lazy">
+</div>
+<div class="svc-body">
+<h3>Transporte Interurbano</h3>
+<p>Transporte de veículos entre cidades com segurança total. Levamos seu carro de qualquer lugar para qualquer destino.</p>
+<a href="https://www.instagram.com/reboquemangaratiba" class="svc-link" target="_blank">Solicitar transporte <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img">
+<span class="svc-badge">Exclusivo</span>
+<img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=600&q=80" alt="Transporte de embarcações" loading="lazy">
+</div>
+<div class="svc-body">
+<h3>Transporte de Embarcações</h3>
+<p>Transporte de lanchas, barcos e jet skis com equipamento adequado. Experiência em carga especial na Costa Verde.</p>
+<a href="https://www.instagram.com/reboquemangaratiba" class="svc-link" target="_blank">Consultar <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img">
+<img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&q=80" alt="Guincho moto" loading="lazy">
+</div>
+<div class="svc-body">
+<h3>Guincho de Motos</h3>
+<p>Transporte especializado para motos de todos os portes. Amarração profissional e cuidado no manuseio.</p>
+<a href="https://www.instagram.com/reboquemangaratiba" class="svc-link" target="_blank">Chamar guincho <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+<div class="svc-card reveal">
+<div class="svc-img">
+<img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80" alt="Resgate em acidente" loading="lazy">
+</div>
+<div class="svc-body">
+<h3>Resgate em Acidentes</h3>
+<p>Remoção de veículos acidentados com segurança e rapidez. Equipe preparada para situações emergenciais na estrada.</p>
+<a href="https://www.instagram.com/reboquemangaratiba" class="svc-link" target="_blank">Emergência <i class="fas fa-arrow-right"></i></a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WHY US -->
+<section class="section" id="diferenciais">
+<div class="container">
+<div class="why-grid">
+<div class="why-image reveal-left">
+<img src="https://images.unsplash.com/photo-1449965408869-ebd13bc9e5d8?w=700&q=80" alt="Frota Bastos Reboque" loading="lazy">
+<div class="why-image-badge"><i class="fas fa-shield-halved"></i> +10 anos de estrada</div>
+</div>
+<div>
+<div class="section-header" style="text-align:left;margin:0 0 28px">
+<span class="section-tag"><i class="fas fa-star"></i> Por que nos escolher</span>
+<h2 class="section-title">Por que a Bastos Reboque é <span>diferente</span></h2>
+<p class="section-desc">Não somos mais um guincho. Somos a solução que você merece quando mais precisa.</p>
+</div>
+<div class="why-list">
+<div class="why-item reveal-right">
+<div class="why-icon"><i class="fas fa-clock"></i></div>
+<div><h3>Disponível 24 Horas</h3><p>Dia, noite, feriado, madrugada, chuva ou sol. Estamos sempre prontos para atender.</p></div>
+</div>
+<div class="why-item reveal-right">
+<div class="why-icon"><i class="fas fa-bolt"></i></div>
+<div><h3>Chegada em ~30 Minutos</h3><p>Tempo médio de chegada na Costa Verde. Sabemos que cada minuto conta numa emergência.</p></div>
+</div>
+<div class="why-item reveal-right">
+<div class="why-icon"><i class="fas fa-credit-card"></i></div>
+<div><h3>Aceita Cartão de Crédito</h3><p>Débito e crédito na hora. Sem surpresas, sem constrangimento na estrada.</p></div>
+</div>
+<div class="why-item reveal-right">
+<div class="why-icon"><i class="fas fa-shield-halved"></i></div>
+<div><h3>Equipamento Profissional</h3><p>Guincho plataforma com equipamento adequado para cada tipo de veículo. Cuidado total.</p></div>
+</div>
+<div class="why-item reveal-right">
+<div class="why-icon"><i class="fas fa-hand-holding-dollar"></i></div>
+<div><h3>Preço Justo e Honesto</h3><p>Orçamento informado antes de sair. Sem taxa escondida, sem cobrança surpresa.</p></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="section process">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-route"></i> Como funciona</span>
+<h2 class="section-title">Do problema ao <span>resgate</span> em 4 passos</h2>
+<p class="section-desc">Processo simples e rápido. Sem burocracia na hora da emergência.</p>
+</div>
+<div class="container">
+<div class="proc-grid">
+<div class="proc-step reveal"><div class="proc-num">1</div><h3>Nos chame</h3><p>Ligue ou mande mensagem informando sua localização e o problema.</p></div>
+<div class="proc-step reveal"><div class="proc-num">2</div><h3>Orçamento na hora</h3><p>Informamos o valor antes de sair. Sem surpresas, sem compromisso.</p></div>
+<div class="proc-step reveal"><div class="proc-num">3</div><h3>Chegamos rápido</h3><p>Nosso guincho está a caminho em minutos. Tempo médio: 30 minutos.</p></div>
+<div class="proc-step reveal"><div class="proc-num">4</div><h3>Problema resolvido</h3><p>Veículo no destino com segurança. Pagamento em dinheiro ou cartão.</p></div>
+</div>
+</div>
+</section>
+
+<!-- COVERAGE -->
+<section class="section coverage" id="cobertura">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-map-marker-alt"></i> Área de cobertura</span>
+<h2 class="section-title">Onde <span>atendemos</span></h2>
+<p class="section-desc">Cobertura completa na Costa Verde e municípios vizinhos.</p>
+</div>
+<div class="container">
+<div class="coverage-grid">
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Mangaratiba</h4><span>Base principal</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Angra dos Reis</h4><span>Cobertura total</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Itaguaí</h4><span>Atendimento rápido</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Rio Claro</h4><span>Cobertura regional</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Paraty</h4><span>Atendimento especial</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Muriqui</h4><span>Praias e região</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Conceição de Jacareí</h4><span>Litoral Sul</span></div>
+<div class="coverage-item reveal"><i class="fas fa-map-pin"></i><h4>Rodovia Rio-Santos</h4><span>Cobertura integral</span></div>
+</div>
+</div>
+</section>
+
+<!-- FLEET -->
+<section class="section">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-truck-pickup"></i> Nossa frota</span>
+<h2 class="section-title">Equipamento <span>profissional</span></h2>
+<p class="section-desc">Guincho plataforma e equipamento adequado para cada tipo de veículo e situação.</p>
+</div>
+<div class="container">
+<div class="fleet-grid">
+<div class="fleet-item reveal"><img src="https://images.unsplash.com/photo-1449965408869-ebd13bc9e5d8?w=400&q=80" alt="Guincho plataforma" loading="lazy"><span>Guincho Plataforma</span></div>
+<div class="fleet-item reveal"><img src="https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=400&q=80" alt="Transporte veículos" loading="lazy"><span>Transporte Seguro</span></div>
+<div class="fleet-item reveal"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=400&q=80" alt="Embarcações" loading="lazy"><span>Embarcações</span></div>
+<div class="fleet-item reveal"><img src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=400&q=80" alt="Guincho moto" loading="lazy"><span>Motos</span></div>
+</div>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section testimonials" id="depoimentos">
+<div class="section-header reveal">
+<span class="section-tag"><i class="fas fa-quote-left"></i> Depoimentos</span>
+<h2 class="section-title">Quem já precisou, <span>confia</span></h2>
+<p class="section-desc">A confiança dos nossos clientes é construída em cada resgate.</p>
+</div>
+<div class="container">
+<div class="test-grid">
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<p>"Meu carro quebrou às 11 da noite na Rio-Santos, num trecho escuro e perigoso. Liguei para a Bastos e em 25 minutos já estavam lá. Profissional, educado e resolveu tudo rápido. Me senti seguro na hora que mais precisei!"</p>
+<div class="test-author">
+<div class="test-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="Marcos" loading="lazy"></div>
+<div class="test-name"><strong>Marcos Lima</strong><span>Emergência noturna — Rio-Santos</span></div>
+</div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<p>"Precisei transportar minha lancha de Mangaratiba para Angra e a Bastos fez com todo o cuidado do mundo. Equipamento adequado, amarração profissional e preço honesto. Aceitar cartão fez toda a diferença!"</p>
+<div class="test-author">
+<div class="test-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80" alt="Roberto" loading="lazy"></div>
+<div class="test-name"><strong>Roberto Santos</strong><span>Transporte de embarcação</span></div>
+</div>
+</div>
+<div class="test-card reveal">
+<div class="test-stars">★★★★★</div>
+<p>"Bateria morreu no meio da estrada com minha família dentro do carro, num domingo. A Bastos atendeu rápido, trocou a bateria no local e não precisei nem rebocar. Salvaram nosso passeio de família!"</p>
+<div class="test-author">
+<div class="test-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&q=80" alt="Fernanda" loading="lazy"></div>
+<div class="test-name"><strong>Fernanda Costa</strong><span>Assistência domingo — Itaguaí</span></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+<div class="container">
+<div class="faq-grid">
+<div class="faq-image reveal-left">
+<img src="https://images.unsplash.com/photo-1449965408869-ebd13bc9e5d8?w=600&q=80" alt="Guincho Bastos" loading="lazy">
+</div>
+<div>
+<div class="section-header reveal" style="text-align:left;margin:0 0 28px">
+<span class="section-tag"><i class="fas fa-circle-question"></i> Dúvidas frequentes</span>
+<h2 class="section-title">Tire suas <span>dúvidas</span></h2>
+</div>
+<div class="faq-list">
+<div class="faq-item active reveal"><button class="faq-q">Vocês realmente atendem 24 horas? <i class="fas fa-chevron-down"></i></button><div class="faq-a" style="max-height:120px"><p>Sim! Dia, noite, feriado, final de semana, madrugada — estamos sempre prontos. Imprevistos não escolhem hora e a Bastos Reboque também não.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Qual o tempo médio de chegada? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Na região da Costa Verde (Mangaratiba, Angra, Itaguaí), nosso tempo médio é de aproximadamente 30 minutos. Dependendo da localização exata, pode ser ainda mais rápido.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Quais formas de pagamento aceitam? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Aceitamos dinheiro, PIX, cartão de débito e cartão de crédito. Sem burocracia na hora de pagar.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Transportam motos e embarcações? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Sim! Temos experiência no transporte de motos de todos os portes e embarcações (lanchas, barcos, jet skis). Equipamento específico para cada tipo de carga.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">O orçamento é informado antes? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Sempre! Informamos o valor antes de sair. Sem surpresas, sem taxa escondida, sem cobrança adicional. O preço combinado é o preço final.</p></div></div>
+<div class="faq-item reveal"><button class="faq-q">Atendem na Rodovia Rio-Santos inteira? <i class="fas fa-chevron-down"></i></button><div class="faq-a"><p>Sim! Cobrimos a Rio-Santos de Itaguaí até Paraty, passando por Mangaratiba, Muriqui, Conceição de Jacareí e Angra dos Reis. Cobertura integral na Costa Verde.</p></div></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- PAYMENT -->
+<div class="payment">
+<div class="payment-inner">
+<div class="payment-label">Formas de pagamento</div>
+<div class="payment-icons">
+<span>Dinheiro</span>
+<i class="fab fa-pix"></i>
+<i class="fab fa-cc-visa"></i>
+<i class="fab fa-cc-mastercard"></i>
+<span>Débito</span>
+</div>
+</div>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+<div class="cta-inner reveal">
+<div class="cta-icon"><i class="fas fa-truck-pickup"></i></div>
+<h2>Precisa de guincho agora?</h2>
+<p>Ligue ou mande mensagem que estamos prontos para te atender. 24 horas, 7 dias por semana, em toda a Costa Verde. Aceitamos cartão.</p>
+<div class="cta-buttons">
+<a href="https://www.instagram.com/reboquemangaratiba" class="btn-white" target="_blank"><i class="fas fa-phone"></i> Chamar Guincho Agora</a>
+<a href="https://www.instagram.com/reboquemangaratiba" class="btn-outline-white" target="_blank"><i class="fab fa-instagram"></i> Ver no Instagram</a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
+<div class="footer-grid">
+<div class="footer-brand">
+<h3>BASTOS <span>REBOQUE</span></h3>
+<p>Guincho, reboque e assistência rodoviária 24 horas na Costa Verde e Mangaratiba. Transporte de veículos, motos e embarcações. Aceitamos cartões de crédito e débito.</p>
+<div class="footer-social">
+<a href="https://www.instagram.com/reboquemangaratiba" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+</div>
+<div class="footer-col">
+<h4>Serviços</h4>
+<ul>
+<li><a href="#servicos">Guincho Plataforma</a></li>
+<li><a href="#servicos">Assistência Rodoviária</a></li>
+<li><a href="#servicos">Transporte Interurbano</a></li>
+<li><a href="#servicos">Embarcações</a></li>
+<li><a href="#servicos">Guincho de Motos</a></li>
+<li><a href="#servicos">Resgate em Acidentes</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Cobertura</h4>
+<ul>
+<li><a href="#cobertura">Mangaratiba</a></li>
+<li><a href="#cobertura">Angra dos Reis</a></li>
+<li><a href="#cobertura">Itaguaí</a></li>
+<li><a href="#cobertura">Paraty</a></li>
+<li><a href="#cobertura">Muriqui</a></li>
+<li><a href="#cobertura">Rio-Santos</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Fale Conosco</h4>
+<ul>
+<li><a href="https://www.instagram.com/reboquemangaratiba" target="_blank"><i class="fab fa-instagram"></i> @reboquemangaratiba</a></li>
+<li><a href="#"><i class="fas fa-map-marker-alt"></i> Costa Verde, Mangaratiba, RJ</a></li>
+<li><a href="#"><i class="fas fa-clock"></i> 24 horas — todos os dias</a></li>
+<li><a href="#"><i class="fas fa-credit-card"></i> Cartão, PIX, Dinheiro</a></li>
+</ul>
+</div>
+</div>
+<div class="footer-bottom">
+<p>&copy; 2026 Bastos Reboque. Todos os direitos reservados.</p>
+</div>
+</div>
+</footer>
+
+<!-- WPP FLOAT -->
+<div class="wpp-float">
+<div class="wpp-tooltip">Precisa de guincho? Chame agora!</div>
+<a href="https://www.instagram.com/reboquemangaratiba" class="wpp-btn" target="_blank"><i class="fas fa-phone"></i></a>
+</div>
+
+<!-- MOBILE CTA -->
+<div class="mobile-cta">
+<a href="https://www.instagram.com/reboquemangaratiba" class="btn-call" target="_blank"><i class="fas fa-phone"></i> Ligar</a>
+<a href="https://www.instagram.com/reboquemangaratiba" class="btn-ig" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+</div>
+
+<script>
+// Loader
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',600)},400)});
+
+// Mobile menu
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(btn=>{btn.addEventListener('click',()=>{const item=btn.parentElement;const was=item.classList.contains('active');document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('active');i.querySelector('.faq-a').style.maxHeight=null});if(!was){item.classList.add('active');const a=item.querySelector('.faq-a');a.style.maxHeight=a.scrollHeight+'px'}})});
+
+// Scroll reveal
+const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal,.reveal-left,.reveal-right').forEach(el=>observer.observe(el));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const href=a.getAttribute('href');if(href==='#')return;e.preventDefault();const t=document.querySelector(href);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:y,behavior:'smooth'})}})});
+
+// Counter animation
+function animateCounters(){document.querySelectorAll('.stat-num').forEach(el=>{const text=el.textContent;const match=text.match(/(\d[\d.]*)/);if(!match)return;const target=parseFloat(match[1].replace('.',''));const suffix=text.replace(match[1],'');let current=0;const step=Math.ceil(target/35);const interval=setInterval(()=>{current+=step;if(current>=target){current=target;clearInterval(interval)}const formatted=target>=1000?current.toLocaleString('pt-BR'):current;el.innerHTML=formatted+suffix},30)})}
+const statsObs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){animateCounters();statsObs.unobserve(e.target)}})},{threshold:0.3});
+const statsBar=document.querySelector('.stats-inner');if(statsBar)statsObs.observe(statsBar);
+</script>
+</body>
+</html>
