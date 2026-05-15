@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KT Imóveis | Imóveis em Angra dos Reis — Venda, Aluguel e Avaliação</title>
-<meta name="description" content="Imóveis em Angra dos Reis. Casas, apartamentos, terrenos e propriedades à beira-mar. CRECI 086597 | Perita Avaliadora CNAI 048495. Encontre seu imóvel dos sonhos!">
+<title>KT Imóveis | Imóveis em Angra dos Reis — Venda, Aluguel Anual e Temporada</title>
+<meta name="description" content="KT Imóveis — Venda, aluguel anual e temporada em Angra dos Reis. Reserve casas de temporada online. CRECI 086597 | Perita Avaliadora CNAI 048495.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -13,57 +13,151 @@
 :root{
 --blue:#1A5276;--blue-dark:#0E3350;--blue-light:#2E86C1;--sky:#5DADE2;
 --gold:#F4C542;--gold-dark:#D4A520;--sand:#FDF6E3;--cream:#F9FAFB;
---white:#FFF;--dark:#1C2833;--text:#34495E;--gray:#7F8C8D;
+--green:#27AE60;--green-light:#E8F8EE;
+--white:#FFF;--dark:#1C2833;--text:#34495E;--gray:#7F8C8D;--border:#E5E8EB;
 --font:'Inter',sans-serif;--font-display:'Playfair Display',Georgia,serif;
 --shadow:0 4px 20px rgba(26,82,118,.08);--shadow-lg:0 10px 40px rgba(26,82,118,.12);--radius:14px;
 }
 html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
 .loader{position:fixed;inset:0;background:var(--blue-dark);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;transition:opacity .6s}.loader.hide{opacity:0;pointer-events:none}.loader-text{font-size:1.8rem;font-weight:800;color:var(--white);letter-spacing:3px}.loader-text span{color:var(--gold)}.loader-bar{width:80px;height:2px;background:rgba(255,255,255,.15);border-radius:2px;overflow:hidden}.loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--gold);animation:ld .8s ease-in-out infinite}@keyframes ld{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .4s}.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.06);padding:10px 0}.nav-inner{display:flex;align-items:center;justify-content:space-between}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo-icon{width:42px;height:42px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue-dark);font-weight:800;font-size:.9rem}.nav-logo-text{font-size:1.1rem;font-weight:700;color:var(--white);transition:color .3s}.nav-logo-text span{color:var(--gold)}.nav.scrolled .nav-logo-text{color:var(--blue)}.nav-links{display:flex;gap:28px;list-style:none}.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .3s}.nav.scrolled .nav-links a{color:var(--gray)}.nav-links a:hover{color:var(--gold)}.nav-btn{background:var(--gold);color:var(--blue-dark);padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;transition:all .3s;display:flex;align-items:center;gap:8px}.nav-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer}.nav.scrolled .menu-toggle{color:var(--blue)}
-.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80') center/cover}.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,51,80,.9) 0%,rgba(26,82,118,.65) 50%,rgba(93,173,226,.2) 100%)}.hero-inner{position:relative;z-index:2;max-width:600px;padding:120px 0 80px;padding-left:max(24px,calc((100vw - 1200px)/2 + 24px))}.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(244,197,66,.3);padding:8px 16px;border-radius:50px;color:var(--gold);font-size:.75rem;font-weight:600;letter-spacing:1px;margin-bottom:18px}.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.5rem);color:var(--white);line-height:1.12;margin-bottom:16px;font-weight:700}.hero h1 span{color:var(--gold)}.hero-desc{color:rgba(255,255,255,.7);font-size:.95rem;line-height:1.7;margin-bottom:28px;font-weight:300}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}.btn{padding:14px 28px;border-radius:50px;font-weight:600;font-size:.85rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer}.btn-gold{background:var(--gold);color:var(--blue-dark)}.btn-gold:hover{background:var(--gold-dark);transform:translateY(-3px);box-shadow:0 8px 20px rgba(244,197,66,.3)}.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.25)}.btn-outline:hover{background:rgba(255,255,255,.08);border-color:var(--white)}.hero-trust{display:flex;gap:20px;flex-wrap:wrap}.hero-trust span{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.55);font-size:.78rem}.hero-trust i{color:var(--gold)}
-.stats{background:var(--white);position:relative;z-index:5;margin-top:-45px}.stats-inner{background:var(--white);border-radius:16px;box-shadow:var(--shadow-lg);padding:30px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.stat{text-align:center}.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--blue);line-height:1}.stat-num span{color:var(--gold)}.stat-label{color:var(--gray);font-size:.75rem;margin-top:4px}
-.section{padding:80px 24px}.section-header{text-align:center;max-width:580px;margin:0 auto 50px}.section-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(26,82,118,.06);color:var(--blue);padding:6px 14px;border-radius:50px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}.section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.2vw,2.4rem);color:var(--dark);margin-bottom:10px;line-height:1.2}.section-title span{color:var(--blue)}.section-desc{color:var(--gray);font-size:.88rem;line-height:1.7;font-weight:300}
-.services{background:var(--cream)}.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.svc-card{background:var(--white);border-radius:var(--radius);padding:32px 24px;text-align:center;border:1px solid #eee;transition:all .4s}.svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}.svc-icon{width:60px;height:60px;border-radius:50%;background:rgba(26,82,118,.06);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.3rem;color:var(--blue);transition:all .3s}.svc-card:hover .svc-icon{background:var(--blue);color:var(--white)}.svc-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:6px}.svc-card p{font-size:.82rem;color:var(--gray);line-height:1.6;font-weight:300}
-.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}.prop{border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow);transition:all .4s}.prop:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}.prop-img{height:220px;overflow:hidden;position:relative}.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.prop:hover .prop-img img{transform:scale(1.06)}.prop-tag{position:absolute;top:12px;left:12px;padding:5px 12px;border-radius:6px;font-size:.68rem;font-weight:600;text-transform:uppercase;z-index:2;color:var(--white)}.prop-tag.sale{background:var(--blue)}.prop-tag.rent{background:var(--gold);color:var(--blue-dark)}.prop-tag.land{background:#27AE60}.prop-body{padding:18px}.prop-body h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:4px}.prop-loc{font-size:.78rem;color:var(--gray);margin-bottom:10px;display:flex;align-items:center;gap:4px}.prop-details{display:flex;gap:14px;margin-bottom:10px}.prop-det{font-size:.75rem;color:var(--gray);display:flex;align-items:center;gap:4px}.prop-det i{color:var(--blue-light);font-size:.8rem}.prop-price{font-family:var(--font-display);font-size:1.2rem;color:var(--blue);font-weight:700}
-.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.test-card{background:var(--white);border-radius:var(--radius);padding:26px;border:1px solid #eee;transition:all .3s}.test-card:hover{box-shadow:var(--shadow);border-color:var(--blue-light)}.test-stars{color:var(--gold);font-size:.82rem;letter-spacing:2px;margin-bottom:10px}.test-card p{font-size:.88rem;color:var(--text);line-height:1.6;margin-bottom:14px;font-weight:300;font-style:italic}.test-info strong{font-size:.82rem;color:var(--dark);display:block}.test-info span{font-size:.7rem;color:var(--gray)}
-.cta{background:linear-gradient(135deg,var(--blue-dark),var(--blue),var(--sky));padding:80px 24px;text-align:center;position:relative;overflow:hidden}.cta::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04)}.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:2}.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);margin-bottom:12px}.cta p{color:rgba(255,255,255,.7);font-size:.95rem;margin-bottom:28px;line-height:1.6;font-weight:300}.cta-buttons{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}.btn-white{background:var(--white);color:var(--blue);padding:14px 30px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.85rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s}.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
-.footer{background:var(--dark);color:rgba(255,255,255,.5);padding:50px 24px 20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:28px}.footer-brand h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px}.footer-brand h3 span{color:var(--gold)}.footer-brand p{font-size:.8rem;line-height:1.6;margin-bottom:12px;font-weight:300}.footer-social{display:flex;gap:10px}.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s;font-size:.82rem}.footer-social a:hover{background:var(--gold);color:var(--blue-dark);border-color:var(--gold)}.footer-col h4{font-size:.75rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:12px}.footer-col ul{list-style:none}.footer-col li{margin-bottom:8px}.footer-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.8rem;transition:color .3s;font-weight:300}.footer-col a:hover{color:var(--gold)}.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:14px;text-align:center;font-size:.72rem;color:rgba(255,255,255,.25)}
-.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow-lg);font-size:.8rem;font-weight:500;transform:translateY(8px);opacity:0;transition:all .3s;white-space:nowrap;pointer-events:none}.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}.wpp-btn{width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.5rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.35);transition:all .3s;animation:wppP 2s infinite}.wpp-btn:hover{transform:scale(1.1)}@keyframes wppP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;transition:all .4s}.nav.scrolled{background:rgba(255,255,255,.97);backdrop-filter:blur(12px);box-shadow:0 1px 12px rgba(0,0,0,.06);padding:10px 0}.nav-inner{display:flex;align-items:center;justify-content:space-between}.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}.nav-logo-icon{width:42px;height:42px;background:var(--gold);border-radius:10px;display:flex;align-items:center;justify-content:center;color:var(--blue-dark);font-weight:800;font-size:.9rem}.nav-logo-text{font-size:1.1rem;font-weight:700;color:var(--white);transition:color .3s}.nav-logo-text span{color:var(--gold)}.nav.scrolled .nav-logo-text{color:var(--blue)}.nav-links{display:flex;gap:24px;list-style:none}.nav-links a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.78rem;font-weight:500;transition:color .3s}.nav.scrolled .nav-links a{color:var(--gray)}.nav-links a:hover{color:var(--gold)}.nav-btn{background:var(--gold);color:var(--blue-dark);padding:10px 22px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;transition:all .3s;display:flex;align-items:center;gap:8px}.nav-btn:hover{background:var(--gold-dark);transform:translateY(-2px)}.menu-toggle{display:none;background:none;border:none;color:var(--white);font-size:1.3rem;cursor:pointer}.nav.scrolled .menu-toggle{color:var(--blue)}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden}.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=80') center/cover}.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(14,51,80,.9) 0%,rgba(26,82,118,.65) 50%,rgba(93,173,226,.2) 100%)}.hero-inner{position:relative;z-index:2;max-width:600px;padding:120px 0 80px;padding-left:max(24px,calc((100vw - 1200px)/2 + 24px))}.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(244,197,66,.3);padding:8px 16px;border-radius:50px;color:var(--gold);font-size:.72rem;font-weight:600;letter-spacing:1px;margin-bottom:18px}.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.5rem);color:var(--white);line-height:1.12;margin-bottom:16px;font-weight:700}.hero h1 span{color:var(--gold)}.hero-desc{color:rgba(255,255,255,.7);font-size:.92rem;line-height:1.7;margin-bottom:28px;font-weight:300}.hero-buttons{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:28px}
+.btn{padding:14px 28px;border-radius:50px;font-weight:600;font-size:.82rem;text-decoration:none;display:inline-flex;align-items:center;gap:10px;transition:all .3s;border:none;cursor:pointer}.btn-gold{background:var(--gold);color:var(--blue-dark)}.btn-gold:hover{background:var(--gold-dark);transform:translateY(-3px);box-shadow:0 8px 20px rgba(244,197,66,.3)}.btn-outline{background:transparent;color:var(--white);border:1.5px solid rgba(255,255,255,.25)}.btn-outline:hover{background:rgba(255,255,255,.08);border-color:var(--white)}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap}.hero-trust span{display:flex;align-items:center;gap:6px;color:rgba(255,255,255,.55);font-size:.76rem}.hero-trust i{color:var(--gold)}
+
+/* STATS */
+.stats{background:var(--white);position:relative;z-index:5;margin-top:-45px}.stats-inner{background:var(--white);border-radius:16px;box-shadow:var(--shadow-lg);padding:30px 36px;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}.stat{text-align:center}.stat-num{font-family:var(--font-display);font-size:2rem;font-weight:700;color:var(--blue);line-height:1}.stat-num span{color:var(--gold)}.stat-label{color:var(--gray);font-size:.72rem;margin-top:4px}
+
+/* SECTION */
+.section{padding:80px 24px}.section-header{text-align:center;max-width:600px;margin:0 auto 50px}.section-tag{display:inline-flex;align-items:center;gap:6px;background:rgba(26,82,118,.06);color:var(--blue);padding:6px 14px;border-radius:50px;font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px}.section-title{font-family:var(--font-display);font-size:clamp(1.7rem,3.2vw,2.4rem);color:var(--dark);margin-bottom:10px;line-height:1.2}.section-title span{color:var(--blue)}.section-desc{color:var(--gray);font-size:.86rem;line-height:1.7;font-weight:300}
+
+/* SERVICES */
+.services{background:var(--cream)}.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}.svc-card{background:var(--white);border-radius:var(--radius);padding:32px 24px;text-align:center;border:1px solid #eee;transition:all .4s;text-decoration:none;color:var(--text);display:block}.svc-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--gold)}.svc-icon{width:60px;height:60px;border-radius:50%;background:rgba(26,82,118,.06);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.3rem;color:var(--blue);transition:all .3s}.svc-card:hover .svc-icon{background:var(--blue);color:var(--white)}.svc-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:6px}.svc-card p{font-size:.8rem;color:var(--gray);line-height:1.6;font-weight:300}
+
+/* TABS */
+.tabs{display:flex;justify-content:center;gap:8px;margin-bottom:36px;flex-wrap:wrap}
+.tab-btn{padding:10px 24px;border-radius:50px;font-size:.78rem;font-weight:600;border:2px solid var(--border);background:var(--white);color:var(--gray);cursor:pointer;transition:all .3s}
+.tab-btn.active{background:var(--blue);color:var(--white);border-color:var(--blue)}
+.tab-btn:hover{border-color:var(--blue);color:var(--blue)}
+.tab-btn.active:hover{color:var(--white)}
+.tab-content{display:none}.tab-content.active{display:block}
+
+/* TEMPORADA CARDS */
+.temp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.temp-card{border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow);transition:all .4s;border:1px solid var(--border)}
+.temp-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--sky)}
+.temp-img{height:220px;overflow:hidden;position:relative}
+.temp-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.temp-card:hover .temp-img img{transform:scale(1.05)}
+.temp-badge{position:absolute;top:12px;left:12px;background:var(--green);color:var(--white);padding:4px 10px;border-radius:6px;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.temp-rating{position:absolute;top:12px;right:12px;background:rgba(0,0,0,.6);color:var(--gold);padding:4px 8px;border-radius:6px;font-size:.7rem;font-weight:700}
+.temp-body{padding:16px}
+.temp-body h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.temp-loc{font-size:.75rem;color:var(--gray);margin-bottom:10px;display:flex;align-items:center;gap:4px}
+.temp-amenities{display:flex;gap:12px;margin-bottom:12px;flex-wrap:wrap}
+.temp-am{font-size:.68rem;color:var(--gray);display:flex;align-items:center;gap:4px}
+.temp-am i{color:var(--blue-light);font-size:.75rem}
+.temp-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:12px;border-top:1px solid var(--border)}
+.temp-price{font-family:var(--font-display);font-size:1.2rem;color:var(--blue);font-weight:700}
+.temp-price small{font-size:.65rem;color:var(--gray);font-family:var(--font);font-weight:400}
+.temp-reserve{background:var(--blue);color:var(--white);padding:8px 18px;border-radius:50px;font-size:.72rem;font-weight:600;border:none;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.temp-reserve:hover{background:var(--blue-dark);transform:translateY(-1px)}
+
+/* BOOKING FORM */
+.booking-search{background:var(--white);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:24px 28px;display:grid;grid-template-columns:1fr 1fr 1fr auto;gap:16px;align-items:end;margin-bottom:36px;border:1px solid var(--border)}
+.booking-field label{display:block;font-size:.68rem;font-weight:600;color:var(--dark);margin-bottom:4px;text-transform:uppercase;letter-spacing:1px}
+.booking-field input,.booking-field select{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;color:var(--dark);font-family:var(--font);transition:border-color .3s}
+.booking-field input:focus,.booking-field select:focus{border-color:var(--blue);outline:none}
+.booking-go{background:var(--gold);color:var(--blue-dark);padding:10px 24px;border-radius:50px;font-weight:700;font-size:.8rem;border:none;cursor:pointer;transition:all .3s;white-space:nowrap;height:42px}
+.booking-go:hover{background:var(--gold-dark)}
+
+/* PROPERTIES (VENDA/ALUGUEL ANUAL) */
+.props-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.prop{border-radius:var(--radius);overflow:hidden;background:var(--white);box-shadow:var(--shadow);transition:all .4s;border:1px solid var(--border)}.prop:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}.prop-img{height:220px;overflow:hidden;position:relative}.prop-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}.prop:hover .prop-img img{transform:scale(1.06)}.prop-tag{position:absolute;top:12px;left:12px;padding:5px 12px;border-radius:6px;font-size:.65rem;font-weight:600;text-transform:uppercase;z-index:2;color:var(--white)}.prop-tag.sale{background:var(--blue)}.prop-tag.rent{background:var(--gold);color:var(--blue-dark)}.prop-tag.land{background:var(--green)}.prop-body{padding:16px}.prop-body h3{font-size:.95rem;font-weight:700;color:var(--dark);margin-bottom:4px}.prop-loc{font-size:.75rem;color:var(--gray);margin-bottom:10px;display:flex;align-items:center;gap:4px}.prop-details{display:flex;gap:14px;margin-bottom:10px;flex-wrap:wrap}.prop-det{font-size:.72rem;color:var(--gray);display:flex;align-items:center;gap:4px}.prop-det i{color:var(--blue-light);font-size:.8rem}.prop-price{font-family:var(--font-display);font-size:1.2rem;color:var(--blue);font-weight:700}
+.prop-cta{display:block;text-align:center;background:var(--blue);color:var(--white);padding:10px;font-size:.72rem;font-weight:600;letter-spacing:.5px;text-decoration:none;transition:all .3s;cursor:pointer;border:none;width:100%}
+.prop-cta:hover{background:var(--blue-dark)}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1000;display:none;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--white);border-radius:16px;max-width:480px;width:100%;padding:32px;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.2rem;color:var(--gray);cursor:pointer;transition:color .3s}
+.modal-close:hover{color:var(--dark)}
+.modal h2{font-family:var(--font-display);font-size:1.4rem;color:var(--dark);margin-bottom:4px}
+.modal .subtitle{font-size:.8rem;color:var(--gray);margin-bottom:20px;line-height:1.5}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.72rem;font-weight:600;color:var(--dark);margin-bottom:4px}
+.form-group input,.form-group select{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;color:var(--dark);font-family:var(--font);transition:border-color .3s}
+.form-group input:focus,.form-group select:focus{border-color:var(--blue);outline:none}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-submit{width:100%;padding:14px;background:var(--blue);color:var(--white);border:none;border-radius:50px;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .3s;margin-top:8px}
+.form-submit:hover{background:var(--blue-dark)}
+.form-note{font-size:.65rem;color:var(--gray);text-align:center;margin-top:10px}
+
+/* BOOKING MODAL */
+.booking-modal .modal{max-width:520px}
+.bk-prop{display:flex;gap:14px;background:var(--cream);border-radius:10px;padding:14px;margin-bottom:20px}
+.bk-prop img{width:100px;height:80px;border-radius:8px;object-fit:cover}
+.bk-prop-info h3{font-size:.88rem;font-weight:700;color:var(--dark);margin-bottom:2px}
+.bk-prop-info p{font-size:.72rem;color:var(--gray)}
+.bk-prop-info .bk-price{font-family:var(--font-display);font-size:1rem;color:var(--blue);font-weight:700;margin-top:4px}
+.bk-dates{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+
+/* REVIEWS */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.test-card{background:var(--white);border-radius:var(--radius);padding:24px;border:1px solid #eee;transition:all .3s}.test-card:hover{box-shadow:var(--shadow);border-color:var(--blue-light)}.test-stars{color:var(--gold);font-size:.8rem;letter-spacing:2px;margin-bottom:8px}.test-card p{font-size:.84rem;color:var(--text);line-height:1.6;margin-bottom:12px;font-weight:300;font-style:italic}.test-info strong{font-size:.8rem;color:var(--dark);display:block}.test-info span{font-size:.68rem;color:var(--gray)}
+
+/* CTA */
+.cta{background:linear-gradient(135deg,var(--blue-dark),var(--blue),var(--sky));padding:80px 24px;text-align:center;position:relative;overflow:hidden}.cta::before{content:'';position:absolute;top:-80px;right:-60px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.04)}.cta-inner{max-width:600px;margin:0 auto;position:relative;z-index:2}.cta h2{font-family:var(--font-display);font-size:clamp(1.8rem,4vw,2.6rem);color:var(--white);margin-bottom:12px}.cta p{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:28px;line-height:1.6;font-weight:300}
+.btn-white{background:var(--white);color:var(--blue);padding:14px 30px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;display:inline-flex;align-items:center;gap:10px;transition:all .3s}.btn-white:hover{transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+
+/* FOOTER */
+.footer{background:var(--dark);color:rgba(255,255,255,.5);padding:50px 24px 20px}.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:28px}.footer-brand h3{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:8px}.footer-brand h3 span{color:var(--gold)}.footer-brand p{font-size:.78rem;line-height:1.6;margin-bottom:12px;font-weight:300}.footer-social{display:flex;gap:10px}.footer-social a{width:36px;height:36px;border-radius:50%;border:1px solid rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.4);text-decoration:none;transition:all .3s;font-size:.82rem}.footer-social a:hover{background:var(--gold);color:var(--blue-dark);border-color:var(--gold)}.footer-col h4{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:12px}.footer-col ul{list-style:none}.footer-col li{margin-bottom:8px}.footer-col a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.78rem;transition:color .3s;font-weight:300}.footer-col a:hover{color:var(--gold)}.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:14px;text-align:center;font-size:.68rem;color:rgba(255,255,255,.25)}
+
+/* WPP FLOAT */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:8px}.wpp-tooltip{background:var(--white);color:var(--dark);padding:10px 16px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow-lg);font-size:.78rem;font-weight:500;transform:translateY(8px);opacity:0;transition:all .3s;pointer-events:none}.wpp-float:hover .wpp-tooltip{transform:translateY(0);opacity:1}.wpp-btn{width:56px;height:56px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:var(--white);font-size:1.5rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.35);transition:all .3s;animation:wppP 2s infinite}.wpp-btn:hover{transform:scale(1.1)}@keyframes wppP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.4)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
 .reveal{opacity:0;transform:translateY(20px);transition:all .6s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:1024px){.props-grid,.svc-grid{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}}
-@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(14,51,80,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1.1rem}.nav-btn{display:none}.menu-toggle{display:block;z-index:201}.hero{min-height:85vh}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.stats-inner{grid-template-columns:1fr 1fr;margin-top:-25px}.svc-grid,.props-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.cta-buttons{flex-direction:column;align-items:center}.btn-white{width:100%;max-width:300px;justify-content:center}}
+
+@media(max-width:1024px){.temp-grid,.props-grid,.svc-grid{grid-template-columns:1fr 1fr}.test-grid{grid-template-columns:1fr}.footer-grid{grid-template-columns:1fr}.booking-search{grid-template-columns:1fr 1fr}.bk-dates{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(14,51,80,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1.1rem}.nav-btn{display:none}.menu-toggle{display:block;z-index:201}.hero-buttons{flex-direction:column}.btn{width:100%;justify-content:center}.stats-inner{grid-template-columns:1fr 1fr;margin-top:-25px}.svc-grid,.temp-grid,.props-grid{grid-template-columns:1fr}.booking-search{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <div class="loader" id="loader"><div class="loader-text">KT <span>IMÓVEIS</span></div><div class="loader-bar"></div></div>
 
-<nav class="nav" id="nav">
-<div class="container nav-inner">
+<nav class="nav" id="nav"><div class="container nav-inner">
 <a href="#" class="nav-logo"><div class="nav-logo-icon">KT</div><div class="nav-logo-text">KT <span>Imóveis</span></div></a>
 <ul class="nav-links" id="navLinks">
 <li><a href="#servicos" onclick="closeMenu()">Serviços</a></li>
+<li><a href="#temporada" onclick="closeMenu()">Temporada</a></li>
 <li><a href="#imoveis" onclick="closeMenu()">Imóveis</a></li>
 <li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
 </ul>
 <a href="https://www.instagram.com/kt.imoveis24" class="nav-btn" target="_blank"><i class="fab fa-instagram"></i> Fale Conosco</a>
 <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
-</div>
-</nav>
+</div></nav>
 
 <section class="hero">
 <div class="hero-bg"></div>
 <div class="hero-inner">
 <div class="hero-badge"><i class="fas fa-award"></i> CRECI 086597 | CNAI 048495</div>
 <h1>Seu imóvel dos sonhos em <span>Angra dos Reis</span></h1>
-<p class="hero-desc">Venda, aluguel e avaliação de imóveis na Costa Verde. Casas, apartamentos e terrenos com vista para o paraíso. Atendimento personalizado e avaliação profissional.</p>
+<p class="hero-desc">Venda, aluguel anual, temporada e avaliação profissional. Reserve casas de temporada online ou encontre o imóvel perfeito com atendimento personalizado.</p>
 <div class="hero-buttons">
-<a href="https://www.instagram.com/kt.imoveis24" class="btn btn-gold" target="_blank"><i class="fab fa-instagram"></i> Falar com a KT</a>
+<a href="#temporada" class="btn btn-gold"><i class="fas fa-umbrella-beach"></i> Reservar Temporada</a>
 <a href="#imoveis" class="btn btn-outline"><i class="fas fa-building"></i> Ver Imóveis</a>
 </div>
 <div class="hero-trust">
 <span><i class="fas fa-check-circle"></i> CRECI Ativo</span>
 <span><i class="fas fa-check-circle"></i> Perita Avaliadora</span>
-<span><i class="fas fa-check-circle"></i> Angra dos Reis</span>
+<span><i class="fas fa-check-circle"></i> Reserva Online</span>
 </div>
 </div>
 </section>
@@ -71,65 +165,228 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 <div class="stats"><div class="container"><div class="stats-inner">
 <div class="stat reveal"><div class="stat-num">250<span>+</span></div><div class="stat-label">Imóveis negociados</div></div>
 <div class="stat reveal"><div class="stat-num">15<span>+</span></div><div class="stat-label">Anos de experiência</div></div>
-<div class="stat reveal"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Avaliação dos clientes</div></div>
+<div class="stat reveal"><div class="stat-num">4.9<span>★</span></div><div class="stat-label">Avaliação</div></div>
 <div class="stat reveal"><div class="stat-num">100<span>%</span></div><div class="stat-label">Foco em Angra</div></div>
 </div></div></div>
 
 <section class="section services" id="servicos">
-<div class="section-header reveal"><span class="section-tag"><i class="fas fa-concierge-bell"></i> Serviços</span><h2 class="section-title">Como posso <span>ajudar você</span></h2><p class="section-desc">Serviços completos para quem quer comprar, vender, alugar ou avaliar imóveis em Angra dos Reis.</p></div>
+<div class="section-header reveal"><span class="section-tag"><i class="fas fa-concierge-bell"></i> Serviços</span><h2 class="section-title">Soluções completas em <span>imóveis</span></h2><p class="section-desc">Da temporada dos sonhos ao lar definitivo em Angra dos Reis.</p></div>
 <div class="container"><div class="svc-grid">
-<div class="svc-card reveal"><div class="svc-icon"><i class="fas fa-handshake"></i></div><h3>Venda de Imóveis</h3><p>Anúncio profissional, precificação estratégica e acompanhamento completo até a escritura. Venda pelo melhor valor.</p></div>
-<div class="svc-card reveal"><div class="svc-icon"><i class="fas fa-key"></i></div><h3>Aluguel</h3><p>Locação de temporada e anual com contrato seguro, análise de perfil e gestão completa do imóvel.</p></div>
-<div class="svc-card reveal"><div class="svc-icon"><i class="fas fa-chart-bar"></i></div><h3>Avaliação Profissional</h3><p>Laudo técnico com CNAI 048495. Avaliação precisa de mercado para venda, inventário ou financiamento.</p></div>
+<a href="#temporada" class="svc-card reveal"><div class="svc-icon"><i class="fas fa-umbrella-beach"></i></div><h3>Aluguel de Temporada</h3><p>Casas equipadas para suas férias. Reserve online com check-in e check-out, escolha datas e número de hóspedes.</p></a>
+<a href="#imoveis" class="svc-card reveal"><div class="svc-icon"><i class="fas fa-key"></i></div><h3>Aluguel Anual</h3><p>Locação residencial e comercial com contrato seguro, análise de perfil e gestão completa do imóvel.</p></a>
+<div class="svc-card reveal"><div class="svc-icon"><i class="fas fa-handshake"></i></div><h3>Venda de Imóveis</h3><p>Casas, apartamentos e terrenos. Precificação estratégica e acompanhamento completo até a escritura.</p></div>
 </div></div>
 </section>
 
-<section class="section" id="imoveis">
-<div class="section-header reveal"><span class="section-tag"><i class="fas fa-home"></i> Portfólio</span><h2 class="section-title">Imóveis em <span>destaque</span></h2><p class="section-desc">Algumas das melhores oportunidades em Angra dos Reis. Fale conosco para ver o portfólio completo.</p></div>
-<div class="container"><div class="props-grid">
-<div class="prop reveal"><div class="prop-img"><span class="prop-tag sale">Venda</span><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Casa Praia Grande" loading="lazy"></div><div class="prop-body"><h3>Casa 4 Quartos — Vista Mar</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Praia Grande, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 4 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 3 banheiros</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 250m²</div></div><div class="prop-price">R$ 980.000</div></div></div>
-<div class="prop reveal"><div class="prop-img"><span class="prop-tag rent">Aluguel</span><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Apartamento Ribeira" loading="lazy"></div><div class="prop-body"><h3>Apartamento 2 Quartos</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Praia da Ribeira, Angra</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 2 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 1 banheiro</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 75m²</div></div><div class="prop-price">R$ 1.800<span style="font-size:.7rem;color:var(--gray);font-family:var(--font)">/mês</span></div></div></div>
-<div class="prop reveal"><div class="prop-img"><span class="prop-tag land">Terreno</span><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Terreno Frade" loading="lazy"></div><div class="prop-body"><h3>Terreno 600m² — Condomínio</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Frade, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-ruler-combined"></i> 600m²</div><div class="prop-det"><i class="fas fa-tree"></i> Plano</div><div class="prop-det"><i class="fas fa-shield-halved"></i> Condomínio</div></div><div class="prop-price">R$ 320.000</div></div></div>
+<!-- TEMPORADA -->
+<section class="section" id="temporada" style="background:var(--cream)">
+<div class="section-header reveal"><span class="section-tag"><i class="fas fa-umbrella-beach"></i> Temporada</span><h2 class="section-title">Casas de <span>temporada</span> em Angra</h2><p class="section-desc">Escolha suas datas, o número de hóspedes e reserve online. Simples como reservar uma pousada.</p></div>
+<div class="container">
+
+<div class="booking-search reveal">
+<div class="booking-field"><label>Check-in</label><input type="date" id="checkin"></div>
+<div class="booking-field"><label>Check-out</label><input type="date" id="checkout"></div>
+<div class="booking-field"><label>Hóspedes</label><select><option>2 hóspedes</option><option>3 hóspedes</option><option>4 hóspedes</option><option>5 hóspedes</option><option>6 hóspedes</option><option>8 hóspedes</option><option>10+ hóspedes</option></select></div>
+<button class="booking-go" onclick="alert('Mostrando casas disponíveis para o período selecionado!')"><i class="fas fa-search"></i> Buscar</button>
 </div>
-<div style="text-align:center;margin-top:36px" class="reveal"><a href="https://www.instagram.com/kt.imoveis24" class="btn btn-gold" target="_blank"><i class="fab fa-instagram"></i> Ver Todos os Imóveis</a></div>
+
+<div class="temp-grid">
+
+<div class="temp-card reveal">
+<div class="temp-img"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Casa Praia Grande" loading="lazy"><span class="temp-badge">Disponível</span><span class="temp-rating">★ 4.9</span></div>
+<div class="temp-body"><h3>Casa com Piscina e Vista Mar</h3><div class="temp-loc"><i class="fas fa-map-marker-alt"></i> Praia Grande, Angra dos Reis</div>
+<div class="temp-amenities"><span class="temp-am"><i class="fas fa-bed"></i> 4 quartos</span><span class="temp-am"><i class="fas fa-bath"></i> 3 banheiros</span><span class="temp-am"><i class="fas fa-users"></i> Até 10</span><span class="temp-am"><i class="fas fa-water"></i> Piscina</span><span class="temp-am"><i class="fas fa-wifi"></i> Wi-Fi</span></div>
+<div class="temp-bottom"><div class="temp-price">R$ 850 <small>/noite</small></div><button class="temp-reserve" onclick="openBooking('Casa com Piscina e Vista Mar','Praia Grande','R$ 850/noite','https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=200&q=80')"><i class="fas fa-calendar-check"></i> Reservar</button></div>
+</div></div>
+
+<div class="temp-card reveal">
+<div class="temp-img"><img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=600&q=80" alt="Casa Bracuí" loading="lazy"><span class="temp-badge">Disponível</span><span class="temp-rating">★ 4.8</span></div>
+<div class="temp-body"><h3>Chalé Aconchegante na Montanha</h3><div class="temp-loc"><i class="fas fa-map-marker-alt"></i> Bracuí, Angra dos Reis</div>
+<div class="temp-amenities"><span class="temp-am"><i class="fas fa-bed"></i> 2 quartos</span><span class="temp-am"><i class="fas fa-bath"></i> 1 banheiro</span><span class="temp-am"><i class="fas fa-users"></i> Até 5</span><span class="temp-am"><i class="fas fa-fire"></i> Churrasqueira</span><span class="temp-am"><i class="fas fa-wifi"></i> Wi-Fi</span></div>
+<div class="temp-bottom"><div class="temp-price">R$ 420 <small>/noite</small></div><button class="temp-reserve" onclick="openBooking('Chalé Aconchegante na Montanha','Bracuí','R$ 420/noite','https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=200&q=80')"><i class="fas fa-calendar-check"></i> Reservar</button></div>
+</div></div>
+
+<div class="temp-card reveal">
+<div class="temp-img"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Casa Frade" loading="lazy"><span class="temp-badge">Disponível</span><span class="temp-rating">★ 5.0</span></div>
+<div class="temp-body"><h3>Mansão Beira-Mar Frade</h3><div class="temp-loc"><i class="fas fa-map-marker-alt"></i> Frade, Angra dos Reis</div>
+<div class="temp-amenities"><span class="temp-am"><i class="fas fa-bed"></i> 5 quartos</span><span class="temp-am"><i class="fas fa-bath"></i> 4 banheiros</span><span class="temp-am"><i class="fas fa-users"></i> Até 14</span><span class="temp-am"><i class="fas fa-water"></i> Piscina</span><span class="temp-am"><i class="fas fa-ship"></i> Pier</span></div>
+<div class="temp-bottom"><div class="temp-price">R$ 1.500 <small>/noite</small></div><button class="temp-reserve" onclick="openBooking('Mansão Beira-Mar Frade','Frade','R$ 1.500/noite','https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&q=80')"><i class="fas fa-calendar-check"></i> Reservar</button></div>
+</div></div>
+
+</div>
 </div>
 </section>
+
+<!-- BOOKING MODAL -->
+<div class="modal-overlay booking-modal" id="bookingModal">
+<div class="modal">
+<button class="modal-close" onclick="closeModal('bookingModal')">&times;</button>
+<h2>Reservar Temporada</h2>
+<p class="subtitle">Preencha os dados para solicitar a reserva. Confirmaremos a disponibilidade em até 2 horas.</p>
+<div class="bk-prop" id="bkPropInfo"></div>
+<div class="bk-dates">
+<div class="form-group"><label>Check-in</label><input type="date"></div>
+<div class="form-group"><label>Check-out</label><input type="date"></div>
+</div>
+<div class="form-group"><label>Número de hóspedes</label><select><option>2 hóspedes</option><option>3 hóspedes</option><option>4 hóspedes</option><option>5 hóspedes</option><option>6+</option></select></div>
+<div class="form-row">
+<div class="form-group"><label>Nome completo</label><input type="text" placeholder="Seu nome"></div>
+<div class="form-group"><label>WhatsApp</label><input type="tel" placeholder="(00) 00000-0000"></div>
+</div>
+<div class="form-group"><label>E-mail</label><input type="email" placeholder="seu@email.com"></div>
+<div class="form-group"><label>Observações (opcional)</label><input type="text" placeholder="Algo que devemos saber?"></div>
+<button class="form-submit" onclick="alert('Reserva enviada com sucesso! Entraremos em contato em até 2 horas para confirmar a disponibilidade. Obrigada!');closeModal('bookingModal')"><i class="fas fa-calendar-check"></i> Solicitar Reserva</button>
+<p class="form-note">Você não será cobrado agora. A reserva será confirmada por WhatsApp.</p>
+</div>
+</div>
+
+<!-- VENDA E ALUGUEL ANUAL -->
+<section class="section" id="imoveis">
+<div class="section-header reveal"><span class="section-tag"><i class="fas fa-home"></i> Imóveis</span><h2 class="section-title">Venda e <span>aluguel anual</span></h2><p class="section-desc">Imóveis para morar ou investir em Angra dos Reis. Preencha a triagem para agendar uma visita.</p></div>
+<div class="container">
+
+<div class="tabs reveal">
+<button class="tab-btn active" onclick="switchTab('todos')">Todos</button>
+<button class="tab-btn" onclick="switchTab('venda')">Venda</button>
+<button class="tab-btn" onclick="switchTab('aluguel')">Aluguel Anual</button>
+<button class="tab-btn" onclick="switchTab('terreno')">Terrenos</button>
+</div>
+
+<div class="props-grid" id="propsGrid">
+
+<div class="prop reveal" data-type="venda">
+<div class="prop-img"><span class="prop-tag sale">Venda</span><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=600&q=80" alt="Casa" loading="lazy"></div>
+<div class="prop-body"><h3>Casa 4 Quartos com Vista Mar</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Praia Grande, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 4 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 3 banheiros</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 250m²</div></div><div class="prop-price">R$ 980.000</div></div>
+<button class="prop-cta" onclick="openTriagem('Casa 4 Quartos com Vista Mar - Venda')"><i class="fas fa-clipboard-list"></i> Tenho Interesse</button>
+</div>
+
+<div class="prop reveal" data-type="aluguel">
+<div class="prop-img"><span class="prop-tag rent">Aluguel Anual</span><img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600&q=80" alt="Apartamento" loading="lazy"></div>
+<div class="prop-body"><h3>Apartamento 2 Quartos Mobiliado</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Praia da Ribeira, Angra</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 2 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 1 banheiro</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 75m²</div></div><div class="prop-price">R$ 1.800<small style="font-size:.65rem;color:var(--gray);font-family:var(--font);font-weight:400">/mês</small></div></div>
+<button class="prop-cta" onclick="openTriagem('Apto 2 Quartos Ribeira - Aluguel Anual')"><i class="fas fa-clipboard-list"></i> Tenho Interesse</button>
+</div>
+
+<div class="prop reveal" data-type="terreno">
+<div class="prop-img"><span class="prop-tag land">Terreno</span><img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=600&q=80" alt="Terreno" loading="lazy"></div>
+<div class="prop-body"><h3>Terreno 600m² em Condomínio</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Frade, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-ruler-combined"></i> 600m²</div><div class="prop-det"><i class="fas fa-tree"></i> Plano</div><div class="prop-det"><i class="fas fa-shield-halved"></i> Condomínio</div></div><div class="prop-price">R$ 320.000</div></div>
+<button class="prop-cta" onclick="openTriagem('Terreno 600m² Frade - Venda')"><i class="fas fa-clipboard-list"></i> Tenho Interesse</button>
+</div>
+
+<div class="prop reveal" data-type="venda">
+<div class="prop-img"><span class="prop-tag sale">Venda</span><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80" alt="Casa" loading="lazy"></div>
+<div class="prop-body"><h3>Casa Duplex 3 Quartos</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Jacuecanga, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 3 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 2 banheiros</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 180m²</div></div><div class="prop-price">R$ 650.000</div></div>
+<button class="prop-cta" onclick="openTriagem('Casa Duplex Jacuecanga - Venda')"><i class="fas fa-clipboard-list"></i> Tenho Interesse</button>
+</div>
+
+<div class="prop reveal" data-type="aluguel">
+<div class="prop-img"><span class="prop-tag rent">Aluguel Anual</span><img src="https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&q=80" alt="Casa" loading="lazy"></div>
+<div class="prop-body"><h3>Casa 3 Quartos com Quintal</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Japuíba, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 3 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 2 banheiros</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 120m²</div></div><div class="prop-price">R$ 2.200<small style="font-size:.65rem;color:var(--gray);font-family:var(--font);font-weight:400">/mês</small></div></div>
+<button class="prop-cta" onclick="openTriagem('Casa 3 Quartos Japuíba - Aluguel Anual')"><i class="fas fa-clipboard-list"></i> Tenho Interesse</button>
+</div>
+
+<div class="prop reveal" data-type="venda">
+<div class="prop-img"><span class="prop-tag sale">Venda</span><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=600&q=80" alt="Casa" loading="lazy"></div>
+<div class="prop-body"><h3>Cobertura 2 Quartos Vista Baía</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> Centro, Angra dos Reis</div><div class="prop-details"><div class="prop-det"><i class="fas fa-bed"></i> 2 quartos</div><div class="prop-det"><i class="fas fa-bath"></i> 2 banheiros</div><div class="prop-det"><i class="fas fa-ruler-combined"></i> 95m²</div></div><div class="prop-price">R$ 520.000</div></div>
+<button class="prop-cta" onclick="openTriagem('Cobertura Centro - Venda')"><i class="fas fa-clipboard-list"></i> Tenho Interesse</button>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- TRIAGEM MODAL -->
+<div class="modal-overlay" id="triagemModal">
+<div class="modal">
+<button class="modal-close" onclick="closeModal('triagemModal')">&times;</button>
+<h2>Manifestar Interesse</h2>
+<p class="subtitle" id="triagemProp"></p>
+<p class="subtitle" style="margin-top:-12px;color:var(--blue);font-weight:500;font-size:.72rem">Preencha os dados abaixo para agendar uma visita. Informações usadas apenas para qualificação.</p>
+<div class="form-group"><label>Nome completo *</label><input type="text" placeholder="Seu nome completo"></div>
+<div class="form-group"><label>E-mail *</label><input type="email" placeholder="seu@email.com"></div>
+<div class="form-row">
+<div class="form-group"><label>CPF *</label><input type="text" placeholder="000.000.000-00"></div>
+<div class="form-group"><label>WhatsApp *</label><input type="tel" placeholder="(00) 00000-0000"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Renda mensal média *</label><select><option value="">Selecione</option><option>Até R$ 3.000</option><option>R$ 3.000 a R$ 5.000</option><option>R$ 5.000 a R$ 10.000</option><option>R$ 10.000 a R$ 20.000</option><option>Acima de R$ 20.000</option></select></div>
+<div class="form-group"><label>Profissão *</label><input type="text" placeholder="Ex: Empresário, Servidor..."></div>
+</div>
+<button class="form-submit" onclick="alert('Dados enviados com sucesso! Entraremos em contato em até 24 horas para agendar sua visita. Obrigada!');closeModal('triagemModal')"><i class="fas fa-paper-plane"></i> Enviar e Agendar Visita</button>
+<p class="form-note">Seus dados estão protegidos e serão usados apenas para qualificação e agendamento.</p>
+</div>
+</div>
 
 <section class="section" style="background:var(--cream)" id="depoimentos">
 <div class="section-header reveal"><span class="section-tag"><i class="fas fa-star"></i> Depoimentos</span><h2 class="section-title">Clientes que <span>realizaram o sonho</span></h2></div>
 <div class="container"><div class="test-grid">
-<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Comprei minha casa em Angra com a KT Imóveis e foi a melhor decisão. Atendimento impecável, transparência total e encontraram exatamente o que eu queria!"</p><div class="test-info"><strong>Ricardo Alves</strong><span>Comprou casa — Praia Grande</span></div></div>
-<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Precisava de uma avaliação profissional para inventário e a KT fez com competência e rapidez. Laudo detalhado e preço justo. Recomendo!"</p><div class="test-info"><strong>Maria Helena</strong><span>Avaliação — Bracuí</span></div></div>
-<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Aluguei meu apartamento em temporada e a gestão foi perfeita. Cuidaram de tudo — fotos, anúncio, inquilinos e pagamento. Sem estresse!"</p><div class="test-info"><strong>Carlos Eduardo</strong><span>Proprietário — Ribeira</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Comprei minha casa em Angra com a KT Imóveis e foi a melhor decisão. Atendimento impecável, transparência total e encontraram exatamente o que eu queria!"</p><div class="test-info"><strong>Ricardo Alves</strong><span>Comprou casa em Praia Grande</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Reservei uma casa de temporada pelo site e foi perfeito. Tudo como nas fotos, check-in organizado e a Vivian deu todo suporte. Voltarei com certeza!"</p><div class="test-info"><strong>Patrícia Souza</strong><span>Temporada no Frade</span></div></div>
+<div class="test-card reveal"><div class="test-stars">★★★★★</div><p>"Aluguei meu apartamento anual e a gestão foi perfeita. Análise de inquilinos criteriosa, contrato seguro e pagamento sempre em dia."</p><div class="test-info"><strong>Carlos Eduardo</strong><span>Proprietário em Ribeira</span></div></div>
 </div></div>
 </section>
 
 <section class="cta">
 <div class="cta-inner reveal">
 <h2>Encontre seu paraíso em Angra dos Reis</h2>
-<p>Fale conosco pelo Instagram e descubra as melhores oportunidades em imóveis na Costa Verde. Atendimento personalizado e avaliação profissional.</p>
-<div class="cta-buttons">
-<a href="https://www.instagram.com/kt.imoveis24" class="btn-white" target="_blank"><i class="fab fa-instagram"></i> Falar com a KT Imóveis</a>
+<p>Reserve sua temporada online ou fale conosco para comprar e alugar. Atendimento personalizado e avaliação profissional.</p>
+<div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+<a href="#temporada" class="btn-white"><i class="fas fa-umbrella-beach"></i> Reservar Temporada</a>
+<a href="https://www.instagram.com/kt.imoveis24" class="btn-white" target="_blank"><i class="fab fa-instagram"></i> Falar com a KT</a>
 </div>
 </div>
 </section>
 
 <footer class="footer"><div class="container">
 <div class="footer-grid">
-<div class="footer-brand"><h3>KT <span>Imóveis</span></h3><p>Imóveis em Angra dos Reis — Venda, Aluguel e Avaliação Profissional. CRECI 086597 | CNAI 048495.</p><div class="footer-social"><a href="https://www.instagram.com/kt.imoveis24" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
-<div class="footer-col"><h4>Serviços</h4><ul><li><a href="#servicos">Venda</a></li><li><a href="#servicos">Aluguel</a></li><li><a href="#servicos">Avaliação</a></li></ul></div>
+<div class="footer-brand"><h3>KT <span>Imóveis</span></h3><p>Imóveis em Angra dos Reis. Venda, aluguel anual, temporada e avaliação profissional. CRECI 086597 | CNAI 048495. Reserve online ou fale conosco.</p><div class="footer-social"><a href="https://www.instagram.com/kt.imoveis24" target="_blank"><i class="fab fa-instagram"></i></a></div></div>
+<div class="footer-col"><h4>Serviços</h4><ul><li><a href="#temporada">Temporada</a></li><li><a href="#imoveis">Aluguel Anual</a></li><li><a href="#imoveis">Venda</a></li><li><a href="#servicos">Avaliação</a></li></ul></div>
 <div class="footer-col"><h4>Contato</h4><ul><li><a href="https://www.instagram.com/kt.imoveis24" target="_blank"><i class="fab fa-instagram"></i> @kt.imoveis24</a></li><li><a href="#"><i class="fas fa-map-marker-alt"></i> Angra dos Reis, RJ</a></li><li><a href="#"><i class="fas fa-id-card"></i> CRECI 086597</a></li></ul></div>
 </div>
 <div class="footer-bottom">&copy; 2026 KT Imóveis. CRECI 086597 | CNAI 048495. Todos os direitos reservados.</div>
 </div></footer>
 
-<div class="wpp-float"><div class="wpp-tooltip">Fale conosco!</div><a href="https://www.instagram.com/kt.imoveis24" class="wpp-btn" target="_blank" style="background:var(--blue)"><i class="fab fa-instagram"></i></a></div>
+<div class="wpp-float"><div class="wpp-tooltip">Fale com a KT Imóveis!</div><a href="https://www.instagram.com/kt.imoveis24" class="wpp-btn" target="_blank" style="background:var(--blue)"><i class="fab fa-instagram"></i></a></div>
 
 <script>
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',600)},500)});
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
 function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
 function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+
+// Tabs filter
+function switchTab(type){
+document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+event.target.classList.add('active');
+document.querySelectorAll('#propsGrid .prop').forEach(p=>{
+if(type==='todos'){p.style.display=''}
+else{p.style.display=p.dataset.type===type?'':'none'}
+});
+}
+
+// Triagem modal
+function openTriagem(prop){
+document.getElementById('triagemProp').textContent='Imóvel: '+prop;
+document.getElementById('triagemModal').classList.add('open');
+document.body.style.overflow='hidden';
+}
+
+// Booking modal
+function openBooking(name,loc,price,img){
+document.getElementById('bkPropInfo').innerHTML='<img src="'+img+'" alt=""><div class="bk-prop-info"><h3>'+name+'</h3><p><i class="fas fa-map-marker-alt"></i> '+loc+'</p><div class="bk-price">'+price+'</div></div>';
+document.getElementById('bookingModal').classList.add('open');
+document.body.style.overflow='hidden';
+}
+
+function closeModal(id){
+document.getElementById(id).classList.remove('open');
+document.body.style.overflow='';
+}
+
+// Close modal on overlay click
+document.querySelectorAll('.modal-overlay').forEach(o=>{
+o.addEventListener('click',e=>{if(e.target===o){o.classList.remove('open');document.body.style.overflow=''}});
+});
+
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-70;window.scrollTo({top:y,behavior:'smooth'})}})});
