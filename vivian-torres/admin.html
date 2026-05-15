@@ -93,6 +93,17 @@ tr:hover{background:rgba(26,82,118,.02)}
 .amenidade-tag.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
 .form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
 .close-modal{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--gray)}
+.auto-code{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;color:var(--gray);font-style:italic}
+.auto-code i{color:var(--green)}
+.upload-zone{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative}
+.upload-zone:hover,.upload-zone.dragover{border-color:var(--blue);background:rgba(26,82,118,.03)}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.upload-zone i{font-size:1.5rem;color:var(--light);margin-bottom:6px;display:block}
+.upload-zone p{font-size:.78rem;color:var(--gray)}.upload-zone small{font-size:.65rem;color:var(--light)}
+.foto-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.foto-thumb{width:80px;height:60px;border-radius:8px;overflow:hidden;position:relative;border:1px solid var(--border)}
+.foto-thumb img{width:100%;height:100%;object-fit:cover}
+.foto-thumb .remove{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;border:none;font-size:.55rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
 @media(max-width:768px){.app.active{grid-template-columns:1fr}.sidebar{display:none}.stats-row{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.table-wrap{overflow-x:auto}}
 </style>
@@ -155,11 +166,12 @@ tr:hover{background:rgba(26,82,118,.02)}
 <input type="hidden" id="editId">
 
 <div class="form-section">Informações básicas</div>
+<input type="hidden" id="fCodigo">
 <div class="form-grid">
-<div class="fg"><label>Código *</label><input type="text" id="fCodigo" placeholder="Ex: V001, A001, T001"></div>
-<div class="fg"><label>Tipo *</label><select id="fTipo"><option value="venda">Venda</option><option value="aluguel">Aluguel Anual</option><option value="temporada">Temporada</option></select></div>
+<div class="fg"><label>Tipo *</label><select id="fTipo" onchange="updateAutoCode()"><option value="venda">Venda</option><option value="aluguel">Aluguel Anual</option><option value="temporada">Temporada</option></select></div>
 <div class="fg"><label>Categoria *</label><select id="fCategoria"><option value="casa">Casa</option><option value="apartamento">Apartamento</option><option value="terreno">Terreno</option><option value="cobertura">Cobertura</option></select></div>
 <div class="fg"><label>Status</label><select id="fStatus"><option value="disponivel">Disponível</option><option value="reservado">Reservado</option><option value="vendido">Vendido/Alugado</option></select></div>
+<div class="fg"><label>Código (automático)</label><div class="auto-code" id="autoCodeDisplay"><i class="fas fa-check-circle"></i> <span id="autoCodeText">V001</span></div></div>
 </div>
 <div class="form-grid full" style="margin-top:14px">
 <div class="fg"><label>Título *</label><input type="text" id="fTitulo" placeholder="Ex: Casa 4 Quartos com Vista Mar"></div>
@@ -193,7 +205,16 @@ tr:hover{background:rgba(26,82,118,.02)}
 
 <div class="form-section">Fotos</div>
 <div class="form-grid full">
-<div class="fg"><label>URLs das fotos (uma por linha)</label><textarea id="fFotos" placeholder="https://link-da-foto-1.jpg&#10;https://link-da-foto-2.jpg&#10;https://link-da-foto-3.jpg" style="min-height:100px"></textarea></div>
+<div class="fg">
+<label>Selecione as fotos do imóvel</label>
+<div class="upload-zone" id="uploadZone">
+<input type="file" id="fFotosInput" multiple accept="image/*" onchange="handleFiles(this.files)">
+<i class="fas fa-cloud-arrow-up"></i>
+<p>Clique aqui ou arraste as fotos</p>
+<small>Aceita JPG, PNG, WEBP. Máx 10 fotos. Funciona no celular e computador.</small>
+</div>
+<div class="foto-preview" id="fotoPreview"></div>
+</div>
 </div>
 
 <div class="form-actions">
@@ -298,6 +319,79 @@ function formatPrice(i){
 }
 
 // ============================================
+// AUTO CODE
+// ============================================
+function generateCode(tipo){
+  const prefix = tipo==='venda'?'V':tipo==='aluguel'?'A':'T';
+  const d = getData();
+  const existing = d.filter(i=>i.id.startsWith(prefix)).map(i=>parseInt(i.id.replace(prefix,''))||0);
+  const next = existing.length ? Math.max(...existing)+1 : 1;
+  return prefix + String(next).padStart(3,'0');
+}
+function updateAutoCode(){
+  const tipo = document.getElementById('fTipo').value;
+  const editId = document.getElementById('editId').value;
+  if(!editId){
+    const code = generateCode(tipo);
+    document.getElementById('fCodigo').value = code;
+    document.getElementById('autoCodeText').textContent = code;
+  }
+}
+
+// ============================================
+// PHOTO UPLOAD
+// ============================================
+let uploadedPhotos = [];
+
+function handleFiles(files){
+  const maxPhotos = 10;
+  const remaining = maxPhotos - uploadedPhotos.length;
+  const toProcess = Array.from(files).slice(0, remaining);
+  toProcess.forEach(file => {
+    if(!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = function(e){
+      // Resize image to max 1000px width for storage
+      const img = new Image();
+      img.onload = function(){
+        const canvas = document.createElement('canvas');
+        const maxW = 1000;
+        let w = img.width, h = img.height;
+        if(w > maxW){ h = h * (maxW/w); w = maxW; }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        const compressed = canvas.toDataURL('image/jpeg', 0.7);
+        uploadedPhotos.push(compressed);
+        renderPhotoPreview();
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function removePhoto(idx){
+  uploadedPhotos.splice(idx, 1);
+  renderPhotoPreview();
+}
+
+function renderPhotoPreview(){
+  const container = document.getElementById('fotoPreview');
+  container.innerHTML = uploadedPhotos.map((src, idx) =>
+    `<div class="foto-thumb"><img src="${src}" alt="Foto ${idx+1}"><button class="remove" onclick="removePhoto(${idx})"><i class="fas fa-times"></i></button></div>`
+  ).join('');
+}
+
+// Drag and drop
+document.addEventListener('DOMContentLoaded', function(){
+  const zone = document.getElementById('uploadZone');
+  if(!zone) return;
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
+});
+
+// ============================================
 // FORM
 // ============================================
 function renderAmenidades(){
@@ -307,7 +401,7 @@ function renderAmenidades(){
 function openForm(){
   document.getElementById('editId').value='';
   document.getElementById('formTitle').textContent='Novo Imóvel';
-  ['fCodigo','fTitulo','fDesc','fBairro','fPreco','fCond','fIPTU','fArea','fHospedes'].forEach(id=>{document.getElementById(id).value=''});
+  ['fTitulo','fDesc','fBairro','fPreco','fCond','fIPTU','fArea','fHospedes'].forEach(id=>{document.getElementById(id).value=''});
   document.getElementById('fCidade').value='Angra dos Reis';
   document.getElementById('fQuartos').value='0';
   document.getElementById('fSuites').value='0';
@@ -317,8 +411,10 @@ function openForm(){
   document.getElementById('fCategoria').value='casa';
   document.getElementById('fStatus').value='disponivel';
   document.getElementById('fDestaque').value='true';
-  document.getElementById('fFotos').value='';
+  uploadedPhotos = [];
+  renderPhotoPreview();
   document.querySelectorAll('.amenidade-tag').forEach(t=>t.classList.remove('selected'));
+  updateAutoCode();
   document.getElementById('formModal').classList.add('open');
 }
 
@@ -331,6 +427,7 @@ function editImovel(id){
   document.getElementById('editId').value=id;
   document.getElementById('formTitle').textContent='Editar: '+i.titulo;
   document.getElementById('fCodigo').value=i.id;
+  document.getElementById('autoCodeText').textContent=i.id;
   document.getElementById('fTipo').value=i.tipo;
   document.getElementById('fCategoria').value=i.categoria;
   document.getElementById('fStatus').value=i.status;
@@ -348,7 +445,8 @@ function editImovel(id){
   document.getElementById('fArea').value=i.area;
   document.getElementById('fHospedes').value=i.maxHospedes||'';
   document.getElementById('fDestaque').value=i.destaque?'true':'false';
-  document.getElementById('fFotos').value=(i.fotos||[]).join('\n');
+  uploadedPhotos = [...(i.fotos||[])];
+  renderPhotoPreview();
   document.querySelectorAll('.amenidade-tag').forEach(t=>{
     t.classList.toggle('selected', (i.amenidades||[]).includes(t.textContent));
   });
@@ -356,9 +454,11 @@ function editImovel(id){
 }
 
 function saveImovel(){
-  const id = document.getElementById('fCodigo').value.trim();
   const titulo = document.getElementById('fTitulo').value.trim();
-  if(!id || !titulo){alert('Preencha código e título!');return}
+  if(!titulo){alert('Preencha o título do imóvel!');return}
+
+  const editId = document.getElementById('editId').value;
+  const id = editId || document.getElementById('fCodigo').value;
 
   const obj = {
     id: id,
@@ -381,16 +481,14 @@ function saveImovel(){
     status: document.getElementById('fStatus').value,
     destaque: document.getElementById('fDestaque').value === 'true',
     amenidades: [...document.querySelectorAll('.amenidade-tag.selected')].map(t=>t.textContent),
-    fotos: document.getElementById('fFotos').value.split('\n').map(l=>l.trim()).filter(l=>l)
+    fotos: [...uploadedPhotos]
   };
 
   let d = getData();
-  const editId = document.getElementById('editId').value;
   if(editId){
     const idx = d.findIndex(x=>x.id===editId);
     if(idx>=0) d[idx] = obj;
   } else {
-    if(d.find(x=>x.id===id)){alert('Já existe um imóvel com esse código!');return}
     d.push(obj);
   }
   saveData(d);
