@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Imports | iPhones Novos e Seminovos | Nota Fiscal e 12x</title>
+<meta name="description" content="UK Imports — iPhones novos e seminovos com nota fiscal. 12x com a menor taxa de juros. Entrega em shopping. 39 mil seguidores confiam. Por @yasminparente_">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--red:#C8102E;--red-dark:#A00D24;--navy:#012169;--navy-light:#1B3A6B;
+--white:#FFFFFF;--black:#0A0A0A;--dark:#111;--card:#1A1A1A;--card2:#222;
+--text:#E8E8E8;--gray:#888;--muted:#444;--border:#2A2A2A;
+--accent:#00D4FF;--accent2:#FF3B6B;
+--font:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif;
+--shadow:0 4px 20px rgba(0,0,0,.2);--shadow-lg:0 12px 40px rgba(0,0,0,.3);
+--radius:14px;--transition:all .3s ease;
+}
+html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--black);overflow-x:hidden}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;transition:opacity .6s}.loader.hide{opacity:0;pointer-events:none}
+.loader-logo{font-family:var(--font);font-size:1.6rem;font-weight:700;color:var(--white);letter-spacing:2px}
+.loader-logo span{background:linear-gradient(135deg,var(--red),var(--navy));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.loader-bar{width:50px;height:2px;background:var(--muted);overflow:hidden;border-radius:2px}.loader-bar::after{content:'';display:block;width:40%;height:100%;background:var(--red);animation:ld .7s ease-in-out infinite}
+@keyframes ld{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+
+/* TOPBAR */
+.topbar{background:linear-gradient(90deg,var(--navy),var(--red));color:var(--white);text-align:center;padding:8px 16px;font-size:.68rem;font-weight:500;letter-spacing:1px}
+.topbar strong{font-weight:700}
+
+/* NAV */
+.nav{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;padding:12px 0;border-bottom:1px solid var(--border)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-circle{width:42px;height:42px;border-radius:50%;background:var(--black);border:1.5px solid var(--muted);display:flex;align-items:center;justify-content:center;font-size:.9rem;overflow:hidden}
+.nav-logo-circle img{width:100%;height:100%;object-fit:cover}
+.nav-name{font-family:var(--font);font-size:1.15rem;font-weight:700;color:var(--white);letter-spacing:1px}
+.nav-name span{background:linear-gradient(135deg,var(--red),var(--navy));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{color:var(--gray);text-decoration:none;font-size:.74rem;font-weight:500;transition:color .3s}
+.nav-links a:hover{color:var(--white)}
+.nav-cta{background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);padding:9px 18px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.72rem;letter-spacing:.5px;transition:var(--transition);display:flex;align-items:center;gap:6px}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 16px rgba(200,16,46,.3)}
+.menu-toggle{display:none;background:none;border:none;font-size:1.2rem;color:var(--white);cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;position:relative;overflow:hidden;padding:100px 24px 60px}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 30%,rgba(1,33,105,.15),transparent 60%),radial-gradient(ellipse at 30% 70%,rgba(200,16,46,.08),transparent 60%)}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;max-width:1160px;margin:0 auto}
+.hero-text h1{font-family:var(--font);font-size:clamp(2.4rem,5.5vw,3.8rem);color:var(--white);line-height:1.05;margin-bottom:16px;font-weight:700;letter-spacing:-1px}
+.hero-text h1 span{background:linear-gradient(135deg,var(--red),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--muted);padding:6px 14px;border-radius:50px;font-size:.65rem;font-weight:600;color:var(--accent);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:16px}
+.hero-desc{color:var(--gray);font-size:.9rem;line-height:1.7;margin-bottom:28px;max-width:440px}
+.hero-btns{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.btn-uk{background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;letter-spacing:.5px;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
+.btn-uk:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,16,46,.25)}
+.btn-ghost{background:transparent;border:1px solid var(--muted);color:var(--white);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.78rem;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
+.btn-ghost:hover{border-color:var(--accent);color:var(--accent)}
+.hero-trust{display:flex;gap:20px;flex-wrap:wrap}
+.hero-trust-item{display:flex;align-items:center;gap:6px;font-size:.72rem;color:var(--gray)}.hero-trust-item i{color:var(--red);font-size:.8rem}
+.hero-visual{position:relative;display:flex;justify-content:center;align-items:center}
+.hero-phone{width:280px;height:540px;background:var(--card);border-radius:40px;border:3px solid var(--border);overflow:hidden;position:relative;box-shadow:var(--shadow-lg)}
+.hero-phone img{width:100%;height:100%;object-fit:cover}
+.hero-phone::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:120px;height:28px;background:var(--black);border-radius:0 0 16px 16px;z-index:2}
+.hero-badge-float{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:12px;padding:10px 14px;font-size:.7rem;color:var(--white);display:flex;align-items:center;gap:8px;box-shadow:var(--shadow)}
+.hbf-1{top:60px;right:-20px}.hbf-2{bottom:80px;left:-30px}
+.hbf-1 i{color:var(--red)}.hbf-2 i{color:var(--accent)}
+
+/* SECTION */
+.sec{padding:80px 24px}.sec-head{text-align:center;margin-bottom:44px}
+.sec-tag{font-size:.6rem;color:var(--accent);text-transform:uppercase;letter-spacing:4px;font-weight:600;margin-bottom:6px;display:block}
+.sec-title{font-family:var(--font);font-size:clamp(1.8rem,3.5vw,2.6rem);color:var(--white);margin-bottom:8px;font-weight:700;letter-spacing:-0.5px}
+.sec-title span{background:linear-gradient(135deg,var(--red),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sec-desc{color:var(--gray);font-size:.84rem;max-width:500px;margin:0 auto;line-height:1.6}
+
+/* PRODUCTS */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.prod{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:var(--text);display:block}
+.prod:hover{border-color:var(--red);transform:translateY(-4px);box-shadow:0 8px 24px rgba(200,16,46,.1)}
+.prod-img{aspect-ratio:1;overflow:hidden;position:relative;background:var(--card2);display:flex;align-items:center;justify-content:center}
+.prod-img img{width:75%;height:75%;object-fit:contain;transition:transform .4s}
+.prod:hover .prod-img img{transform:scale(1.06)}
+.prod-badge{position:absolute;top:10px;left:10px;padding:3px 10px;border-radius:50px;font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:2}
+.badge-new{background:var(--red);color:var(--white)}
+.badge-semi{background:var(--navy);color:var(--white)}
+.badge-hot{background:var(--accent2);color:var(--white)}
+.prod-body{padding:14px}
+.prod-body .model{font-size:.6rem;color:var(--accent);text-transform:uppercase;letter-spacing:2px;font-weight:600;margin-bottom:3px;display:block}
+.prod-body h3{font-size:.88rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.prod-specs{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.prod-spec{font-size:.6rem;color:var(--gray);background:var(--card2);padding:3px 8px;border-radius:4px}
+.prod-prices{display:flex;align-items:baseline;gap:6px;flex-wrap:wrap}
+.prod-prices .from{font-size:.72rem;color:var(--gray);text-decoration:line-through}
+.prod-prices .to{font-size:1.05rem;font-weight:700;color:var(--white)}
+.prod-prices .pix{font-size:.58rem;color:var(--accent);background:rgba(0,212,255,.08);padding:2px 8px;border-radius:4px;margin-left:auto}
+.prod-installment{font-size:.62rem;color:var(--gray);margin-top:4px}
+.prod-buy{display:block;text-align:center;background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);padding:10px;font-size:.7rem;font-weight:700;letter-spacing:1px;transition:var(--transition)}
+.prod-buy:hover{background:linear-gradient(135deg,var(--red-dark),var(--navy))}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:28px 20px;text-align:center;transition:var(--transition)}
+.why-card:hover{border-color:var(--red);transform:translateY(-3px)}
+.why-icon{width:50px;height:50px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:1.1rem;transition:var(--transition)}
+.why-card:hover .why-icon{transform:scale(1.1)}
+.why-card h3{font-size:.85rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.why-card p{font-size:.72rem;color:var(--gray);line-height:1.5}
+
+/* ABOUT */
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:var(--radius);overflow:hidden;max-width:1160px;margin:0 auto}
+.about-img{overflow:hidden;background:var(--card)}.about-img img{width:100%;height:100%;object-fit:cover;min-height:400px}
+.about-txt{background:var(--card);padding:48px 40px;display:flex;flex-direction:column;justify-content:center}
+.about-txt h2{font-family:var(--font);font-size:clamp(1.5rem,3vw,2.2rem);color:var(--white);margin-bottom:12px;font-weight:700;letter-spacing:-0.5px}
+.about-txt h2 span{background:linear-gradient(135deg,var(--red),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.about-txt p{font-size:.84rem;color:var(--gray);line-height:1.8;margin-bottom:16px}
+
+/* TRUST BAR */
+.trust-bar{background:linear-gradient(90deg,var(--navy),var(--red));padding:32px 24px}
+.trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1160px;margin:0 auto;text-align:center}
+.trust-item i{font-size:1.2rem;color:var(--white);margin-bottom:6px;display:block;opacity:.9}
+.trust-item h4{font-size:.76rem;color:var(--white);font-weight:600}
+.trust-item p{font-size:.58rem;color:rgba(255,255,255,.5)}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.rev{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;transition:var(--transition)}
+.rev:hover{border-color:var(--red)}
+.rev-stars{color:var(--red);font-size:.78rem;letter-spacing:2px;margin-bottom:8px}
+.rev p{font-size:.82rem;color:var(--text);line-height:1.6;margin-bottom:10px;font-style:italic}
+.rev strong{font-size:.74rem;color:var(--white);display:block}.rev small{font-size:.6rem;color:var(--gray)}
+
+/* INSTA */
+.insta-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.insta-item{aspect-ratio:1;overflow:hidden;position:relative;cursor:pointer}
+.insta-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s;filter:brightness(.9)}
+.insta-item:hover img{transform:scale(1.06);filter:brightness(.6)}
+.insta-item::after{content:'\f16d';font-family:'Font Awesome 6 Brands';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--red);font-size:1.2rem;opacity:0;transition:opacity .3s}
+.insta-item:hover::after{opacity:1}
+
+/* CTA */
+.cta{background:var(--card);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(200,16,46,.06),transparent 70%)}
+.cta h2{font-family:var(--font);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);margin-bottom:10px;font-weight:700;position:relative;z-index:2}
+.cta h2 span{background:linear-gradient(135deg,var(--red),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.cta p{color:var(--gray);font-size:.88rem;margin-bottom:24px;position:relative;z-index:2}
+
+/* FOOTER */
+.footer{background:var(--dark);padding:40px 24px 16px;border-top:1px solid var(--border)}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:28px;max-width:1160px;margin:0 auto 24px}
+.footer h4{font-size:.72rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:10px;font-weight:600}
+.footer a{color:var(--gray);text-decoration:none;font-size:.74rem;display:block;margin-bottom:5px;transition:color .2s}.footer a:hover{color:var(--red)}
+.ft-brand p{font-size:.74rem;color:var(--gray);line-height:1.6;margin-bottom:10px}
+.ft-social{display:flex;gap:8px}.ft-social a{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;margin:0;color:var(--gray)}.ft-social a:hover{background:var(--red);color:var(--white);border-color:var(--red)}
+.ft-bottom{border-top:1px solid var(--border);padding-top:12px;text-align:center;font-size:.62rem;color:var(--muted);max-width:1160px;margin:0 auto}
+
+/* WPP */
+.wpp{position:fixed;bottom:20px;right:20px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.wpp-tip{background:var(--white);color:var(--black);padding:8px 14px;border-radius:12px 12px 4px 12px;box-shadow:var(--shadow);font-size:.74rem;font-weight:600;transform:translateY(6px);opacity:0;transition:var(--transition);pointer-events:none}
+.wpp:hover .wpp-tip{transform:translateY(0);opacity:1}
+.wpp-b{width:54px;height:54px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 16px rgba(37,211,102,.3);transition:var(--transition);animation:wp 2.5s infinite}
+.wpp-b:hover{transform:scale(1.1)}
+@keyframes wp{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.hero-grid{grid-template-columns:1fr}.hero-visual{display:none}.prod-grid{grid-template-columns:1fr 1fr}.why-grid{grid-template-columns:1fr 1fr}.trust-row{grid-template-columns:1fr 1fr}.rev-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr 1fr}.insta-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.97);backdrop-filter:blur(16px);flex-direction:column;align-items:center;justify-content:center;gap:24px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:1rem}.nav-cta{display:none}.menu-toggle{display:block;z-index:201}.hero-btns{flex-direction:column}.btn-uk,.btn-ghost{width:100%;max-width:300px;justify-content:center}.prod-grid,.why-grid{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr}.about-txt{padding:32px 24px}.insta-grid{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><div class="loader-logo">UK<span>IMPORTS</span></div><div class="loader-bar"></div></div>
+
+<div class="topbar">📱 <strong>Nota Fiscal em todos os aparelhos</strong> | 12x com a Menor Taxa | Entrega em Shopping | 🇬🇧</div>
+
+<nav class="nav"><div class="container nav-inner">
+<a href="#" class="nav-brand">
+<div class="nav-logo-circle"><i class="fab fa-apple" style="font-size:1.3rem;color:var(--white)"></i></div>
+<div class="nav-name">UK<span>IMPORTS</span></div>
+</a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#produtos" onclick="closeMenu()">Produtos</a></li>
+<li><a href="#diferenciais" onclick="closeMenu()">Diferenciais</a></li>
+<li><a href="#sobre" onclick="closeMenu()">Quem Somos</a></li>
+<li><a href="#avaliacoes" onclick="closeMenu()">Avaliações</a></li>
+</ul>
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> Comprar Agora</a>
+<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-grid">
+<div class="hero-text">
+<div class="hero-tag"><i class="fas fa-crown"></i> +39.900 clientes satisfeitos</div>
+<h1>Seu iPhone <span>novo</span> com nota fiscal e a <span>menor taxa</span> do mercado</h1>
+<p class="hero-desc">iPhones novos e seminovos com garantia, nota fiscal e parcelamento em até 12x. Entregamos no shopping da sua cidade. Pela Yasmin, pra você.</p>
+<div class="hero-btns">
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="btn-uk" target="_blank"><i class="fab fa-whatsapp"></i> Quero Meu iPhone</a>
+<a href="#produtos" class="btn-ghost"><i class="fas fa-mobile-screen"></i> Ver Modelos</a>
+</div>
+<div class="hero-trust">
+<span class="hero-trust-item"><i class="fas fa-file-invoice"></i> Nota Fiscal</span>
+<span class="hero-trust-item"><i class="fas fa-credit-card"></i> 12x Menor Taxa</span>
+<span class="hero-trust-item"><i class="fas fa-truck"></i> Entrega Shopping</span>
+<span class="hero-trust-item"><i class="fas fa-shield-halved"></i> Garantia</span>
+</div>
+</div>
+<div class="hero-visual">
+<div class="hero-phone"><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 16 Pro"></div>
+<div class="hero-badge-float hbf-1"><i class="fas fa-fire"></i> iPhone 16 Pro Max disponível</div>
+<div class="hero-badge-float hbf-2"><i class="fas fa-check-circle"></i> Nota fiscal inclusa</div>
+</div>
+</div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="sec" id="produtos">
+<div class="sec-head reveal"><span class="sec-tag">Catálogo</span><h2 class="sec-title">iPhones <span>disponíveis</span></h2><p class="sec-desc">Novos e seminovos com garantia. Todos com nota fiscal.</p></div>
+<div class="container"><div class="prod-grid">
+
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="prod reveal" target="_blank">
+<div class="prod-img"><span class="prod-badge badge-hot">🔥 Lançamento</span><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 16 Pro Max"></div>
+<div class="prod-body"><span class="model">Apple</span><h3>iPhone 16 Pro Max</h3><div class="prod-specs"><span class="prod-spec">256GB</span><span class="prod-spec">Titânio</span><span class="prod-spec">Novo</span></div><div class="prod-prices"><span class="to">R$ 9.499</span><span class="pix">5% Pix</span></div><p class="prod-installment">ou 12x de R$ 791,58</p></div>
+<div class="prod-buy"><i class="fab fa-whatsapp"></i> COMPRAR PELO WHATSAPP</div>
+</a>
+
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="prod reveal" target="_blank">
+<div class="prod-img"><span class="prod-badge badge-new">Novo</span><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 16 Pro"></div>
+<div class="prod-body"><span class="model">Apple</span><h3>iPhone 16 Pro</h3><div class="prod-specs"><span class="prod-spec">128GB</span><span class="prod-spec">Titânio</span><span class="prod-spec">Novo</span></div><div class="prod-prices"><span class="to">R$ 7.999</span><span class="pix">5% Pix</span></div><p class="prod-installment">ou 12x de R$ 666,58</p></div>
+<div class="prod-buy"><i class="fab fa-whatsapp"></i> COMPRAR PELO WHATSAPP</div>
+</a>
+
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="prod reveal" target="_blank">
+<div class="prod-img"><span class="prod-badge badge-new">Novo</span><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 15"></div>
+<div class="prod-body"><span class="model">Apple</span><h3>iPhone 15</h3><div class="prod-specs"><span class="prod-spec">128GB</span><span class="prod-spec">Preto</span><span class="prod-spec">Novo</span></div><div class="prod-prices"><span class="from">R$ 5.999</span><span class="to">R$ 4.999</span><span class="pix">5% Pix</span></div><p class="prod-installment">ou 12x de R$ 416,58</p></div>
+<div class="prod-buy"><i class="fab fa-whatsapp"></i> COMPRAR PELO WHATSAPP</div>
+</a>
+
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="prod reveal" target="_blank">
+<div class="prod-img"><span class="prod-badge badge-semi">Seminovo</span><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=400&q=80" alt="iPhone 14 Pro"></div>
+<div class="prod-body"><span class="model">Apple</span><h3>iPhone 14 Pro Max</h3><div class="prod-specs"><span class="prod-spec">256GB</span><span class="prod-spec">Roxo</span><span class="prod-spec">Seminovo</span></div><div class="prod-prices"><span class="from">R$ 6.499</span><span class="to">R$ 4.499</span><span class="pix">5% Pix</span></div><p class="prod-installment">ou 12x de R$ 374,91</p></div>
+<div class="prod-buy"><i class="fab fa-whatsapp"></i> COMPRAR PELO WHATSAPP</div>
+</a>
+
+</div></div>
+</section>
+
+<!-- WHY -->
+<section class="sec" id="diferenciais" style="background:var(--card)">
+<div class="sec-head reveal"><span class="sec-tag">Diferenciais</span><h2 class="sec-title">Por que <span>39 mil pessoas</span> escolhem a UK?</h2></div>
+<div class="container"><div class="why-grid">
+<div class="why-card reveal"><div class="why-icon" style="background:rgba(200,16,46,.1);color:var(--red)"><i class="fas fa-file-invoice"></i></div><h3>Nota Fiscal</h3><p>Todos os aparelhos com nota fiscal. Garantia oficial e procedência comprovada.</p></div>
+<div class="why-card reveal"><div class="why-icon" style="background:rgba(0,212,255,.08);color:var(--accent)"><i class="fas fa-percent"></i></div><h3>Menor Taxa 12x</h3><p>Parcelamento em até 12x com a menor taxa de juros do mercado. Sem burocracia.</p></div>
+<div class="why-card reveal"><div class="why-icon" style="background:rgba(1,33,105,.1);color:var(--navy)"><i class="fas fa-store"></i></div><h3>Entrega em Shopping</h3><p>Receba seu iPhone pessoalmente em um shopping da sua cidade. Rápido e seguro.</p></div>
+<div class="why-card reveal"><div class="why-icon" style="background:rgba(255,59,107,.08);color:var(--accent2)"><i class="fas fa-shield-halved"></i></div><h3>Garantia Real</h3><p>Garantia em todos os aparelhos. Novos e seminovos com procedência verificada.</p></div>
+</div></div>
+</section>
+
+<!-- ABOUT -->
+<section class="sec" id="sobre">
+<div class="about-grid reveal">
+<div class="about-img"><img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&q=80" alt="UK Imports"></div>
+<div class="about-txt">
+<span class="sec-tag" style="text-align:left;margin-bottom:10px">Quem somos</span>
+<h2>A Yasmin e a <span>UK Imports</span></h2>
+<p>A UK Imports nasceu da paixão da Yasmin por tecnologia e atendimento de verdade. O que começou como um sonho hoje é a confiança de mais de 39 mil seguidores que compram iPhones com a certeza de nota fiscal, garantia e o melhor preço.</p>
+<p>📱 iPhones Novos e Seminovos<br>📄 Nota Fiscal em todos<br>💳 12x com menor taxa<br>🚚 Entrega em shopping<br>🚫 Não parcelamos boleto</p>
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="btn-uk" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Yasmin</a>
+</div>
+</div>
+</section>
+
+<!-- TRUST -->
+<div class="trust-bar"><div class="trust-row">
+<div class="trust-item reveal"><i class="fas fa-file-invoice"></i><h4>Nota Fiscal</h4><p>Em todos os aparelhos</p></div>
+<div class="trust-item reveal"><i class="fas fa-credit-card"></i><h4>12x Menor Taxa</h4><p>Parcele sem dor</p></div>
+<div class="trust-item reveal"><i class="fas fa-store"></i><h4>Entrega Shopping</h4><p>Pessoalmente pra você</p></div>
+<div class="trust-item reveal"><i class="fas fa-shield-halved"></i><h4>Garantia Total</h4><p>Novos e seminovos</p></div>
+</div></div>
+
+<!-- REVIEWS -->
+<section class="sec" id="avaliacoes">
+<div class="sec-head reveal"><span class="sec-tag">Avaliações</span><h2 class="sec-title">+39 mil <span>confiam</span></h2></div>
+<div class="container"><div class="rev-grid">
+<div class="rev reveal"><div class="rev-stars">★★★★★</div><p>"Comprei meu iPhone 16 Pro com a Yasmin e foi a melhor experiência. Nota fiscal, entrega rápida no shopping e preço justo. Recomendo demais!"</p><strong>Lucas M.</strong><small>iPhone 16 Pro | Novo</small></div>
+<div class="rev reveal"><div class="rev-stars">★★★★★</div><p>"Seminovo impecável! Parecia novo na caixa. Veio com nota fiscal, garantia e a Yasmin me deu todo suporte. Já indiquei pra 3 amigos."</p><strong>Fernanda R.</strong><small>iPhone 14 Pro Max | Seminovo</small></div>
+<div class="rev reveal"><div class="rev-stars">★★★★★</div><p>"Melhor taxa de parcelamento que encontrei. 12x e ainda recebi no shopping da minha cidade. Profissionalismo nota 10!"</p><strong>Rafael S.</strong><small>iPhone 15 | Novo | 12x</small></div>
+</div></div>
+</section>
+
+<!-- INSTA -->
+<section class="sec" style="padding-bottom:0">
+<div class="sec-head reveal"><span class="sec-tag">@ukimports_</span><h2 class="sec-title">Siga no <span>Instagram</span></h2></div>
+<div class="insta-grid">
+<a href="https://instagram.com/ukimports_" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1695048133142-1a20484d2569?w=300&q=80" alt="UK"></a>
+<a href="https://instagram.com/ukimports_" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1591337676887-a217a6c8c589?w=300&q=80" alt="UK"></a>
+<a href="https://instagram.com/ukimports_" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1556656793-08538906a9f8?w=300&q=80" alt="UK"></a>
+<a href="https://instagram.com/ukimports_" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1510557880182-3d4d3cba35a5?w=300&q=80" alt="UK"></a>
+<a href="https://instagram.com/ukimports_" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?w=300&q=80" alt="UK"></a>
+<a href="https://instagram.com/ukimports_" class="insta-item reveal" target="_blank"><img src="https://images.unsplash.com/photo-1605236453806-6ff36851218e?w=300&q=80" alt="UK"></a>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+<h2>Seu próximo <span>iPhone</span> está aqui</h2>
+<p>Chama a Yasmin no WhatsApp. Nota fiscal, garantia e a menor taxa do mercado.</p>
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="btn-uk" style="position:relative;z-index:2" target="_blank"><i class="fab fa-whatsapp"></i> Quero Meu iPhone</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="ft-grid">
+<div class="ft-brand"><h4>UK IMPORTS</h4><p>iPhones novos e seminovos com nota fiscal, garantia e a menor taxa de parcelamento. Por @yasminparente_. +39 mil seguidores confiam.</p><div class="ft-social"><a href="https://instagram.com/ukimports_" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/message/OHIYFNGXSVYOE1" target="_blank"><i class="fab fa-whatsapp"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+<div><h4>Navegação</h4><a href="#produtos">Produtos</a><a href="#diferenciais">Diferenciais</a><a href="#sobre">Quem Somos</a><a href="#avaliacoes">Avaliações</a></div>
+<div><h4>Informações</h4><a href="#">Política de Garantia</a><a href="#">Trocas e Devoluções</a><a href="#">Política de Privacidade</a></div>
+<div><h4>Contato</h4><a href="https://wa.me/message/OHIYFNGXSVYOE1" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="https://instagram.com/ukimports_" target="_blank"><i class="fab fa-instagram"></i> @ukimports_</a><a href="https://instagram.com/yasminparente_" target="_blank"><i class="fab fa-instagram"></i> @yasminparente_</a></div>
+</div>
+<div class="ft-bottom">© 2026 UK Imports | Produtos Apple. Todos os direitos reservados. 🇬🇧</div>
+</footer>
+
+<div class="wpp"><div class="wpp-tip">Fala com a Yasmin! 📱</div><a href="https://wa.me/message/OHIYFNGXSVYOE1" class="wpp-b" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',600)},600)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuToggle i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuToggle i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target)}})},{threshold:.06,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-60;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
