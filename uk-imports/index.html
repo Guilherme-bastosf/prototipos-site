@@ -59,8 +59,9 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 .card:hover{border-color:rgba(200,16,46,.25);transform:translateY(-3px);box-shadow:var(--shadow)}
 
 /* CARD IMAGE */
-.c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:var(--card2);position:relative;padding:16px;overflow:hidden}
-.c-img img{width:68%;height:68%;object-fit:contain;transition:transform .4s}.card:hover .c-img img{transform:scale(1.05)}
+.c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#1a1a1a,#252525);position:relative;padding:16px;overflow:hidden}
+.c-img::before{content:'';position:absolute;width:65%;height:65%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);z-index:1}
+.c-img img{width:62%;height:62%;object-fit:contain;transition:transform .4s;position:relative;z-index:2;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));mix-blend-mode:normal}.card:hover .c-img img{transform:scale(1.05)}
 /* watermark */
 .c-img::after{content:'UKIMPORTS';position:absolute;top:10px;right:-10px;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.12);letter-spacing:2px;transform:rotate(-90deg);transform-origin:right top;z-index:2}
 .c-tag{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:50px;font-size:.48rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;color:#fff}
