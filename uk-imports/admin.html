@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UK Imports | Painel Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--red:#C8102E;--navy:#012169;--green:#27AE60;--orange:#F39C12;--danger:#E74C3C;--bg:#F0F2F5;--card:#FFF;--text:#2D3436;--gray:#636E72;--border:#DFE6E9;--font:'Inter',sans-serif}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
+.login{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#012169,#C8102E)}
+.login-box{background:var(--card);border-radius:16px;padding:36px;max-width:360px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,.2)}
+.login-box h1{font-size:1.3rem;text-align:center;margin-bottom:4px;color:var(--navy)}.login-box p{font-size:.78rem;text-align:center;color:var(--gray);margin-bottom:20px}
+.login-box .logo{text-align:center;font-size:1.6rem;font-weight:800;margin-bottom:16px;color:var(--navy)}.logo span{color:var(--red)}
+.fg{margin-bottom:12px}.fg label{display:block;font-size:.7rem;font-weight:600;margin-bottom:3px}.fg input,.fg select,.fg textarea{width:100%;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;font-family:var(--font)}.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--navy);outline:none}
+.btn{padding:10px 20px;border-radius:8px;font-size:.8rem;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.btn-primary{background:var(--navy);color:#fff}.btn-primary:hover{background:#011545}
+.btn-danger{background:var(--danger);color:#fff;font-size:.7rem;padding:6px 10px}
+.btn-success{background:var(--green);color:#fff}.btn-success:hover{background:#1E8449}
+.btn-outline{background:var(--card);border:1px solid var(--border);color:var(--gray)}
+
+/* APP */
+.app{display:none;padding:20px 24px;max-width:1200px;margin:0 auto}.app.active{display:block}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.top h2{font-size:1.2rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+.stat{background:var(--card);border-radius:12px;padding:16px;border:1px solid var(--border);text-align:center}
+.stat .n{font-size:1.6rem;font-weight:700;color:var(--navy)}.stat .l{font-size:.68rem;color:var(--gray)}
+
+/* FILTERS */
+.filters{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.f-btn{padding:6px 14px;border-radius:50px;font-size:.68rem;font-weight:600;border:1px solid var(--border);background:var(--card);color:var(--gray);cursor:pointer;transition:all .2s}
+.f-btn.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+/* TABLE */
+.tbl{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:700px}
+th{text-align:left;padding:10px 14px;font-size:.66rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);background:var(--bg)}
+td{padding:10px 14px;font-size:.78rem;border-bottom:1px solid var(--border)}
+tr:hover{background:rgba(1,33,105,.02)}
+.td-img{width:50px;height:50px;border-radius:8px;object-fit:contain;background:#f5f5f5}
+.badge{padding:2px 8px;border-radius:50px;font-size:.55rem;font-weight:600;text-transform:uppercase}
+.badge-l{background:rgba(200,16,46,.1);color:var(--red)}.badge-s{background:rgba(1,33,105,.1);color:var(--navy)}.badge-w{background:rgba(39,174,96,.1);color:var(--green)}.badge-a{background:rgba(243,156,18,.1);color:var(--orange)}.badge-p{background:rgba(155,89,182,.1);color:#8E44AD}.badge-m{background:rgba(52,73,94,.1);color:#2C3E50}
+.actions{display:flex;gap:4px}
+.actions button{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--card);cursor:pointer;font-size:.65rem;color:var(--gray);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.actions button:hover{border-color:var(--navy);color:var(--navy)}
+.actions .del:hover{border-color:var(--danger);color:var(--danger)}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:30px 16px;overflow-y:auto}.modal-bg.open{display:flex}
+.modal{background:var(--card);border-radius:16px;max-width:550px;width:100%;padding:28px;position:relative}
+.modal h2{font-size:1.1rem;margin-bottom:4px}.modal .sub{font-size:.75rem;color:var(--gray);margin-bottom:16px}
+.modal-x{position:absolute;top:12px;right:14px;background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--gray)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;padding-top:12px;border-top:1px solid var(--border)}
+.section-label{font-size:.68rem;font-weight:700;color:var(--navy);text-transform:uppercase;letter-spacing:1px;margin:14px 0 6px;padding-top:10px;border-top:1px solid var(--border)}
+.upload-zone{border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;position:relative;background:var(--bg);transition:all .2s}
+.upload-zone:hover{border-color:var(--navy)}
+.upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.upload-zone i{font-size:1.3rem;color:var(--gray);margin-bottom:4px;display:block}.upload-zone p{font-size:.72rem;color:var(--gray)}.upload-zone small{font-size:.6rem;color:#aaa}
+.foto-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.foto-thumb{width:60px;height:60px;border-radius:8px;overflow:hidden;position:relative;border:1px solid var(--border)}
+.foto-thumb img{width:100%;height:100%;object-fit:contain;background:#f5f5f5}
+.foto-thumb .rm{position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;background:var(--danger);color:#fff;border:none;font-size:.45rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.auto-id{padding:10px;background:var(--bg);border:1px solid var(--border);border-radius:8px;font-size:.8rem;color:var(--gray);font-style:italic;display:flex;align-items:center;gap:6px}.auto-id i{color:var(--green)}
+
+@media(max-width:768px){.stats{grid-template-columns:1fr 1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="login" id="loginScreen">
+<div class="login-box">
+<div class="logo">UK<span>IMPORTS</span></div>
+<h1>Painel do Catálogo</h1>
+<p>Gerencie os produtos do catálogo</p>
+<div class="fg"><label>Senha</label><input type="password" id="loginPass" placeholder="••••••" onkeyup="if(event.key==='Enter')doLogin()"></div>
+<button class="btn btn-primary" style="width:100%;justify-content:center;margin-top:8px" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Entrar</button>
+<p style="font-size:.6rem;color:#aaa;text-align:center;margin-top:10px">Senha: uk2026</p>
+</div>
+</div>
+
+<div class="app" id="app">
+<div class="top"><h2>🇬🇧 Catálogo UK Imports</h2><div style="display:flex;gap:8px"><button class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i> Novo Produto</button><a href="index.html" class="btn btn-outline" target="_blank"><i class="fas fa-external-link-alt"></i> Ver Catálogo</a></div></div>
+<div class="stats" id="statsRow"></div>
+<div class="filters" id="filtersRow"></div>
+<div class="tbl"><table><thead><tr><th>Foto</th><th>ID</th><th>Produto</th><th>Categoria</th><th>À Vista</th><th>12x</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</div>
+
+<div class="modal-bg" id="formModal">
+<div class="modal">
+<button class="modal-x" onclick="closeForm()">&times;</button>
+<h2 id="formTitle">Novo Produto</h2>
+<p class="sub">Preencha os dados do produto Apple.</p>
+<input type="hidden" id="editId">
+
+<div class="section-label">Produto</div>
+<div class="form-row">
+<div class="fg"><label>Categoria *</label><select id="fCat" onchange="updateAutoId()"><option value="iphone-lacrado">iPhone Lacrado</option><option value="iphone-semi">iPhone Seminovo</option><option value="watch">Apple Watch</option><option value="airpods">AirPods</option><option value="ipad">iPad / Pencil</option><option value="macbook">MacBook</option></select></div>
+<div class="fg"><label>Código (automático)</label><div class="auto-id" id="autoId"><i class="fas fa-check-circle"></i> <span id="autoIdText">L09</span></div><input type="hidden" id="fId"></div>
+</div>
+<div class="fg"><label>Nome do Produto *</label><input type="text" id="fNome" placeholder="Ex: iPhone 16 Pro Max"></div>
+<div class="form-row">
+<div class="fg"><label>Armazenamento / Tamanho</label><input type="text" id="fStorage" placeholder="Ex: 256GB ou 46mm"></div>
+<div class="fg"><label>Cor</label><input type="text" id="fCor" placeholder="Ex: Titânio, Preto"></div>
+</div>
+
+<div class="section-label">Preço</div>
+<div class="form-row">
+<div class="fg"><label>Valor à vista (R$) *</label><input type="number" id="fAvista" placeholder="Ex: 4850"></div>
+<div class="fg"><label>Valor parcelado 12x (R$) *</label><input type="number" id="fParcelado" placeholder="Ex: 5480"></div>
+</div>
+
+<div class="section-label">Opções</div>
+<div class="form-row">
+<div class="fg"><label>Destaque?</label><select id="fDestaque"><option value="false">Não</option><option value="true">Sim</option></select></div>
+<div class="fg"><label>Status</label><select id="fStatus"><option value="disponivel">Disponível</option><option value="esgotado">Esgotado</option></select></div>
+</div>
+
+<div class="section-label">Foto do Produto</div>
+<div class="upload-zone" id="uploadZone">
+<input type="file" accept="image/*" onchange="handleUpload(this.files[0])">
+<i class="fas fa-cloud-arrow-up"></i>
+<p>Clique ou arraste a foto</p>
+<small>Ou cole um link de imagem abaixo</small>
+</div>
+<div class="foto-row" id="fotoRow"></div>
+<div class="fg" style="margin-top:8px"><label>Ou cole o link da imagem</label><input type="text" id="fImgUrl" placeholder="https://..." onchange="if(this.value)setPhoto(this.value)"></div>
+
+<div class="form-actions">
+<button class="btn btn-outline" onclick="closeForm()">Cancelar</button>
+<button class="btn btn-success" onclick="saveProd()"><i class="fas fa-save"></i> Salvar</button>
+</div>
+</div>
+</div>
+
+<script src="produtos.js"></script>
+<script>
+const PASS='uk2026';
+let currentPhoto='';
+
+function doLogin(){if(document.getElementById('loginPass').value===PASS){localStorage.setItem('uk_auth','true');show()}else alert('Senha incorreta!')}
+function show(){document.getElementById('loginScreen').style.display='none';document.getElementById('app').classList.add('active');init()}
+if(localStorage.getItem('uk_auth')==='true') window.addEventListener('load',show);
+
+function getData(){let d=localStorage.getItem('uk_produtos');if(!d){localStorage.setItem('uk_produtos',JSON.stringify(PRODUTOS));return[...PRODUTOS]}return JSON.parse(d)}
+function saveData(d){localStorage.setItem('uk_produtos',JSON.stringify(d))}
+
+function init(){renderStats();renderFilters();renderTable()}
+
+function renderStats(){
+  const d=getData();
+  document.getElementById('statsRow').innerHTML=`
+    <div class="stat"><div class="n">${d.length}</div><div class="l">Total</div></div>
+    <div class="stat"><div class="n">${d.filter(p=>p.cat==='iphone-lacrado').length}</div><div class="l">Lacrados</div></div>
+    <div class="stat"><div class="n">${d.filter(p=>p.cat==='iphone-semi').length}</div><div class="l">Seminovos</div></div>
+    <div class="stat"><div class="n">${d.filter(p=>!p.cat.startsWith('iphone')).length}</div><div class="l">Outros</div></div>`;
+}
+
+let tableFilter='todos';
+function renderFilters(){
+  const cats=[{id:'todos',n:'Todos'},...CATEGORIAS.map(c=>({id:c.id,n:c.nome}))];
+  document.getElementById('filtersRow').innerHTML=cats.map(c=>`<button class="f-btn ${tableFilter===c.id?'active':''}" onclick="tableFilter='${c.id}';renderFilters();renderTable()">${c.n}</button>`).join('');
+}
+
+function renderTable(){
+  let d=getData();
+  if(tableFilter!=='todos') d=d.filter(p=>p.cat===tableFilter);
+  const catBadge=c=>c==='iphone-lacrado'?'badge-l':c==='iphone-semi'?'badge-s':c==='watch'?'badge-w':c==='airpods'?'badge-a':c==='ipad'?'badge-p':'badge-m';
+  const catName=c=>CATEGORIAS.find(x=>x.id===c)?.nome||c;
+  document.getElementById('tbody').innerHTML=d.map(p=>`<tr>
+    <td><img class="td-img" src="${p.img}" alt=""></td>
+    <td><strong>${p.id}</strong></td>
+    <td>${p.nome}${p.storage?' <small style="color:#aaa">'+p.storage+'</small>':''}</td>
+    <td><span class="badge ${catBadge(p.cat)}">${catName(p.cat)}</span></td>
+    <td><strong>R$ ${p.avista.toLocaleString('pt-BR')}</strong></td>
+    <td>R$ ${p.parcelado.toLocaleString('pt-BR')}</td>
+    <td>${p.status==='disponivel'?'<span style="color:#27AE60">●</span> Disponível':'<span style="color:#E74C3C">●</span> Esgotado'}</td>
+    <td><div class="actions"><button onclick="editProd('${p.id}')"><i class="fas fa-pen"></i></button><button class="del" onclick="delProd('${p.id}')"><i class="fas fa-trash"></i></button></div></td>
+  </tr>`).join('');
+}
+
+// AUTO ID
+function genId(cat){
+  const prefix=cat==='iphone-lacrado'?'L':cat==='iphone-semi'?'S':cat==='watch'?'W':cat==='airpods'?'A':cat==='ipad'?'P':'M';
+  const d=getData();
+  const nums=d.filter(p=>p.id.startsWith(prefix)).map(p=>parseInt(p.id.replace(prefix,''))||0);
+  return prefix+String((nums.length?Math.max(...nums):0)+1).padStart(2,'0');
+}
+function updateAutoId(){
+  const cat=document.getElementById('fCat').value;
+  const id=genId(cat);
+  document.getElementById('fId').value=id;
+  document.getElementById('autoIdText').textContent=id;
+}
+
+// PHOTO
+function handleUpload(file){
+  if(!file||!file.type.startsWith('image/'))return;
+  const r=new FileReader();
+  r.onload=e=>{
+    const img=new Image();
+    img.onload=()=>{
+      const c=document.createElement('canvas');
+      const max=600;let w=img.width,h=img.height;
+      if(w>max){h=h*(max/w);w=max}
+      c.width=w;c.height=h;c.getContext('2d').drawImage(img,0,0,w,h);
+      setPhoto(c.toDataURL('image/jpeg',.75));
+    };
+    img.src=e.target.result;
+  };
+  r.readAsDataURL(file);
+}
+function setPhoto(src){
+  currentPhoto=src;
+  document.getElementById('fotoRow').innerHTML=`<div class="foto-thumb"><img src="${src}" alt=""><button class="rm" onclick="currentPhoto='';document.getElementById('fotoRow').innerHTML=''"><i class="fas fa-times"></i></button></div>`;
+}
+
+// FORM
+function openForm(){
+  document.getElementById('editId').value='';
+  document.getElementById('formTitle').textContent='Novo Produto';
+  ['fNome','fStorage','fCor','fAvista','fParcelado','fImgUrl'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('fCat').value='iphone-lacrado';
+  document.getElementById('fDestaque').value='false';
+  document.getElementById('fStatus').value='disponivel';
+  currentPhoto='';document.getElementById('fotoRow').innerHTML='';
+  updateAutoId();
+  document.getElementById('formModal').classList.add('open');
+}
+function closeForm(){document.getElementById('formModal').classList.remove('open')}
+
+function editProd(id){
+  const d=getData();const p=d.find(x=>x.id===id);if(!p)return;
+  document.getElementById('editId').value=id;
+  document.getElementById('formTitle').textContent='Editar: '+p.nome;
+  document.getElementById('fCat').value=p.cat;
+  document.getElementById('fId').value=p.id;
+  document.getElementById('autoIdText').textContent=p.id;
+  document.getElementById('fNome').value=p.nome;
+  document.getElementById('fStorage').value=p.storage||'';
+  document.getElementById('fCor').value=p.cor||'';
+  document.getElementById('fAvista').value=p.avista;
+  document.getElementById('fParcelado').value=p.parcelado;
+  document.getElementById('fDestaque').value=p.destaque?'true':'false';
+  document.getElementById('fStatus').value=p.status;
+  currentPhoto=p.img||'';
+  if(currentPhoto) setPhoto(currentPhoto);
+  else document.getElementById('fotoRow').innerHTML='';
+  document.getElementById('formModal').classList.add('open');
+}
+
+function saveProd(){
+  const nome=document.getElementById('fNome').value.trim();
+  if(!nome){alert('Preencha o nome!');return}
+  const editId=document.getElementById('editId').value;
+  const obj={
+    id:editId||document.getElementById('fId').value,
+    cat:document.getElementById('fCat').value,
+    nome:nome,
+    storage:document.getElementById('fStorage').value.trim(),
+    avista:Number(document.getElementById('fAvista').value)||0,
+    parcelado:Number(document.getElementById('fParcelado').value)||0,
+    img:currentPhoto||document.getElementById('fImgUrl').value.trim()||'',
+    cor:document.getElementById('fCor').value.trim(),
+    destaque:document.getElementById('fDestaque').value==='true',
+    status:document.getElementById('fStatus').value
+  };
+  let d=getData();
+  if(editId){const idx=d.findIndex(x=>x.id===editId);if(idx>=0)d[idx]=obj}
+  else d.push(obj);
+  saveData(d);closeForm();init();alert('Produto salvo!');
+}
+
+function delProd(id){
+  if(!confirm('Excluir este produto?'))return;
+  saveData(getData().filter(x=>x.id!==id));init();
+}
+</script>
+</body>
+</html>
