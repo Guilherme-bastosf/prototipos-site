@@ -3,275 +3,278 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UK Imports | Catálogo Apple — iPhones, Apple Watch, AirPods, iPad, MacBook</title>
-<meta name="description" content="UK Imports — Catálogo completo de produtos Apple. iPhones novos e seminovos, Apple Watch, AirPods, iPad e MacBook. Nota fiscal, 18x e garantia 1 ano.">
+<title>UK Imports | Catálogo Apple — iPhones, Watch, AirPods, iPad, MacBook</title>
+<meta name="description" content="UK Imports — Catálogo Apple completo. iPhones novos e seminovos com todas as cores. Nota fiscal, 18x, garantia 1 ano. Por @yasminparente_">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{
---red:#C8102E;--red-dark:#A00D24;--navy:#012169;--navy-light:#1B3A6B;
---white:#FFF;--black:#0A0A0A;--dark:#111;--card:#161616;--card2:#1E1E1E;
---text:#E0E0E0;--gray:#888;--muted:#444;--border:#252525;
+--red:#C8102E;--navy:#012169;--white:#FFF;--black:#0A0A0A;--dark:#111;--card:#161616;--card2:#1C1C1C;
+--text:#E0E0E0;--gray:#888;--muted:#444;--border:#222;
 --accent:#00D4FF;
---font:'Space Grotesk',sans-serif;--font-body:'Inter',sans-serif;
---shadow:0 4px 20px rgba(0,0,0,.3);--shadow-lg:0 12px 40px rgba(0,0,0,.4);
---radius:14px;--transition:all .3s ease;
+--font:'Inter',-apple-system,sans-serif;
+--shadow:0 4px 20px rgba(0,0,0,.3);--radius:16px;--transition:all .3s ease;
 --theme1:#C8102E;--theme2:#012169;
 }
-html{scroll-behavior:smooth}body{font-family:var(--font-body);color:var(--text);background:var(--black);overflow-x:hidden}
-.container{max-width:1200px;margin:0 auto;padding:0 24px}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--black);overflow-x:hidden}
+.container{max-width:1200px;margin:0 auto;padding:0 20px}
 
-/* THEME BANNER */
-.theme-banner{background:linear-gradient(135deg,var(--theme1),var(--theme2));color:var(--white);text-align:center;padding:10px 16px;font-size:.75rem;font-weight:600;letter-spacing:1px;position:relative;overflow:hidden}
-.theme-banner::after{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3C/g%3E%3C/svg%3E")}
-.theme-banner span{position:relative;z-index:2}
+/* BANNER */
+.t-banner{background:linear-gradient(135deg,var(--theme1),var(--theme2));color:#fff;text-align:center;padding:9px;font-size:.72rem;font-weight:600;letter-spacing:.5px}
 
 /* NAV */
-.nav{background:rgba(10,10,10,.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;padding:12px 0;border-bottom:1px solid var(--border)}
+.nav{background:rgba(10,10,10,.92);backdrop-filter:blur(16px);position:sticky;top:0;z-index:100;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between}
-.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo{width:40px;height:40px;border-radius:50%;background:var(--black);border:1.5px solid var(--muted);display:flex;align-items:center;justify-content:center;overflow:hidden}
-.nav-logo i{font-size:1.2rem;color:var(--white)}
-.nav-name{font-family:var(--font);font-size:1.1rem;font-weight:700;color:var(--white);letter-spacing:1px}
-.nav-name span{background:linear-gradient(135deg,var(--red),var(--navy));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-cats{display:flex;gap:6px;list-style:none;flex-wrap:wrap}
-.nav-cat{color:var(--gray);text-decoration:none;font-size:.68rem;font-weight:500;padding:5px 12px;border-radius:50px;transition:var(--transition);border:1px solid transparent}
-.nav-cat:hover,.nav-cat.active{color:var(--white);border-color:var(--muted);background:var(--card)}
-.nav-cta{background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);padding:8px 16px;border-radius:50px;text-decoration:none;font-weight:600;font-size:.7rem;display:flex;align-items:center;gap:6px;transition:var(--transition)}
-.nav-cta:hover{transform:translateY(-1px);box-shadow:0 4px 12px rgba(200,16,46,.3)}
-.menu-toggle{display:none;background:none;border:none;font-size:1.2rem;color:var(--white);cursor:pointer}
+.nav-left{display:flex;align-items:center;gap:8px;text-decoration:none;color:#fff}
+.nav-left i{font-size:1.2rem}.nav-left b{font-size:1rem;letter-spacing:1px}.nav-left b span{color:var(--red)}
+.nav-r{display:flex;gap:6px}
+.nav-btn{padding:7px 14px;border-radius:50px;font-size:.68rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:5px;transition:var(--transition)}
+.nb-wpp{background:#25D366;color:#fff}.nb-wpp:hover{background:#1da851}
+.nb-ig{background:transparent;border:1px solid var(--muted);color:var(--gray)}.nb-ig:hover{border-color:#fff;color:#fff}
+.menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
 
-/* HERO COMPACT */
-.hero-mini{padding:48px 24px 32px;text-align:center}
-.hero-mini h1{font-family:var(--font);font-size:clamp(1.6rem,4vw,2.4rem);color:var(--white);font-weight:700;letter-spacing:-0.5px;margin-bottom:8px}
-.hero-mini h1 span{background:linear-gradient(135deg,var(--theme1),var(--theme2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero-mini p{color:var(--gray);font-size:.84rem;max-width:500px;margin:0 auto 20px}
-.hero-badges{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
-.h-badge{display:flex;align-items:center;gap:6px;background:var(--card);border:1px solid var(--border);padding:8px 14px;border-radius:50px;font-size:.68rem;color:var(--text)}
-.h-badge i{color:var(--red);font-size:.75rem}
+/* HERO MINI */
+.hero{padding:40px 20px 24px;text-align:center}
+.hero h1{font-size:clamp(1.4rem,3.5vw,2rem);color:#fff;font-weight:700;letter-spacing:-.5px;margin-bottom:6px}
+.hero h1 span{background:linear-gradient(135deg,var(--theme1),var(--theme2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero p{color:var(--gray);font-size:.78rem;margin-bottom:16px}
+.badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.bdg{display:flex;align-items:center;gap:5px;background:var(--card);border:1px solid var(--border);padding:6px 12px;border-radius:50px;font-size:.62rem;color:var(--text)}.bdg i{color:var(--red);font-size:.65rem}
 
-/* CATEGORY STRIP */
-.cat-strip{padding:0 24px 32px}
-.cat-row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
-.cat-btn{padding:10px 20px;border-radius:50px;font-size:.72rem;font-weight:600;border:1.5px solid var(--border);background:var(--black);color:var(--gray);cursor:pointer;transition:var(--transition);display:flex;align-items:center;gap:6px}
-.cat-btn.active{background:var(--white);color:var(--black);border-color:var(--white)}
-.cat-btn:hover{border-color:var(--white);color:var(--white)}
-.cat-btn.active:hover{color:var(--black)}
-.cat-btn i{font-size:.72rem}
+/* CATEGORY TABS */
+.tabs{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;padding:0 20px 28px}
+.tab{padding:8px 16px;border-radius:50px;font-size:.68rem;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;transition:var(--transition)}
+.tab.active{background:#fff;color:#000;border-color:#fff}
+.tab:hover{border-color:#fff;color:#fff}.tab.active:hover{color:#000}
 
-/* PRODUCT GRID */
-.prod-section{padding:0 24px 60px}
-.cat-header{display:flex;align-items:center;gap:10px;margin-bottom:20px;padding-bottom:10px;border-bottom:1px solid var(--border)}
-.cat-header h2{font-family:var(--font);font-size:1.2rem;color:var(--white);font-weight:700;letter-spacing:-.5px}
-.cat-header .count{font-size:.6rem;color:var(--gray);background:var(--card);padding:3px 8px;border-radius:50px}
+/* PRODUCT CARDS */
+.section{padding:0 20px 40px;max-width:1200px;margin:0 auto}
+.cat-head{display:flex;align-items:center;gap:8px;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.cat-head h2{font-size:1rem;color:#fff;font-weight:700}.cat-head .cnt{font-size:.55rem;color:var(--gray);background:var(--card);padding:2px 8px;border-radius:50px}
 
-.p-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:40px}
-.p-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition);text-decoration:none;color:var(--text);display:block;position:relative}
-.p-card:hover{border-color:rgba(200,16,46,.3);transform:translateY(-4px);box-shadow:var(--shadow)}
-.p-card-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:var(--card2);position:relative;overflow:hidden;padding:20px}
-.p-card-img img{width:70%;height:70%;object-fit:contain;transition:transform .4s;position:relative;z-index:1}
-.p-card:hover .p-card-img img{transform:scale(1.06)}
-/* WATERMARK */
-.p-card-img::after{content:'UK';position:absolute;top:12px;right:12px;font-family:var(--font);font-size:.7rem;font-weight:700;color:rgba(255,255,255,.15);letter-spacing:1px;z-index:3}
-.p-badge{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:50px;font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3}
-.badge-lacrado{background:var(--red);color:var(--white)}
-.badge-semi{background:var(--navy);color:var(--white)}
-.badge-destaque{background:var(--accent);color:var(--black)}
-.p-body{padding:12px}
-.p-body h3{font-size:.82rem;font-weight:700;color:var(--white);margin-bottom:2px}
-.p-body .specs{font-size:.62rem;color:var(--gray);margin-bottom:8px}
-.p-prices{display:flex;flex-direction:column;gap:2px}
-.p-avista{font-size:.95rem;font-weight:700;color:var(--white)}
-.p-avista small{font-size:.58rem;color:var(--gray);font-weight:400}
-.p-parcelado{font-size:.62rem;color:var(--gray)}
-.p-buy{display:block;text-align:center;background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);padding:9px;font-size:.66rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;transition:var(--transition)}
-.p-buy:hover{background:linear-gradient(135deg,var(--navy),var(--red))}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:36px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--transition)}
+.card:hover{border-color:rgba(200,16,46,.25);transform:translateY(-3px);box-shadow:var(--shadow)}
 
-/* INFO BAR */
-.info-bar{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 24px}
-.info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1200px;margin:0 auto;text-align:center}
-.info-item i{font-size:1.2rem;margin-bottom:6px;display:block}
-.info-item h4{font-size:.74rem;color:var(--white);font-weight:600}
-.info-item p{font-size:.58rem;color:var(--gray)}
+/* CARD IMAGE */
+.c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:var(--card2);position:relative;padding:16px;overflow:hidden}
+.c-img img{width:68%;height:68%;object-fit:contain;transition:transform .4s}.card:hover .c-img img{transform:scale(1.05)}
+/* watermark */
+.c-img::after{content:'UKIMPORTS';position:absolute;top:10px;right:-10px;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.12);letter-spacing:2px;transform:rotate(-90deg);transform-origin:right top;z-index:2}
+.c-tag{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:50px;font-size:.48rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;color:#fff}
+.t-lacrado{background:var(--red)}.t-semi{background:var(--navy)}.t-dest{background:var(--accent);color:#000}
+
+/* CARD BODY */
+.c-body{padding:12px}
+.c-body h3{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.2}
+.c-body .year{font-size:.55rem;color:var(--gray)}
+
+/* COLOR SWATCHES */
+.swatches{display:flex;gap:4px;margin:8px 0 6px;align-items:center;flex-wrap:wrap}
+.swatch{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:var(--transition);position:relative}
+.swatch.active{border-color:#fff;box-shadow:0 0 0 1px var(--muted)}
+.swatch:hover{transform:scale(1.15)}
+.cor-nome{font-size:.55rem;color:var(--gray);margin-bottom:6px;min-height:14px}
+
+/* MEMORY SELECTOR */
+.mems{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+.mem{padding:3px 8px;border-radius:6px;font-size:.55rem;font-weight:600;border:1px solid var(--border);color:var(--gray);cursor:pointer;transition:var(--transition)}
+.mem.active{background:#fff;color:#000;border-color:#fff}
+.mem:hover{border-color:#fff}
+
+/* PRICES */
+.prices{margin-bottom:4px}
+.p-main{font-size:.95rem;font-weight:700;color:#fff}
+.p-main small{font-size:.55rem;color:var(--gray);font-weight:400}
+.p-parc{font-size:.58rem;color:var(--gray)}
+
+/* BUY BUTTON */
+.c-buy{display:block;text-align:center;background:linear-gradient(135deg,var(--red),var(--navy));color:#fff;padding:9px;font-size:.64rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:var(--transition)}
+.c-buy:hover{opacity:.9}
+
+/* INFO */
+.info{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 20px}
+.info-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1200px;margin:0 auto;text-align:center}
+.info-row i{font-size:1rem;color:var(--red);margin-bottom:4px;display:block}
+.info-row h4{font-size:.7rem;color:#fff;font-weight:600}.info-row p{font-size:.55rem;color:var(--gray)}
 
 /* CTA */
-.cta{padding:60px 24px;text-align:center}
-.cta h2{font-family:var(--font);font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--white);margin-bottom:8px;font-weight:700}
-.cta h2 span{background:linear-gradient(135deg,var(--theme1),var(--theme2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.cta p{color:var(--gray);font-size:.84rem;margin-bottom:20px}
-.btn-uk{background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--white);padding:14px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
-.btn-uk:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(200,16,46,.25)}
+.cta{padding:50px 20px;text-align:center}
+.cta h2{font-size:clamp(1.3rem,3vw,1.8rem);color:#fff;margin-bottom:6px;font-weight:700}.cta h2 span{color:var(--red)}
+.cta p{color:var(--gray);font-size:.8rem;margin-bottom:16px}
+.cta-btn{background:linear-gradient(135deg,var(--red),var(--navy));color:#fff;padding:12px 28px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;display:inline-flex;align-items:center;gap:8px;transition:var(--transition)}
+.cta-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,16,46,.2)}
 
 /* FOOTER */
-.footer{background:var(--dark);padding:36px 24px 14px;border-top:1px solid var(--border)}
-.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:28px;max-width:1200px;margin:0 auto 20px}
-.footer h4{font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--white);margin-bottom:8px}
-.footer a{color:var(--gray);text-decoration:none;font-size:.72rem;display:block;margin-bottom:4px;transition:color .2s}.footer a:hover{color:var(--red)}
-.ft-brand p{font-size:.72rem;color:var(--gray);line-height:1.5;margin-bottom:8px}
-.ft-social{display:flex;gap:6px}.ft-social a{width:28px;height:28px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;margin:0;color:var(--gray)}.ft-social a:hover{background:var(--red);color:var(--white);border-color:var(--red)}
-.ft-bottom{border-top:1px solid var(--border);padding-top:10px;text-align:center;font-size:.58rem;color:var(--muted);max-width:1200px;margin:0 auto}
+.foot{background:var(--dark);padding:32px 20px 12px;border-top:1px solid var(--border)}
+.ft-g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px;max-width:1200px;margin:0 auto 16px}
+.foot h4{font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:8px}
+.foot a{color:var(--gray);text-decoration:none;font-size:.68rem;display:block;margin-bottom:3px}.foot a:hover{color:var(--red)}
+.ft-b{border-top:1px solid var(--border);padding-top:8px;text-align:center;font-size:.55rem;color:var(--muted);max-width:1200px;margin:0 auto}
+.ft-s{display:flex;gap:6px;margin-top:6px}.ft-s a{width:26px;height:26px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;margin:0}.ft-s a:hover{background:var(--red);color:#fff;border-color:var(--red)}
 
 /* WPP */
-.wpp{position:fixed;bottom:18px;right:18px;z-index:99;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
-.wpp-tip{background:var(--white);color:var(--black);padding:7px 12px;border-radius:10px 10px 4px 10px;box-shadow:var(--shadow);font-size:.7rem;font-weight:600;transform:translateY(6px);opacity:0;transition:var(--transition);pointer-events:none}
-.wpp:hover .wpp-tip{transform:translateY(0);opacity:1}
-.wpp-b{width:50px;height:50px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,.3);transition:var(--transition);animation:wp 2.5s infinite}
-.wpp-b:hover{transform:scale(1.1)}
+.wpp{position:fixed;bottom:16px;right:16px;z-index:99}
+.wpp a{width:48px;height:48px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,.3);animation:wp 2.5s infinite}
 @keyframes wp{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
 
-.reveal{opacity:0;transform:translateY(16px);transition:all .5s ease}.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:0;transform:translateY(14px);transition:all .5s ease}.reveal.visible{opacity:1;transform:translateY(0)}
 
-@media(max-width:1024px){.p-grid{grid-template-columns:repeat(3,1fr)}.info-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.nav-cats{display:none}.nav-cta{display:none}.menu-toggle{display:block;z-index:201}.p-grid{grid-template-columns:1fr 1fr}.info-grid{grid-template-columns:1fr 1fr}.ft-grid{grid-template-columns:1fr}.cat-row{gap:6px}.cat-btn{padding:8px 14px;font-size:.65rem}}
-@media(max-width:480px){.p-grid{grid-template-columns:1fr 1fr;gap:10px}.p-body{padding:10px}.p-body h3{font-size:.76rem}}
+@media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}.info-row{grid-template-columns:1fr 1fr}.ft-g{grid-template-columns:1fr}.nav-r .nb-ig{display:none}.tabs{gap:4px}.tab{padding:6px 12px;font-size:.62rem}}
+@media(max-width:420px){.grid{gap:8px}.c-body{padding:10px}.c-body h3{font-size:.75rem}}
 </style>
 </head>
 <body>
 
-<div class="theme-banner" id="themeBanner"><span id="themeText"></span></div>
+<div class="t-banner" id="banner"></div>
 
 <nav class="nav"><div class="container nav-inner">
-<a href="#" class="nav-brand">
-<div class="nav-logo"><i class="fab fa-apple"></i></div>
-<div class="nav-name">UK<span>IMPORTS</span></div>
-</a>
-<ul class="nav-cats" id="navCats"></ul>
-<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="nav-cta" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
-<button class="menu-toggle" id="menuToggle" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+<a href="#" class="nav-left"><i class="fab fa-apple"></i><b>UK<span>IMPORTS</span></b></a>
+<div class="nav-r">
+<a href="https://instagram.com/ukimports_" class="nav-btn nb-ig" target="_blank"><i class="fab fa-instagram"></i> @ukimports_</a>
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="nav-btn nb-wpp" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+</div>
 </div></nav>
 
-<section class="hero-mini reveal">
-<h1 id="heroTitle">Catálogo <span>Apple</span> Completo</h1>
-<p>iPhones novos e seminovos, Apple Watch, AirPods, iPad e MacBook. Todos com nota fiscal e garantia.</p>
-<div class="hero-badges">
-<div class="h-badge"><i class="fas fa-file-invoice"></i> Nota Fiscal</div>
-<div class="h-badge"><i class="fas fa-credit-card"></i> Até 18x</div>
-<div class="h-badge"><i class="fas fa-shield-halved"></i> Garantia 1 ano</div>
-<div class="h-badge"><i class="fas fa-gift"></i> Brindes inclusos</div>
+<section class="hero">
+<h1 id="heroH1">Catálogo <span>Apple</span></h1>
+<p>Todos os produtos com nota fiscal, garantia 1 ano e brindes. Parcelamos em até 18x.</p>
+<div class="badges">
+<div class="bdg"><i class="fas fa-file-invoice"></i> Nota Fiscal</div>
+<div class="bdg"><i class="fas fa-credit-card"></i> Até 18x</div>
+<div class="bdg"><i class="fas fa-shield-halved"></i> Garantia 1 ano Apple</div>
+<div class="bdg"><i class="fas fa-gift"></i> Capa + Película + Carregador</div>
 </div>
 </section>
 
-<div class="cat-strip">
-<div class="cat-row" id="catRow"></div>
-</div>
+<div class="tabs" id="tabs"></div>
+<div id="catalogContent"></div>
 
-<div class="prod-section" id="prodSection"></div>
-
-<div class="info-bar">
-<div class="info-grid">
-<div class="info-item reveal"><i class="fas fa-file-invoice" style="color:var(--red)"></i><h4>Nota Fiscal</h4><p>Em todos os aparelhos</p></div>
-<div class="info-item reveal"><i class="fas fa-credit-card" style="color:var(--accent)"></i><h4>Até 18x</h4><p>Menor taxa do mercado</p></div>
-<div class="info-item reveal"><i class="fas fa-shield-halved" style="color:var(--navy-light)"></i><h4>Garantia 1 Ano</h4><p>Garantia Apple oficial</p></div>
-<div class="info-item reveal"><i class="fas fa-gift" style="color:var(--red)"></i><h4>Brindes</h4><p>Capa, película e carregador turbo</p></div>
+<div class="info">
+<div class="info-row">
+<div class="reveal"><i class="fas fa-file-invoice"></i><h4>Nota Fiscal</h4><p>Todos os aparelhos</p></div>
+<div class="reveal"><i class="fas fa-credit-card"></i><h4>Até 18x</h4><p>Menor taxa do mercado</p></div>
+<div class="reveal"><i class="fas fa-shield-halved"></i><h4>Garantia 1 Ano</h4><p>Apple oficial</p></div>
+<div class="reveal"><i class="fas fa-gift"></i><h4>Brindes</h4><p>Capa, película, carregador turbo</p></div>
 </div>
 </div>
 
 <section class="cta reveal">
-<h2>Escolheu o seu? <span>Chama no WhatsApp!</span></h2>
-<p>Fale com a Yasmin e garanta seu produto Apple com nota fiscal e a menor taxa.</p>
-<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="btn-uk" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Yasmin</a>
+<h2>Escolheu? <span>Chama a Yasmin!</span></h2>
+<p>WhatsApp com atendimento rápido e personalizado.</p>
+<a href="https://wa.me/message/OHIYFNGXSVYOE1" class="cta-btn" target="_blank"><i class="fab fa-whatsapp"></i> Falar com a Yasmin</a>
 </section>
 
-<footer class="footer">
-<div class="ft-grid">
-<div class="ft-brand"><h4>UK Imports</h4><p>Produtos Apple com nota fiscal, garantia 1 ano e a menor taxa de parcelamento. Por @yasminparente_. +39 mil clientes satisfeitos. 🇬🇧</p><div class="ft-social"><a href="https://instagram.com/ukimports_" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/message/OHIYFNGXSVYOE1" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
-<div><h4>Categorias</h4><a href="#" onclick="filterCat('iphone-lacrado')">iPhone Lacrados</a><a href="#" onclick="filterCat('iphone-semi')">iPhone Seminovos</a><a href="#" onclick="filterCat('watch')">Apple Watch</a><a href="#" onclick="filterCat('airpods')">AirPods</a><a href="#" onclick="filterCat('ipad')">iPad</a><a href="#" onclick="filterCat('macbook')">MacBook</a></div>
+<footer class="foot">
+<div class="ft-g">
+<div><h4>UK Imports 🇬🇧</h4><p style="font-size:.7rem;color:var(--gray);line-height:1.5;margin-bottom:6px">Produtos Apple com nota fiscal, garantia e a menor taxa. +39 mil seguidores. Por @yasminparente_</p><div class="ft-s"><a href="https://instagram.com/ukimports_" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/message/OHIYFNGXSVYOE1" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div><h4>Categorias</h4><a href="#" onclick="setTab('iphone-lacrado')">iPhone Lacrados</a><a href="#" onclick="setTab('iphone-semi')">iPhone Seminovos</a><a href="#" onclick="setTab('watch')">Apple Watch</a><a href="#" onclick="setTab('airpods')">AirPods</a><a href="#" onclick="setTab('ipad')">iPad</a><a href="#" onclick="setTab('macbook')">MacBook</a></div>
 <div><h4>Contato</h4><a href="https://wa.me/message/OHIYFNGXSVYOE1" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="https://instagram.com/ukimports_" target="_blank"><i class="fab fa-instagram"></i> @ukimports_</a><a href="https://instagram.com/yasminparente_" target="_blank"><i class="fab fa-instagram"></i> @yasminparente_</a></div>
 </div>
-<div class="ft-bottom">© 2026 UK Imports | Produtos Apple 🇬🇧 Todos os direitos reservados.</div>
+<div class="ft-b">© 2026 UK Imports | Produtos Apple 🇬🇧</div>
 </footer>
 
-<div class="wpp"><div class="wpp-tip">Fala com a Yasmin! 📱</div><a href="https://wa.me/message/OHIYFNGXSVYOE1" class="wpp-b" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+<div class="wpp"><a href="https://wa.me/message/OHIYFNGXSVYOE1" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
 
 <script src="produtos.js"></script>
 <script>
 // THEME
-const tema = getTemaSazonal();
-document.getElementById('themeText').textContent = tema.emoji + ' ' + tema.banner + ' ' + tema.emoji;
-document.documentElement.style.setProperty('--theme1', tema.cor1);
-document.documentElement.style.setProperty('--theme2', tema.cor2);
+const tema=getTemaSazonal();
+document.getElementById('banner').textContent=tema.emoji+' '+tema.banner+' '+tema.emoji;
+document.documentElement.style.setProperty('--theme1',tema.cor1);
+document.documentElement.style.setProperty('--theme2',tema.cor2);
 
-// DATA
-function getData(){
-  let d = localStorage.getItem('uk_produtos');
-  if(!d){ localStorage.setItem('uk_produtos', JSON.stringify(PRODUTOS)); return [...PRODUTOS]; }
-  return JSON.parse(d);
+// STATE
+let activeCat='todos';
+// Track selected color/memory per product
+const state={};
+function getState(id){
+  if(!state[id]){
+    const p=CATALOGO.find(x=>x.id===id);
+    state[id]={cor:0,mem:0};
+  }
+  return state[id];
 }
 
-// RENDER
-let currentCat = 'todos';
-
-function renderNavCats(){
-  document.getElementById('navCats').innerHTML = CATEGORIAS.map(c =>
-    `<li><a href="#cat-${c.id}" class="nav-cat" onclick="filterCat('${c.id}')">${c.nome}</a></li>`
-  ).join('');
+// TABS
+function renderTabs(){
+  document.getElementById('tabs').innerHTML=
+    `<button class="tab ${activeCat==='todos'?'active':''}" onclick="setTab('todos')">Todos</button>`+
+    CATEGORIAS.map(c=>`<button class="tab ${activeCat===c.id?'active':''}" onclick="setTab('${c.id}')">${c.emoji} ${c.nome}</button>`).join('');
 }
+function setTab(c){activeCat=c;renderTabs();renderCatalog();window.scrollTo({top:document.getElementById('tabs').offsetTop-60,behavior:'smooth'})}
 
-function renderCatButtons(){
-  document.getElementById('catRow').innerHTML =
-    `<button class="cat-btn ${currentCat==='todos'?'active':''}" onclick="filterCat('todos')"><i class="fas fa-grip"></i> Todos</button>` +
-    CATEGORIAS.map(c =>
-      `<button class="cat-btn ${currentCat===c.id?'active':''}" onclick="filterCat('${c.id}')"><i class="fas ${c.icon}"></i> ${c.nome}</button>`
-    ).join('');
-}
+// RENDER CATALOG
+function renderCatalog(){
+  const cats=activeCat==='todos'?CATEGORIAS:CATEGORIAS.filter(c=>c.id===activeCat);
+  let html='';
+  cats.forEach(cat=>{
+    const items=CATALOGO.filter(p=>p.cat===cat.id);
+    if(!items.length)return;
+    html+=`<div class="section"><div class="cat-head reveal"><h2>${cat.emoji} ${cat.nome}</h2><span class="cnt">${items.length} modelos</span></div><div class="grid">`;
+    items.forEach(p=>{
+      const s=getState(p.id);
+      const cor=p.cores[s.cor];
+      const mem=p.memorias[s.mem];
+      const tagClass=p.cat==='iphone-semi'?'t-semi':p.destaque?'t-dest':'t-lacrado';
+      const tagText=p.cat==='iphone-semi'?'Seminovo':p.destaque?'🔥 Destaque':'Lacrado';
+      const parc18=Math.ceil(mem.parcelado/18);
+      const msg=encodeURIComponent('Oi Yasmin! Quero o '+p.modelo+(mem.gb?' '+mem.gb:'')+' '+cor.nome+'!');
 
-function renderProducts(){
-  const prods = getData().filter(p => p.status === 'disponivel');
-  let cats = currentCat === 'todos' ? CATEGORIAS : CATEGORIAS.filter(c => c.id === currentCat);
-  let html = '';
-  cats.forEach(cat => {
-    const items = prods.filter(p => p.cat === cat.id);
-    if(!items.length) return;
-    html += `<div id="cat-${cat.id}"><div class="cat-header reveal"><h2><i class="fas ${cat.icon}" style="color:var(--red);margin-right:6px"></i> ${cat.nome}</h2><span class="count">${items.length} produtos</span></div>`;
-    html += `<div class="p-grid">`;
-    items.forEach(p => {
-      const badgeClass = p.cat === 'iphone-semi' ? 'badge-semi' : p.destaque ? 'badge-destaque' : 'badge-lacrado';
-      const badgeText = p.cat === 'iphone-semi' ? 'Seminovo' : p.destaque ? '🔥 Destaque' : 'Lacrado';
-      const parcela18 = Math.ceil(p.parcelado / 18);
-      const msg = encodeURIComponent('Oi Yasmin! Vi no catálogo e quero o ' + p.nome + (p.storage ? ' ' + p.storage : '') + '!');
-      html += `<a href="https://wa.me/message/OHIYFNGXSVYOE1?text=${msg}" class="p-card reveal" target="_blank">
-        <div class="p-card-img"><span class="p-badge ${badgeClass}">${badgeText}</span><img src="${p.img}" alt="${p.nome}" loading="lazy"></div>
-        <div class="p-body"><h3>${p.nome}</h3><span class="specs">${p.storage ? p.storage + ' | ' : ''}${p.cor}</span>
-        <div class="p-prices"><span class="p-avista">R$ ${p.avista.toLocaleString('pt-BR')} <small>à vista</small></span><span class="p-parcelado">ou 18x de R$ ${parcela18.toLocaleString('pt-BR')}</span></div></div>
-        <div class="p-buy"><i class="fab fa-whatsapp"></i> COMPRAR</div></a>`;
+      html+=`<div class="card reveal" id="card-${p.id}">
+        <div class="c-img"><span class="c-tag ${tagClass}">${tagText}</span><img id="img-${p.id}" src="${cor.img}" alt="${p.modelo} ${cor.nome}" loading="lazy"></div>
+        <div class="c-body">
+          <h3>${p.modelo}</h3>
+          <span class="year">${p.lancamento}</span>
+          <div class="swatches">${p.cores.map((c,i)=>`<div class="swatch ${i===s.cor?'active':''}" style="background:${c.hex}" title="${c.nome}" onclick="pickCor('${p.id}',${i})"></div>`).join('')}</div>
+          <div class="cor-nome" id="cor-${p.id}">${cor.nome}</div>
+          ${p.memorias.length>1?`<div class="mems">${p.memorias.map((m,i)=>`<span class="mem ${i===s.mem?'active':''}" onclick="pickMem('${p.id}',${i})">${m.gb}</span>`).join('')}</div>`:''}
+          <div class="prices"><div class="p-main">R$ ${mem.avista.toLocaleString('pt-BR')} <small>à vista</small></div><div class="p-parc">ou 18x de R$ ${parc18.toLocaleString('pt-BR')}</div></div>
+        </div>
+        <a href="https://wa.me/message/OHIYFNGXSVYOE1?text=${msg}" class="c-buy" target="_blank"><i class="fab fa-whatsapp"></i> COMPRAR</a>
+      </div>`;
     });
-    html += `</div></div>`;
+    html+=`</div></div>`;
   });
-  document.getElementById('prodSection').innerHTML = html;
+  document.getElementById('catalogContent').innerHTML=html;
   observeAll();
 }
 
-function filterCat(cat){
-  currentCat = cat;
-  renderCatButtons();
-  renderProducts();
-  if(cat !== 'todos'){
-    const el = document.getElementById('cat-' + cat);
-    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-  }
+// INTERACTIONS
+function pickCor(id,i){
+  const p=CATALOGO.find(x=>x.id===id);
+  state[id]=state[id]||{cor:0,mem:0};
+  state[id].cor=i;
+  // Update image
+  document.getElementById('img-'+id).src=p.cores[i].img;
+  document.getElementById('cor-'+id).textContent=p.cores[i].nome;
+  // Update swatch active
+  const card=document.getElementById('card-'+id);
+  card.querySelectorAll('.swatch').forEach((s,idx)=>s.classList.toggle('active',idx===i));
+}
+function pickMem(id,i){
+  const p=CATALOGO.find(x=>x.id===id);
+  state[id]=state[id]||{cor:0,mem:0};
+  state[id].mem=i;
+  const mem=p.memorias[i];
+  const card=document.getElementById('card-'+id);
+  card.querySelectorAll('.mem').forEach((m,idx)=>m.classList.toggle('active',idx===i));
+  card.querySelector('.p-main').innerHTML='R$ '+mem.avista.toLocaleString('pt-BR')+' <small>à vista</small>';
+  card.querySelector('.p-parc').textContent='ou 18x de R$ '+Math.ceil(mem.parcelado/18).toLocaleString('pt-BR');
 }
 
 // INIT
-renderNavCats();
-renderCatButtons();
-renderProducts();
-
-// MENU
-function toggleMenu(){
-  // Simple: scroll to categories
-  document.querySelector('.cat-strip').scrollIntoView({behavior:'smooth'});
-}
+renderTabs();
+renderCatalog();
 
 // REVEAL
 function observeAll(){
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
-  },{threshold:.05,rootMargin:'0px 0px -20px 0px'});
-  document.querySelectorAll('.reveal:not(.visible)').forEach(el => obs.observe(el));
+  const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.04,rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el));
 }
-observeAll();
 </script>
 </body>
 </html>
