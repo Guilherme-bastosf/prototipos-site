@@ -148,7 +148,7 @@ tr:hover{background:rgba(26,82,118,.02)}
 <div class="main">
 <!-- DASHBOARD -->
 <div id="sec-dashboard">
-<div class="topbar"><h2>Dashboard</h2><div class="topbar-actions"><button class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i> Novo Imóvel</button></div></div>
+<div class="topbar"><h2>Dashboard</h2><div class="topbar-actions"><button class="btn btn-success" onclick="exportData()" title="Gera arquivo para publicar no site"><i class="fas fa-download"></i> Exportar Dados</button><button class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i> Novo Imóvel</button></div></div>
 <div class="stats-row" id="statsRow"></div>
 <div class="table-wrap">
 <div class="table-header"><h3>Últimos imóveis cadastrados</h3></div>
@@ -259,14 +259,40 @@ if(localStorage.getItem('kt_auth')==='true'){
 const AMENIDADES_LIST = ["Piscina","Piscina infinity","Churrasqueira","Wi-Fi","Ar condicionado","Vista mar","Vista baía","Estacionamento","Cozinha equipada","Cozinha gourmet","Cozinha planejada","Área de lazer","Área gourmet","Varanda","Varanda gourmet","Quintal","Garagem dupla","Condomínio fechado","Segurança 24h","Elevador","Portaria","Mobiliado","Perto da praia","Rooftop","Pier privativo","Sauna","Trilhas","Natureza","Staff","Bairro tranquilo","Infraestrutura completa","Plano"];
 
 function getData(){
-  let data = localStorage.getItem('kt_imoveis');
-  if(!data){
-    localStorage.setItem('kt_imoveis', JSON.stringify(IMOVEIS));
-    return [...IMOVEIS];
+  // Merge: arquivo imoveis.js (base) + localStorage (edições)
+  let base = [...IMOVEIS];
+  let local = localStorage.getItem('kt_imoveis');
+  if(local){
+    try {
+      let extras = JSON.parse(local);
+      let baseIds = base.map(i=>i.id);
+      extras.forEach(i=>{
+        if(!baseIds.includes(i.id)){
+          base.push(i);
+        } else {
+          let idx = base.findIndex(x=>x.id===i.id);
+          if(idx>=0) base[idx] = i;
+        }
+      });
+    } catch(e){}
   }
-  return JSON.parse(data);
+  return base;
 }
 function saveData(arr){ localStorage.setItem('kt_imoveis', JSON.stringify(arr)); }
+
+// EXPORTAR - gera o imoveis.js atualizado pra download
+function exportData(){
+  const d = getData();
+  let js = '/*\n  KT IMÓVEIS — BANCO DE IMÓVEIS (exportado do admin)\n  Gerado em: ' + new Date().toLocaleString('pt-BR') + '\n*/\n\nconst IMOVEIS = ' + JSON.stringify(d, null, 2) + ';\n';
+  const blob = new Blob([js], {type: 'application/javascript'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'imoveis.js';
+  a.click();
+  URL.revokeObjectURL(url);
+  alert('Arquivo imoveis.js exportado!\\n\\nPara publicar no site:\\n1. Envie este arquivo para a pasta do site\\n2. Substitua o imoveis.js antigo\\n3. Faça o deploy');
+}
 
 // ============================================
 // INIT

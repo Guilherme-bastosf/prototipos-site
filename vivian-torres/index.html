@@ -378,11 +378,29 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 
 <script src="imoveis.js"></script>
 <script>
-// DATA
+// DATA - merge imoveis.js (base) + localStorage (adições do admin)
 function getData(){
-  let d=localStorage.getItem('kt_imoveis');
-  if(!d){localStorage.setItem('kt_imoveis',JSON.stringify(IMOVEIS));return[...IMOVEIS]}
-  return JSON.parse(d);
+  // Sempre começa com os imóveis do arquivo imoveis.js
+  let base = [...IMOVEIS];
+  // Verifica se tem adições no localStorage
+  let local = localStorage.getItem('kt_imoveis');
+  if(local){
+    try {
+      let extras = JSON.parse(local);
+      // Adiciona imóveis do localStorage que NÃO existem no arquivo base
+      let baseIds = base.map(i=>i.id);
+      extras.forEach(i=>{
+        if(!baseIds.includes(i.id)){
+          base.push(i); // imóvel novo do admin
+        } else {
+          // Se existe no base, usa a versão do localStorage (pode ter sido editado)
+          let idx = base.findIndex(x=>x.id===i.id);
+          if(idx>=0) base[idx] = i;
+        }
+      });
+    } catch(e){}
+  }
+  return base.filter(i=>i.status!=='excluido');
 }
 
 let searchType='todos';
