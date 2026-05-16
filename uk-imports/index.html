@@ -59,12 +59,11 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 .card:hover{border-color:rgba(200,16,46,.25);transform:translateY(-3px);box-shadow:var(--shadow)}
 
 /* CARD IMAGE */
-.c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#1a1a1a,#252525);position:relative;padding:16px;overflow:hidden}
-.c-img::before{content:'';position:absolute;width:65%;height:65%;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);z-index:1}
-.c-img img{width:62%;height:62%;object-fit:contain;transition:transform .4s;position:relative;z-index:2;filter:drop-shadow(0 4px 12px rgba(0,0,0,.3));mix-blend-mode:normal}.card:hover .c-img img{transform:scale(1.05)}
+.c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:#f5f5f7;position:relative;padding:12px;overflow:hidden}
+.c-img img{width:85%;height:85%;object-fit:contain;transition:transform .4s;position:relative;z-index:2}.card:hover .c-img img{transform:scale(1.06)}
 /* watermark */
-.c-img::after{content:'UKIMPORTS';position:absolute;top:10px;right:-10px;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.12);letter-spacing:2px;transform:rotate(-90deg);transform-origin:right top;z-index:2}
-.c-tag{position:absolute;top:8px;left:8px;padding:3px 8px;border-radius:50px;font-size:.48rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;color:#fff}
+.c-img::after{content:'UKIMPORTS';position:absolute;top:10px;right:10px;font-size:.45rem;font-weight:700;color:rgba(0,0,0,.1);letter-spacing:1.5px;z-index:3}
+.c-tag{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:50px;font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;color:#fff;box-shadow:0 2px 6px rgba(0,0,0,.15)}
 .t-lacrado{background:var(--red)}.t-semi{background:var(--navy)}.t-dest{background:var(--accent);color:#000}
 
 /* CARD BODY */
@@ -75,7 +74,7 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 /* COLOR SWATCHES */
 .swatches{display:flex;gap:4px;margin:8px 0 6px;align-items:center;flex-wrap:wrap}
 .swatch{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:var(--transition);position:relative}
-.swatch.active{border-color:#fff;box-shadow:0 0 0 1px var(--muted)}
+.swatch.active{border-color:var(--red);box-shadow:0 0 0 2px var(--red)}
 .swatch:hover{transform:scale(1.15)}
 .cor-nome{font-size:.55rem;color:var(--gray);margin-bottom:6px;min-height:14px}
 
@@ -95,11 +94,6 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 .c-buy{display:block;text-align:center;background:linear-gradient(135deg,var(--red),var(--navy));color:#fff;padding:9px;font-size:.64rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;text-decoration:none;transition:var(--transition)}
 .c-buy:hover{opacity:.9}
 
-/* INFO */
-.info{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:24px 20px}
-.info-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;max-width:1200px;margin:0 auto;text-align:center}
-.info-row i{font-size:1rem;color:var(--red);margin-bottom:4px;display:block}
-.info-row h4{font-size:.7rem;color:#fff;font-weight:600}.info-row p{font-size:.55rem;color:var(--gray)}
 
 /* CTA */
 .cta{padding:50px 20px;text-align:center}
@@ -142,26 +136,17 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 
 <section class="hero">
 <h1 id="heroH1">Catálogo <span>Apple</span></h1>
-<p>Todos os produtos com nota fiscal, garantia 1 ano e brindes. Parcelamos em até 18x.</p>
 <div class="badges">
 <div class="bdg"><i class="fas fa-file-invoice"></i> Nota Fiscal</div>
 <div class="bdg"><i class="fas fa-credit-card"></i> Até 18x</div>
-<div class="bdg"><i class="fas fa-shield-halved"></i> Garantia 1 ano Apple</div>
-<div class="bdg"><i class="fas fa-gift"></i> Capa + Película + Carregador</div>
+<div class="bdg"><i class="fas fa-shield-halved"></i> Garantia 1 ano</div>
+<div class="bdg"><i class="fas fa-gift"></i> Brindes inclusos</div>
 </div>
 </section>
 
 <div class="tabs" id="tabs"></div>
 <div id="catalogContent"></div>
 
-<div class="info">
-<div class="info-row">
-<div class="reveal"><i class="fas fa-file-invoice"></i><h4>Nota Fiscal</h4><p>Todos os aparelhos</p></div>
-<div class="reveal"><i class="fas fa-credit-card"></i><h4>Até 18x</h4><p>Menor taxa do mercado</p></div>
-<div class="reveal"><i class="fas fa-shield-halved"></i><h4>Garantia 1 Ano</h4><p>Apple oficial</p></div>
-<div class="reveal"><i class="fas fa-gift"></i><h4>Brindes</h4><p>Capa, película, carregador turbo</p></div>
-</div>
-</div>
 
 <section class="cta reveal">
 <h2>Escolheu? <span>Chama a Yasmin!</span></h2>
