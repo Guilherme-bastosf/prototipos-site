@@ -40,8 +40,6 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 .hero h1{font-size:clamp(1.4rem,3.5vw,2rem);color:#fff;font-weight:700;letter-spacing:-.5px;margin-bottom:6px}
 .hero h1 span{background:linear-gradient(135deg,var(--theme1),var(--theme2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .hero p{color:var(--gray);font-size:.78rem;margin-bottom:16px}
-.badges{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
-.bdg{display:flex;align-items:center;gap:5px;background:var(--card);border:1px solid var(--border);padding:6px 12px;border-radius:50px;font-size:.62rem;color:var(--text)}.bdg i{color:var(--red);font-size:.65rem}
 
 /* CATEGORY TABS */
 .tabs{display:flex;gap:5px;justify-content:center;flex-wrap:wrap;padding:0 20px 28px}
@@ -118,8 +116,8 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 .reveal{opacity:0;transform:translateY(14px);transition:all .5s ease}.reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr)}.info-row{grid-template-columns:1fr 1fr}.ft-g{grid-template-columns:1fr}.nav-r .nb-ig{display:none}.tabs{gap:4px}.tab{padding:6px 12px;font-size:.62rem}}
-@media(max-width:420px){.grid{gap:8px}.c-body{padding:10px}.c-body h3{font-size:.75rem}}
+@media(max-width:768px){.grid{grid-template-columns:repeat(2,1fr);gap:10px}.ft-g{grid-template-columns:1fr}.nav-r .nb-ig{display:none}.tabs{gap:4px}.tab{padding:6px 12px;font-size:.62rem}.c-img{padding:14px}.c-img img{width:80%;height:80%}.hero{padding:28px 20px 16px}.hero h1{font-size:1.3rem}.t-banner{font-size:.62rem;padding:7px 10px}}
+@media(max-width:420px){.grid{gap:6px}.c-body{padding:8px}.c-body h3{font-size:.72rem}.c-img img{width:82%;height:82%}.swatch{width:16px;height:16px}}
 </style>
 </head>
 <body>
@@ -136,12 +134,6 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 
 <section class="hero">
 <h1 id="heroH1">Catálogo <span>Apple</span></h1>
-<div class="badges">
-<div class="bdg"><i class="fas fa-file-invoice"></i> Nota Fiscal</div>
-<div class="bdg"><i class="fas fa-credit-card"></i> Até 18x</div>
-<div class="bdg"><i class="fas fa-shield-halved"></i> Garantia 1 ano</div>
-<div class="bdg"><i class="fas fa-gift"></i> Brindes inclusos</div>
-</div>
 </section>
 
 <div class="tabs" id="tabs"></div>
