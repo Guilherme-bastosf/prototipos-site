@@ -223,10 +223,10 @@ const CATALOGO = [
   // APPLE WATCH
   // ═══════════════════════════════════════
   {
-    id:"watch-se",cat:"watch",modelo:"Apple Watch SE",lancamento:"2ª ger.",destaque:false,
+    id:"watch-se",cat:"watch",modelo:"Apple Watch SE",lancamento:"3ª ger.",destaque:false,
     cores:[
-      {nome:"Meia-noite",hex:"#1C1C1E",img:"https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&q=80"},
-      {nome:"Estelar",hex:"#F5E6CE",img:"https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&q=80"}
+      {nome:"Meia-noite",hex:"#1C1C1E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-40-aluminum-midnight-nc-se3_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Estelar",hex:"#F5E6CE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-40-aluminum-starlight-nc-se3_VW_34FR?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"40mm",avista:2000,parcelado:2260},
@@ -236,9 +236,9 @@ const CATALOGO = [
   {
     id:"watch-s11",cat:"watch",modelo:"Apple Watch Series 11",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Alumínio Meia-noite",hex:"#1C1C1E",img:"https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=400&q=80"},
-      {nome:"Alumínio Prateado",hex:"#E0E0E0",img:"https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&q=80"},
-      {nome:"Alumínio Rosé",hex:"#E8CDBE",img:"https://images.unsplash.com/photo-1434493789847-2f02dc6ca35d?w=400&q=80"}
+      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-42-aluminum-spacegray-cell-s11_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-42-aluminum-silver-nc-s11_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Rosé",hex:"#E8CDBE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-42-aluminum-rosegold-nc-s11_VW_34FR?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"42mm",avista:3650,parcelado:4150},
@@ -248,8 +248,8 @@ const CATALOGO = [
   {
     id:"watch-ultra2",cat:"watch",modelo:"Apple Watch Ultra 2",lancamento:"2024",destaque:true,
     cores:[
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?w=400&q=80"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://images.unsplash.com/photo-1551816230-ef5deaed4a26?w=400&q=80"}
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-49-titanium-natural-ultra3_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-49-titanium-black-ultra3_VW_34FR?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"49mm",avista:4950,parcelado:5693}
@@ -287,21 +287,21 @@ const CATALOGO = [
   {
     id:"ipad-11",cat:"ipad",modelo:"iPad (11ª geração)",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Prata",hex:"#E0E0E0",img:"https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=400&q=80"},
-      {nome:"Azul",hex:"#4C7AA3",img:"https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=400&q=80"},
-      {nome:"Rosa",hex:"#E8B4B8",img:"https://images.unsplash.com/photo-1628557044797-f21a177c37ec?w=400&q=80"},
-      {nome:"Amarelo",hex:"#F5E050",img:"https://images.unsplash.com/photo-1585790050230-5dd28404ccb9?w=400&q=80"}
+      {nome:"Prata",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-silver-wifi-select?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Azul",hex:"#4C7AA3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-blue-wifi-select?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Rosa",hex:"#E8B4B8",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-pink-wifi-select?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Amarelo",hex:"#F5E050",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/ipad-2022-hero-yellow-wifi-select?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"128GB",avista:3250,parcelado:3700}]
   },
   {
-    id:"pencil-1",cat:"ipad",modelo:"Apple Pencil 1ª ger.",lancamento:"iPad 9, 10",destaque:false,
-    cores:[{nome:"Branco",hex:"#F5F5F0",img:"https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80"}],
+    id:"pencil-1",cat:"ipad",modelo:"Apple Pencil USB-C",lancamento:"iPad 10, Air",destaque:false,
+    cores:[{nome:"Branco",hex:"#F5F5F0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MUWA3?wid=400&hei=400&fmt=png-alpha"}],
     memorias:[{gb:"",avista:1000,parcelado:1130}]
   },
   {
-    id:"pencil-2",cat:"ipad",modelo:"Apple Pencil 2ª ger.",lancamento:"iPad Air, Pro",destaque:false,
-    cores:[{nome:"Branco",hex:"#F5F5F0",img:"https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=400&q=80"}],
+    id:"pencil-2",cat:"ipad",modelo:"Apple Pencil Pro",lancamento:"iPad Air, Pro",destaque:false,
+    cores:[{nome:"Branco",hex:"#F5F5F0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/MU8F2_AV1?wid=400&hei=400&fmt=png-alpha"}],
     memorias:[{gb:"",avista:1000,parcelado:1130}]
   },
 
@@ -311,29 +311,26 @@ const CATALOGO = [
   {
     id:"macbook-m1",cat:"macbook",modelo:"MacBook Air M1",lancamento:"2020",destaque:false,
     cores:[
-      {nome:"Cinza Espacial",hex:"#7A7B7F",img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80"},
-      {nome:"Dourado",hex:"#F9D4B7",img:"https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=400&q=80"},
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&q=80"}
+      {nome:"Cinza Espacial",hex:"#7A7B7F",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-20220606?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"256GB",avista:4550,parcelado:5150}]
   },
   {
     id:"macbook-m2",cat:"macbook",modelo:"MacBook Air M2",lancamento:"2022",destaque:true,
     cores:[
-      {nome:"Meia-noite",hex:"#2E3642",img:"https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=400&q=80"},
-      {nome:"Estelar",hex:"#F0E4D3",img:"https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=400&q=80"},
-      {nome:"Cinza Espacial",hex:"#7A7B7F",img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80"},
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&q=80"}
+      {nome:"Meia-noite",hex:"#2E3642",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Estelar",hex:"#F0E4D3",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-starlight-select-20220606?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-20220606?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"256GB",avista:5750,parcelado:6500}]
   },
   {
     id:"macbook-m3",cat:"macbook",modelo:"MacBook Air M3",lancamento:"2024",destaque:true,
     cores:[
-      {nome:"Meia-noite",hex:"#2E3642",img:"https://images.unsplash.com/photo-1504274066651-8d31a536b11a?w=400&q=80"},
-      {nome:"Estelar",hex:"#F0E4D3",img:"https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=400&q=80"},
-      {nome:"Cinza Espacial",hex:"#7A7B7F",img:"https://images.unsplash.com/photo-1517336714731-489689fd1ca8?w=400&q=80"},
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&q=80"}
+      {nome:"Meia-noite",hex:"#2E3642",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Estelar",hex:"#F0E4D3",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-starlight-select-20220606?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-silver-select-20220606?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"256GB",avista:7900,parcelado:8930}]
   }
