@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella Angra Iates | Iates de Luxo em Angra dos Reis</title>
+<meta name="description" content="Bella Angra Iates — Experiências náuticas exclusivas em Angra dos Reis. Iates de luxo, lifestyle e negócios em alto-mar. Entre a bordo.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--navy:#0C1829;--navy-light:#162844;--navy-deep:#060E1A;
+--gold:#C5A55A;--gold-light:#D4BA7A;--gold-pale:#E8D9B0;--gold-dark:#A68B3C;
+--white:#FAFAFA;--cream:#F5F0E8;--text:#D4D0C8;--gray:#7A7872;--muted:#3A3832;--border:rgba(197,165,90,.12);
+--font:'Montserrat',sans-serif;--font-d:'Cormorant Garamond',Georgia,serif;
+--transition:all .4s cubic-bezier(.25,.1,.25,1);
+}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--navy-deep);overflow-x:hidden;-webkit-font-smoothing:antialiased;font-weight:300}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--navy-deep);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;transition:opacity 1s}.loader.hide{opacity:0;pointer-events:none}
+.loader-brand{font-family:var(--font-d);font-size:2rem;color:var(--gold);font-weight:300;letter-spacing:6px;text-transform:uppercase}
+.loader-line{width:60px;height:1px;background:var(--gold);opacity:.3;animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{width:60px;opacity:.2}50%{width:100px;opacity:.6}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 0;transition:var(--transition)}
+.nav.scrolled{background:rgba(6,14,26,.92);backdrop-filter:blur(20px);padding:14px 0;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-d);font-size:1.1rem;color:var(--gold);text-decoration:none;letter-spacing:4px;text-transform:uppercase;font-weight:400}
+.nav-logo span{font-weight:300;color:var(--text);opacity:.5}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.65rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:10px 24px;text-decoration:none;font-size:.6rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;transition:var(--transition)}
+.nav-cta:hover{background:var(--gold);color:var(--navy-deep)}
+.menu-btn{display:none;background:none;border:none;color:var(--gold);font-size:1.1rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=1800&q=85') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(6,14,26,.55),rgba(6,14,26,.3) 40%,rgba(6,14,26,.7) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;padding:0 40px}
+.hero-eyebrow{font-size:.55rem;color:var(--gold);letter-spacing:6px;text-transform:uppercase;margin-bottom:20px;font-weight:400;display:flex;align-items:center;justify-content:center;gap:16px}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.3}
+.hero h1{font-family:var(--font-d);font-size:clamp(2.8rem,6vw,4.8rem);color:var(--white);font-weight:300;line-height:1.05;margin-bottom:20px;letter-spacing:2px}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:400}
+.hero-sub{color:rgba(255,255,255,.45);font-size:.88rem;font-weight:300;line-height:1.8;margin-bottom:36px;max-width:520px;margin-left:auto;margin-right:auto;letter-spacing:.5px}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-gold{border:1px solid var(--gold);background:var(--gold);color:var(--navy-deep);padding:14px 36px;font-size:.62rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:var(--transition);display:inline-flex;align-items:center;gap:10px}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+.btn-line{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);padding:14px 36px;font-size:.62rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:var(--transition);display:inline-flex;align-items:center;gap:10px}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+
+/* SECTION */
+.sec{padding:100px 40px;max-width:1300px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:60px}
+.sec-ey{font-size:.55rem;color:var(--gold);letter-spacing:5px;text-transform:uppercase;font-weight:400;margin-bottom:10px;display:block}
+.sec-t{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);font-weight:300;letter-spacing:1px;margin-bottom:10px}
+.sec-t em{color:var(--gold);font-style:italic}
+.sec-d{color:var(--gray);font-size:.82rem;max-width:500px;margin:0 auto;line-height:1.7;font-weight:300}
+
+/* FLEET */
+.fleet-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.yacht{background:var(--navy);border:1px solid var(--border);overflow:hidden;transition:var(--transition);text-decoration:none;color:var(--text);display:block;position:relative}
+.yacht:hover{border-color:var(--gold);transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.yacht-img{height:280px;overflow:hidden;position:relative}
+.yacht-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}.yacht:hover .yacht-img img{transform:scale(1.04)}
+.yacht-img::after{content:'';position:absolute;bottom:0;left:0;right:0;height:40%;background:linear-gradient(to top,var(--navy),transparent)}
+.yacht-tag{position:absolute;top:16px;left:16px;background:rgba(197,165,90,.9);color:var(--navy-deep);padding:4px 12px;font-size:.5rem;font-weight:600;letter-spacing:2px;text-transform:uppercase;z-index:2}
+.yacht-body{padding:24px}
+.yacht-body h3{font-family:var(--font-d);font-size:1.3rem;color:var(--white);font-weight:400;margin-bottom:6px;letter-spacing:.5px}
+.yacht-specs{display:flex;gap:16px;margin-bottom:14px;flex-wrap:wrap}
+.yacht-spec{font-size:.6rem;color:var(--gray);display:flex;align-items:center;gap:4px;letter-spacing:.5px}
+.yacht-spec i{color:var(--gold);font-size:.6rem}
+.yacht-desc{font-size:.75rem;color:rgba(255,255,255,.35);line-height:1.6;margin-bottom:16px}
+.yacht-footer{display:flex;justify-content:space-between;align-items:center;padding-top:14px;border-top:1px solid var(--border)}
+.yacht-price{font-family:var(--font-d);font-size:1.3rem;color:var(--gold);font-weight:400}
+.yacht-price small{font-size:.6rem;color:var(--gray);font-family:var(--font);font-weight:300}
+.yacht-cta{font-size:.55rem;color:var(--gold);letter-spacing:2px;text-transform:uppercase;font-weight:500;display:flex;align-items:center;gap:6px;transition:var(--transition)}
+.yacht:hover .yacht-cta{gap:10px}
+
+/* EXPERIENCE */
+.exp{background:var(--navy);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.exp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border)}
+.exp-item{background:var(--navy);padding:48px 32px;text-align:center;transition:var(--transition)}
+.exp-item:hover{background:var(--navy-light)}
+.exp-item i{font-size:1.4rem;color:var(--gold);margin-bottom:14px;display:block}
+.exp-item h4{font-family:var(--font-d);font-size:1rem;color:var(--white);font-weight:400;margin-bottom:6px;letter-spacing:.5px}
+.exp-item p{font-size:.68rem;color:var(--gray);line-height:1.5;font-weight:300}
+
+/* ABOUT */
+.about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;max-width:1300px;margin:0 auto;overflow:hidden}
+.about-img{overflow:hidden;min-height:500px}.about-img img{width:100%;height:100%;object-fit:cover}
+.about-txt{background:var(--navy);padding:60px 50px;display:flex;flex-direction:column;justify-content:center;border:1px solid var(--border);border-left:none}
+.about-txt h2{font-family:var(--font-d);font-size:clamp(1.6rem,3vw,2.4rem);color:var(--white);font-weight:300;margin-bottom:16px;letter-spacing:1px;line-height:1.15}
+.about-txt h2 em{color:var(--gold);font-style:italic}
+.about-txt p{color:var(--gray);font-size:.82rem;line-height:1.8;margin-bottom:16px;font-weight:300}
+
+/* TESTIMONIALS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.rev{background:var(--navy);border:1px solid var(--border);padding:32px;transition:var(--transition)}
+.rev:hover{border-color:var(--gold)}
+.rev-quote{font-family:var(--font-d);font-size:2.5rem;color:var(--gold);opacity:.2;line-height:1;margin-bottom:8px}
+.rev p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:14px;font-style:italic;font-weight:300}
+.rev strong{font-size:.72rem;color:var(--white);font-weight:500;display:block;letter-spacing:.5px}
+.rev small{font-size:.6rem;color:var(--gray)}
+
+/* CTA */
+.cta{position:relative;min-height:400px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=1600&q=80') center/cover}
+.cta-bg::after{content:'';position:absolute;inset:0;background:rgba(6,14,26,.75)}
+.cta-content{position:relative;z-index:2;text-align:center;padding:60px 40px}
+.cta h2{font-family:var(--font-d);font-size:clamp(1.8rem,4vw,3rem);color:var(--white);font-weight:300;margin-bottom:12px;letter-spacing:1px}
+.cta h2 em{color:var(--gold);font-style:italic}
+.cta p{color:rgba(255,255,255,.4);font-size:.85rem;margin-bottom:28px;font-weight:300}
+
+/* FOOTER */
+.footer{background:var(--navy-deep);padding:48px 40px 16px;border-top:1px solid var(--border)}
+.ft-inner{max-width:1300px;margin:0 auto}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:32px}
+.ft-brand{font-family:var(--font-d);font-size:1.1rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-weight:400}
+.footer p{font-size:.74rem;color:var(--gray);line-height:1.6;margin-bottom:12px;font-weight:300}
+.ft-social{display:flex;gap:10px}
+.ft-social a{width:34px;height:34px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);text-decoration:none;transition:var(--transition);font-size:.8rem}
+.ft-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer h4{font-size:.55rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:14px;font-weight:500}
+.footer a{color:var(--gray);text-decoration:none;font-size:.74rem;display:block;margin-bottom:6px;font-weight:300;transition:color .3s}.footer a:hover{color:var(--gold)}
+.ft-bottom{border-top:1px solid var(--border);padding-top:14px;display:flex;justify-content:space-between;font-size:.6rem;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+
+/* WPP */
+.wpp{position:fixed;bottom:24px;right:24px;z-index:99}
+.wpp a{width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.25);transition:var(--transition);animation:wp 3s infinite}
+.wpp a:hover{transform:scale(1.08)}
+@keyframes wp{0%{box-shadow:0 0 0 0 rgba(37,211,102,.3)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(24px);transition:all .8s cubic-bezier(.25,.1,.25,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.fleet-grid{grid-template-columns:1fr 1fr}.exp-grid{grid-template-columns:1fr 1fr}.rev-grid{grid-template-columns:1fr}.about-wrap{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(6,14,26,.97);backdrop-filter:blur(20px);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:.8rem;letter-spacing:3px}.nav-cta{display:none}.menu-btn{display:block;z-index:201}.nav-inner{padding:0 24px}.sec{padding:60px 24px}.hero-btns{flex-direction:column;align-items:center}.btn-gold,.btn-line{width:100%;max-width:280px;justify-content:center}.fleet-grid{grid-template-columns:1fr}.exp-grid{grid-template-columns:1fr}.about-txt{padding:40px 24px}.cta-content{padding:40px 24px}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><div class="loader-brand">Bella Angra</div><div class="loader-line"></div></div>
+
+<nav class="nav" id="nav"><div class="nav-inner">
+<a href="#" class="nav-logo">Bella Angra <span>Iates</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#frota" onclick="closeMenu()">Frota</a></li>
+<li><a href="#experiencia" onclick="closeMenu()">Experiência</a></li>
+<li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
+</ul>
+<a href="https://wa.me/5524999999999?text=Olá, gostaria de informações sobre charter de iates." class="nav-cta" target="_blank">Reservar</a>
+<button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content reveal">
+<div class="hero-eyebrow">Angra dos Reis</div>
+<h1>Navegue com <em>elegância</em></h1>
+<p class="hero-sub">Iates de luxo para experiências inesquecíveis em alto-mar. Lifestyle, negócios e celebrações no cenário mais exclusivo do Brasil.</p>
+<div class="hero-btns">
+<a href="#frota" class="btn-gold"><i class="fas fa-anchor"></i> Explorar Frota</a>
+<a href="https://wa.me/5524999999999?text=Olá, gostaria de agendar uma experiência náutica." class="btn-line" target="_blank"><i class="fab fa-whatsapp"></i> Atendimento</a>
+</div>
+</div>
+</section>
+
+<!-- FLEET -->
+<div class="sec" id="frota">
+<div class="sec-head reveal"><span class="sec-ey">Nossa Frota</span><h2 class="sec-t">Embarcações <em>selecionadas</em></h2><p class="sec-d">Cada iate é escolhido por seu conforto, desempenho e requinte. Navegue no padrão que você merece.</p></div>
+
+<div class="fleet-grid">
+
+<a href="https://wa.me/5524999999999?text=Olá, tenho interesse na Intermarine 440 Full." class="yacht reveal" target="_blank">
+<div class="yacht-img"><span class="yacht-tag">Destaque</span><img src="https://images.unsplash.com/photo-1567899378494-47b22a2ae96a?w=700&q=80" alt="Intermarine 440 Full" loading="lazy"></div>
+<div class="yacht-body">
+<h3>Intermarine 440 Full</h3>
+<div class="yacht-specs"><span class="yacht-spec"><i class="fas fa-ruler-horizontal"></i> 44 pés</span><span class="yacht-spec"><i class="fas fa-users"></i> 12 pessoas</span><span class="yacht-spec"><i class="fas fa-bed"></i> 2 cabines</span><span class="yacht-spec"><i class="fas fa-bath"></i> 1 banheiro</span></div>
+<p class="yacht-desc">Lancha esportiva com flybridge, perfeita para day charters e celebrações intimistas na Baía da Ilha Grande.</p>
+<div class="yacht-footer"><div class="yacht-price">R$ 850 <small>/diária</small></div><span class="yacht-cta">Reservar <i class="fas fa-arrow-right"></i></span></div>
+</div>
+</a>
+
+<a href="https://wa.me/5524999999999?text=Olá, tenho interesse na Intermarine IM62." class="yacht reveal" target="_blank">
+<div class="yacht-img"><span class="yacht-tag">Premium</span><img src="https://images.unsplash.com/photo-1605281317010-fe5ffe798166?w=700&q=80" alt="Intermarine IM62" loading="lazy"></div>
+<div class="yacht-body">
+<h3>Intermarine IM62</h3>
+<div class="yacht-specs"><span class="yacht-spec"><i class="fas fa-ruler-horizontal"></i> 62 pés</span><span class="yacht-spec"><i class="fas fa-users"></i> 20 pessoas</span><span class="yacht-spec"><i class="fas fa-bed"></i> 3 cabines</span><span class="yacht-spec"><i class="fas fa-bath"></i> 2 banheiros</span></div>
+<p class="yacht-desc">Iate de luxo com amplo salão, cozinha gourmet e área de sol. Ideal para eventos corporativos e grupos sofisticados.</p>
+<div class="yacht-footer"><div class="yacht-price">R$ 12.000 <small>/diária</small></div><span class="yacht-cta">Reservar <i class="fas fa-arrow-right"></i></span></div>
+</div>
+</a>
+
+<a href="https://wa.me/5524999999999?text=Olá, tenho interesse na Schaefer 660 Fly." class="yacht reveal" target="_blank">
+<div class="yacht-img"><span class="yacht-tag">Exclusivo</span><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=700&q=80" alt="Schaefer 660 Fly" loading="lazy"></div>
+<div class="yacht-body">
+<h3>Schaefer 660 Fly</h3>
+<div class="yacht-specs"><span class="yacht-spec"><i class="fas fa-ruler-horizontal"></i> 66 pés</span><span class="yacht-spec"><i class="fas fa-users"></i> 25 pessoas</span><span class="yacht-spec"><i class="fas fa-bed"></i> 3 suítes</span><span class="yacht-spec"><i class="fas fa-bath"></i> 3 banheiros</span></div>
+<p class="yacht-desc">O ápice do conforto náutico. Flybridge panorâmico, suítes com ar-condicionado e acabamento de primeira classe.</p>
+<div class="yacht-footer"><div class="yacht-price">R$ 12.990 <small>/diária</small></div><span class="yacht-cta">Reservar <i class="fas fa-arrow-right"></i></span></div>
+</div>
+</a>
+
+</div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="exp">
+<div class="exp-grid">
+<div class="exp-item reveal"><i class="fas fa-champagne-glasses"></i><h4>Celebrações</h4><p>Aniversários, casamentos e eventos exclusivos com o mar como cenário.</p></div>
+<div class="exp-item reveal"><i class="fas fa-briefcase"></i><h4>Negócios</h4><p>Reuniões executivas e networking em um ambiente que inspira grandes decisões.</p></div>
+<div class="exp-item reveal"><i class="fas fa-sun"></i><h4>Day Charter</h4><p>Dias perfeitos navegando pelas ilhas de Angra com serviço de bordo premium.</p></div>
+<div class="exp-item reveal"><i class="fas fa-utensils"></i><h4>Gastronomia</h4><p>Chef a bordo e carta de vinhos selecionada para uma experiência completa.</p></div>
+</div>
+</div>
+
+<!-- ABOUT -->
+<div class="about-wrap" id="sobre">
+<div class="about-img reveal"><img src="https://images.unsplash.com/photo-1540946485063-a40da27545f8?w=800&q=80" alt="Bella Angra Iates"></div>
+<div class="about-txt reveal">
+<span class="sec-ey" style="text-align:left;margin-bottom:12px">Sobre Nós</span>
+<h2>Uma experiência <em>além do horizonte</em></h2>
+<p>A Bella Angra Iates nasceu da paixão pelo mar e pela excelência. Somos especialistas em proporcionar experiências náuticas que combinam conforto, segurança e sofisticação nas águas de Angra dos Reis.</p>
+<p>Nossa frota é cuidadosamente selecionada e cada embarcação passa por rigorosa manutenção. Oferecemos tripulação qualificada, serviço de concierge e atenção aos detalhes que definem o verdadeiro luxo.</p>
+<p style="color:var(--gold);font-size:.72rem;letter-spacing:1px;margin-top:8px">🛥️ Iates, lifestyle & negócios em alto-mar<br>🍾 Entre a bordo: atendimento exclusivo</p>
+<a href="https://wa.me/5524999999999?text=Olá, gostaria de conhecer mais sobre a Bella Angra." class="btn-gold" style="margin-top:20px;display:inline-flex;width:auto" target="_blank"><i class="fab fa-whatsapp"></i> Falar Conosco</a>
+</div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div class="sec" id="depoimentos">
+<div class="sec-head reveal"><span class="sec-ey">Nossos Clientes</span><h2 class="sec-t">Experiências que <em>marcam</em></h2></div>
+<div class="rev-grid">
+<div class="rev reveal"><div class="rev-quote">"</div><p>Uma experiência extraordinária. A embarcação impecável, a tripulação atenciosa e o pôr do sol em Angra foram inesquecíveis. Voltaremos com certeza.</p><strong>Roberto M.</strong><small>CEO | São Paulo</small></div>
+<div class="rev reveal"><div class="rev-quote">"</div><p>Fizemos nossa reunião de diretoria a bordo. O ambiente inspirou decisões que não teríamos tomado em uma sala de escritório. Simplesmente perfeito.</p><strong>Carla D.</strong><small>Diretora Executiva | Rio de Janeiro</small></div>
+<div class="rev reveal"><div class="rev-quote">"</div><p>Celebramos nosso aniversário de casamento na Schaefer 660. O chef preparou um jantar magnífico enquanto navegávamos sob as estrelas. Puro encanto.</p><strong>Eduardo & Patrícia</strong><small>Angra dos Reis</small></div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<div class="cta-bg"></div>
+<div class="cta-content reveal">
+<h2>Entre <em>a bordo</em></h2>
+<p>Atendimento exclusivo via WhatsApp. Personalizamos cada experiência para torná-la única.</p>
+<a href="https://wa.me/5524999999999?text=Olá, gostaria de reservar uma experiência náutica exclusiva." class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Reservar Experiência</a>
+</div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer"><div class="ft-inner">
+<div class="ft-grid">
+<div><div class="ft-brand">Bella Angra Iates</div><p>Experiências náuticas exclusivas em Angra dos Reis. Iates de luxo, lifestyle e negócios em alto-mar.</p><div class="ft-social"><a href="https://instagram.com/bella.angra.iates" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div><h4>Navegação</h4><a href="#frota">Nossa Frota</a><a href="#experiencia">Experiências</a><a href="#sobre">Sobre Nós</a><a href="#depoimentos">Clientes</a></div>
+<div><h4>Contato</h4><a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="https://instagram.com/bella.angra.iates" target="_blank"><i class="fab fa-instagram"></i> @bella.angra.iates</a><a href="#">📍 Angra dos Reis, RJ</a></div>
+</div>
+<div class="ft-bottom"><span>© 2026 Bella Angra Iates. Todos os direitos reservados.</span><span>Iates, lifestyle & negócios em alto-mar</span></div>
+</div></footer>
+
+<div class="wpp"><a href="https://wa.me/5524999999999?text=Olá, gostaria de informações sobre charter." target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',1000)},800)});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)});
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuBtn i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuBtn i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
