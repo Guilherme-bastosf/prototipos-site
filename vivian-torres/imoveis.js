@@ -255,24 +255,147 @@ const IMOVEIS = [
     fotos: [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&q=80"
     ]
+  },
+
+  // ============================================================
+  // PRÉDIOS
+  // ============================================================
+  {
+    id: "P001",
+    tipo: "venda",
+    categoria: "predio",
+    titulo: "Prédio Comercial 3 Andares",
+    descricao: "Prédio comercial com 3 andares, 6 salas, recepção, estacionamento privativo e elevador. Ideal para escritórios, clínicas ou coworking. Localização privilegiada no centro.",
+    bairro: "Centro",
+    cidade: "Angra dos Reis",
+    preco: 2800000,
+    quartos: 0,
+    suites: 0,
+    banheiros: 6,
+    vagas: 8,
+    area: 450,
+    maxHospedes: null,
+    condominio: null,
+    iptu: 1200,
+    nota: null,
+    status: "disponivel",
+    destaque: true,
+    amenidades: ["Elevador", "Estacionamento", "Recepção", "Ar condicionado central", "6 salas", "Portaria"],
+    fotos: [
+      "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=80",
+      "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=80"
+    ]
+  },
+
+  {
+    id: "P002",
+    tipo: "aluguel",
+    categoria: "predio",
+    titulo: "Andar Corporativo 200m²",
+    descricao: "Andar inteiro em prédio comercial moderno. 200m² de área útil, open space, 4 banheiros, copa e varanda. Vista para a baía. Pronto para ocupar.",
+    bairro: "Centro",
+    cidade: "Angra dos Reis",
+    preco: 8500,
+    quartos: 0,
+    suites: 0,
+    banheiros: 4,
+    vagas: 4,
+    area: 200,
+    maxHospedes: null,
+    condominio: 1800,
+    iptu: 600,
+    nota: null,
+    status: "disponivel",
+    destaque: false,
+    amenidades: ["Vista baía", "Open space", "Copa", "Varanda", "Elevador", "Ar condicionado"],
+    fotos: [
+      "https://images.unsplash.com/photo-1497366412874-3415097a27e7?w=800&q=80"
+    ]
+  },
+
+  // ============================================================
+  // ILHAS
+  // ============================================================
+  {
+    id: "I001",
+    tipo: "venda",
+    categoria: "ilha",
+    titulo: "Ilha Privativa 12.000m²",
+    descricao: "Ilha privativa com 12 mil metros quadrados na Baía da Ilha Grande. Casa principal com 4 suítes, casa de caseiro, píer, heliponto e praia exclusiva. Mata atlântica preservada. Oportunidade única.",
+    bairro: "Ilha Grande",
+    cidade: "Angra dos Reis",
+    preco: 15000000,
+    quartos: 4,
+    suites: 4,
+    banheiros: 5,
+    vagas: 0,
+    area: 12000,
+    maxHospedes: null,
+    condominio: null,
+    iptu: 2500,
+    nota: null,
+    status: "disponivel",
+    destaque: true,
+    amenidades: ["Ilha privativa", "Praia exclusiva", "Píer", "Heliponto", "Casa de caseiro", "Mata preservada", "Vista 360°", "Gerador"],
+    fotos: [
+      "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80"
+    ]
+  },
+
+  {
+    id: "I002",
+    tipo: "temporada",
+    categoria: "ilha",
+    titulo: "Ilha Paradisíaca com Day Use",
+    descricao: "Ilha exclusiva disponível para day use e temporada. Estrutura com deck, churrasqueira, cozinha equipada e área de lazer. Capacidade para até 20 pessoas. Inclui transporte de lancha.",
+    bairro: "Baía da Ilha Grande",
+    cidade: "Angra dos Reis",
+    preco: 5500,
+    quartos: 2,
+    suites: 2,
+    banheiros: 2,
+    vagas: 0,
+    area: 3000,
+    maxHospedes: 20,
+    condominio: null,
+    iptu: null,
+    nota: 5.0,
+    status: "disponivel",
+    destaque: true,
+    amenidades: ["Ilha exclusiva", "Transporte lancha", "Deck", "Churrasqueira", "Cozinha equipada", "Praia privativa", "Caiaque", "Stand-up paddle"],
+    fotos: [
+      "https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&q=80",
+      "https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=800&q=80"
+    ]
+  },
+
+  {
+    id: "I003",
+    tipo: "venda",
+    categoria: "ilha",
+    titulo: "Ilha com Mansão Beira-Mar",
+    descricao: "Ilha com mansão de luxo. 6 suítes, piscina infinity, píer para iate, helipad, quadra de tênis e praia de areia branca. Staff completo incluso na manutenção. A joia da Baía da Ilha Grande.",
+    bairro: "Ilha Grande",
+    cidade: "Angra dos Reis",
+    preco: 35000000,
+    quartos: 6,
+    suites: 6,
+    banheiros: 8,
+    vagas: 0,
+    area: 25000,
+    maxHospedes: null,
+    condominio: null,
+    iptu: 5000,
+    nota: null,
+    status: "disponivel",
+    destaque: true,
+    amenidades: ["Ilha privativa", "Piscina infinity", "Píer para iate", "Helipad", "Quadra de tênis", "Praia privativa", "Staff completo", "6 suítes", "Gerador", "Dessalinizador"],
+    fotos: [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&q=80"
+    ]
   }
 
 ];
-
-/*
-╔══════════════════════════════════════════════════════════════╗
-║  COMO ADICIONAR UM NOVO IMÓVEL:                             ║
-║                                                              ║
-║  1. Copie um bloco acima (de { até },)                       ║
-║  2. Cole antes do ];                                         ║
-║  3. Mude o id (ex: V005, A003, T004)                        ║
-║  4. Preencha todos os campos                                 ║
-║  5. Para fotos: use links diretos de imagens                 ║
-║     (Google Drive, Imgur, ou qualquer URL de imagem)          ║
-║  6. Salve o arquivo e faça o deploy                          ║
-║                                                              ║
-║  TIPOS: "temporada" | "venda" | "aluguel"                    ║
-║  CATEGORIAS: "casa" | "apartamento" | "terreno" | "cobertura"║
-║  STATUS: "disponivel" | "reservado" | "vendido"              ║
-╚══════════════════════════════════════════════════════════════╝
-*/
