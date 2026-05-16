@@ -28,7 +28,7 @@ const CATALOGO = [
       {nome:"Estelar",hex:"#F5E6CE",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-starlight-select-2021?wid=470&hei=556&fmt=png-alpha"},
       {nome:"Azul",hex:"#275F7E",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-blue-select-2021?wid=470&hei=556&fmt=png-alpha"},
       {nome:"Rosa",hex:"#FADDD7",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-pink-select-2021?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Vermelho",hex:"#BF0013",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-13-midnight-select-2021?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Vermelho",hex:"#BF0013",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-red-select-2020?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"128GB",avista:3750,parcelado:4240}
@@ -41,7 +41,7 @@ const CATALOGO = [
       {nome:"Estelar",hex:"#F5E6CE",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-starlight-select-202209?wid=470&hei=556&fmt=png-alpha"},
       {nome:"Azul",hex:"#A7C1D2",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-blue-select-202209?wid=470&hei=556&fmt=png-alpha"},
       {nome:"Roxo",hex:"#E5DDEA",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-purple-select-202209?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Vermelho",hex:"#BF0013",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-midnight-select-202209?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Vermelho",hex:"#BF0013",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-14-red-select-202209?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"128GB",avista:3950,parcelado:4470}
@@ -89,10 +89,10 @@ const CATALOGO = [
   {
     id:"iphone-17-pro",cat:"iphone-lacrado",modelo:"iPhone 17 Pro",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-deserttitanium-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-naturaltitanium-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-blacktitanium-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-whitetitanium-select?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-black-select-202509?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-white-select-202509?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-black-select-202509?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-white-select-202509?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"256GB",avista:8150,parcelado:9250}
@@ -101,10 +101,10 @@ const CATALOGO = [
   {
     id:"iphone-17-pro-max",cat:"iphone-lacrado",modelo:"iPhone 17 Pro Max",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-max-deserttitanium-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-max-naturaltitanium-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-max-blacktitanium-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-pro-max-whitetitanium-select?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-black-select-202509?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-white-select-202509?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-black-select-202509?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-17-white-select-202509?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"256GB",avista:8750,parcelado:9887}
