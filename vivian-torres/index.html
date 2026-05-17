@@ -180,6 +180,9 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 .detail-price{font-family:var(--font-d);font-size:1.6rem;color:var(--blue);font-weight:700}.detail-price small{font-size:.7rem;color:var(--gray);font-family:var(--font);font-weight:400}
 .detail-cta{padding:12px 24px;border-radius:50px;font-weight:700;font-size:.82rem;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:8px;transition:var(--transition);color:var(--white)}
 
+/* CALENDAR */
+.cal{user-select:none}.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}.cal-header button{background:none;border:1px solid var(--border);border-radius:6px;width:28px;height:28px;cursor:pointer;font-size:.7rem;color:var(--text);transition:var(--transition)}.cal-header button:hover{border-color:var(--blue);color:var(--blue)}.cal-header span{font-size:.78rem;font-weight:600;color:var(--dark)}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;text-align:center}.cal-day-name{font-size:.55rem;color:var(--gray);padding:4px 0;font-weight:600}.cal-day{font-size:.68rem;padding:6px 2px;border-radius:6px;cursor:pointer;transition:var(--transition);border:1px solid transparent}.cal-day:hover:not(.blocked):not(.empty){background:var(--sky-pale);border-color:var(--blue-light)}.cal-day.empty{cursor:default}.cal-day.today{font-weight:700;color:var(--blue)}.cal-day.blocked{background:#FEE;color:#C99;cursor:not-allowed;text-decoration:line-through}.cal-day.selected{background:var(--blue);color:#fff;font-weight:600}.cal-day.in-range{background:var(--sky-pale);color:var(--blue)}
 .reveal{opacity:0;transform:translateY(18px);transition:all .6s ease}.reveal.visible{opacity:1;transform:translateY(0)}
 
 @media(max-width:1024px){.search-grid{grid-template-columns:1fr 1fr}.prop-grid{grid-template-columns:1fr 1fr}.svc-grid{grid-template-columns:1fr 1fr}.trust-grid{grid-template-columns:1fr 1fr}.rev-grid{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr}.ft-grid{grid-template-columns:1fr 1fr}.stats-inner{grid-template-columns:1fr 1fr}}
@@ -345,25 +348,56 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 </div>
 </div>
 
-<!-- BOOKING -->
+<!-- BOOKING COMPLETO -->
 <div class="modal-bg" id="bookingModal">
-<div class="modal">
+<div class="modal" style="max-width:580px">
 <button class="modal-x" onclick="closeModal('bookingModal')">&times;</button>
-<h2>Reservar Temporada</h2>
-<p class="msub">Preencha para solicitar a reserva. Confirmamos em até 2 horas.</p>
+<h2><i class="fas fa-calendar-check" style="color:var(--green)"></i> Reservar Temporada</h2>
+<p class="msub">Selecione as datas, confira o valor e finalize sua reserva.</p>
+
+<!-- STEP 1: Imóvel + Datas -->
+<div id="bkStep1">
 <div class="bk-card" id="bkCard"></div>
+
+<div style="margin:16px 0 8px;font-size:.7rem;font-weight:600;color:var(--dark)">Selecione as datas:</div>
+<div id="bkCalendar" style="margin-bottom:14px"></div>
+
 <div class="fg-row">
-<div class="fg"><label>Check-in</label><input type="date" id="bkIn"></div>
-<div class="fg"><label>Check-out</label><input type="date" id="bkOut"></div>
+<div class="fg"><label>Check-in</label><input type="date" id="bkIn" onchange="calcReserva()"></div>
+<div class="fg"><label>Check-out</label><input type="date" id="bkOut" onchange="calcReserva()"></div>
 </div>
-<div class="fg"><label>Hóspedes</label><select id="bkGuests"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>10+</option></select></div>
+<div class="fg" style="margin-top:8px"><label>Hóspedes</label><select id="bkGuests"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>10</option><option>12</option><option>15</option><option>20</option></select></div>
+
+<!-- RESUMO DO VALOR -->
+<div id="bkResumo" style="display:none;background:var(--cream);border:1px solid var(--border);border-radius:10px;padding:14px;margin:14px 0">
+<div style="display:flex;justify-content:space-between;font-size:.78rem;margin-bottom:6px"><span id="bkNoites">0 noites</span><span id="bkPrecoPorNoite">R$ 0/noite</span></div>
+<div style="display:flex;justify-content:space-between;font-size:1.1rem;font-weight:700;color:var(--blue);padding-top:8px;border-top:1px solid var(--border)"><span>Total</span><span id="bkTotal">R$ 0</span></div>
+</div>
+
+<div id="bkErro" style="display:none;background:#FEE;border:1px solid #FCC;border-radius:8px;padding:10px;font-size:.75rem;color:var(--red);margin:10px 0"><i class="fas fa-exclamation-triangle"></i> <span id="bkErroMsg"></span></div>
+
+<button class="f-submit" style="background:var(--green)" id="bkNextBtn" onclick="bkStep2()" disabled><i class="fas fa-arrow-right"></i> Continuar para Dados</button>
+</div>
+
+<!-- STEP 2: Dados do hóspede -->
+<div id="bkStep2" style="display:none">
+<div style="background:var(--cream);border-radius:10px;padding:12px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center">
+<div><strong id="bkResumo2Imovel" style="font-size:.82rem"></strong><br><span id="bkResumo2Datas" style="font-size:.7rem;color:var(--gray)"></span></div>
+<div style="text-align:right"><strong id="bkResumo2Total" style="font-size:1.1rem;color:var(--blue)"></strong><br><span style="font-size:.6rem;color:var(--gray)">Pagamento na confirmação</span></div>
+</div>
+<div class="fg"><label>Nome completo *</label><input type="text" id="rNome" placeholder="Seu nome completo"></div>
 <div class="fg-row">
-<div class="fg"><label>Nome completo *</label><input type="text" id="rNome" placeholder="Seu nome"></div>
 <div class="fg"><label>WhatsApp *</label><input type="tel" id="rWpp" placeholder="(00) 00000-0000"></div>
-</div>
 <div class="fg"><label>E-mail *</label><input type="email" id="rEmail" placeholder="seu@email.com"></div>
-<button class="f-submit" style="background:var(--green)" onclick="enviarReserva()"><i class="fas fa-calendar-check"></i> Solicitar Reserva</button>
-<p class="f-note">Você não será cobrado agora. Confirmação por WhatsApp.</p>
+</div>
+<div class="fg"><label>CPF</label><input type="text" id="rCpf" placeholder="000.000.000-00"></div>
+<div class="fg"><label>Observações (opcional)</label><input type="text" id="rObs" placeholder="Algo que devemos saber?"></div>
+<div style="display:flex;gap:8px;margin-top:14px">
+<button class="btn btn-outline" onclick="document.getElementById('bkStep1').style.display='';document.getElementById('bkStep2').style.display='none'"><i class="fas fa-arrow-left"></i> Voltar</button>
+<button class="f-submit" style="background:var(--green);flex:1" onclick="enviarReserva()"><i class="fas fa-check"></i> Confirmar Reserva</button>
+</div>
+<p class="f-note">Após a confirmação, entraremos em contato pelo WhatsApp para finalizar o pagamento.</p>
+</div>
 </div>
 </div>
 
@@ -552,9 +586,10 @@ function prevPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(cur
 function nextPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(currentPhotoIdx+1)%currentDetailPhotos.length;updatePhotoView()}
 
 // TRIAGEM
+// ============================================
+// TRIAGEM (LEADS)
+// ============================================
 let triagemImovel='';
-let bookingImovel='';
-
 function openTriagem(id){
   const d=getData();const i=d.find(x=>x.id===id);if(!i)return;
   triagemImovel=i.titulo+' — '+i.bairro;
@@ -563,50 +598,218 @@ function openTriagem(id){
   document.getElementById('tRenda').value='';
   document.getElementById('triagemModal').classList.add('open');document.body.style.overflow='hidden';
 }
-
 function enviarLead(){
   const nome=document.getElementById('tNome').value.trim();
   const email=document.getElementById('tEmail').value.trim();
   if(!nome||!email){alert('Preencha nome e email!');return}
-  const lead={
-    imovel:triagemImovel,nome,email,
-    cpf:document.getElementById('tCpf').value.trim(),
-    whatsapp:document.getElementById('tWpp').value.trim(),
-    renda:document.getElementById('tRenda').value,
-    profissao:document.getElementById('tProf').value.trim(),
-    data_criacao:new Date().toISOString(),status:'novo'
-  };
+  const lead={imovel:triagemImovel,nome,email,cpf:document.getElementById('tCpf').value.trim(),whatsapp:document.getElementById('tWpp').value.trim(),renda:document.getElementById('tRenda').value,profissao:document.getElementById('tProf').value.trim(),data_criacao:new Date().toISOString(),status:'novo'};
   const id='L'+Date.now();lead.id=id;
-  db.ref('leads/'+id).set(lead).then(()=>{
-    alert('Dados enviados com sucesso! Entraremos em contato em até 24h.');closeModal('triagemModal');
-  }).catch(e=>alert('Erro ao enviar. Tente novamente.'));
+  db.ref('leads/'+id).set(lead).then(()=>{alert('Dados enviados! Entraremos em contato em até 24h.');closeModal('triagemModal')}).catch(e=>alert('Erro ao enviar.'));
 }
 
-// BOOKING
+// ============================================
+// SISTEMA DE RESERVAS COMPLETO
+// ============================================
+let bkImovel=null;
+let bkDatasOcupadas=[];
+let calMonth,calYear;
+
 function openBooking(id){
   const d=getData();const i=d.find(x=>x.id===id);if(!i)return;
-  bookingImovel=i.titulo+' — '+i.bairro;
-  document.getElementById('bkCard').innerHTML=`<img src="${i.fotos&&i.fotos[0]?fotoUrl(i.fotos[0]):''}" alt=""><div><h3>${i.titulo}</h3><p><i class="fas fa-map-marker-alt"></i> ${i.bairro}, ${i.cidade}</p><div class="bk-p">R$ ${i.preco}/noite</div></div>`;
-  ['rNome','rWpp','rEmail'].forEach(x=>{document.getElementById(x).value=''});
-  document.getElementById('bkIn').value='';document.getElementById('bkOut').value='';
-  document.getElementById('bookingModal').classList.add('open');document.body.style.overflow='hidden';
+  bkImovel=i;
+  // Reset
+  document.getElementById('bkStep1').style.display='';
+  document.getElementById('bkStep2').style.display='none';
+  document.getElementById('bkResumo').style.display='none';
+  document.getElementById('bkErro').style.display='none';
+  document.getElementById('bkNextBtn').disabled=true;
+  document.getElementById('bkIn').value='';
+  document.getElementById('bkOut').value='';
+  ['rNome','rWpp','rEmail','rCpf','rObs'].forEach(x=>{document.getElementById(x).value=''});
+  // Card
+  const fotoSrc=i.fotos&&i.fotos[0]?fotoUrl(i.fotos[0]):'';
+  document.getElementById('bkCard').innerHTML=`<img src="${fotoSrc}" alt=""><div><h3>${i.titulo}</h3><p><i class="fas fa-map-marker-alt"></i> ${i.bairro}, ${i.cidade}</p><div class="bk-p">R$ ${i.preco}/noite</div></div>`;
+  // Load blocked dates from Firebase
+  bkDatasOcupadas=[];
+  db.ref('reservas').once('value',snap=>{
+    const reservas=snap.val()?Object.values(snap.val()):[];
+    reservas.forEach(r=>{
+      if((r.status==='pendente'||r.status==='confirmada'||r.status==='paga')&&r.imovel_id===i.id){
+        const datas=getDatesInRange(r.checkin,r.checkout);
+        bkDatasOcupadas.push(...datas);
+      }
+    });
+    // Also load manual blocks
+    db.ref('bloqueios/'+i.id).once('value',snap2=>{
+      const bloqs=snap2.val()?Object.values(snap2.val()):[];
+      bloqs.forEach(b=>{
+        const datas=getDatesInRange(b.de,b.ate);
+        bkDatasOcupadas.push(...datas);
+      });
+      // Render calendar
+      const now=new Date();calMonth=now.getMonth();calYear=now.getFullYear();
+      renderCalendar();
+      document.getElementById('bookingModal').classList.add('open');document.body.style.overflow='hidden';
+    });
+  });
+}
+
+// Get all dates between two dates
+function getDatesInRange(start,end){
+  if(!start||!end)return[];
+  const dates=[];const d=new Date(start+'T12:00:00');const e=new Date(end+'T12:00:00');
+  while(d<e){dates.push(d.toISOString().split('T')[0]);d.setDate(d.getDate()+1)}
+  return dates;
+}
+
+// Format date YYYY-MM-DD
+function fmtDate(y,m,d){return y+'-'+String(m+1).padStart(2,'0')+'-'+String(d).padStart(2,'0')}
+
+// CALENDAR RENDER
+function renderCalendar(){
+  const el=document.getElementById('bkCalendar');
+  const months=['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+  const days=['Dom','Seg','Ter','Qua','Qui','Sex','Sáb'];
+  const firstDay=new Date(calYear,calMonth,1).getDay();
+  const lastDate=new Date(calYear,calMonth+1,0).getDate();
+  const today=new Date();const todayStr=today.toISOString().split('T')[0];
+  const checkin=document.getElementById('bkIn').value;
+  const checkout=document.getElementById('bkOut').value;
+  const rangeSet=new Set(checkin&&checkout?getDatesInRange(checkin,checkout):[]);
+
+  let html=`<div class="cal"><div class="cal-header"><button onclick="calPrev()"><i class="fas fa-chevron-left"></i></button><span>${months[calMonth]} ${calYear}</span><button onclick="calNext()"><i class="fas fa-chevron-right"></i></button></div><div class="cal-grid">`;
+  days.forEach(d=>{html+=`<div class="cal-day-name">${d}</div>`});
+  for(let i=0;i<firstDay;i++) html+=`<div class="cal-day empty"></div>`;
+  for(let d=1;d<=lastDate;d++){
+    const dateStr=fmtDate(calYear,calMonth,d);
+    const isPast=dateStr<todayStr;
+    const isBlocked=bkDatasOcupadas.includes(dateStr);
+    const isToday=dateStr===todayStr;
+    const isSelected=dateStr===checkin||dateStr===checkout;
+    const isInRange=rangeSet.has(dateStr);
+    let cls='cal-day';
+    if(isPast||isBlocked) cls+=' blocked';
+    else if(isSelected) cls+=' selected';
+    else if(isInRange) cls+=' in-range';
+    if(isToday) cls+=' today';
+    const onclick=isPast||isBlocked?'':`onclick="pickDate('${dateStr}')"`;
+    html+=`<div class="${cls}" ${onclick}>${d}</div>`;
+  }
+  html+=`</div></div>`;
+  el.innerHTML=html;
+}
+
+function calPrev(){
+  calMonth--;if(calMonth<0){calMonth=11;calYear--}
+  renderCalendar();
+}
+function calNext(){
+  calMonth++;if(calMonth>11){calMonth=0;calYear++}
+  renderCalendar();
+}
+
+function pickDate(dateStr){
+  const checkin=document.getElementById('bkIn').value;
+  const checkout=document.getElementById('bkOut').value;
+  if(!checkin||checkout){
+    // Start new selection
+    document.getElementById('bkIn').value=dateStr;
+    document.getElementById('bkOut').value='';
+  } else {
+    // Set checkout
+    if(dateStr<=checkin){
+      document.getElementById('bkIn').value=dateStr;
+      document.getElementById('bkOut').value='';
+    } else {
+      // Check if any blocked date in range
+      const range=getDatesInRange(checkin,dateStr);
+      const conflict=range.some(d=>bkDatasOcupadas.includes(d));
+      if(conflict){
+        showBkErro('Existem datas indisponíveis no período selecionado. Escolha outro período.');
+        document.getElementById('bkIn').value='';document.getElementById('bkOut').value='';
+      } else {
+        document.getElementById('bkOut').value=dateStr;
+      }
+    }
+  }
+  renderCalendar();
+  calcReserva();
+}
+
+function calcReserva(){
+  const checkin=document.getElementById('bkIn').value;
+  const checkout=document.getElementById('bkOut').value;
+  const resumo=document.getElementById('bkResumo');
+  const btn=document.getElementById('bkNextBtn');
+  document.getElementById('bkErro').style.display='none';
+
+  if(!checkin||!checkout||!bkImovel){resumo.style.display='none';btn.disabled=true;return}
+
+  const d1=new Date(checkin+'T12:00:00');const d2=new Date(checkout+'T12:00:00');
+  const noites=Math.round((d2-d1)/(1000*60*60*24));
+
+  if(noites<1){showBkErro('Check-out deve ser depois do check-in.');resumo.style.display='none';btn.disabled=true;return}
+  if(noites>90){showBkErro('Período máximo de 90 noites.');resumo.style.display='none';btn.disabled=true;return}
+
+  // Check conflicts
+  const range=getDatesInRange(checkin,checkout);
+  const conflict=range.some(d=>bkDatasOcupadas.includes(d));
+  if(conflict){showBkErro('Existem datas indisponíveis no período. Escolha outro.');resumo.style.display='none';btn.disabled=true;return}
+
+  const total=noites*bkImovel.preco;
+  document.getElementById('bkNoites').textContent=noites+' noite'+(noites>1?'s':'');
+  document.getElementById('bkPrecoPorNoite').textContent='R$ '+bkImovel.preco.toLocaleString('pt-BR')+'/noite';
+  document.getElementById('bkTotal').textContent='R$ '+total.toLocaleString('pt-BR');
+  resumo.style.display='';
+  btn.disabled=false;
+  renderCalendar();
+}
+
+function showBkErro(msg){
+  document.getElementById('bkErroMsg').textContent=msg;
+  document.getElementById('bkErro').style.display='';
+}
+
+function bkStep2(){
+  const checkin=document.getElementById('bkIn').value;
+  const checkout=document.getElementById('bkOut').value;
+  const noites=Math.round((new Date(checkout+'T12:00:00')-new Date(checkin+'T12:00:00'))/(1000*60*60*24));
+  const total=noites*bkImovel.preco;
+  document.getElementById('bkResumo2Imovel').textContent=bkImovel.titulo;
+  document.getElementById('bkResumo2Datas').textContent=new Date(checkin+'T12:00:00').toLocaleDateString('pt-BR')+' → '+new Date(checkout+'T12:00:00').toLocaleDateString('pt-BR')+' ('+noites+' noites)';
+  document.getElementById('bkResumo2Total').textContent='R$ '+total.toLocaleString('pt-BR');
+  document.getElementById('bkStep1').style.display='none';
+  document.getElementById('bkStep2').style.display='';
 }
 
 function enviarReserva(){
   const nome=document.getElementById('rNome').value.trim();
   const wpp=document.getElementById('rWpp').value.trim();
   if(!nome||!wpp){alert('Preencha nome e WhatsApp!');return}
+  const checkin=document.getElementById('bkIn').value;
+  const checkout=document.getElementById('bkOut').value;
+  const noites=Math.round((new Date(checkout+'T12:00:00')-new Date(checkin+'T12:00:00'))/(1000*60*60*24));
+  const total=noites*bkImovel.preco;
   const reserva={
-    imovel:bookingImovel,nome,whatsapp:wpp,
+    imovel:bkImovel.titulo+' — '+bkImovel.bairro,
+    imovel_id:bkImovel.id,
+    nome,whatsapp:wpp,
     email:document.getElementById('rEmail').value.trim(),
-    checkin:document.getElementById('bkIn').value,
-    checkout:document.getElementById('bkOut').value,
+    cpf:document.getElementById('rCpf').value.trim(),
+    observacoes:document.getElementById('rObs').value.trim(),
+    checkin,checkout,
+    noites,
+    preco_noite:bkImovel.preco,
+    total,
     hospedes:document.getElementById('bkGuests').value,
-    data_criacao:new Date().toISOString(),status:'pendente'
+    data_criacao:new Date().toISOString(),
+    status:'pendente',
+    pagamento:'aguardando'
   };
   const id='R'+Date.now();reserva.id=id;
   db.ref('reservas/'+id).set(reserva).then(()=>{
-    alert('Reserva solicitada! Confirmaremos por WhatsApp em até 2 horas.');closeModal('bookingModal');
+    alert('Reserva solicitada com sucesso!\n\nImóvel: '+bkImovel.titulo+'\nPeríodo: '+noites+' noites\nTotal: R$ '+total.toLocaleString('pt-BR')+'\n\nEntraremos em contato pelo WhatsApp para confirmar e finalizar o pagamento.');
+    closeModal('bookingModal');
   }).catch(e=>alert('Erro ao enviar. Tente novamente.'));
 }
 

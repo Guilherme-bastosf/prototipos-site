@@ -136,9 +136,27 @@ tr:hover{background:rgba(26,82,118,.02)}
 
 <!-- RESERVAS -->
 <div class="section-page" id="pg-reservas">
-<div class="topbar"><h2><i class="fas fa-calendar-check" style="color:var(--green);margin-right:8px"></i>Reservas de Temporada</h2></div>
-<div class="table-wrap" id="reservasWrap">
-<table><thead><tr><th>Data</th><th>Imóvel</th><th>Check-in</th><th>Check-out</th><th>Hóspedes</th><th>Nome</th><th>WhatsApp</th><th>Email</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbReservas"></tbody></table>
+<div class="topbar"><h2><i class="fas fa-calendar-check" style="color:var(--green);margin-right:8px"></i>Reservas de Temporada</h2><div class="topbar-actions"><button class="btn btn-outline" onclick="openBloqueio()"><i class="fas fa-ban"></i> Bloquear Datas</button></div></div>
+<div class="stats-row" id="reservasStats"></div>
+<div class="table-wrap">
+<table><thead><tr><th>Data</th><th>Imóvel</th><th>Check-in</th><th>Check-out</th><th>Noites</th><th>Valor</th><th>Hóspede</th><th>WhatsApp</th><th>Reserva</th><th>Pagamento</th><th>Ações</th></tr></thead><tbody id="tbReservas"></tbody></table>
+</div>
+<div style="margin-top:16px"><h3 style="font-size:.85rem;margin-bottom:10px"><i class="fas fa-ban" style="color:var(--red)"></i> Datas Bloqueadas Manualmente</h3><div class="table-wrap"><table><thead><tr><th>Imóvel</th><th>De</th><th>Até</th><th>Motivo</th><th>Ações</th></tr></thead><tbody id="tbBloqueios"></tbody></table></div></div>
+</div>
+
+<!-- MODAL BLOQUEIO -->
+<div class="modal-bg" id="bloqueioModal">
+<div class="modal-form" style="max-width:450px">
+<button class="close-modal" onclick="document.getElementById('bloqueioModal').classList.remove('open')">&times;</button>
+<h2>Bloquear Datas</h2>
+<p class="sub">Bloqueia datas de um imóvel de temporada manualmente.</p>
+<div class="fg"><label>Imóvel *</label><select id="blqImovel"></select></div>
+<div class="form-grid">
+<div class="fg"><label>De *</label><input type="date" id="blqDe"></div>
+<div class="fg"><label>Até *</label><input type="date" id="blqAte"></div>
+</div>
+<div class="fg"><label>Motivo (opcional)</label><input type="text" id="blqMotivo" placeholder="Ex: Manutenção, uso pessoal..."></div>
+<div class="form-actions"><button class="btn btn-outline" onclick="document.getElementById('bloqueioModal').classList.remove('open')">Cancelar</button><button class="btn btn-primary" onclick="salvarBloqueio()"><i class="fas fa-ban"></i> Bloquear</button></div>
 </div>
 </div>
 
@@ -318,26 +336,95 @@ function fmtPrice(i){
 }
 
 // RESERVAS
+let allBloqueios=[];
+
 function renderReservas(){
-  document.getElementById('tbReservas').innerHTML=allReservas.map(r=>`<tr>
+  // Stats
+  const pendentes=allReservas.filter(r=>r.status==='pendente').length;
+  const confirmadas=allReservas.filter(r=>r.status==='confirmada'||r.status==='paga').length;
+  const faturamento=allReservas.filter(r=>r.status==='confirmada'||r.status==='paga').reduce((s,r)=>s+(r.total||0),0);
+  const futuras=allReservas.filter(r=>(r.status==='confirmada'||r.status==='paga')&&r.checkin>=new Date().toISOString().split('T')[0]).length;
+  document.getElementById('reservasStats').innerHTML=`
+    <div class="stat-card"><div class="icon" style="background:rgba(243,156,18,.08);color:var(--orange)"><i class="fas fa-clock"></i></div><div class="num">${pendentes}</div><div class="label">Pendentes</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(39,174,96,.08);color:var(--green)"><i class="fas fa-check"></i></div><div class="num">${confirmadas}</div><div class="label">Confirmadas</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(26,82,118,.08);color:var(--blue)"><i class="fas fa-calendar"></i></div><div class="num">${futuras}</div><div class="label">Futuras</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(244,197,66,.08);color:var(--gold)"><i class="fas fa-dollar-sign"></i></div><div class="num">R$ ${faturamento.toLocaleString('pt-BR')}</div><div class="label">Faturamento</div></div>`;
+
+  // Table
+  document.getElementById('tbReservas').innerHTML=allReservas.map(r=>`<tr style="${r.status==='cancelada'?'opacity:.5':''}">
     <td>${r.data_criacao?new Date(r.data_criacao).toLocaleDateString('pt-BR'):'-'}</td>
     <td><strong>${r.imovel||''}</strong></td>
-    <td>${r.checkin||'-'}</td>
-    <td>${r.checkout||'-'}</td>
-    <td>${r.hospedes||'-'}</td>
-    <td>${r.nome||''}</td>
-    <td><a href="https://wa.me/55${(r.whatsapp||'').replace(/\D/g,'')}" target="_blank">${r.whatsapp||'-'}</a></td>
-    <td>${r.email||'-'}</td>
+    <td>${r.checkin?new Date(r.checkin+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</td>
+    <td>${r.checkout?new Date(r.checkout+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</td>
+    <td>${r.noites||'-'}</td>
+    <td><strong>R$ ${(r.total||0).toLocaleString('pt-BR')}</strong></td>
+    <td>${r.nome||''}<br><small style="color:#aaa">${r.email||''}</small></td>
+    <td><a href="https://wa.me/55${(r.whatsapp||'').replace(/\D/g,'')}" target="_blank" style="color:var(--green)">${r.whatsapp||'-'}</a></td>
     <td><select class="status-select" onchange="updateReservaStatus('${r.id}',this.value)">
-      <option value="pendente" ${r.status==='pendente'?'selected':''}>Pendente</option>
-      <option value="confirmada" ${r.status==='confirmada'?'selected':''}>Confirmada</option>
-      <option value="cancelada" ${r.status==='cancelada'?'selected':''}>Cancelada</option>
+      <option value="pendente" ${r.status==='pendente'?'selected':''}>⏳ Pendente</option>
+      <option value="confirmada" ${r.status==='confirmada'?'selected':''}>✅ Confirmada</option>
+      <option value="paga" ${r.status==='paga'?'selected':''}>💰 Paga</option>
+      <option value="cancelada" ${r.status==='cancelada'?'selected':''}>❌ Cancelada</option>
+    </select></td>
+    <td><select class="status-select" onchange="updateReservaPgto('${r.id}',this.value)">
+      <option value="aguardando" ${(r.pagamento||'aguardando')==='aguardando'?'selected':''}>Aguardando</option>
+      <option value="pix" ${r.pagamento==='pix'?'selected':''}>PIX</option>
+      <option value="cartao" ${r.pagamento==='cartao'?'selected':''}>Cartão</option>
+      <option value="dinheiro" ${r.pagamento==='dinheiro'?'selected':''}>Dinheiro</option>
+      <option value="transferencia" ${r.pagamento==='transferencia'?'selected':''}>Transferência</option>
     </select></td>
     <td><div class="td-actions"><button class="del" title="Excluir" onclick="deleteReserva('${r.id}')"><i class="fas fa-trash"></i></button></div></td>
-  </tr>`).join('')||'<tr><td colspan="10" style="text-align:center;color:#aaa;padding:30px">Nenhuma reserva recebida</td></tr>';
+  </tr>`).join('')||'<tr><td colspan="11" style="text-align:center;color:#aaa;padding:30px">Nenhuma reserva recebida</td></tr>';
+
+  // Bloqueios
+  renderBloqueios();
 }
+
 function updateReservaStatus(id,s){db.ref('reservas/'+id+'/status').set(s)}
+function updateReservaPgto(id,s){db.ref('reservas/'+id+'/pagamento').set(s)}
 function deleteReserva(id){if(confirm('Excluir reserva?'))db.ref('reservas/'+id).remove()}
+
+// BLOQUEIOS MANUAIS
+function renderBloqueios(){
+  db.ref('bloqueios').on('value',snap=>{
+    allBloqueios=[];
+    const data=snap.val();
+    if(!data)return;
+    Object.entries(data).forEach(([imovelId,bloqs])=>{
+      Object.entries(bloqs).forEach(([blqId,blq])=>{
+        allBloqueios.push({...blq,imovel_id:imovelId,blq_id:blqId});
+      });
+    });
+    document.getElementById('tbBloqueios').innerHTML=allBloqueios.map(b=>{
+      const im=allImoveis.find(i=>i.id===b.imovel_id);
+      return `<tr><td>${im?im.titulo:b.imovel_id}</td><td>${b.de?new Date(b.de+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</td><td>${b.ate?new Date(b.ate+'T12:00:00').toLocaleDateString('pt-BR'):'-'}</td><td>${b.motivo||'-'}</td><td><div class="td-actions"><button class="del" onclick="deleteBloqueio('${b.imovel_id}','${b.blq_id}')"><i class="fas fa-trash"></i></button></div></td></tr>`;
+    }).join('')||'<tr><td colspan="5" style="text-align:center;color:#aaa;padding:20px">Nenhum bloqueio manual</td></tr>';
+  });
+}
+
+function openBloqueio(){
+  const temps=allImoveis.filter(i=>i.tipo==='temporada');
+  document.getElementById('blqImovel').innerHTML=temps.map(i=>`<option value="${i.id}">${i.titulo}</option>`).join('');
+  document.getElementById('blqDe').value='';document.getElementById('blqAte').value='';document.getElementById('blqMotivo').value='';
+  document.getElementById('bloqueioModal').classList.add('open');
+}
+
+function salvarBloqueio(){
+  const imovelId=document.getElementById('blqImovel').value;
+  const de=document.getElementById('blqDe').value;
+  const ate=document.getElementById('blqAte').value;
+  if(!imovelId||!de||!ate){alert('Preencha todos os campos!');return}
+  if(ate<=de){alert('Data final deve ser depois da inicial!');return}
+  const id='B'+Date.now();
+  db.ref('bloqueios/'+imovelId+'/'+id).set({de,ate,motivo:document.getElementById('blqMotivo').value.trim(),criado:new Date().toISOString()}).then(()=>{
+    document.getElementById('bloqueioModal').classList.remove('open');
+    alert('Datas bloqueadas!');
+  });
+}
+
+function deleteBloqueio(imovelId,blqId){
+  if(confirm('Remover bloqueio?'))db.ref('bloqueios/'+imovelId+'/'+blqId).remove();
+}
 
 // LEADS
 function renderLeads(){
