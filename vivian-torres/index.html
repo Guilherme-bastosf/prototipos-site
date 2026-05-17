@@ -385,6 +385,10 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 let allData=[];
 function getData(){return allData.filter(i=>i.status!=='excluido')}
 
+// Helper: extrai URL da foto (suporta string e objeto {src,nome})
+function fotoUrl(f){return typeof f==='string'?f:(f&&f.src?f.src:'')}
+function fotoNome(f){return typeof f==='object'&&f?f.nome||'':''}
+
 let searchType='todos';
 function setSearchType(t,el){searchType=t;document.querySelectorAll('.s-tab').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
 
@@ -459,7 +463,7 @@ function propCard(i){
   const photos=i.fotos&&i.fotos.length>1?`<div class="prop-gallery-count"><i class="fas fa-images"></i> ${i.fotos.length}</div>`:'';
 
   return`<div class="prop reveal" onclick="openDetail('${i.id}')">
-    <div class="prop-img"><span class="prop-tag ${tagClass}">${tagText}</span><span class="prop-fav" onclick="event.stopPropagation()"><i class="far fa-heart"></i></span>${rating}${photos}<img src="${(i.fotos&&i.fotos[0])||''}" alt="${i.titulo}" loading="lazy"></div>
+    <div class="prop-img"><span class="prop-tag ${tagClass}">${tagText}</span><span class="prop-fav" onclick="event.stopPropagation()"><i class="far fa-heart"></i></span>${rating}${photos}<img src="${i.fotos&&i.fotos[0]?fotoUrl(i.fotos[0]):''}" alt="${i.titulo}" loading="lazy"></div>
     <div class="prop-body"><h3>${i.titulo}</h3><div class="prop-loc"><i class="fas fa-map-marker-alt"></i> ${i.bairro}, ${i.cidade}</div>
     <div class="prop-specs">${i.quartos?`<span class="prop-spec"><i class="fas fa-bed"></i> ${i.quartos} quartos</span>`:''} ${i.banheiros?`<span class="prop-spec"><i class="fas fa-bath"></i> ${i.banheiros} ban.</span>`:''} ${i.area?`<span class="prop-spec"><i class="fas fa-ruler-combined"></i> ${i.area}m²</span>`:''} ${i.vagas?`<span class="prop-spec"><i class="fas fa-car"></i> ${i.vagas} vagas</span>`:''} ${i.maxHospedes?`<span class="prop-spec"><i class="fas fa-users"></i> Até ${i.maxHospedes}</span>`:''}</div>
     <div class="prop-footer"><div class="prop-price">${price}</div>${action}</div>
@@ -501,7 +505,10 @@ function openDetail(id){
   const d=getData();const i=d.find(x=>x.id===id);if(!i)return;
   currentDetailPhotos=i.fotos||[];currentPhotoIdx=0;
   const gallery=document.getElementById('detailGallery');
-  gallery.innerHTML=`<img id="detailImg" src="${currentDetailPhotos[0]||''}" alt="${i.titulo}">
+  const firstUrl=currentDetailPhotos[0]?fotoUrl(currentDetailPhotos[0]):'';
+  const firstName=currentDetailPhotos[0]?fotoNome(currentDetailPhotos[0]):'';
+  gallery.innerHTML=`<img id="detailImg" src="${firstUrl}" alt="${i.titulo}">
+    ${firstName?`<div id="photoLabel" style="position:absolute;bottom:40px;left:12px;background:rgba(0,0,0,.6);color:#fff;padding:4px 10px;border-radius:6px;font-size:.7rem;z-index:2">${firstName}</div>`:`<div id="photoLabel" style="display:none"></div>`}
     ${currentDetailPhotos.length>1?`<button class="g-nav g-prev" onclick="event.stopPropagation();prevPhoto()"><i class="fas fa-chevron-left"></i></button><button class="g-nav g-next" onclick="event.stopPropagation();nextPhoto()"><i class="fas fa-chevron-right"></i></button><div class="g-count" id="gCount">1/${currentDetailPhotos.length}</div>`:''}`;
 
   const price=i.tipo==='venda'?'R$ '+i.preco.toLocaleString('pt-BR'):i.tipo==='aluguel'?'R$ '+i.preco.toLocaleString('pt-BR')+'<small>/mês</small>':'R$ '+i.preco.toLocaleString('pt-BR')+'<small>/noite</small>';
@@ -533,8 +540,16 @@ function openDetail(id){
     </div>`;
   document.getElementById('detailModal').classList.add('open');document.body.style.overflow='hidden';
 }
-function prevPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(currentPhotoIdx-1+currentDetailPhotos.length)%currentDetailPhotos.length;document.getElementById('detailImg').src=currentDetailPhotos[currentPhotoIdx];document.getElementById('gCount').textContent=(currentPhotoIdx+1)+'/'+currentDetailPhotos.length}
-function nextPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(currentPhotoIdx+1)%currentDetailPhotos.length;document.getElementById('detailImg').src=currentDetailPhotos[currentPhotoIdx];document.getElementById('gCount').textContent=(currentPhotoIdx+1)+'/'+currentDetailPhotos.length}
+function updatePhotoView(){
+  const p=currentDetailPhotos[currentPhotoIdx];
+  document.getElementById('detailImg').src=fotoUrl(p);
+  document.getElementById('gCount').textContent=(currentPhotoIdx+1)+'/'+currentDetailPhotos.length;
+  const label=document.getElementById('photoLabel');
+  const nome=fotoNome(p);
+  if(nome){label.textContent=nome;label.style.display=''}else{label.style.display='none'}
+}
+function prevPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(currentPhotoIdx-1+currentDetailPhotos.length)%currentDetailPhotos.length;updatePhotoView()}
+function nextPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(currentPhotoIdx+1)%currentDetailPhotos.length;updatePhotoView()}
 
 // TRIAGEM
 let triagemImovel='';
@@ -571,7 +586,7 @@ function enviarLead(){
 function openBooking(id){
   const d=getData();const i=d.find(x=>x.id===id);if(!i)return;
   bookingImovel=i.titulo+' — '+i.bairro;
-  document.getElementById('bkCard').innerHTML=`<img src="${(i.fotos&&i.fotos[0])||''}" alt=""><div><h3>${i.titulo}</h3><p><i class="fas fa-map-marker-alt"></i> ${i.bairro}, ${i.cidade}</p><div class="bk-p">R$ ${i.preco}/noite</div></div>`;
+  document.getElementById('bkCard').innerHTML=`<img src="${i.fotos&&i.fotos[0]?fotoUrl(i.fotos[0]):''}" alt=""><div><h3>${i.titulo}</h3><p><i class="fas fa-map-marker-alt"></i> ${i.bairro}, ${i.cidade}</p><div class="bk-p">R$ ${i.preco}/noite</div></div>`;
   ['rNome','rWpp','rEmail'].forEach(x=>{document.getElementById(x).value=''});
   document.getElementById('bkIn').value='';document.getElementById('bkOut').value='';
   document.getElementById('bookingModal').classList.add('open');document.body.style.overflow='hidden';

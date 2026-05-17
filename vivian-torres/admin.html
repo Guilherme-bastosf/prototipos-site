@@ -293,7 +293,7 @@ function renderAll(){
 
 function renderImoveisTable(id,data){
   document.getElementById(id).innerHTML=data.map(i=>`<tr>
-    <td><img class="td-img" src="${(i.fotos&&i.fotos[0])||''}" alt="" onerror="this.style.display='none'"></td>
+    <td><img class="td-img" src="${i.fotos&&i.fotos[0]?(typeof i.fotos[0]==='string'?i.fotos[0]:i.fotos[0].src):''}" alt="" onerror="this.style.display='none'"></td>
     <td><strong>${i.id}</strong></td>
     <td>${i.titulo||''}</td>
     <td><span class="badge badge-${i.tipo}">${i.tipo}</span></td>
@@ -378,13 +378,11 @@ function updateAutoCode(){
   }
 }
 
-// PHOTO UPLOAD
-let uploadedPhotos = [];
+// PHOTO UPLOAD - sem limite, com nome por foto
+let uploadedPhotos = []; // [{src:"base64...", nome:"Sala de estar"}, ...]
 
 function handleFiles(files){
-  const max = 10;
-  const remaining = max - uploadedPhotos.length;
-  Array.from(files).slice(0, remaining).forEach(file => {
+  Array.from(files).forEach(file => {
     if(!file.type.startsWith('image/')) return;
     const reader = new FileReader();
     reader.onload = function(e){
@@ -396,7 +394,7 @@ function handleFiles(files){
         if(w > maxW){ h = h * (maxW / w); w = maxW; }
         canvas.width = w; canvas.height = h;
         canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        uploadedPhotos.push(canvas.toDataURL('image/jpeg', 0.6));
+        uploadedPhotos.push({src: canvas.toDataURL('image/jpeg', 0.6), nome: ''});
         renderPhotoPreview();
       };
       img.src = e.target.result;
@@ -406,10 +404,15 @@ function handleFiles(files){
 }
 
 function removePhoto(idx){ uploadedPhotos.splice(idx, 1); renderPhotoPreview(); }
+function renamePhoto(idx, val){ uploadedPhotos[idx].nome = val; }
 
 function renderPhotoPreview(){
-  document.getElementById('fotoPreview').innerHTML = uploadedPhotos.map((src, i) =>
-    '<div class="foto-thumb"><img src="'+src+'" alt=""><button class="remove" onclick="removePhoto('+i+')"><i class="fas fa-times"></i></button></div>'
+  document.getElementById('fotoPreview').innerHTML = uploadedPhotos.map((p, i) =>
+    '<div style="display:flex;gap:6px;align-items:center;background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:6px;margin-bottom:4px">' +
+    '<div class="foto-thumb" style="flex-shrink:0;margin:0"><img src="'+p.src+'" alt=""></div>' +
+    '<input type="text" value="'+(p.nome||'')+'" placeholder="Ex: Sala, Quarto, Piscina..." onchange="renamePhoto('+i+',this.value)" style="flex:1;padding:6px 8px;border:1px solid var(--border);border-radius:6px;font-size:.72rem;font-family:var(--font)">' +
+    '<button onclick="removePhoto('+i+')" style="background:var(--red);color:#fff;border:none;border-radius:6px;width:26px;height:26px;cursor:pointer;font-size:.6rem;flex-shrink:0"><i class="fas fa-trash"></i></button>' +
+    '</div>'
   ).join('');
 }
 
@@ -463,7 +466,7 @@ function editImovel(id){
   document.getElementById('fArea').value=i.area||'';
   document.getElementById('fHospedes').value=i.maxHospedes||'';
   document.getElementById('fDestaque').value=i.destaque?'true':'false';
-  uploadedPhotos = [...(i.fotos||[])];
+  uploadedPhotos = (i.fotos||[]).map(f => typeof f === 'string' ? {src:f, nome:''} : f);
   renderPhotoPreview();
   document.querySelectorAll('.amenidade-tag').forEach(t=>{t.classList.toggle('selected',(i.amenidades||[]).includes(t.textContent))});
   document.getElementById('formModal').classList.add('open');
@@ -485,7 +488,7 @@ function saveImovel(){
     condominio:Number(document.getElementById('fCond').value)||null,iptu:Number(document.getElementById('fIPTU').value)||null,
     nota:null,status:document.getElementById('fStatus').value,destaque:document.getElementById('fDestaque').value==='true',
     amenidades:[...document.querySelectorAll('.amenidade-tag.selected')].map(t=>t.textContent),
-    fotos:[...uploadedPhotos]
+    fotos:uploadedPhotos.map(p => ({src:p.src, nome:p.nome||''}))
   };
   db.ref('imoveis/'+id).set(obj).then(()=>{closeForm();alert('Imóvel salvo!')}).catch(e=>alert('Erro: '+e.message));
 }
