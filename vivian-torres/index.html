@@ -394,9 +394,15 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 <div class="fg"><label>Observações (opcional)</label><input type="text" id="rObs" placeholder="Algo que devemos saber?"></div>
 <div style="display:flex;gap:8px;margin-top:14px">
 <button class="btn btn-outline" onclick="document.getElementById('bkStep1').style.display='';document.getElementById('bkStep2').style.display='none'"><i class="fas fa-arrow-left"></i> Voltar</button>
-<button class="f-submit" style="background:var(--green);flex:1" onclick="enviarReserva()"><i class="fas fa-check"></i> Confirmar Reserva</button>
+<button class="f-submit" style="background:var(--green);flex:1" onclick="enviarReserva()" id="btnConfirmarReserva"><i class="fas fa-check"></i> Confirmar e Pagar Online</button>
 </div>
-<p class="f-note">Após a confirmação, entraremos em contato pelo WhatsApp para finalizar o pagamento.</p>
+<p class="f-note" style="margin-top:6px">Você será redirecionado para o Mercado Pago (PIX, cartão ou boleto). Pagamento seguro e protegido.</p>
+<div style="display:flex;justify-content:center;gap:8px;margin-top:6px;opacity:.4">
+<i class="fab fa-pix" style="font-size:1.1rem"></i>
+<i class="fab fa-cc-visa" style="font-size:1.1rem"></i>
+<i class="fab fa-cc-mastercard" style="font-size:1.1rem"></i>
+<i class="fas fa-barcode" style="font-size:1.1rem"></i>
+</div>
 </div>
 </div>
 </div>
@@ -429,6 +435,23 @@ function setSearchType(t,el){searchType=t;document.querySelectorAll('.s-tab').fo
 // INIT
 window.addEventListener('load',()=>{
   setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',600)},500);
+
+  // Check payment return from Mercado Pago
+  const params=new URLSearchParams(window.location.search);
+  const pgtoStatus=params.get('pagamento');
+  const pgtoReserva=params.get('reserva');
+  if(pgtoStatus==='sucesso'&&pgtoReserva){
+    setTimeout(()=>{alert('Pagamento aprovado! Sua reserva está confirmada. Entraremos em contato pelo WhatsApp com os detalhes do check-in.')},1000);
+    // Clean URL
+    window.history.replaceState({},'',window.location.pathname);
+  } else if(pgtoStatus==='pendente'&&pgtoReserva){
+    setTimeout(()=>{alert('Pagamento em processamento. Assim que for confirmado, você receberá uma notificação. Sua reserva está registrada.')},1000);
+    window.history.replaceState({},'',window.location.pathname);
+  } else if(pgtoStatus==='falha'){
+    setTimeout(()=>{alert('O pagamento não foi concluído. Sua reserva está salva. Entre em contato pelo WhatsApp para finalizar.')},1000);
+    window.history.replaceState({},'',window.location.pathname);
+  }
+
   // Init Firebase with defaults if empty
   db.ref('imoveis').once('value',snap=>{
     if(!snap.val()){
@@ -782,35 +805,68 @@ function bkStep2(){
   document.getElementById('bkStep2').style.display='';
 }
 
-function enviarReserva(){
+async function enviarReserva(){
   const nome=document.getElementById('rNome').value.trim();
   const wpp=document.getElementById('rWpp').value.trim();
   if(!nome||!wpp){alert('Preencha nome e WhatsApp!');return}
+
+  const btn=document.getElementById('btnConfirmarReserva');
+  btn.disabled=true;btn.innerHTML='<i class="fas fa-spinner fa-spin"></i> Processando...';
+
   const checkin=document.getElementById('bkIn').value;
   const checkout=document.getElementById('bkOut').value;
   const noites=Math.round((new Date(checkout+'T12:00:00')-new Date(checkin+'T12:00:00'))/(1000*60*60*24));
   const total=noites*bkImovel.preco;
+  const email=document.getElementById('rEmail').value.trim();
+
   const reserva={
     imovel:bkImovel.titulo+' — '+bkImovel.bairro,
     imovel_id:bkImovel.id,
-    nome,whatsapp:wpp,
-    email:document.getElementById('rEmail').value.trim(),
+    nome,whatsapp:wpp,email,
     cpf:document.getElementById('rCpf').value.trim(),
     observacoes:document.getElementById('rObs').value.trim(),
-    checkin,checkout,
-    noites,
-    preco_noite:bkImovel.preco,
-    total,
+    checkin,checkout,noites,
+    preco_noite:bkImovel.preco,total,
     hospedes:document.getElementById('bkGuests').value,
     data_criacao:new Date().toISOString(),
     status:'pendente',
     pagamento:'aguardando'
   };
   const id='R'+Date.now();reserva.id=id;
-  db.ref('reservas/'+id).set(reserva).then(()=>{
-    alert('Reserva solicitada com sucesso!\n\nImóvel: '+bkImovel.titulo+'\nPeríodo: '+noites+' noites\nTotal: R$ '+total.toLocaleString('pt-BR')+'\n\nEntraremos em contato pelo WhatsApp para confirmar e finalizar o pagamento.');
+
+  try {
+    // 1. Salvar reserva no Firebase
+    await db.ref('reservas/'+id).set(reserva);
+
+    // 2. Criar pagamento no Mercado Pago
+    const siteUrl=window.location.origin;
+    const pgtoResponse=await fetch('/.netlify/functions/criar-pagamento',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        titulo:'Temporada: '+bkImovel.titulo,
+        total,checkin,checkout,noites,
+        reserva_id:id,
+        nome,email:email||'cliente@ktimoveis.com',
+        site_url:siteUrl
+      })
+    });
+    const pgto=await pgtoResponse.json();
+
+    if(pgto.init_point){
+      // 3. Redirecionar para pagamento Mercado Pago
+      window.location.href=pgto.init_point;
+    } else {
+      // Fallback: reserva criada sem pagamento online
+      alert('Reserva criada com sucesso!\n\nImóvel: '+bkImovel.titulo+'\nTotal: R$ '+total.toLocaleString('pt-BR')+'\n\nEntraremos em contato pelo WhatsApp para finalizar o pagamento.');
+      closeModal('bookingModal');
+    }
+  } catch(e){
+    // Reserva foi salva mas pagamento falhou - ok, admin vê e cobra manual
+    alert('Reserva registrada!\n\nImóvel: '+bkImovel.titulo+'\nTotal: R$ '+total.toLocaleString('pt-BR')+'\n\nEntraremos em contato pelo WhatsApp para finalizar.');
     closeModal('bookingModal');
-  }).catch(e=>alert('Erro ao enviar. Tente novamente.'));
+  }
+  btn.disabled=false;btn.innerHTML='<i class="fas fa-check"></i> Confirmar e Pagar Online';
 }
 
 // MODAL
