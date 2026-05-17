@@ -6,153 +6,147 @@
 <title>KT Imóveis | Painel Admin</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--blue:#1A5276;--blue-light:#2E86C1;--gold:#F4C542;--green:#27AE60;--red:#E74C3C;--orange:#F39C12;--bg:#F0F2F5;--card:#FFF;--text:#2D3436;--gray:#636E72;--border:#DFE6E9;--font:'Inter',sans-serif}
 body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh}
 
-/* LOGIN */
 .login-screen{display:flex;align-items:center;justify-content:center;min-height:100vh;background:linear-gradient(135deg,#0E3350,#1A5276,#2E86C1)}
 .login-box{background:var(--card);border-radius:16px;padding:40px;width:100%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 .login-box h1{font-size:1.4rem;color:var(--blue);margin-bottom:4px;text-align:center}
 .login-box p{font-size:.8rem;color:var(--gray);text-align:center;margin-bottom:24px}
-.login-box .logo{text-align:center;margin-bottom:20px;font-size:1.8rem;font-weight:800;color:var(--blue)}
-.login-box .logo span{color:var(--gold)}
+.login-box .logo{text-align:center;margin-bottom:20px;font-size:1.8rem;font-weight:800;color:var(--blue)}.login-box .logo span{color:var(--gold)}
 
-/* SIDEBAR */
-.app{display:none;grid-template-columns:240px 1fr;min-height:100vh}
-.app.active{display:grid}
-.sidebar{background:var(--blue);padding:20px 0;color:#fff;position:sticky;top:0;height:100vh;overflow-y:auto}
-.sidebar-logo{padding:0 20px 20px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:16px;font-size:1.1rem;font-weight:700}
-.sidebar-logo span{color:var(--gold)}
-.sidebar-menu{list-style:none}
-.sidebar-menu li a{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.82rem;font-weight:500;transition:all .2s;border-left:3px solid transparent}
+.app{display:none;grid-template-columns:240px 1fr;min-height:100vh}.app.active{display:grid}
+.sidebar{background:var(--blue);padding:20px 0;color:#fff;position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-logo{padding:0 20px 20px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:16px;font-size:1.1rem;font-weight:700}.sidebar-logo span{color:var(--gold)}
+.sidebar-menu{list-style:none;flex:1}
+.sidebar-menu li a{display:flex;align-items:center;gap:10px;padding:11px 20px;color:rgba(255,255,255,.6);text-decoration:none;font-size:.82rem;font-weight:500;transition:all .2s;border-left:3px solid transparent;position:relative}
 .sidebar-menu li a:hover,.sidebar-menu li a.active{background:rgba(255,255,255,.08);color:#fff;border-left-color:var(--gold)}
 .sidebar-menu li a i{width:18px;text-align:center;font-size:.85rem}
+.menu-badge{position:absolute;right:16px;background:var(--red);color:#fff;font-size:.55rem;font-weight:700;padding:2px 6px;border-radius:50px;min-width:18px;text-align:center}
 
-/* MAIN */
 .main{padding:24px;overflow-y:auto}
-.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
-.topbar h2{font-size:1.3rem;color:var(--text)}
-.topbar-actions{display:flex;gap:8px}
+.topbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;flex-wrap:wrap;gap:10px}
+.topbar h2{font-size:1.2rem}.topbar-actions{display:flex;gap:8px;flex-wrap:wrap}
+.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.stat-card{background:var(--card);border-radius:12px;padding:18px;border:1px solid var(--border)}
+.stat-card .icon{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.95rem;margin-bottom:8px}
+.stat-card .num{font-size:1.6rem;font-weight:700;color:var(--text)}.stat-card .label{font-size:.7rem;color:var(--gray)}
 
-/* STATS */
-.stats-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:24px}
-.stat-card{background:var(--card);border-radius:12px;padding:20px;border:1px solid var(--border)}
-.stat-card .icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1rem;margin-bottom:10px}
-.stat-card .num{font-size:1.8rem;font-weight:700;color:var(--text)}
-.stat-card .label{font-size:.72rem;color:var(--gray)}
-
-/* TABLE */
-.table-wrap{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow:hidden}
-.table-header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border)}
-.table-header h3{font-size:.95rem}
-.table-filters{display:flex;gap:8px}
-.filter-btn{padding:6px 14px;border-radius:50px;font-size:.7rem;font-weight:600;border:1px solid var(--border);background:var(--card);color:var(--gray);cursor:pointer;transition:all .2s}
-.filter-btn.active{background:var(--blue);color:#fff;border-color:var(--blue)}
-table{width:100%;border-collapse:collapse}
-th{text-align:left;padding:12px 16px;font-size:.7rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);background:var(--bg)}
-td{padding:12px 16px;font-size:.8rem;border-bottom:1px solid var(--border)}
+.table-wrap{background:var(--card);border-radius:12px;border:1px solid var(--border);overflow-x:auto;margin-bottom:20px}
+.table-header{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px}
+.table-header h3{font-size:.9rem}
+table{width:100%;border-collapse:collapse;min-width:600px}
+th{text-align:left;padding:10px 14px;font-size:.65rem;color:var(--gray);text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);background:var(--bg)}
+td{padding:10px 14px;font-size:.78rem;border-bottom:1px solid var(--border)}
 tr:hover{background:rgba(26,82,118,.02)}
-.td-img{width:60px;height:40px;border-radius:6px;object-fit:cover}
-.badge{padding:3px 8px;border-radius:50px;font-size:.6rem;font-weight:600;text-transform:uppercase}
-.badge-venda{background:rgba(26,82,118,.1);color:var(--blue)}
-.badge-aluguel{background:rgba(243,156,18,.1);color:var(--orange)}
-.badge-temporada{background:rgba(39,174,96,.1);color:var(--green)}
-.badge-disponivel{background:rgba(39,174,96,.1);color:var(--green)}
-.badge-reservado{background:rgba(243,156,18,.1);color:var(--orange)}
-.badge-vendido{background:rgba(231,76,60,.1);color:var(--red)}
-.td-actions{display:flex;gap:6px}
-.td-actions button{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--gray);transition:all .2s}
-.td-actions button:hover{border-color:var(--blue);color:var(--blue)}
-.td-actions button.del:hover{border-color:var(--red);color:var(--red)}
+.td-img{width:55px;height:38px;border-radius:6px;object-fit:cover}
+.badge{padding:3px 8px;border-radius:50px;font-size:.58rem;font-weight:600;text-transform:uppercase}
+.badge-venda{background:rgba(26,82,118,.1);color:var(--blue)}.badge-aluguel{background:rgba(243,156,18,.1);color:var(--orange)}.badge-temporada{background:rgba(39,174,96,.1);color:var(--green)}
+.badge-disponivel{background:rgba(39,174,96,.1);color:var(--green)}.badge-reservado{background:rgba(243,156,18,.1);color:var(--orange)}.badge-vendido{background:rgba(231,76,60,.1);color:var(--red)}
+.badge-pendente{background:rgba(243,156,18,.1);color:var(--orange)}.badge-confirmada{background:rgba(39,174,96,.1);color:var(--green)}.badge-cancelada{background:rgba(231,76,60,.1);color:var(--red)}
+.badge-novo{background:rgba(46,134,193,.1);color:var(--blue-light)}.badge-contatado{background:rgba(243,156,18,.1);color:var(--orange)}.badge-convertido{background:rgba(39,174,96,.1);color:var(--green)}
+.td-actions{display:flex;gap:4px}.td-actions button{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);background:var(--card);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--gray);transition:all .2s}
+.td-actions button:hover{border-color:var(--blue);color:var(--blue)}.td-actions button.del:hover{border-color:var(--red);color:var(--red)}.td-actions button.ok:hover{border-color:var(--green);color:var(--green)}
 
-/* BUTTONS */
-.btn{padding:10px 20px;border-radius:8px;font-size:.8rem;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
+.btn{padding:9px 18px;border-radius:8px;font-size:.78rem;font-weight:600;border:none;cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .2s}
 .btn-primary{background:var(--blue);color:#fff}.btn-primary:hover{background:#145A80}
 .btn-success{background:var(--green);color:#fff}.btn-success:hover{background:#219150}
 .btn-outline{background:var(--card);border:1px solid var(--border);color:var(--gray)}.btn-outline:hover{border-color:var(--blue);color:var(--blue)}
-.btn-sm{padding:6px 12px;font-size:.72rem}
+.btn-danger{background:var(--red);color:#fff;font-size:.7rem;padding:6px 10px}
 
-/* FORM MODAL */
-.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:40px 24px;overflow-y:auto}
-.modal-bg.open{display:flex}
-.modal-form{background:var(--card);border-radius:16px;width:100%;max-width:700px;padding:32px;position:relative}
-.modal-form h2{font-size:1.2rem;margin-bottom:4px}
-.modal-form .sub{font-size:.78rem;color:var(--gray);margin-bottom:20px}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.form-grid.full{grid-template-columns:1fr}
-.fg{display:flex;flex-direction:column;gap:4px}
-.fg label{font-size:.7rem;font-weight:600;color:var(--text)}
-.fg input,.fg select,.fg textarea{padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;font-family:var(--font);color:var(--text);transition:border-color .2s}
-.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);outline:none}
-.fg textarea{resize:vertical;min-height:80px}
-.form-section{font-size:.72rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;padding-top:12px;border-top:1px solid var(--border)}
-.amenidades-grid{display:flex;flex-wrap:wrap;gap:6px}
-.amenidade-tag{padding:5px 12px;border-radius:50px;font-size:.68rem;border:1px solid var(--border);cursor:pointer;transition:all .2s;user-select:none}
-.amenidade-tag.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
-.form-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
-.close-modal{position:absolute;top:16px;right:16px;background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--gray)}
-.auto-code{display:flex;align-items:center;gap:8px;padding:10px 12px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:.82rem;color:var(--gray);font-style:italic}
-.auto-code i{color:var(--green)}
-.upload-zone{border:2px dashed var(--border);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:all .2s;background:var(--bg);position:relative}
-.upload-zone:hover,.upload-zone.dragover{border-color:var(--blue);background:rgba(26,82,118,.03)}
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:1000;display:none;align-items:flex-start;justify-content:center;padding:30px 20px;overflow-y:auto}.modal-bg.open{display:flex}
+.modal-form{background:var(--card);border-radius:16px;width:100%;max-width:700px;padding:28px;position:relative}
+.modal-form h2{font-size:1.1rem;margin-bottom:4px}.modal-form .sub{font-size:.76rem;color:var(--gray);margin-bottom:18px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.form-grid.full{grid-template-columns:1fr}
+.fg{display:flex;flex-direction:column;gap:3px}.fg label{font-size:.68rem;font-weight:600;color:var(--text)}
+.fg input,.fg select,.fg textarea{padding:9px 11px;border:1.5px solid var(--border);border-radius:8px;font-size:.8rem;font-family:var(--font);color:var(--text)}.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--blue);outline:none}
+.fg textarea{resize:vertical;min-height:70px}
+.form-section{font-size:.7rem;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:1.5px;margin:14px 0 6px;padding-top:10px;border-top:1px solid var(--border)}
+.amenidades-grid{display:flex;flex-wrap:wrap;gap:5px}
+.amenidade-tag{padding:4px 10px;border-radius:50px;font-size:.65rem;border:1px solid var(--border);cursor:pointer;transition:all .2s;user-select:none}.amenidade-tag.selected{background:var(--blue);color:#fff;border-color:var(--blue)}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px;padding-top:14px;border-top:1px solid var(--border)}
+.close-modal{position:absolute;top:14px;right:14px;background:none;border:none;font-size:1.1rem;cursor:pointer;color:var(--gray)}
+.auto-code{display:flex;align-items:center;gap:8px;padding:9px 11px;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;font-size:.8rem;color:var(--gray);font-style:italic}.auto-code i{color:var(--green)}
+.upload-zone{border:2px dashed var(--border);border-radius:10px;padding:20px;text-align:center;cursor:pointer;position:relative;background:var(--bg);transition:all .2s}.upload-zone:hover{border-color:var(--blue)}
 .upload-zone input{position:absolute;inset:0;opacity:0;cursor:pointer}
-.upload-zone i{font-size:1.5rem;color:var(--light);margin-bottom:6px;display:block}
-.upload-zone p{font-size:.78rem;color:var(--gray)}.upload-zone small{font-size:.65rem;color:var(--light)}
-.foto-preview{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
-.foto-thumb{width:80px;height:60px;border-radius:8px;overflow:hidden;position:relative;border:1px solid var(--border)}
-.foto-thumb img{width:100%;height:100%;object-fit:cover}
-.foto-thumb .remove{position:absolute;top:2px;right:2px;width:18px;height:18px;border-radius:50%;background:var(--red);color:#fff;border:none;font-size:.55rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.upload-zone i{font-size:1.3rem;color:#bbb;margin-bottom:4px;display:block}.upload-zone p{font-size:.74rem;color:var(--gray)}.upload-zone small{font-size:.6rem;color:#aaa}
+.foto-preview{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.foto-thumb{width:70px;height:52px;border-radius:8px;overflow:hidden;position:relative;border:1px solid var(--border)}.foto-thumb img{width:100%;height:100%;object-fit:cover}
+.foto-thumb .remove{position:absolute;top:2px;right:2px;width:16px;height:16px;border-radius:50%;background:var(--red);color:#fff;border:none;font-size:.5rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 
-@media(max-width:768px){.app.active{grid-template-columns:1fr}.sidebar{display:none}.stats-row{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.table-wrap{overflow-x:auto}}
+.section-page{display:none}.section-page.active{display:block}
+.empty-state{text-align:center;padding:40px;color:var(--gray)}.empty-state i{font-size:2rem;margin-bottom:10px;display:block;opacity:.3}.empty-state p{font-size:.85rem}
+
+.status-select{padding:4px 8px;border-radius:6px;font-size:.65rem;border:1px solid var(--border);font-family:var(--font);cursor:pointer}
+
+@media(max-width:768px){.app.active{grid-template-columns:1fr}.sidebar{display:none}.stats-row{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
-<!-- LOGIN -->
 <div class="login-screen" id="loginScreen">
 <div class="login-box">
 <div class="logo">KT <span>Imóveis</span></div>
 <h1>Painel Administrativo</h1>
-<p>Acesse para gerenciar os imóveis do site</p>
-<div style="margin-bottom:14px">
-<label style="font-size:.72rem;font-weight:600;display:block;margin-bottom:4px">Usuário</label>
-<input type="text" id="loginUser" placeholder="admin" style="width:100%;padding:11px 14px;border:1.5px solid #DFE6E9;border-radius:8px;font-size:.85rem;font-family:var(--font)">
-</div>
-<div style="margin-bottom:20px">
-<label style="font-size:.72rem;font-weight:600;display:block;margin-bottom:4px">Senha</label>
-<input type="password" id="loginPass" placeholder="••••••" style="width:100%;padding:11px 14px;border:1.5px solid #DFE6E9;border-radius:8px;font-size:.85rem;font-family:var(--font)" onkeyup="if(event.key==='Enter')doLogin()">
-</div>
+<p>Gerencie imóveis, reservas e leads</p>
+<div style="margin-bottom:14px"><label style="font-size:.7rem;font-weight:600;display:block;margin-bottom:3px">Senha</label>
+<input type="password" id="loginPass" placeholder="••••••" style="width:100%;padding:11px;border:1.5px solid #DFE6E9;border-radius:8px;font-size:.85rem;font-family:var(--font)" onkeyup="if(event.key==='Enter')doLogin()"></div>
 <button class="btn btn-primary" style="width:100%;justify-content:center;padding:12px" onclick="doLogin()"><i class="fas fa-sign-in-alt"></i> Entrar</button>
-<p style="font-size:.65rem;color:#999;text-align:center;margin-top:12px">Senha padrão: kt2026</p>
 </div>
 </div>
 
-<!-- APP -->
 <div class="app" id="app">
 <aside class="sidebar">
 <div class="sidebar-logo">KT <span>Imóveis</span></div>
 <ul class="sidebar-menu">
-<li><a href="#" class="active" onclick="showSection('dashboard')"><i class="fas fa-chart-pie"></i> Dashboard</a></li>
-<li><a href="#" onclick="showSection('imoveis')"><i class="fas fa-home"></i> Imóveis</a></li>
-<li><a href="#" onclick="showSection('temporada')"><i class="fas fa-umbrella-beach"></i> Temporada</a></li>
-<li><a href="#" onclick="showSection('leads')"><i class="fas fa-users"></i> Leads</a></li>
-<li><a href="#" onclick="showSection('reservas')"><i class="fas fa-calendar-check"></i> Reservas</a></li>
+<li><a href="#" class="active" data-sec="dashboard" onclick="showSection('dashboard',this)"><i class="fas fa-chart-pie"></i> Dashboard</a></li>
+<li><a href="#" data-sec="imoveis" onclick="showSection('imoveis',this)"><i class="fas fa-home"></i> Imóveis</a></li>
+<li><a href="#" data-sec="reservas" onclick="showSection('reservas',this)"><i class="fas fa-calendar-check"></i> Reservas <span class="menu-badge" id="badgeReservas" style="display:none">0</span></a></li>
+<li><a href="#" data-sec="leads" onclick="showSection('leads',this)"><i class="fas fa-users"></i> Leads <span class="menu-badge" id="badgeLeads" style="display:none">0</span></a></li>
 </ul>
-<div style="padding:20px;margin-top:auto;border-top:1px solid rgba(255,255,255,.1)">
-<a href="#" onclick="doLogout()" style="color:rgba(255,255,255,.4);text-decoration:none;font-size:.75rem;display:flex;align-items:center;gap:8px"><i class="fas fa-sign-out-alt"></i> Sair</a>
+<div style="padding:16px 20px;border-top:1px solid rgba(255,255,255,.1)">
+<a href="index.html" target="_blank" style="color:rgba(255,255,255,.5);text-decoration:none;font-size:.72rem;display:flex;align-items:center;gap:6px;margin-bottom:10px"><i class="fas fa-external-link-alt"></i> Ver Site</a>
+<a href="#" onclick="doLogout()" style="color:rgba(255,255,255,.35);text-decoration:none;font-size:.72rem;display:flex;align-items:center;gap:6px"><i class="fas fa-sign-out-alt"></i> Sair</a>
 </div>
 </aside>
 
 <div class="main">
+
 <!-- DASHBOARD -->
-<div id="sec-dashboard">
-<div class="topbar"><h2>Dashboard</h2><div class="topbar-actions"><button class="btn btn-success" onclick="exportData()" title="Gera arquivo para publicar no site"><i class="fas fa-download"></i> Exportar Dados</button><button class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i> Novo Imóvel</button></div></div>
+<div class="section-page active" id="pg-dashboard">
+<div class="topbar"><h2>Dashboard</h2><div class="topbar-actions"><button class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i> Novo Imóvel</button></div></div>
 <div class="stats-row" id="statsRow"></div>
+<div class="table-wrap"><div class="table-header"><h3>Imóveis cadastrados</h3></div>
+<table><thead><tr><th>Foto</th><th>ID</th><th>Imóvel</th><th>Tipo</th><th>Bairro</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbImoveis"></tbody></table>
+</div>
+</div>
+
+<!-- IMOVEIS (same as dashboard but with filters) -->
+<div class="section-page" id="pg-imoveis">
+<div class="topbar"><h2>Imóveis</h2><div class="topbar-actions"><button class="btn btn-primary" onclick="openForm()"><i class="fas fa-plus"></i> Novo Imóvel</button></div></div>
+<div style="display:flex;gap:6px;margin-bottom:14px;flex-wrap:wrap" id="imoveisFilters"></div>
 <div class="table-wrap">
-<div class="table-header"><h3>Últimos imóveis cadastrados</h3></div>
-<table><thead><tr><th>Foto</th><th>Código</th><th>Imóvel</th><th>Tipo</th><th>Bairro</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tableBody"></tbody></table>
+<table><thead><tr><th>Foto</th><th>ID</th><th>Imóvel</th><th>Tipo</th><th>Cat.</th><th>Bairro</th><th>Preço</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbImoveisFull"></tbody></table>
+</div>
+</div>
+
+<!-- RESERVAS -->
+<div class="section-page" id="pg-reservas">
+<div class="topbar"><h2><i class="fas fa-calendar-check" style="color:var(--green);margin-right:8px"></i>Reservas de Temporada</h2></div>
+<div class="table-wrap" id="reservasWrap">
+<table><thead><tr><th>Data</th><th>Imóvel</th><th>Check-in</th><th>Check-out</th><th>Hóspedes</th><th>Nome</th><th>WhatsApp</th><th>Email</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbReservas"></tbody></table>
+</div>
+</div>
+
+<!-- LEADS -->
+<div class="section-page" id="pg-leads">
+<div class="topbar"><h2><i class="fas fa-users" style="color:var(--blue-light);margin-right:8px"></i>Leads / Triagem</h2></div>
+<div class="table-wrap" id="leadsWrap">
+<table><thead><tr><th>Data</th><th>Imóvel</th><th>Nome</th><th>Email</th><th>CPF</th><th>Renda</th><th>Profissão</th><th>WhatsApp</th><th>Status</th><th>Ações</th></tr></thead><tbody id="tbLeads"></tbody></table>
 </div>
 </div>
 
@@ -161,33 +155,27 @@ tr:hover{background:rgba(26,82,118,.02)}
 <div class="modal-form">
 <button class="close-modal" onclick="closeForm()">&times;</button>
 <h2 id="formTitle">Novo Imóvel</h2>
-<p class="sub">Preencha os dados do imóvel. Campos com * são obrigatórios.</p>
-
+<p class="sub">Preencha os dados do imóvel.</p>
 <input type="hidden" id="editId">
-
 <div class="form-section">Informações básicas</div>
 <input type="hidden" id="fCodigo">
 <div class="form-grid">
 <div class="fg"><label>Tipo *</label><select id="fTipo" onchange="updateAutoCode()"><option value="venda">Venda</option><option value="aluguel">Aluguel Anual</option><option value="temporada">Temporada</option></select></div>
 <div class="fg"><label>Categoria *</label><select id="fCategoria"><option value="casa">Casa</option><option value="apartamento">Apartamento</option><option value="terreno">Terreno</option><option value="cobertura">Cobertura</option><option value="predio">Prédio</option><option value="ilha">Ilha</option></select></div>
 <div class="fg"><label>Status</label><select id="fStatus"><option value="disponivel">Disponível</option><option value="reservado">Reservado</option><option value="vendido">Vendido/Alugado</option></select></div>
-<div class="fg"><label>Código (automático)</label><div class="auto-code" id="autoCodeDisplay"><i class="fas fa-check-circle"></i> <span id="autoCodeText">V001</span></div></div>
+<div class="fg"><label>Código (automático)</label><div class="auto-code"><i class="fas fa-check-circle"></i> <span id="autoCodeText">V001</span></div></div>
 </div>
-<div class="form-grid full" style="margin-top:14px">
-<div class="fg"><label>Título *</label><input type="text" id="fTitulo" placeholder="Ex: Casa 4 Quartos com Vista Mar"></div>
-</div>
-<div class="form-grid full" style="margin-top:14px">
-<div class="fg"><label>Descrição *</label><textarea id="fDesc" placeholder="Descreva o imóvel com detalhes..."></textarea></div>
-</div>
+<div class="form-grid full" style="margin-top:12px"><div class="fg"><label>Título *</label><input type="text" id="fTitulo" placeholder="Ex: Casa 4 Quartos com Vista Mar"></div></div>
+<div class="form-grid full" style="margin-top:12px"><div class="fg"><label>Descrição</label><textarea id="fDesc" placeholder="Descreva o imóvel..."></textarea></div></div>
 
 <div class="form-section">Localização e Preço</div>
 <div class="form-grid">
 <div class="fg"><label>Bairro *</label><input type="text" id="fBairro" placeholder="Ex: Praia Grande"></div>
 <div class="fg"><label>Cidade</label><input type="text" id="fCidade" value="Angra dos Reis"></div>
-<div class="fg"><label>Preço * (apenas números)</label><input type="number" id="fPreco" placeholder="Ex: 980000 ou 1800 ou 850"></div>
-<div class="fg"><label>Condomínio (R$/mês)</label><input type="number" id="fCond" placeholder="Ex: 800"></div>
-<div class="fg"><label>IPTU (R$/mês)</label><input type="number" id="fIPTU" placeholder="Ex: 350"></div>
-<div class="fg"><label>Destaque na home?</label><select id="fDestaque"><option value="true">Sim</option><option value="false">Não</option></select></div>
+<div class="fg"><label>Preço *</label><input type="number" id="fPreco" placeholder="Ex: 980000"></div>
+<div class="fg"><label>Condomínio R$/mês</label><input type="number" id="fCond"></div>
+<div class="fg"><label>IPTU R$/mês</label><input type="number" id="fIPTU"></div>
+<div class="fg"><label>Destaque?</label><select id="fDestaque"><option value="true">Sim</option><option value="false">Não</option></select></div>
 </div>
 
 <div class="form-section">Características</div>
@@ -196,30 +184,19 @@ tr:hover{background:rgba(26,82,118,.02)}
 <div class="fg"><label>Suítes</label><input type="number" id="fSuites" value="0"></div>
 <div class="fg"><label>Banheiros</label><input type="number" id="fBanheiros" value="0"></div>
 <div class="fg"><label>Vagas</label><input type="number" id="fVagas" value="0"></div>
-<div class="fg"><label>Área (m²)</label><input type="number" id="fArea" placeholder="Ex: 250"></div>
-<div class="fg"><label>Máx. Hóspedes (temporada)</label><input type="number" id="fHospedes" placeholder="Ex: 10"></div>
+<div class="fg"><label>Área m²</label><input type="number" id="fArea"></div>
+<div class="fg"><label>Máx. Hóspedes</label><input type="number" id="fHospedes"></div>
 </div>
 
 <div class="form-section">Amenidades</div>
 <div class="amenidades-grid" id="amenidadesGrid"></div>
 
-<div class="form-section">Fotos</div>
-<div class="form-grid full">
-<div class="fg">
-<label>Selecione as fotos do imóvel</label>
-<div class="upload-zone" id="uploadZone">
-<input type="file" id="fFotosInput" multiple accept="image/*" onchange="handleFiles(this.files)">
-<i class="fas fa-cloud-arrow-up"></i>
-<p>Clique aqui ou arraste as fotos</p>
-<small>Aceita JPG, PNG, WEBP. Máx 10 fotos. Funciona no celular e computador.</small>
-</div>
-<div class="foto-preview" id="fotoPreview"></div>
-</div>
-</div>
+<div class="form-section">Fotos (URLs)</div>
+<div class="form-grid full"><div class="fg"><label>Cole os links das fotos, um por linha</label><textarea id="fFotos" placeholder="https://link-da-foto-1.jpg&#10;https://link-da-foto-2.jpg" style="min-height:80px"></textarea></div></div>
 
 <div class="form-actions">
 <button class="btn btn-outline" onclick="closeForm()">Cancelar</button>
-<button class="btn btn-success" onclick="saveImovel()"><i class="fas fa-save"></i> Salvar Imóvel</button>
+<button class="btn btn-success" onclick="saveImovel()"><i class="fas fa-save"></i> Salvar</button>
 </div>
 </div>
 </div>
@@ -227,229 +204,189 @@ tr:hover{background:rgba(26,82,118,.02)}
 </div>
 </div>
 
+<script src="firebase-config.js"></script>
 <script src="imoveis.js"></script>
 <script>
-// ============================================
 // AUTH
-// ============================================
-const PASS = 'kt2026';
-function doLogin(){
-  const u = document.getElementById('loginUser').value;
-  const p = document.getElementById('loginPass').value;
-  if(p === PASS){
-    localStorage.setItem('kt_auth','true');
-    document.getElementById('loginScreen').style.display='none';
-    document.getElementById('app').classList.add('active');
-    init();
-  } else { alert('Senha incorreta!'); }
-}
-function doLogout(){
-  localStorage.removeItem('kt_auth');
-  location.reload();
-}
-if(localStorage.getItem('kt_auth')==='true'){
-  document.getElementById('loginScreen').style.display='none';
-  document.getElementById('app').classList.add('active');
-  window.addEventListener('load', init);
-}
+const PASS='kt2026';
+function doLogin(){if(document.getElementById('loginPass').value===PASS){localStorage.setItem('kt_auth','true');show()}else alert('Senha incorreta!')}
+function doLogout(){localStorage.removeItem('kt_auth');location.reload()}
+function show(){document.getElementById('loginScreen').style.display='none';document.getElementById('app').classList.add('active');initApp()}
+if(localStorage.getItem('kt_auth')==='true') window.addEventListener('load',show);
 
-// ============================================
 // DATA
-// ============================================
-const AMENIDADES_LIST = ["Piscina","Piscina infinity","Churrasqueira","Wi-Fi","Ar condicionado","Vista mar","Vista baía","Estacionamento","Cozinha equipada","Cozinha gourmet","Cozinha planejada","Área de lazer","Área gourmet","Varanda","Varanda gourmet","Quintal","Garagem dupla","Condomínio fechado","Segurança 24h","Elevador","Portaria","Mobiliado","Perto da praia","Rooftop","Pier privativo","Sauna","Trilhas","Natureza","Staff","Bairro tranquilo","Infraestrutura completa","Plano"];
+let allImoveis=[];
+let allReservas=[];
+let allLeads=[];
 
-function getData(){
-  // Merge: arquivo imoveis.js (base) + localStorage (edições)
-  let base = [...IMOVEIS];
-  let local = localStorage.getItem('kt_imoveis');
-  if(local){
-    try {
-      let extras = JSON.parse(local);
-      let baseIds = base.map(i=>i.id);
-      extras.forEach(i=>{
-        if(!baseIds.includes(i.id)){
-          base.push(i);
-        } else {
-          let idx = base.findIndex(x=>x.id===i.id);
-          if(idx>=0) base[idx] = i;
-        }
-      });
-    } catch(e){}
-  }
-  return base;
-}
-function saveData(arr){ localStorage.setItem('kt_imoveis', JSON.stringify(arr)); }
-
-// EXPORTAR - gera o imoveis.js atualizado pra download
-function exportData(){
-  const d = getData();
-  let js = '/*\n  KT IMÓVEIS — BANCO DE IMÓVEIS (exportado do admin)\n  Gerado em: ' + new Date().toLocaleString('pt-BR') + '\n*/\n\nconst IMOVEIS = ' + JSON.stringify(d, null, 2) + ';\n';
-  const blob = new Blob([js], {type: 'application/javascript'});
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'imoveis.js';
-  a.click();
-  URL.revokeObjectURL(url);
-  alert('Arquivo imoveis.js exportado!\\n\\nPara publicar no site:\\n1. Envie este arquivo para a pasta do site\\n2. Substitua o imoveis.js antigo\\n3. Faça o deploy');
-}
-
-// ============================================
-// INIT
-// ============================================
-function init(){
-  renderStats();
-  renderTable();
+function initApp(){
+  // Init Firebase with defaults if empty
+  db.ref('imoveis').once('value',snap=>{
+    if(!snap.val()){
+      const u={};IMOVEIS.forEach(i=>{u['imoveis/'+i.id]=i});
+      db.ref().update(u).then(()=>console.log('DB inicializado'));
+    }
+  });
+  // Listen for real-time changes
+  db.ref('imoveis').on('value',snap=>{
+    allImoveis=snap.val()?Object.values(snap.val()):[];
+    renderAll();
+  });
+  db.ref('reservas').on('value',snap=>{
+    allReservas=snap.val()?Object.values(snap.val()).sort((a,b)=>(b.data_criacao||'').localeCompare(a.data_criacao||'')):[];
+    renderReservas();
+    updateBadges();
+  });
+  db.ref('leads').on('value',snap=>{
+    allLeads=snap.val()?Object.values(snap.val()).sort((a,b)=>(b.data_criacao||'').localeCompare(a.data_criacao||'')):[];
+    renderLeads();
+    updateBadges();
+  });
   renderAmenidades();
 }
 
-function renderStats(){
-  const d = getData();
-  const total = d.length;
-  const venda = d.filter(i=>i.tipo==='venda').length;
-  const aluguel = d.filter(i=>i.tipo==='aluguel').length;
-  const temp = d.filter(i=>i.tipo==='temporada').length;
-  document.getElementById('statsRow').innerHTML = `
-    <div class="stat-card"><div class="icon" style="background:rgba(26,82,118,.08);color:var(--blue)"><i class="fas fa-building"></i></div><div class="num">${total}</div><div class="label">Total de Imóveis</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(26,82,118,.08);color:var(--blue)"><i class="fas fa-handshake"></i></div><div class="num">${venda}</div><div class="label">À Venda</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(243,156,18,.08);color:var(--orange)"><i class="fas fa-key"></i></div><div class="num">${aluguel}</div><div class="label">Aluguel Anual</div></div>
-    <div class="stat-card"><div class="icon" style="background:rgba(39,174,96,.08);color:var(--green)"><i class="fas fa-umbrella-beach"></i></div><div class="num">${temp}</div><div class="label">Temporada</div></div>
-  `;
+// SECTIONS
+function showSection(s,el){
+  document.querySelectorAll('.sidebar-menu a').forEach(a=>a.classList.remove('active'));
+  if(el)el.classList.add('active');
+  document.querySelectorAll('.section-page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('pg-'+s).classList.add('active');
 }
 
-function renderTable(filter){
-  let d = getData();
-  if(filter && filter!=='todos') d = d.filter(i=>i.tipo===filter);
-  const tbody = document.getElementById('tableBody');
-  tbody.innerHTML = d.map(i => `
-    <tr>
-      <td><img class="td-img" src="${i.fotos[0] || ''}" alt=""></td>
-      <td><strong>${i.id}</strong></td>
-      <td>${i.titulo}</td>
-      <td><span class="badge badge-${i.tipo}">${i.tipo}</span></td>
-      <td>${i.bairro}</td>
-      <td><strong>${formatPrice(i)}</strong></td>
-      <td><span class="badge badge-${i.status}">${i.status}</span></td>
-      <td><div class="td-actions">
-        <button title="Editar" onclick="editImovel('${i.id}')"><i class="fas fa-pen"></i></button>
-        <button title="Excluir" class="del" onclick="deleteImovel('${i.id}')"><i class="fas fa-trash"></i></button>
-      </div></td>
-    </tr>
-  `).join('');
+// BADGES
+function updateBadges(){
+  const rPend=allReservas.filter(r=>r.status==='pendente').length;
+  const lNovo=allLeads.filter(l=>l.status==='novo').length;
+  const br=document.getElementById('badgeReservas');
+  const bl=document.getElementById('badgeLeads');
+  br.textContent=rPend;br.style.display=rPend>0?'':'none';
+  bl.textContent=lNovo;bl.style.display=lNovo>0?'':'none';
 }
 
-function formatPrice(i){
-  if(i.tipo==='venda') return 'R$ '+i.preco.toLocaleString('pt-BR');
-  if(i.tipo==='aluguel') return 'R$ '+i.preco.toLocaleString('pt-BR')+'/mês';
-  return 'R$ '+i.preco.toLocaleString('pt-BR')+'/noite';
-}
-
-// ============================================
-// AUTO CODE
-// ============================================
-function generateCode(tipo){
-  const prefix = tipo==='venda'?'V':tipo==='aluguel'?'A':'T';
-  const d = getData();
-  const existing = d.filter(i=>i.id.startsWith(prefix)).map(i=>parseInt(i.id.replace(prefix,''))||0);
-  const next = existing.length ? Math.max(...existing)+1 : 1;
-  return prefix + String(next).padStart(3,'0');
-}
-function updateAutoCode(){
-  const tipo = document.getElementById('fTipo').value;
-  const editId = document.getElementById('editId').value;
-  if(!editId){
-    const code = generateCode(tipo);
-    document.getElementById('fCodigo').value = code;
-    document.getElementById('autoCodeText').textContent = code;
-  }
-}
-
-// ============================================
-// PHOTO UPLOAD
-// ============================================
-let uploadedPhotos = [];
-
-function handleFiles(files){
-  const maxPhotos = 10;
-  const remaining = maxPhotos - uploadedPhotos.length;
-  const toProcess = Array.from(files).slice(0, remaining);
-  toProcess.forEach(file => {
-    if(!file.type.startsWith('image/')) return;
-    const reader = new FileReader();
-    reader.onload = function(e){
-      // Resize image to max 1000px width for storage
-      const img = new Image();
-      img.onload = function(){
-        const canvas = document.createElement('canvas');
-        const maxW = 1000;
-        let w = img.width, h = img.height;
-        if(w > maxW){ h = h * (maxW/w); w = maxW; }
-        canvas.width = w; canvas.height = h;
-        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
-        const compressed = canvas.toDataURL('image/jpeg', 0.7);
-        uploadedPhotos.push(compressed);
-        renderPhotoPreview();
-      };
-      img.src = e.target.result;
-    };
-    reader.readAsDataURL(file);
-  });
-}
-
-function removePhoto(idx){
-  uploadedPhotos.splice(idx, 1);
-  renderPhotoPreview();
-}
-
-function renderPhotoPreview(){
-  const container = document.getElementById('fotoPreview');
-  container.innerHTML = uploadedPhotos.map((src, idx) =>
-    `<div class="foto-thumb"><img src="${src}" alt="Foto ${idx+1}"><button class="remove" onclick="removePhoto(${idx})"><i class="fas fa-times"></i></button></div>`
+// RENDER ALL
+function renderAll(){
+  // Stats
+  const d=allImoveis;
+  document.getElementById('statsRow').innerHTML=`
+    <div class="stat-card"><div class="icon" style="background:rgba(26,82,118,.08);color:var(--blue)"><i class="fas fa-building"></i></div><div class="num">${d.length}</div><div class="label">Total Imóveis</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(26,82,118,.08);color:var(--blue)"><i class="fas fa-handshake"></i></div><div class="num">${d.filter(i=>i.tipo==='venda').length}</div><div class="label">Venda</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(243,156,18,.08);color:var(--orange)"><i class="fas fa-key"></i></div><div class="num">${d.filter(i=>i.tipo==='aluguel').length}</div><div class="label">Aluguel</div></div>
+    <div class="stat-card"><div class="icon" style="background:rgba(39,174,96,.08);color:var(--green)"><i class="fas fa-umbrella-beach"></i></div><div class="num">${d.filter(i=>i.tipo==='temporada').length}</div><div class="label">Temporada</div></div>`;
+  // Table dashboard
+  renderImoveisTable('tbImoveis',d);
+  // Table full
+  renderImoveisTable('tbImoveisFull',d);
+  // Filters
+  document.getElementById('imoveisFilters').innerHTML=['todos','venda','aluguel','temporada'].map(t=>
+    `<button class="btn btn-outline" style="font-size:.7rem;padding:6px 14px" onclick="filterImoveis('${t}')">${t==='todos'?'Todos':t.charAt(0).toUpperCase()+t.slice(1)}</button>`
   ).join('');
 }
 
-// Drag and drop
-document.addEventListener('DOMContentLoaded', function(){
-  const zone = document.getElementById('uploadZone');
-  if(!zone) return;
-  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
-  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
-  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
-});
+function renderImoveisTable(id,data){
+  document.getElementById(id).innerHTML=data.map(i=>`<tr>
+    <td><img class="td-img" src="${(i.fotos&&i.fotos[0])||''}" alt="" onerror="this.style.display='none'"></td>
+    <td><strong>${i.id}</strong></td>
+    <td>${i.titulo||''}</td>
+    <td><span class="badge badge-${i.tipo}">${i.tipo}</span></td>
+    ${id==='tbImoveisFull'?`<td>${i.categoria||''}</td>`:''}
+    <td>${i.bairro||''}</td>
+    <td><strong>${fmtPrice(i)}</strong></td>
+    <td><span class="badge badge-${i.status}">${i.status}</span></td>
+    <td><div class="td-actions"><button title="Editar" onclick="editImovel('${i.id}')"><i class="fas fa-pen"></i></button><button class="del" title="Excluir" onclick="deleteImovel('${i.id}')"><i class="fas fa-trash"></i></button></div></td>
+  </tr>`).join('')||'<tr><td colspan="8" style="text-align:center;color:#aaa;padding:30px">Nenhum imóvel cadastrado</td></tr>';
+}
 
-// ============================================
+function filterImoveis(t){
+  const d=t==='todos'?allImoveis:allImoveis.filter(i=>i.tipo===t);
+  renderImoveisTable('tbImoveisFull',d);
+}
+
+function fmtPrice(i){
+  if(!i.preco)return'-';
+  if(i.tipo==='venda')return'R$ '+i.preco.toLocaleString('pt-BR');
+  if(i.tipo==='aluguel')return'R$ '+i.preco.toLocaleString('pt-BR')+'/mês';
+  return'R$ '+i.preco.toLocaleString('pt-BR')+'/noite';
+}
+
+// RESERVAS
+function renderReservas(){
+  document.getElementById('tbReservas').innerHTML=allReservas.map(r=>`<tr>
+    <td>${r.data_criacao?new Date(r.data_criacao).toLocaleDateString('pt-BR'):'-'}</td>
+    <td><strong>${r.imovel||''}</strong></td>
+    <td>${r.checkin||'-'}</td>
+    <td>${r.checkout||'-'}</td>
+    <td>${r.hospedes||'-'}</td>
+    <td>${r.nome||''}</td>
+    <td><a href="https://wa.me/55${(r.whatsapp||'').replace(/\D/g,'')}" target="_blank">${r.whatsapp||'-'}</a></td>
+    <td>${r.email||'-'}</td>
+    <td><select class="status-select" onchange="updateReservaStatus('${r.id}',this.value)">
+      <option value="pendente" ${r.status==='pendente'?'selected':''}>Pendente</option>
+      <option value="confirmada" ${r.status==='confirmada'?'selected':''}>Confirmada</option>
+      <option value="cancelada" ${r.status==='cancelada'?'selected':''}>Cancelada</option>
+    </select></td>
+    <td><div class="td-actions"><button class="del" title="Excluir" onclick="deleteReserva('${r.id}')"><i class="fas fa-trash"></i></button></div></td>
+  </tr>`).join('')||'<tr><td colspan="10" style="text-align:center;color:#aaa;padding:30px">Nenhuma reserva recebida</td></tr>';
+}
+function updateReservaStatus(id,s){db.ref('reservas/'+id+'/status').set(s)}
+function deleteReserva(id){if(confirm('Excluir reserva?'))db.ref('reservas/'+id).remove()}
+
+// LEADS
+function renderLeads(){
+  document.getElementById('tbLeads').innerHTML=allLeads.map(l=>`<tr>
+    <td>${l.data_criacao?new Date(l.data_criacao).toLocaleDateString('pt-BR'):'-'}</td>
+    <td><strong>${l.imovel||''}</strong></td>
+    <td>${l.nome||''}</td>
+    <td>${l.email||'-'}</td>
+    <td>${l.cpf||'-'}</td>
+    <td>${l.renda||'-'}</td>
+    <td>${l.profissao||'-'}</td>
+    <td><a href="https://wa.me/55${(l.whatsapp||'').replace(/\D/g,'')}" target="_blank">${l.whatsapp||'-'}</a></td>
+    <td><select class="status-select" onchange="updateLeadStatus('${l.id}',this.value)">
+      <option value="novo" ${l.status==='novo'?'selected':''}>Novo</option>
+      <option value="contatado" ${l.status==='contatado'?'selected':''}>Contatado</option>
+      <option value="convertido" ${l.status==='convertido'?'selected':''}>Convertido</option>
+      <option value="descartado" ${l.status==='descartado'?'selected':''}>Descartado</option>
+    </select></td>
+    <td><div class="td-actions"><button class="del" title="Excluir" onclick="deleteLead('${l.id}')"><i class="fas fa-trash"></i></button></div></td>
+  </tr>`).join('')||'<tr><td colspan="10" style="text-align:center;color:#aaa;padding:30px">Nenhum lead recebido</td></tr>';
+}
+function updateLeadStatus(id,s){db.ref('leads/'+id+'/status').set(s)}
+function deleteLead(id){if(confirm('Excluir lead?'))db.ref('leads/'+id).remove()}
+
 // FORM
-// ============================================
-function renderAmenidades(){
-  document.getElementById('amenidadesGrid').innerHTML = AMENIDADES_LIST.map(a => `<span class="amenidade-tag" onclick="this.classList.toggle('selected')">${a}</span>`).join('');
+const AMENIDADES_LIST=["Piscina","Piscina infinity","Churrasqueira","Wi-Fi","Ar condicionado","Vista mar","Vista baía","Estacionamento","Cozinha equipada","Cozinha gourmet","Cozinha planejada","Área de lazer","Área gourmet","Varanda","Varanda gourmet","Quintal","Garagem dupla","Condomínio fechado","Segurança 24h","Elevador","Portaria","Mobiliado","Perto da praia","Rooftop","Pier privativo","Sauna","Trilhas","Natureza","Staff","Bairro tranquilo","Infraestrutura completa","Plano","Ilha privativa","Praia exclusiva","Heliponto","Píer"];
+function renderAmenidades(){document.getElementById('amenidadesGrid').innerHTML=AMENIDADES_LIST.map(a=>`<span class="amenidade-tag" onclick="this.classList.toggle('selected')">${a}</span>`).join('')}
+
+function generateCode(tipo){
+  const p=tipo==='venda'?'V':tipo==='aluguel'?'A':'T';
+  const nums=allImoveis.filter(i=>i.id.startsWith(p)).map(i=>parseInt(i.id.replace(p,''))||0);
+  return p+String((nums.length?Math.max(...nums):0)+1).padStart(3,'0');
+}
+function updateAutoCode(){
+  const t=document.getElementById('fTipo').value;
+  if(!document.getElementById('editId').value){
+    const c=generateCode(t);document.getElementById('fCodigo').value=c;document.getElementById('autoCodeText').textContent=c;
+  }
 }
 
 function openForm(){
   document.getElementById('editId').value='';
   document.getElementById('formTitle').textContent='Novo Imóvel';
-  ['fTitulo','fDesc','fBairro','fPreco','fCond','fIPTU','fArea','fHospedes'].forEach(id=>{document.getElementById(id).value=''});
+  ['fTitulo','fDesc','fBairro','fPreco','fCond','fIPTU','fArea','fHospedes','fFotos'].forEach(id=>{document.getElementById(id).value=''});
   document.getElementById('fCidade').value='Angra dos Reis';
-  document.getElementById('fQuartos').value='0';
-  document.getElementById('fSuites').value='0';
-  document.getElementById('fBanheiros').value='0';
-  document.getElementById('fVagas').value='0';
+  ['fQuartos','fSuites','fBanheiros','fVagas'].forEach(id=>{document.getElementById(id).value='0'});
   document.getElementById('fTipo').value='venda';
   document.getElementById('fCategoria').value='casa';
   document.getElementById('fStatus').value='disponivel';
   document.getElementById('fDestaque').value='true';
-  uploadedPhotos = [];
-  renderPhotoPreview();
   document.querySelectorAll('.amenidade-tag').forEach(t=>t.classList.remove('selected'));
   updateAutoCode();
   document.getElementById('formModal').classList.add('open');
 }
-
-function closeForm(){ document.getElementById('formModal').classList.remove('open'); }
+function closeForm(){document.getElementById('formModal').classList.remove('open')}
 
 function editImovel(id){
-  const d = getData();
-  const i = d.find(x=>x.id===id);
-  if(!i) return;
+  const i=allImoveis.find(x=>x.id===id);if(!i)return;
   document.getElementById('editId').value=id;
   document.getElementById('formTitle').textContent='Editar: '+i.titulo;
   document.getElementById('fCodigo').value=i.id;
@@ -458,88 +395,46 @@ function editImovel(id){
   document.getElementById('fCategoria').value=i.categoria;
   document.getElementById('fStatus').value=i.status;
   document.getElementById('fTitulo').value=i.titulo;
-  document.getElementById('fDesc').value=i.descricao;
+  document.getElementById('fDesc').value=i.descricao||'';
   document.getElementById('fBairro').value=i.bairro;
   document.getElementById('fCidade').value=i.cidade;
   document.getElementById('fPreco').value=i.preco;
   document.getElementById('fCond').value=i.condominio||'';
   document.getElementById('fIPTU').value=i.iptu||'';
-  document.getElementById('fQuartos').value=i.quartos;
-  document.getElementById('fSuites').value=i.suites;
-  document.getElementById('fBanheiros').value=i.banheiros;
-  document.getElementById('fVagas').value=i.vagas;
-  document.getElementById('fArea').value=i.area;
+  document.getElementById('fQuartos').value=i.quartos||0;
+  document.getElementById('fSuites').value=i.suites||0;
+  document.getElementById('fBanheiros').value=i.banheiros||0;
+  document.getElementById('fVagas').value=i.vagas||0;
+  document.getElementById('fArea').value=i.area||'';
   document.getElementById('fHospedes').value=i.maxHospedes||'';
   document.getElementById('fDestaque').value=i.destaque?'true':'false';
-  uploadedPhotos = [...(i.fotos||[])];
-  renderPhotoPreview();
-  document.querySelectorAll('.amenidade-tag').forEach(t=>{
-    t.classList.toggle('selected', (i.amenidades||[]).includes(t.textContent));
-  });
+  document.getElementById('fFotos').value=(i.fotos||[]).join('\n');
+  document.querySelectorAll('.amenidade-tag').forEach(t=>{t.classList.toggle('selected',(i.amenidades||[]).includes(t.textContent))});
   document.getElementById('formModal').classList.add('open');
 }
 
 function saveImovel(){
-  const titulo = document.getElementById('fTitulo').value.trim();
-  if(!titulo){alert('Preencha o título do imóvel!');return}
-
-  const editId = document.getElementById('editId').value;
-  const id = editId || document.getElementById('fCodigo').value;
-
-  const obj = {
-    id: id,
-    tipo: document.getElementById('fTipo').value,
-    categoria: document.getElementById('fCategoria').value,
-    titulo: titulo,
-    descricao: document.getElementById('fDesc').value.trim(),
-    bairro: document.getElementById('fBairro').value.trim(),
-    cidade: document.getElementById('fCidade').value.trim() || 'Angra dos Reis',
-    preco: Number(document.getElementById('fPreco').value) || 0,
-    quartos: Number(document.getElementById('fQuartos').value) || 0,
-    suites: Number(document.getElementById('fSuites').value) || 0,
-    banheiros: Number(document.getElementById('fBanheiros').value) || 0,
-    vagas: Number(document.getElementById('fVagas').value) || 0,
-    area: Number(document.getElementById('fArea').value) || 0,
-    maxHospedes: Number(document.getElementById('fHospedes').value) || null,
-    condominio: Number(document.getElementById('fCond').value) || null,
-    iptu: Number(document.getElementById('fIPTU').value) || null,
-    nota: null,
-    status: document.getElementById('fStatus').value,
-    destaque: document.getElementById('fDestaque').value === 'true',
-    amenidades: [...document.querySelectorAll('.amenidade-tag.selected')].map(t=>t.textContent),
-    fotos: [...uploadedPhotos]
+  const titulo=document.getElementById('fTitulo').value.trim();
+  if(!titulo){alert('Preencha o título!');return}
+  const editId=document.getElementById('editId').value;
+  const id=editId||document.getElementById('fCodigo').value;
+  const obj={
+    id,tipo:document.getElementById('fTipo').value,categoria:document.getElementById('fCategoria').value,
+    titulo,descricao:document.getElementById('fDesc').value.trim(),
+    bairro:document.getElementById('fBairro').value.trim(),cidade:document.getElementById('fCidade').value.trim()||'Angra dos Reis',
+    preco:Number(document.getElementById('fPreco').value)||0,
+    quartos:Number(document.getElementById('fQuartos').value)||0,suites:Number(document.getElementById('fSuites').value)||0,
+    banheiros:Number(document.getElementById('fBanheiros').value)||0,vagas:Number(document.getElementById('fVagas').value)||0,
+    area:Number(document.getElementById('fArea').value)||0,maxHospedes:Number(document.getElementById('fHospedes').value)||null,
+    condominio:Number(document.getElementById('fCond').value)||null,iptu:Number(document.getElementById('fIPTU').value)||null,
+    nota:null,status:document.getElementById('fStatus').value,destaque:document.getElementById('fDestaque').value==='true',
+    amenidades:[...document.querySelectorAll('.amenidade-tag.selected')].map(t=>t.textContent),
+    fotos:document.getElementById('fFotos').value.split('\n').map(l=>l.trim()).filter(l=>l)
   };
-
-  let d = getData();
-  if(editId){
-    const idx = d.findIndex(x=>x.id===editId);
-    if(idx>=0) d[idx] = obj;
-  } else {
-    d.push(obj);
-  }
-  saveData(d);
-  closeForm();
-  init();
-  alert('Imóvel salvo com sucesso!');
+  db.ref('imoveis/'+id).set(obj).then(()=>{closeForm();alert('Imóvel salvo!')}).catch(e=>alert('Erro: '+e.message));
 }
 
-function deleteImovel(id){
-  if(!confirm('Tem certeza que deseja excluir este imóvel?')) return;
-  let d = getData();
-  d = d.filter(x=>x.id!==id);
-  saveData(d);
-  init();
-}
-
-// ============================================
-// SECTIONS
-// ============================================
-function showSection(s){
-  document.querySelectorAll('.sidebar-menu a').forEach(a=>a.classList.remove('active'));
-  event.target.closest('a').classList.add('active');
-  // For now all show dashboard
-  init();
-}
+function deleteImovel(id){if(confirm('Excluir imóvel '+id+'?'))db.ref('imoveis/'+id).remove()}
 </script>
 </body>
 </html>

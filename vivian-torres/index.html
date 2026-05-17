@@ -330,17 +330,17 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 <h2>Manifestar Interesse</h2>
 <p class="msub" id="triagemProp"></p>
 <p class="msub" style="margin-top:-10px;color:var(--blue);font-weight:500;font-size:.7rem">Preencha para agendar uma visita. Informações usadas apenas para qualificação.</p>
-<div class="fg"><label>Nome completo *</label><input type="text" placeholder="Seu nome completo"></div>
-<div class="fg"><label>E-mail *</label><input type="email" placeholder="seu@email.com"></div>
+<div class="fg"><label>Nome completo *</label><input type="text" id="tNome" placeholder="Seu nome completo"></div>
+<div class="fg"><label>E-mail *</label><input type="email" id="tEmail" placeholder="seu@email.com"></div>
 <div class="fg-row">
-<div class="fg"><label>CPF *</label><input type="text" placeholder="000.000.000-00"></div>
-<div class="fg"><label>WhatsApp *</label><input type="tel" placeholder="(00) 00000-0000"></div>
+<div class="fg"><label>CPF *</label><input type="text" id="tCpf" placeholder="000.000.000-00"></div>
+<div class="fg"><label>WhatsApp *</label><input type="tel" id="tWpp" placeholder="(00) 00000-0000"></div>
 </div>
 <div class="fg-row">
-<div class="fg"><label>Renda mensal média *</label><select><option value="">Selecione</option><option>Até R$ 3.000</option><option>R$ 3.000 a R$ 5.000</option><option>R$ 5.000 a R$ 10.000</option><option>R$ 10.000 a R$ 20.000</option><option>Acima de R$ 20.000</option></select></div>
-<div class="fg"><label>Profissão *</label><input type="text" placeholder="Ex: Empresário, Servidor..."></div>
+<div class="fg"><label>Renda mensal média *</label><select id="tRenda"><option value="">Selecione</option><option>Até R$ 3.000</option><option>R$ 3.000 a R$ 5.000</option><option>R$ 5.000 a R$ 10.000</option><option>R$ 10.000 a R$ 20.000</option><option>Acima de R$ 20.000</option></select></div>
+<div class="fg"><label>Profissão *</label><input type="text" id="tProf" placeholder="Ex: Empresário, Servidor..."></div>
 </div>
-<button class="f-submit" onclick="alert('Dados enviados! Entraremos em contato em até 24h para agendar sua visita.');closeModal('triagemModal')"><i class="fas fa-paper-plane"></i> Enviar e Agendar Visita</button>
+<button class="f-submit" onclick="enviarLead()"><i class="fas fa-paper-plane"></i> Enviar e Agendar Visita</button>
 <p class="f-note">Seus dados estão protegidos conforme a LGPD.</p>
 </div>
 </div>
@@ -358,11 +358,11 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 </div>
 <div class="fg"><label>Hóspedes</label><select id="bkGuests"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>8</option><option>10+</option></select></div>
 <div class="fg-row">
-<div class="fg"><label>Nome completo *</label><input type="text" placeholder="Seu nome"></div>
-<div class="fg"><label>WhatsApp *</label><input type="tel" placeholder="(00) 00000-0000"></div>
+<div class="fg"><label>Nome completo *</label><input type="text" id="rNome" placeholder="Seu nome"></div>
+<div class="fg"><label>WhatsApp *</label><input type="tel" id="rWpp" placeholder="(00) 00000-0000"></div>
 </div>
-<div class="fg"><label>E-mail *</label><input type="email" placeholder="seu@email.com"></div>
-<button class="f-submit" style="background:var(--green)" onclick="alert('Reserva solicitada! Confirmaremos disponibilidade por WhatsApp em até 2 horas.');closeModal('bookingModal')"><i class="fas fa-calendar-check"></i> Solicitar Reserva</button>
+<div class="fg"><label>E-mail *</label><input type="email" id="rEmail" placeholder="seu@email.com"></div>
+<button class="f-submit" style="background:var(--green)" onclick="enviarReserva()"><i class="fas fa-calendar-check"></i> Solicitar Reserva</button>
 <p class="f-note">Você não será cobrado agora. Confirmação por WhatsApp.</p>
 </div>
 </div>
@@ -376,32 +376,14 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+<script src="firebase-config.js"></script>
 <script src="imoveis.js"></script>
 <script>
-// DATA - merge imoveis.js (base) + localStorage (adições do admin)
-function getData(){
-  // Sempre começa com os imóveis do arquivo imoveis.js
-  let base = [...IMOVEIS];
-  // Verifica se tem adições no localStorage
-  let local = localStorage.getItem('kt_imoveis');
-  if(local){
-    try {
-      let extras = JSON.parse(local);
-      // Adiciona imóveis do localStorage que NÃO existem no arquivo base
-      let baseIds = base.map(i=>i.id);
-      extras.forEach(i=>{
-        if(!baseIds.includes(i.id)){
-          base.push(i); // imóvel novo do admin
-        } else {
-          // Se existe no base, usa a versão do localStorage (pode ter sido editado)
-          let idx = base.findIndex(x=>x.id===i.id);
-          if(idx>=0) base[idx] = i;
-        }
-      });
-    } catch(e){}
-  }
-  return base.filter(i=>i.status!=='excluido');
-}
+// DATA - Firebase em tempo real
+let allData=[];
+function getData(){return allData.filter(i=>i.status!=='excluido')}
 
 let searchType='todos';
 function setSearchType(t,el){searchType=t;document.querySelectorAll('.s-tab').forEach(b=>b.classList.remove('active'));el.classList.add('active')}
@@ -409,7 +391,18 @@ function setSearchType(t,el){searchType=t;document.querySelectorAll('.s-tab').fo
 // INIT
 window.addEventListener('load',()=>{
   setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',600)},500);
-  renderAll();
+  // Init Firebase with defaults if empty
+  db.ref('imoveis').once('value',snap=>{
+    if(!snap.val()){
+      const u={};IMOVEIS.forEach(i=>{u['imoveis/'+i.id]=i});
+      db.ref().update(u);
+    }
+  });
+  // Listen real-time
+  db.ref('imoveis').on('value',snap=>{
+    allData=snap.val()?Object.values(snap.val()):[];
+    renderAll();
+  });
 });
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50)});
 
@@ -544,17 +537,62 @@ function prevPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(cur
 function nextPhoto(){if(currentDetailPhotos.length<2)return;currentPhotoIdx=(currentPhotoIdx+1)%currentDetailPhotos.length;document.getElementById('detailImg').src=currentDetailPhotos[currentPhotoIdx];document.getElementById('gCount').textContent=(currentPhotoIdx+1)+'/'+currentDetailPhotos.length}
 
 // TRIAGEM
+let triagemImovel='';
+let bookingImovel='';
+
 function openTriagem(id){
   const d=getData();const i=d.find(x=>x.id===id);if(!i)return;
-  document.getElementById('triagemProp').textContent='Imóvel: '+i.titulo+' — '+i.bairro;
+  triagemImovel=i.titulo+' — '+i.bairro;
+  document.getElementById('triagemProp').textContent='Imóvel: '+triagemImovel;
+  ['tNome','tEmail','tCpf','tWpp','tProf'].forEach(x=>{document.getElementById(x).value=''});
+  document.getElementById('tRenda').value='';
   document.getElementById('triagemModal').classList.add('open');document.body.style.overflow='hidden';
+}
+
+function enviarLead(){
+  const nome=document.getElementById('tNome').value.trim();
+  const email=document.getElementById('tEmail').value.trim();
+  if(!nome||!email){alert('Preencha nome e email!');return}
+  const lead={
+    imovel:triagemImovel,nome,email,
+    cpf:document.getElementById('tCpf').value.trim(),
+    whatsapp:document.getElementById('tWpp').value.trim(),
+    renda:document.getElementById('tRenda').value,
+    profissao:document.getElementById('tProf').value.trim(),
+    data_criacao:new Date().toISOString(),status:'novo'
+  };
+  const id='L'+Date.now();lead.id=id;
+  db.ref('leads/'+id).set(lead).then(()=>{
+    alert('Dados enviados com sucesso! Entraremos em contato em até 24h.');closeModal('triagemModal');
+  }).catch(e=>alert('Erro ao enviar. Tente novamente.'));
 }
 
 // BOOKING
 function openBooking(id){
   const d=getData();const i=d.find(x=>x.id===id);if(!i)return;
+  bookingImovel=i.titulo+' — '+i.bairro;
   document.getElementById('bkCard').innerHTML=`<img src="${(i.fotos&&i.fotos[0])||''}" alt=""><div><h3>${i.titulo}</h3><p><i class="fas fa-map-marker-alt"></i> ${i.bairro}, ${i.cidade}</p><div class="bk-p">R$ ${i.preco}/noite</div></div>`;
+  ['rNome','rWpp','rEmail'].forEach(x=>{document.getElementById(x).value=''});
+  document.getElementById('bkIn').value='';document.getElementById('bkOut').value='';
   document.getElementById('bookingModal').classList.add('open');document.body.style.overflow='hidden';
+}
+
+function enviarReserva(){
+  const nome=document.getElementById('rNome').value.trim();
+  const wpp=document.getElementById('rWpp').value.trim();
+  if(!nome||!wpp){alert('Preencha nome e WhatsApp!');return}
+  const reserva={
+    imovel:bookingImovel,nome,whatsapp:wpp,
+    email:document.getElementById('rEmail').value.trim(),
+    checkin:document.getElementById('bkIn').value,
+    checkout:document.getElementById('bkOut').value,
+    hospedes:document.getElementById('bkGuests').value,
+    data_criacao:new Date().toISOString(),status:'pendente'
+  };
+  const id='R'+Date.now();reserva.id=id;
+  db.ref('reservas/'+id).set(reserva).then(()=>{
+    alert('Reserva solicitada! Confirmaremos por WhatsApp em até 2 horas.');closeModal('bookingModal');
+  }).catch(e=>alert('Erro ao enviar. Tente novamente.'));
 }
 
 // MODAL
