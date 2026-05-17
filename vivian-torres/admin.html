@@ -192,7 +192,16 @@ tr:hover{background:rgba(26,82,118,.02)}
 <div class="amenidades-grid" id="amenidadesGrid"></div>
 
 <div class="form-section">Fotos (URLs)</div>
-<div class="form-grid full"><div class="fg"><label>Cole os links das fotos, um por linha</label><textarea id="fFotos" placeholder="https://link-da-foto-1.jpg&#10;https://link-da-foto-2.jpg" style="min-height:80px"></textarea></div></div>
+<div class="form-grid full"><div class="fg">
+<label>Fotos do imóvel</label>
+<div class="upload-zone" id="uploadZone">
+<input type="file" id="fFotosInput" multiple accept="image/*" onchange="handleFiles(this.files)">
+<i class="fas fa-cloud-arrow-up"></i>
+<p>Clique aqui ou arraste as fotos</p>
+<small>Funciona no celular (galeria/câmera) e computador. Máx 10 fotos.</small>
+</div>
+<div class="foto-preview" id="fotoPreview"></div>
+</div></div>
 
 <div class="form-actions">
 <button class="btn btn-outline" onclick="closeForm()">Cancelar</button>
@@ -369,16 +378,62 @@ function updateAutoCode(){
   }
 }
 
+// PHOTO UPLOAD
+let uploadedPhotos = [];
+
+function handleFiles(files){
+  const max = 10;
+  const remaining = max - uploadedPhotos.length;
+  Array.from(files).slice(0, remaining).forEach(file => {
+    if(!file.type.startsWith('image/')) return;
+    const reader = new FileReader();
+    reader.onload = function(e){
+      const img = new Image();
+      img.onload = function(){
+        const canvas = document.createElement('canvas');
+        const maxW = 800;
+        let w = img.width, h = img.height;
+        if(w > maxW){ h = h * (maxW / w); w = maxW; }
+        canvas.width = w; canvas.height = h;
+        canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+        uploadedPhotos.push(canvas.toDataURL('image/jpeg', 0.6));
+        renderPhotoPreview();
+      };
+      img.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function removePhoto(idx){ uploadedPhotos.splice(idx, 1); renderPhotoPreview(); }
+
+function renderPhotoPreview(){
+  document.getElementById('fotoPreview').innerHTML = uploadedPhotos.map((src, i) =>
+    '<div class="foto-thumb"><img src="'+src+'" alt=""><button class="remove" onclick="removePhoto('+i+')"><i class="fas fa-times"></i></button></div>'
+  ).join('');
+}
+
+// Drag & drop
+document.addEventListener('DOMContentLoaded', function(){
+  const zone = document.getElementById('uploadZone');
+  if(!zone) return;
+  zone.addEventListener('dragover', e => { e.preventDefault(); zone.classList.add('dragover'); });
+  zone.addEventListener('dragleave', () => zone.classList.remove('dragover'));
+  zone.addEventListener('drop', e => { e.preventDefault(); zone.classList.remove('dragover'); handleFiles(e.dataTransfer.files); });
+});
+
 function openForm(){
   document.getElementById('editId').value='';
   document.getElementById('formTitle').textContent='Novo Imóvel';
-  ['fTitulo','fDesc','fBairro','fPreco','fCond','fIPTU','fArea','fHospedes','fFotos'].forEach(id=>{document.getElementById(id).value=''});
+  ['fTitulo','fDesc','fBairro','fPreco','fCond','fIPTU','fArea','fHospedes'].forEach(id=>{document.getElementById(id).value=''});
   document.getElementById('fCidade').value='Angra dos Reis';
   ['fQuartos','fSuites','fBanheiros','fVagas'].forEach(id=>{document.getElementById(id).value='0'});
   document.getElementById('fTipo').value='venda';
   document.getElementById('fCategoria').value='casa';
   document.getElementById('fStatus').value='disponivel';
   document.getElementById('fDestaque').value='true';
+  uploadedPhotos = [];
+  renderPhotoPreview();
   document.querySelectorAll('.amenidade-tag').forEach(t=>t.classList.remove('selected'));
   updateAutoCode();
   document.getElementById('formModal').classList.add('open');
@@ -408,7 +463,8 @@ function editImovel(id){
   document.getElementById('fArea').value=i.area||'';
   document.getElementById('fHospedes').value=i.maxHospedes||'';
   document.getElementById('fDestaque').value=i.destaque?'true':'false';
-  document.getElementById('fFotos').value=(i.fotos||[]).join('\n');
+  uploadedPhotos = [...(i.fotos||[])];
+  renderPhotoPreview();
   document.querySelectorAll('.amenidade-tag').forEach(t=>{t.classList.toggle('selected',(i.amenidades||[]).includes(t.textContent))});
   document.getElementById('formModal').classList.add('open');
 }
@@ -429,7 +485,7 @@ function saveImovel(){
     condominio:Number(document.getElementById('fCond').value)||null,iptu:Number(document.getElementById('fIPTU').value)||null,
     nota:null,status:document.getElementById('fStatus').value,destaque:document.getElementById('fDestaque').value==='true',
     amenidades:[...document.querySelectorAll('.amenidade-tag.selected')].map(t=>t.textContent),
-    fotos:document.getElementById('fFotos').value.split('\n').map(l=>l.trim()).filter(l=>l)
+    fotos:[...uploadedPhotos]
   };
   db.ref('imoveis/'+id).set(obj).then(()=>{closeForm();alert('Imóvel salvo!')}).catch(e=>alert('Erro: '+e.message));
 }
