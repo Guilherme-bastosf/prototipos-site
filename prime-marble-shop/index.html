@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prime Marble Shop | Marmoraria de Luxo | Pedra Translúcida</title>
+<meta name="description" content="Prime Marble Shop — Mais que uma marmoraria. Referência em pedra translúcida. Quartzitos, bancadas, banheiros, mesas. Você sonha e a gente cria.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+--gold:#C5A048;--gold-light:#D4B76A;--gold-pale:#F0E4C0;--gold-dark:#9A7B2E;
+--black:#0A0A0A;--dark:#111;--card:#1A1A1A;--card2:#141414;
+--white:#F5F3EF;--cream:#EDE8DF;--text:#D4D0C8;--gray:#7A7872;--muted:#333;--border:rgba(197,160,72,.1);
+--font:'Montserrat',sans-serif;--font-d:'Cormorant Garamond',Georgia,serif;
+--transition:all .4s cubic-bezier(.25,.1,.25,1);
+}
+html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);background:var(--black);overflow-x:hidden;font-weight:300;-webkit-font-smoothing:antialiased}
+
+/* LOADER */
+.loader{position:fixed;inset:0;background:var(--black);z-index:9999;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:14px;transition:opacity 1s}.loader.hide{opacity:0;pointer-events:none}
+.loader-brand{font-family:var(--font-d);font-size:2.2rem;color:var(--gold);font-weight:300;letter-spacing:4px;font-style:italic}
+.loader-sub{font-size:.5rem;color:var(--gray);letter-spacing:6px;text-transform:uppercase;font-weight:400}
+.loader-line{width:60px;height:1px;background:var(--gold);opacity:.3;animation:glow 2s ease-in-out infinite}
+@keyframes glow{0%,100%{width:60px;opacity:.2}50%{width:100px;opacity:.6}}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 0;transition:var(--transition)}
+.nav.scrolled{background:rgba(10,10,10,.92);backdrop-filter:blur(20px);padding:12px 0;border-bottom:1px solid var(--border)}
+.nav-inner{max-width:1300px;margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:var(--font-d);font-size:1.2rem;color:var(--gold);text-decoration:none;letter-spacing:3px;font-style:italic;font-weight:400}
+.nav-logo span{font-style:normal;font-weight:300;color:var(--gray);letter-spacing:2px;font-size:.7rem;text-transform:uppercase;margin-left:6px}
+.nav-links{display:flex;gap:30px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.4);text-decoration:none;font-size:.62rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;transition:color .3s}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{border:1px solid var(--gold);color:var(--gold);padding:9px 22px;text-decoration:none;font-size:.58rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;transition:var(--transition)}
+.nav-cta:hover{background:var(--gold);color:var(--black)}
+.menu-btn{display:none;background:none;border:none;color:var(--gold);font-size:1.1rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1800&q=85') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.6),rgba(10,10,10,.3) 40%,rgba(10,10,10,.8))}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:750px;padding:0 40px}
+.hero-ey{font-size:.55rem;color:var(--gold);letter-spacing:6px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:16px;font-weight:400}
+.hero-ey::before,.hero-ey::after{content:'';width:40px;height:1px;background:var(--gold);opacity:.3}
+.hero h1{font-family:var(--font-d);font-size:clamp(2.8rem,6vw,5rem);color:var(--white);font-weight:300;line-height:1.05;margin-bottom:18px;letter-spacing:1px}
+.hero h1 em{color:var(--gold);font-style:italic;font-weight:400}
+.hero-sub{color:rgba(255,255,255,.4);font-size:.88rem;font-weight:300;line-height:1.8;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-gold{border:1px solid var(--gold);background:var(--gold);color:var(--black);padding:14px 34px;font-size:.6rem;font-weight:500;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:var(--transition);display:inline-flex;align-items:center;gap:10px}
+.btn-gold:hover{background:transparent;color:var(--gold)}
+.btn-line{border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.5);padding:14px 34px;font-size:.6rem;font-weight:400;letter-spacing:2.5px;text-transform:uppercase;text-decoration:none;transition:var(--transition);display:inline-flex;align-items:center;gap:10px}
+.btn-line:hover{border-color:var(--gold);color:var(--gold)}
+
+/* SECTION */
+.sec{padding:100px 40px;max-width:1300px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:56px}
+.sec-ey{font-size:.55rem;color:var(--gold);letter-spacing:5px;text-transform:uppercase;font-weight:400;margin-bottom:10px;display:block}
+.sec-t{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);font-weight:300;letter-spacing:1px;margin-bottom:10px}
+.sec-t em{color:var(--gold);font-style:italic}
+.sec-d{color:var(--gray);font-size:.82rem;max-width:500px;margin:0 auto;line-height:1.7}
+
+/* SPECIALTIES */
+.spec-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}
+.spec{position:relative;aspect-ratio:3/4;overflow:hidden;cursor:pointer;text-decoration:none;display:block}
+.spec img{width:100%;height:100%;object-fit:cover;transition:transform .6s;filter:brightness(.7)}.spec:hover img{transform:scale(1.06);filter:brightness(.5)}
+.spec::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.8),transparent 50%)}
+.spec-info{position:absolute;bottom:16px;left:16px;z-index:2}
+.spec-info h3{font-family:var(--font-d);font-size:1.2rem;color:var(--white);font-weight:400;margin-bottom:2px}
+.spec-info span{font-size:.55rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px;font-weight:400}
+
+/* VISUALIZER */
+.viz{background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.viz-inner{max-width:1300px;margin:0 auto;padding:80px 40px}
+.viz-wrap{display:grid;grid-template-columns:1fr 320px;gap:30px;align-items:start}
+.viz-preview{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:16/10;background:var(--card2)}
+.viz-preview img{width:100%;height:100%;object-fit:cover;transition:opacity .5s}
+.viz-label{position:absolute;bottom:16px;left:16px;background:rgba(10,10,10,.7);color:var(--white);padding:8px 16px;border-radius:8px;font-size:.72rem;font-weight:500;backdrop-filter:blur(8px)}
+.viz-panel{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:20px}
+.viz-panel h3{font-family:var(--font-d);font-size:1.1rem;color:var(--white);margin-bottom:4px;font-weight:400}
+.viz-panel p{font-size:.68rem;color:var(--gray);margin-bottom:16px}
+.viz-tabs{display:flex;gap:4px;margin-bottom:14px;flex-wrap:wrap}
+.viz-tab{padding:6px 12px;border-radius:50px;font-size:.6rem;font-weight:500;border:1px solid var(--muted);background:transparent;color:var(--gray);cursor:pointer;transition:var(--transition)}
+.viz-tab.active{background:var(--gold);color:var(--black);border-color:var(--gold)}
+.viz-stones{display:grid;grid-template-columns:1fr 1fr;gap:6px;max-height:340px;overflow-y:auto}
+.viz-stone{border:2px solid transparent;border-radius:8px;overflow:hidden;cursor:pointer;transition:var(--transition);position:relative}
+.viz-stone:hover,.viz-stone.active{border-color:var(--gold)}
+.viz-stone img{width:100%;aspect-ratio:1;object-fit:cover;display:block}
+.viz-stone span{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.7);color:var(--white);font-size:.55rem;padding:3px 6px;text-align:center;font-weight:400}
+
+/* PORTFOLIO */
+.port-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.port-item{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:8px;cursor:pointer}
+.port-item img{width:100%;height:100%;object-fit:cover;transition:transform .5s;filter:brightness(.85)}
+.port-item:hover img{transform:scale(1.05);filter:brightness(.6)}
+.port-item::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(10,10,10,.6),transparent 40%);opacity:0;transition:opacity .3s}.port-item:hover::after{opacity:1}
+.port-item .caption{position:absolute;bottom:14px;left:14px;z-index:2;opacity:0;transition:opacity .3s}
+.port-item:hover .caption{opacity:1}
+.port-item .caption h4{font-family:var(--font-d);font-size:1rem;color:var(--white);font-weight:400}
+.port-item .caption span{font-size:.55rem;color:var(--gold);text-transform:uppercase;letter-spacing:2px}
+
+/* TRANSLUCENT HIGHLIGHT */
+.translucent{position:relative;min-height:500px;display:flex;align-items:center;overflow:hidden}
+.translucent-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1615529162924-f8605388461d?w=1600&q=80') center/cover}
+.translucent-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(10,10,10,.85),rgba(10,10,10,.4))}
+.translucent-content{position:relative;z-index:2;max-width:550px;padding:60px 40px 60px max(40px,calc((100vw - 1300px)/2 + 40px))}
+.translucent-content h2{font-family:var(--font-d);font-size:clamp(1.8rem,3.5vw,2.8rem);color:var(--white);font-weight:300;margin-bottom:14px;line-height:1.15}
+.translucent-content h2 em{color:var(--gold);font-style:italic}
+.translucent-content p{color:rgba(255,255,255,.5);font-size:.85rem;line-height:1.8;margin-bottom:20px}
+
+/* PROCESS */
+.proc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.proc-step{background:var(--card);padding:36px 24px;text-align:center;transition:var(--transition)}
+.proc-step:hover{background:var(--card2)}
+.proc-num{font-family:var(--font-d);font-size:2.2rem;color:var(--gold);font-weight:300;margin-bottom:8px;display:block}
+.proc-step h4{font-size:.82rem;color:var(--white);font-weight:500;margin-bottom:6px}
+.proc-step p{font-size:.68rem;color:var(--gray);line-height:1.5}
+
+/* REVIEWS */
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.rev{background:var(--card);border:1px solid var(--border);padding:28px;transition:var(--transition)}
+.rev:hover{border-color:var(--gold)}
+.rev-quote{font-family:var(--font-d);font-size:2.5rem;color:var(--gold);opacity:.2;line-height:1;margin-bottom:6px}
+.rev p{font-size:.82rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:12px;font-style:italic}
+.rev strong{font-size:.72rem;color:var(--white);font-weight:500}.rev small{font-size:.58rem;color:var(--gray)}
+
+/* CTA */
+.cta{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=1600&q=80') center/cover}
+.cta-bg::after{content:'';position:absolute;inset:0;background:rgba(10,10,10,.7)}
+.cta-content{position:relative;z-index:2;text-align:center;padding:40px}
+.cta h2{font-family:var(--font-d);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);font-weight:300;margin-bottom:10px}.cta h2 em{color:var(--gold);font-style:italic}
+.cta p{color:rgba(255,255,255,.4);font-size:.85rem;margin-bottom:24px}
+
+/* FOOTER */
+.footer{background:var(--dark);padding:48px 40px 16px;border-top:1px solid var(--border)}
+.ft-inner{max-width:1300px;margin:0 auto}
+.ft-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;margin-bottom:28px}
+.ft-brand{font-family:var(--font-d);font-size:1.1rem;color:var(--gold);letter-spacing:2px;font-style:italic;margin-bottom:10px}
+.footer p{font-size:.72rem;color:var(--gray);line-height:1.6;margin-bottom:10px}
+.ft-social{display:flex;gap:8px}.ft-social a{width:32px;height:32px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;color:var(--gray);text-decoration:none;transition:var(--transition);font-size:.8rem}.ft-social a:hover{border-color:var(--gold);color:var(--gold)}
+.footer h4{font-size:.55rem;color:var(--gold);letter-spacing:3px;text-transform:uppercase;margin-bottom:12px;font-weight:500}
+.footer a{color:var(--gray);text-decoration:none;font-size:.72rem;display:block;margin-bottom:5px;transition:color .3s}.footer a:hover{color:var(--gold)}
+.ft-bottom{border-top:1px solid var(--border);padding-top:12px;display:flex;justify-content:space-between;font-size:.58rem;color:rgba(255,255,255,.2);flex-wrap:wrap;gap:8px}
+
+/* WPP */
+.wpp{position:fixed;bottom:24px;right:24px;z-index:99}
+.wpp a{width:52px;height:52px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;text-decoration:none;box-shadow:0 6px 20px rgba(37,211,102,.25);transition:var(--transition);animation:wp 3s infinite}
+.wpp a:hover{transform:scale(1.08)}
+@keyframes wp{0%{box-shadow:0 0 0 0 rgba(37,211,102,.3)}70%{box-shadow:0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+.reveal{opacity:0;transform:translateY(22px);transition:all .8s cubic-bezier(.25,.1,.25,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.spec-grid{grid-template-columns:repeat(3,1fr)}.viz-wrap{grid-template-columns:1fr}.rev-grid{grid-template-columns:1fr}.proc-grid{grid-template-columns:1fr 1fr}.ft-grid{grid-template-columns:1fr}}
+@media(max-width:768px){.nav-links{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.97);flex-direction:column;align-items:center;justify-content:center;gap:28px;z-index:200}.nav-links.open{display:flex}.nav-links a{color:var(--white)!important;font-size:.8rem}.nav-cta{display:none}.menu-btn{display:block;z-index:201}.nav-inner{padding:0 24px}.sec{padding:60px 24px}.hero-btns{flex-direction:column;align-items:center}.btn-gold,.btn-line{width:100%;max-width:280px;justify-content:center}.spec-grid{grid-template-columns:1fr 1fr}.port-grid{grid-template-columns:1fr}.proc-grid{grid-template-columns:1fr}.translucent-content{padding:40px 24px}.viz-inner{padding:40px 24px}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader"><div class="loader-brand">Prime</div><div class="loader-sub">Marble Shop</div><div class="loader-line"></div></div>
+
+<nav class="nav" id="nav"><div class="nav-inner">
+<a href="#" class="nav-logo">Prime <span>Marble Shop</span></a>
+<ul class="nav-links" id="navLinks">
+<li><a href="#especialidades" onclick="closeMenu()">Materiais</a></li>
+<li><a href="#visualizador" onclick="closeMenu()">Visualizador</a></li>
+<li><a href="#portfolio" onclick="closeMenu()">Portfólio</a></li>
+<li><a href="#processo" onclick="closeMenu()">Processo</a></li>
+<li><a href="#depoimentos" onclick="closeMenu()">Clientes</a></li>
+</ul>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="nav-cta" target="_blank">Orçamento</a>
+<button class="menu-btn" id="menuBtn" onclick="toggleMenu()"><i class="fas fa-bars"></i></button>
+</div></nav>
+
+<section class="hero">
+<div class="hero-bg"></div>
+<div class="hero-content reveal">
+<div class="hero-ey">Referência em Pedra Translúcida</div>
+<h1>Você sonha, a gente <em>cria</em></h1>
+<p class="hero-sub">Mais que uma marmoraria. Transformamos ambientes com quartzitos, mármores e pedras translúcidas que são obras de arte da natureza.</p>
+<div class="hero-btns">
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar Orçamento</a>
+<a href="#visualizador" class="btn-line"><i class="fas fa-eye"></i> Visualizar Materiais</a>
+</div>
+</div>
+</section>
+
+<!-- SPECIALTIES -->
+<div class="sec" id="especialidades">
+<div class="sec-head reveal"><span class="sec-ey">Nossos Materiais</span><h2 class="sec-t">Exclusividade em cada <em>peça</em></h2><p class="sec-d">Trabalhamos com os materiais mais nobres do mercado. Cada pedra é única, assim como o seu projeto.</p></div>
+<div class="spec-grid">
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="spec reveal" target="_blank"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=400&q=80" alt="Quartzitos" loading="lazy"><div class="spec-info"><span>Premium</span><h3>Quartzitos</h3></div></a>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="spec reveal" target="_blank"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80" alt="Bancadas" loading="lazy"><div class="spec-info"><span>Sob medida</span><h3>Bancadas</h3></div></a>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="spec reveal" target="_blank"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80" alt="Banheiros" loading="lazy"><div class="spec-info"><span>Elegância</span><h3>Banheiros</h3></div></a>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="spec reveal" target="_blank"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=400&q=80" alt="Mesas" loading="lazy"><div class="spec-info"><span>Design</span><h3>Mesas</h3></div></a>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="spec reveal" target="_blank"><img src="https://images.unsplash.com/photo-1615529162924-f8605388461d?w=400&q=80" alt="Translúcida" loading="lazy"><div class="spec-info"><span>Exclusivo</span><h3>Translúcida</h3></div></a>
+</div>
+</div>
+
+<!-- VISUALIZER -->
+<div class="viz" id="visualizador">
+<div class="viz-inner">
+<div class="sec-head reveal"><span class="sec-ey">Visualizador Interativo</span><h2 class="sec-t">Veja o material aplicado no <em>seu ambiente</em></h2><p class="sec-d">Escolha o ambiente e troque os materiais para visualizar como ficaria no seu projeto.</p></div>
+<div class="viz-wrap reveal">
+<div class="viz-preview">
+<img id="vizImg" src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80" alt="Ambiente">
+<div class="viz-label" id="vizLabel">Super White | Cozinha</div>
+</div>
+<div class="viz-panel">
+<h3>Escolha o ambiente</h3>
+<p>Selecione o espaço e o material</p>
+<div class="viz-tabs" id="vizTabs"></div>
+<div class="viz-stones" id="vizStones"></div>
+</div>
+</div>
+</div>
+</div>
+
+<!-- TRANSLUCENT -->
+<div class="translucent">
+<div class="translucent-bg"></div>
+<div class="translucent-content reveal">
+<span class="sec-ey" style="text-align:left;margin-bottom:12px">Nosso Diferencial</span>
+<h2>Pedra <em>translúcida</em> iluminada</h2>
+<p>Somos referência em pedra translúcida. Com iluminação retroativa, a pedra ganha vida e transforma qualquer ambiente em uma obra de arte. Ônix, cristallo, quartzitos translúcidos — cada painel é único.</p>
+<p style="color:var(--gold);font-size:.72rem">✨ Efeito luminoso deslumbrante<br>🏆 Referência no segmento<br>📐 Projeto personalizado</p>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="btn-gold" style="margin-top:16px" target="_blank"><i class="fab fa-whatsapp"></i> Quero Pedra Translúcida</a>
+</div>
+</div>
+
+<!-- PORTFOLIO -->
+<div class="sec" id="portfolio">
+<div class="sec-head reveal"><span class="sec-ey">Nossos Projetos</span><h2 class="sec-t">Ambientes que <em>inspiram</em></h2></div>
+<div class="port-grid">
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&q=80" alt="Cozinha" loading="lazy"><div class="caption"><span>Quartzito</span><h4>Cozinha Gourmet</h4></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600&q=80" alt="Banheiro" loading="lazy"><div class="caption"><span>Mármore</span><h4>Banheiro Master</h4></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600&q=80" alt="Sala" loading="lazy"><div class="caption"><span>Ônix</span><h4>Painel Translúcido</h4></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=600&q=80" alt="Mesa" loading="lazy"><div class="caption"><span>Quartzito</span><h4>Mesa de Jantar</h4></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80" alt="Bancada" loading="lazy"><div class="caption"><span>Granito</span><h4>Bancada Ilha</h4></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1615529162924-f8605388461d?w=600&q=80" alt="Translucido" loading="lazy"><div class="caption"><span>Ônix Translúcido</span><h4>Bar Iluminado</h4></div></div>
+</div>
+</div>
+
+<!-- PROCESS -->
+<div style="background:var(--card);border-top:1px solid var(--border);border-bottom:1px solid var(--border)" id="processo">
+<div style="max-width:1300px;margin:0 auto;padding:80px 40px">
+<div class="sec-head reveal"><span class="sec-ey">Como Funciona</span><h2 class="sec-t">Do sonho ao <em>projeto pronto</em></h2></div>
+<div class="proc-grid reveal">
+<div class="proc-step"><span class="proc-num">01</span><h4>Envie seu projeto</h4><p>Mande as medidas, fotos ou planta do ambiente pelo WhatsApp.</p></div>
+<div class="proc-step"><span class="proc-num">02</span><h4>Escolha o material</h4><p>Ajudamos a selecionar a pedra perfeita para seu estilo e orçamento.</p></div>
+<div class="proc-step"><span class="proc-num">03</span><h4>Produção sob medida</h4><p>Corte e acabamento com precisão milimétrica e tecnologia de ponta.</p></div>
+<div class="proc-step"><span class="proc-num">04</span><h4>Instalação</h4><p>Equipe especializada instala com perfeição. Garantia total.</p></div>
+</div>
+</div>
+</div>
+
+<!-- REVIEWS -->
+<div class="sec" id="depoimentos">
+<div class="sec-head reveal"><span class="sec-ey">Nossos Clientes</span><h2 class="sec-t">Projetos que <em>encantam</em></h2></div>
+<div class="rev-grid">
+<div class="rev reveal"><div class="rev-quote">"</div><p>"A bancada de quartzito ficou espetacular. O acabamento é impecável e a equipe foi extremamente profissional. Superou todas as expectativas!"</p><strong>Ana Paula R.</strong><small>Cozinha Gourmet</small></div>
+<div class="rev reveal"><div class="rev-quote">"</div><p>"Fizemos o banheiro inteiro em mármore e o resultado é de tirar o fôlego. A Prime entendeu exatamente o que queríamos. Recomendo demais!"</p><strong>Roberto M.</strong><small>Banheiro Master</small></div>
+<div class="rev reveal"><div class="rev-quote">"</div><p>"A pedra translúcida no painel da sala transformou completamente o ambiente. É uma obra de arte. A equipe da Prime é referência!"</p><strong>Carla D.</strong><small>Painel Translúcido</small></div>
+</div>
+</div>
+
+<!-- CTA -->
+<div class="cta">
+<div class="cta-bg"></div>
+<div class="cta-content reveal">
+<h2>Transforme seu espaço em <em>obra-prima</em></h2>
+<p>Envie seu projeto pelo WhatsApp e receba um orçamento personalizado.</p>
+<a href="https://wa.me/message/M5A5AD2BDWGMB1" class="btn-gold" target="_blank"><i class="fab fa-whatsapp"></i> Solicitar Orçamento Grátis</a>
+</div>
+</div>
+
+<footer class="footer"><div class="ft-inner">
+<div class="ft-grid">
+<div><div class="ft-brand">Prime Marble Shop</div><p>Mais que uma marmoraria. Referência em pedra translúcida. Quartzitos, mármores, granitos e superfícies ultracompactas. Você sonha e a gente cria.</p><div class="ft-social"><a href="https://instagram.com/primemarbleshop" target="_blank"><i class="fab fa-instagram"></i></a><a href="https://wa.me/message/M5A5AD2BDWGMB1" target="_blank"><i class="fab fa-whatsapp"></i></a></div></div>
+<div><h4>Navegação</h4><a href="#especialidades">Materiais</a><a href="#visualizador">Visualizador</a><a href="#portfolio">Portfólio</a><a href="#processo">Processo</a><a href="#depoimentos">Clientes</a></div>
+<div><h4>Contato</h4><a href="https://wa.me/message/M5A5AD2BDWGMB1" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a><a href="https://instagram.com/primemarbleshop" target="_blank"><i class="fab fa-instagram"></i> @primemarbleshop</a></div>
+</div>
+<div class="ft-bottom"><span>© 2026 Prime Marble Shop. Todos os direitos reservados.</span><span>Desenvolvido por <a href="https://instagram.com/companybastos" target="_blank" style="color:rgba(197,160,72,.3);text-decoration:none">Company Bastos</a></span></div>
+</div></footer>
+
+<div class="wpp"><a href="https://wa.me/message/M5A5AD2BDWGMB1" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+
+<script>
+// LOADER
+window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hide');setTimeout(()=>document.getElementById('loader').style.display='none',1000)},800)});
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60)});
+
+// MENU
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('open');const i=document.querySelector('#menuBtn i');i.classList.toggle('fa-bars');i.classList.toggle('fa-times')}
+function closeMenu(){document.getElementById('navLinks').classList.remove('open');const i=document.querySelector('#menuBtn i');i.classList.add('fa-bars');i.classList.remove('fa-times')}
+
+// VISUALIZER
+const ambientes={
+  cozinha:{label:'Cozinha',img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80'},
+  banheiro:{label:'Banheiro',img:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=900&q=80'},
+  sala:{label:'Sala',img:'https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=900&q=80'},
+  bar:{label:'Bar/Gourmet',img:'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80'}
+};
+const pedras=[
+  {nome:'Super White',cat:'quartzito',img:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=200&q=80',full:'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=900&q=80'},
+  {nome:'Calacatta Gold',cat:'marmore',img:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=200&q=80',full:'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=900&q=80'},
+  {nome:'Nero Marquina',cat:'marmore',img:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=200&q=80',full:'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=900&q=80'},
+  {nome:'Taj Mahal',cat:'quartzito',img:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=200&q=80',full:'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=900&q=80'},
+  {nome:'Ônix Translúcido',cat:'onix',img:'https://images.unsplash.com/photo-1615529162924-f8605388461d?w=200&q=80',full:'https://images.unsplash.com/photo-1615529162924-f8605388461d?w=900&q=80'},
+  {nome:'Cristallo',cat:'onix',img:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=200&q=80',full:'https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=900&q=80'},
+  {nome:'Preto São Gabriel',cat:'granito',img:'https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=200&q=80',full:'https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=900&q=80'},
+  {nome:'Branco Itaúnas',cat:'granito',img:'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=200&q=80',full:'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=900&q=80'},
+];
+
+let vizAmbiente='cozinha';let vizPedra=0;
+
+function initViz(){
+  // Tabs ambientes
+  document.getElementById('vizTabs').innerHTML=Object.entries(ambientes).map(([k,v])=>
+    `<button class="viz-tab ${k===vizAmbiente?'active':''}" onclick="setAmbiente('${k}')">${v.label}</button>`
+  ).join('');
+  // Stones
+  renderStones();
+}
+
+function setAmbiente(k){
+  vizAmbiente=k;
+  initViz();
+  updateViz();
+}
+
+function renderStones(){
+  document.getElementById('vizStones').innerHTML=pedras.map((p,i)=>
+    `<div class="viz-stone ${i===vizPedra?'active':''}" onclick="setPedra(${i})"><img src="${p.img}" alt="${p.nome}"><span>${p.nome}</span></div>`
+  ).join('');
+}
+
+function setPedra(i){
+  vizPedra=i;
+  renderStones();
+  updateViz();
+}
+
+function updateViz(){
+  const p=pedras[vizPedra];
+  const a=ambientes[vizAmbiente];
+  document.getElementById('vizImg').src=p.full;
+  document.getElementById('vizLabel').textContent=p.nome+' | '+a.label;
+}
+
+initViz();
+
+// REVEAL
+const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.06,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+// SMOOTH SCROLL
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const h=a.getAttribute('href');if(h==='#')return;e.preventDefault();const t=document.querySelector(h);if(t){const y=t.getBoundingClientRect().top+window.pageYOffset-80;window.scrollTo({top:y,behavior:'smooth'})}})});
+</script>
+</body>
+</html>
