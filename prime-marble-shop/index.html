@@ -41,7 +41,7 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 
 /* HERO */
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://plus.unsplash.com/premium_photo-1674815329464-ef23168e7a5c?w=1800&q=85') center/cover}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1776395159816-ef1cc372552b?w=1800&q=85') center/cover}
 .hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to bottom,rgba(10,10,10,.6),rgba(10,10,10,.3) 40%,rgba(10,10,10,.8))}
 .hero-content{position:relative;z-index:2;text-align:center;max-width:750px;padding:0 40px}
 .hero-ey{font-size:.55rem;color:var(--gold);letter-spacing:6px;text-transform:uppercase;margin-bottom:18px;display:flex;align-items:center;justify-content:center;gap:16px;font-weight:400}
@@ -129,7 +129,7 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 
 /* CTA */
 .cta{position:relative;min-height:350px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.cta-bg{position:absolute;inset:0;background:url('https://plus.unsplash.com/premium_photo-1674815329464-ef23168e7a5c?w=1600&q=80') center/cover}
+.cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1776395159816-ef1cc372552b?w=1600&q=80') center/cover}
 .cta-bg::after{content:'';position:absolute;inset:0;background:rgba(10,10,10,.7)}
 .cta-content{position:relative;z-index:2;text-align:center;padding:40px}
 .cta h2{font-family:var(--font-d);font-size:clamp(1.8rem,4vw,2.8rem);color:var(--white);font-weight:300;margin-bottom:10px}.cta h2 em{color:var(--gold);font-style:italic}
@@ -206,7 +206,7 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 <div class="sec-head reveal"><span class="sec-ey">Visualizador Interativo</span><h2 class="sec-t">Veja o material aplicado no <em>seu ambiente</em></h2><p class="sec-d">Escolha o ambiente e troque os materiais para visualizar como ficaria no seu projeto.</p></div>
 <div class="viz-wrap reveal">
 <div class="viz-preview">
-<img id="vizImg" src="https://plus.unsplash.com/premium_photo-1674815329464-ef23168e7a5c?w=900&q=80" alt="Ambiente">
+<img id="vizImg" src="https://images.unsplash.com/photo-1776395159816-ef1cc372552b?w=900&q=80" alt="Ambiente">
 <div class="viz-label" id="vizLabel">Super White | Cozinha</div>
 </div>
 <div class="viz-panel">
@@ -235,7 +235,7 @@ html{scroll-behavior:smooth}body{font-family:var(--font);color:var(--text);backg
 <div class="sec" id="portfolio">
 <div class="sec-head reveal"><span class="sec-ey">Nossos Projetos</span><h2 class="sec-t">Ambientes que <em>inspiram</em></h2></div>
 <div class="port-grid">
-<div class="port-item reveal"><img src="https://plus.unsplash.com/premium_photo-1674815329464-ef23168e7a5c?w=600&q=80" alt="Cozinha" loading="lazy"><div class="caption"><span>Quartzito</span><h4>Cozinha Gourmet</h4></div></div>
+<div class="port-item reveal"><img src="https://images.unsplash.com/photo-1776395159816-ef1cc372552b?w=600&q=80" alt="Cozinha" loading="lazy"><div class="caption"><span>Quartzito</span><h4>Cozinha Gourmet</h4></div></div>
 <div class="port-item reveal"><img src="https://images.unsplash.com/photo-1564540583246-934409427776?w=600&q=80" alt="Banheiro" loading="lazy"><div class="caption"><span>Mármore</span><h4>Banheiro Master</h4></div></div>
 <div class="port-item reveal"><img src="https://images.unsplash.com/photo-1681656073696-ed537650f951?w=600&q=80" alt="Sala" loading="lazy"><div class="caption"><span>Ônix</span><h4>Painel Translúcido</h4></div></div>
 <div class="port-item reveal"><img src="https://plus.unsplash.com/premium_photo-1683140887394-5914bc89e149?w=600&q=80" alt="Mesa" loading="lazy"><div class="caption"><span>Quartzito</span><h4>Mesa de Jantar</h4></div></div>
@@ -299,13 +299,13 @@ function closeMenu(){document.getElementById('navLinks').classList.remove('open'
 
 // VISUALIZER
 const ambientes={
-  cozinha:{label:'Cozinha',img:'https://plus.unsplash.com/premium_photo-1674815329464-ef23168e7a5c?w=900&q=80'},
+  cozinha:{label:'Cozinha',img:'https://images.unsplash.com/photo-1776395159816-ef1cc372552b?w=900&q=80'},
   banheiro:{label:'Banheiro',img:'https://images.unsplash.com/photo-1564540583246-934409427776?w=900&q=80'},
   sala:{label:'Sala',img:'https://images.unsplash.com/photo-1681656073696-ed537650f951?w=900&q=80'},
   bar:{label:'Bar/Gourmet',img:'https://plus.unsplash.com/premium_photo-1680382578857-c331ead9ed51?w=900&q=80'}
 };
 const pedras=[
-  {nome:'Super White',cat:'quartzito',img:'https://images.unsplash.com/photo-1558346648-9757f2fa4474?w=200&q=80',full:'https://plus.unsplash.com/premium_photo-1674815329464-ef23168e7a5c?w=900&q=80'},
+  {nome:'Super White',cat:'quartzito',img:'https://images.unsplash.com/photo-1558346648-9757f2fa4474?w=200&q=80',full:'https://images.unsplash.com/photo-1776395159816-ef1cc372552b?w=900&q=80'},
   {nome:'Calacatta Gold',cat:'marmore',img:'https://images.unsplash.com/photo-1551554781-c46200ea959d?w=200&q=80',full:'https://images.unsplash.com/photo-1551554781-c46200ea959d?w=900&q=80'},
   {nome:'Nero Marquina',cat:'marmore',img:'https://plus.unsplash.com/premium_photo-1706838707540-61bbe9475dd3?w=200&q=80',full:'https://plus.unsplash.com/premium_photo-1706838707540-61bbe9475dd3?w=900&q=80'},
   {nome:'Taj Mahal',cat:'quartzito',img:'https://plus.unsplash.com/premium_photo-1706838707088-e3b4170054e6?w=200&q=80',full:'https://images.unsplash.com/photo-1564540583246-934409427776?w=900&q=80'},
