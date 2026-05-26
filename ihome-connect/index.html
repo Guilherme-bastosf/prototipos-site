@@ -79,7 +79,8 @@ body{font-family:var(--font);color:var(--text);background:var(--black);overflow-
 .card:hover{border-color:rgba(29,185,84,.25);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.35)}
 .card.destaque-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:2}
 .c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#131313,#1a1a1a);position:relative;padding:16px;overflow:hidden}
-.c-img img{width:75%;height:75%;object-fit:contain;transition:transform .5s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 8px 20px rgba(0,0,0,.4));mix-blend-mode:lighten}.card:hover .c-img img{transform:scale(1.08)}
+.c-img img{width:75%;height:75%;object-fit:contain;transition:transform .5s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}.card:hover .c-img img{transform:scale(1.08)}
+.c-img-light{background:#f5f5f7 !important}.c-img-light img{filter:none !important}
 .c-tag{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:50px;font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;color:#fff;backdrop-filter:blur(6px)}
 .t-lacrado{background:rgba(29,185,84,.8)}.t-semi{background:rgba(59,130,246,.8)}.t-dest{background:rgba(255,165,0,.85);color:#000}
 .c-quick{position:absolute;bottom:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.6rem;opacity:0;transform:translateY(6px);transition:var(--tr);z-index:3}
@@ -106,7 +107,7 @@ body{font-family:var(--font);color:var(--text);background:var(--black);overflow-
 .story-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--tr);cursor:pointer;text-decoration:none;color:var(--text);display:block}
 .story-card:hover{border-color:rgba(29,185,84,.2);transform:translateY(-3px);box-shadow:var(--shadow)}
 .story-card-img{height:140px;background:linear-gradient(145deg,#131313,#1a1a1a);display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
-.story-card-img img{height:90%;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(0,0,0,.4));mix-blend-mode:lighten}
+.story-card-img img{height:90%;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(0,0,0,.4))}
 .story-card-tag{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:50px;font-size:.5rem;font-weight:700;background:rgba(29,185,84,.8);color:#fff;text-transform:uppercase;letter-spacing:.5px}
 .story-card-body{padding:16px}
 .story-card-body h3{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
@@ -177,7 +178,7 @@ body{font-family:var(--font);color:var(--text);background:var(--black);overflow-
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal{background:var(--card);border:1px solid var(--border);border-radius:20px;max-width:440px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s;position:relative}.modal-overlay.open .modal{transform:translateY(0)}
 .modal-close{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.08);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;z-index:5}.modal-close:hover{background:var(--pri)}
-.modal-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#131313,#1a1a1a);padding:24px;border-radius:20px 20px 0 0}.modal-img img{width:58%;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5));mix-blend-mode:lighten}
+.modal-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#131313,#1a1a1a);padding:24px;border-radius:20px 20px 0 0}.modal-img img{width:58%;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5))}
 .modal-body{padding:18px}
 .modal-body h2{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:3px}
 .modal-body .m-year{font-size:.66rem;color:var(--gray);margin-bottom:12px;display:block}
@@ -452,8 +453,9 @@ function renderCard(p){
   const tagText=p.cat==='iphone-semi'?'Seminovo':p.destaque?'Destaque':'Lacrado';
   const parc18=Math.ceil(mem.parcelado/18);
   const msg=encodeURIComponent('Olá! Quero o '+p.modelo+(mem.gb?' '+mem.gb:'')+' '+cor.nome+'! Vi no catálogo online.');
+  const imgLight=p.cat==='watch'?' c-img-light':'';
   return '<div class="card reveal'+(p.destaque?' destaque-card':'')+'" id="card-'+p.id+'">'+
-    '<div class="c-img"><span class="c-tag '+tagClass+'">'+tagText+'</span>'+
+    '<div class="c-img'+imgLight+'"><span class="c-tag '+tagClass+'">'+tagText+'</span>'+
     '<img id="img-'+p.id+'" src="'+cor.img+'" alt="'+p.modelo+'" loading="lazy">'+
     '<button class="c-quick" onclick="openModal(\''+p.id+'\')" title="Detalhes"><i class="fas fa-expand"></i></button></div>'+
     '<div class="c-body"><h3>'+p.modelo+'</h3><span class="year">'+p.lancamento+'</span>'+
@@ -470,7 +472,7 @@ function pickMem(id,i){const p=CATALOGO.find(x=>x.id===id);state[id]=state[id]||
 function openModal(id){const p=CATALOGO.find(x=>x.id===id);if(!p)return;modalProduct=p;modalState={cor:0,mem:0};renderModal();document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
 document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
-function renderModal(){const p=modalProduct,cor=p.cores[modalState.cor],mem=p.memorias[modalState.mem],parc18=Math.ceil(mem.parcelado/18);const msg=encodeURIComponent('Olá! Quero o '+p.modelo+(mem.gb?' '+mem.gb:'')+' '+cor.nome+'!');document.getElementById('modalImg').src=cor.img;document.getElementById('modalTitle').textContent=p.modelo;document.getElementById('modalYear').textContent=p.lancamento;document.getElementById('modalColors').innerHTML=p.cores.map((c,i)=>'<div class="m-color '+(i===modalState.cor?'active':'')+'" onclick="modalState.cor='+i+';renderModal()"><div class="dot" style="background:'+c.hex+'"></div>'+c.nome+'</div>').join('');document.getElementById('modalMems').innerHTML=p.memorias.map((m,i)=>'<div class="m-mem '+(i===modalState.mem?'active':'')+'" onclick="modalState.mem='+i+';renderModal()">'+(m.gb||'Único')+'</div>').join('');document.getElementById('modalPrice').textContent='R$ '+mem.avista.toLocaleString('pt-BR');document.getElementById('modalParc').textContent='ou 18x de R$ '+parc18.toLocaleString('pt-BR');document.getElementById('modalBuy').href=LOJA.whatsappLink+'?text='+msg}
+function renderModal(){const p=modalProduct,cor=p.cores[modalState.cor],mem=p.memorias[modalState.mem],parc18=Math.ceil(mem.parcelado/18);const msg=encodeURIComponent('Olá! Quero o '+p.modelo+(mem.gb?' '+mem.gb:'')+' '+cor.nome+'!');const mImgWrap=document.querySelector('.modal-img');if(p.cat==='watch'){mImgWrap.style.background='#f5f5f7'}else{mImgWrap.style.background=''}document.getElementById('modalImg').src=cor.img;document.getElementById('modalTitle').textContent=p.modelo;document.getElementById('modalYear').textContent=p.lancamento;document.getElementById('modalColors').innerHTML=p.cores.map((c,i)=>'<div class="m-color '+(i===modalState.cor?'active':'')+'" onclick="modalState.cor='+i+';renderModal()"><div class="dot" style="background:'+c.hex+'"></div>'+c.nome+'</div>').join('');document.getElementById('modalMems').innerHTML=p.memorias.map((m,i)=>'<div class="m-mem '+(i===modalState.mem?'active':'')+'" onclick="modalState.mem='+i+';renderModal()">'+(m.gb||'Único')+'</div>').join('');document.getElementById('modalPrice').textContent='R$ '+mem.avista.toLocaleString('pt-BR');document.getElementById('modalParc').textContent='ou 18x de R$ '+parc18.toLocaleString('pt-BR');document.getElementById('modalBuy').href=LOJA.whatsappLink+'?text='+msg}
 
 document.getElementById('menuBtn').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden'});
 function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''}
