@@ -180,10 +180,10 @@ const CATALOGO_PADRAO = [
   {
     id:"iphone-16-pro",cat:"iphone-lacrado",modelo:"iPhone 16 Pro",lancamento:"2024",destaque:true,
     cores:[
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-model-unselect-gallery-1-202409?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-naturaltitanium-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-deserttitanium-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-blacktitanium-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-whitetitanium-select?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"128GB",avista:6490,parcelado:7340},
@@ -195,10 +195,10 @@ const CATALOGO_PADRAO = [
   {
     id:"iphone-16-pro-max",cat:"iphone-lacrado",modelo:"iPhone 16 Pro Max",lancamento:"2024",destaque:true,
     cores:[
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-compare-iphone-16-pro-202409?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-naturaltitanium-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Deserto",hex:"#BFA48E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-deserttitanium-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-blacktitanium-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Titânio Branco",hex:"#F2F1EB",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-whitetitanium-select?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"256GB",avista:7990,parcelado:9030},
@@ -327,25 +327,25 @@ const CATALOGO_PADRAO = [
   {
     id:"watch-se",cat:"watch",modelo:"Apple Watch SE",lancamento:"3a ger.",destaque:false,
     cores:[
-      {nome:"Meia-noite",hex:"#1C1C1E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-40-aluminum-midnight-nc-se3_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Estelar",hex:"#F5E6CE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-40-aluminum-starlight-nc-se3_VW_34FR?wid=400&hei=400&fmt=png-alpha"}
+      {nome:"Meia-noite",hex:"#1C1C1E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-se-202509?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Estelar",hex:"#F5E6CE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-se-202509?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"40mm",avista:2000,parcelado:2260},{gb:"44mm",avista:2300,parcelado:2600}]
   },
   {
     id:"watch-s11",cat:"watch",modelo:"Apple Watch Series 11",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-42-aluminum-spacegray-cell-s11_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-42-aluminum-silver-nc-s11_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Rose",hex:"#E8CDBE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-42-aluminum-rosegold-nc-s11_VW_34FR?wid=400&hei=400&fmt=png-alpha"}
+      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-s11-202509?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-s11-202509?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Rose",hex:"#E8CDBE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-s11-202509?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"42mm",avista:3650,parcelado:4150},{gb:"46mm",avista:3750,parcelado:4300}]
   },
   {
     id:"watch-ultra2",cat:"watch",modelo:"Apple Watch Ultra 2",lancamento:"2024",destaque:true,
     cores:[
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-49-titanium-natural-ultra3_VW_34FR?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-case-49-titanium-black-ultra3_VW_34FR?wid=400&hei=400&fmt=png-alpha"}
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-ultra3-202509?wid=400&hei=400&fmt=png-alpha"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-ultra3-202509?wid=400&hei=400&fmt=png-alpha"}
     ],
     memorias:[{gb:"49mm",avista:4950,parcelado:5693}]
   },
