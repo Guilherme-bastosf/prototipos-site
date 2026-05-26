@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin | Top iPhones</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--pri:#1DB954;--bg:#0A0A0A;--card:#141414;--card2:#1A1A1A;--border:rgba(255,255,255,.08);--text:#E0E0E0;--gray:#888;--muted:#444;--font:'Inter',-apple-system,sans-serif;--tr:all .3s ease;--radius:12px}
+body{font-family:var(--font);background:var(--bg);color:var(--text);min-height:100vh;-webkit-font-smoothing:antialiased}
+::selection{background:var(--pri);color:#fff}
+
+/* LOGIN */
+#loginScreen{position:fixed;inset:0;background:var(--bg);display:flex;align-items:center;justify-content:center;z-index:999;transition:opacity .3s}
+#loginScreen.hide{opacity:0;pointer-events:none}
+.login-box{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px;width:100%;max-width:380px;text-align:center}
+.login-box .logo{width:48px;height:48px;background:linear-gradient(135deg,var(--pri),#0D6B2F);border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;margin:0 auto 16px}
+.login-box h2{font-size:1.1rem;color:#fff;margin-bottom:4px;font-weight:700}
+.login-box p{font-size:.75rem;color:var(--gray);margin-bottom:24px}
+.login-box input{width:100%;padding:12px 16px;border-radius:10px;border:1px solid var(--border);background:var(--card2);color:#fff;font-size:.82rem;font-family:var(--font);outline:none;margin-bottom:12px;transition:var(--tr)}
+.login-box input:focus{border-color:var(--pri)}
+.login-box button{width:100%;padding:12px;border-radius:10px;background:linear-gradient(135deg,var(--pri),#0D6B2F);color:#fff;border:none;font-size:.82rem;font-weight:700;cursor:pointer;font-family:var(--font);transition:var(--tr)}
+.login-box button:hover{opacity:.9}
+.login-error{color:#ef4444;font-size:.72rem;margin-top:8px;display:none}
+
+/* LAYOUT */
+.admin-layout{display:flex;min-height:100vh}
+.sidebar{width:240px;background:var(--card);border-right:1px solid var(--border);padding:20px 0;flex-shrink:0;position:fixed;top:0;bottom:0;left:0;z-index:50;overflow-y:auto}
+.sidebar .brand{display:flex;align-items:center;gap:10px;padding:0 20px 20px;border-bottom:1px solid var(--border);margin-bottom:16px}
+.sidebar .brand-icon{width:32px;height:32px;background:linear-gradient(135deg,var(--pri),#0D6B2F);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:#fff}
+.sidebar .brand b{font-size:.85rem;color:#fff}
+.sidebar .brand b span{color:var(--pri)}
+.sidebar .nav-label{font-size:.58rem;text-transform:uppercase;letter-spacing:2px;color:var(--muted);padding:8px 20px 6px;font-weight:600}
+.sidebar a{display:flex;align-items:center;gap:10px;padding:10px 20px;font-size:.78rem;color:var(--gray);text-decoration:none;transition:var(--tr);border-left:3px solid transparent}
+.sidebar a:hover,.sidebar a.active{color:#fff;background:rgba(29,185,84,.06);border-left-color:var(--pri)}
+.sidebar a i{width:18px;text-align:center;font-size:.8rem}
+.sidebar .back-link{margin-top:auto;padding-top:20px;border-top:1px solid var(--border)}
+.main{margin-left:240px;flex:1;padding:24px}
+
+/* TOP BAR */
+.top-bar{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px}
+.top-bar h1{font-size:1.3rem;font-weight:800;color:#fff}
+.top-bar .actions{display:flex;gap:8px}
+.btn{padding:8px 16px;border-radius:8px;font-size:.72rem;font-weight:600;cursor:pointer;transition:var(--tr);border:none;font-family:var(--font);display:flex;align-items:center;gap:6px}
+.btn-pri{background:var(--pri);color:#fff}.btn-pri:hover{opacity:.9}
+.btn-sec{background:var(--card);color:var(--text);border:1px solid var(--border)}.btn-sec:hover{border-color:var(--pri);color:var(--pri)}
+.btn-danger{background:#991b1b;color:#fff}.btn-danger:hover{background:#b91c1c}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px}
+.stat-card .stat-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem;margin-bottom:10px}
+.stat-card .stat-icon.green{background:rgba(29,185,84,.12);color:var(--pri)}
+.stat-card .stat-icon.blue{background:rgba(59,130,246,.12);color:#3b82f6}
+.stat-card .stat-icon.amber{background:rgba(245,158,11,.12);color:#f59e0b}
+.stat-card .stat-icon.pink{background:rgba(236,72,153,.12);color:#ec4899}
+.stat-card .val{font-size:1.5rem;font-weight:800;color:#fff}
+.stat-card .lbl{font-size:.68rem;color:var(--gray);margin-top:2px}
+
+/* TABLE */
+.table-wrap{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.table-top{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--border)}
+.table-top h3{font-size:.88rem;font-weight:700;color:#fff}
+.table-top .search{padding:7px 12px 7px 32px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:#fff;font-size:.72rem;font-family:var(--font);outline:none;position:relative}
+.table-search-wrap{position:relative}.table-search-wrap i{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--gray);font-size:.68rem}
+table{width:100%;border-collapse:collapse}
+th{padding:10px 16px;text-align:left;font-size:.62rem;text-transform:uppercase;letter-spacing:1px;color:var(--gray);border-bottom:1px solid var(--border);font-weight:600}
+td{padding:12px 16px;font-size:.75rem;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:hover td{background:rgba(255,255,255,.02)}
+.prod-info{display:flex;align-items:center;gap:10px}
+.prod-thumb{width:36px;height:36px;border-radius:8px;background:var(--card2);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.prod-thumb img{width:80%;height:80%;object-fit:contain}
+.prod-name{font-weight:600;color:#fff}.prod-cat{font-size:.6rem;color:var(--gray)}
+.badge{padding:3px 8px;border-radius:50px;font-size:.55rem;font-weight:600;text-transform:uppercase}
+.badge-green{background:rgba(29,185,84,.12);color:var(--pri)}.badge-blue{background:rgba(59,130,246,.12);color:#3b82f6}
+.colors-cell{display:flex;gap:3px}
+.colors-cell .dot{width:14px;height:14px;border-radius:50%;border:1px solid rgba(255,255,255,.15)}
+.price-cell{font-weight:700;color:#fff}
+.action-btns{display:flex;gap:4px}
+.action-btn{width:28px;height:28px;border-radius:6px;border:1px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.65rem;transition:var(--tr)}
+.action-btn:hover{border-color:var(--pri);color:var(--pri)}
+.action-btn.del:hover{border-color:#ef4444;color:#ef4444}
+
+/* EDIT MODAL */
+.edit-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);z-index:100;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:24px}
+.edit-overlay.open{opacity:1;pointer-events:all}
+.edit-modal{background:var(--card);border:1px solid var(--border);border-radius:16px;max-width:600px;width:100%;max-height:85vh;overflow-y:auto;padding:28px}
+.edit-modal h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:20px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:.68rem;color:var(--gray);margin-bottom:4px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.form-group input,.form-group select{width:100%;padding:10px 14px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:#fff;font-size:.78rem;font-family:var(--font);outline:none;transition:var(--tr)}
+.form-group input:focus,.form-group select:focus{border-color:var(--pri)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.form-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)}
+
+/* BULK PRICE */
+.bulk-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:20px}
+.bulk-section h3{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:14px}
+.bulk-row{display:flex;gap:12px;align-items:flex-end;flex-wrap:wrap}
+.bulk-row .form-group{flex:1;min-width:150px;margin-bottom:0}
+
+/* EXPORT/IMPORT */
+.export-section{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:20px}
+.export-section h3{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:8px}
+.export-section p{font-size:.72rem;color:var(--gray);margin-bottom:14px;line-height:1.5}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;right:24px;background:var(--pri);color:#fff;padding:12px 20px;border-radius:10px;font-size:.78rem;font-weight:600;z-index:999;transform:translateY(100px);opacity:0;transition:var(--tr)}
+.toast.show{transform:translateY(0);opacity:1}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .sidebar{display:none}
+  .main{margin-left:0;padding:16px}
+  .stats-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .stat-card{padding:14px}
+  .stat-card .val{font-size:1.2rem}
+  .form-row{grid-template-columns:1fr}
+  .top-bar{flex-direction:column;align-items:flex-start;gap:10px}
+  .top-bar h1{font-size:1.1rem}
+  .table-top{flex-direction:column;gap:10px}
+  .table-top .search{width:100%}
+  table{font-size:.68rem}
+  th,td{padding:8px 10px}
+  .prod-info{gap:6px}
+  .prod-thumb{width:28px;height:28px}
+  .bulk-row{flex-direction:column}
+  .edit-modal{padding:20px;margin:10px}
+  .login-box{margin:16px;padding:28px}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="loginScreen">
+  <div class="login-box">
+    <div class="logo"><i class="fas fa-house"></i></div>
+    <h2>Painel Admin</h2>
+    <p>Top iPhones — Gerenciamento do catálogo</p>
+    <div style="background:rgba(29,185,84,.1);border:1px solid rgba(29,185,84,.2);border-radius:8px;padding:10px;margin-bottom:16px;font-size:.72rem;color:var(--pri)"><i class="fas fa-key" style="margin-right:6px"></i>Senha de teste: <strong>top2026</strong></div>
+    <input type="password" id="loginPass" placeholder="Senha de acesso" autofocus>
+    <button onclick="tryLogin()">Entrar</button>
+    <div class="login-error" id="loginError">Senha incorreta</div>
+  </div>
+</div>
+
+<!-- LAYOUT -->
+<div class="admin-layout" id="adminLayout" style="display:none">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon"><i class="fas fa-house"></i></div>
+      <b>Top <span>iPhones</span></b>
+    </div>
+    <div class="nav-label">Menu</div>
+    <a href="#" class="active" onclick="showTab('dashboard')"><i class="fas fa-chart-line"></i> Dashboard</a>
+    <a href="#" onclick="showTab('produtos')"><i class="fas fa-mobile-screen"></i> Produtos</a>
+    <a href="#" onclick="showTab('precos')"><i class="fas fa-tag"></i> Preços em lote</a>
+    <a href="#" onclick="showTab('dados')"><i class="fas fa-database"></i> Exportar / Importar</a>
+    <div style="flex:1"></div>
+    <a href="index.html" style="margin-top:20px;border-top:1px solid var(--border);padding-top:16px"><i class="fas fa-arrow-left"></i> Voltar ao site</a>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main">
+
+    <!-- DASHBOARD -->
+    <div id="tab-dashboard">
+      <div class="top-bar">
+        <h1>Dashboard</h1>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-icon green"><i class="fas fa-box"></i></div><div class="val" id="sTotalProd">0</div><div class="lbl">Produtos</div></div>
+        <div class="stat-card"><div class="stat-icon blue"><i class="fas fa-layer-group"></i></div><div class="val" id="sTotalCat">0</div><div class="lbl">Categorias</div></div>
+        <div class="stat-card"><div class="stat-icon amber"><i class="fas fa-coins"></i></div><div class="val" id="sAvgPrice">0</div><div class="lbl">Preço médio</div></div>
+        <div class="stat-card"><div class="stat-icon pink"><i class="fas fa-arrow-down"></i></div><div class="val" id="sMinPrice">0</div><div class="lbl">Menor preço</div></div>
+      </div>
+      <div class="table-wrap">
+        <div class="table-top"><h3>Produtos por categoria</h3></div>
+        <table><thead><tr><th>Categoria</th><th>Qtd</th><th>Menor preço</th><th>Maior preço</th></tr></thead>
+        <tbody id="catTable"></tbody></table>
+      </div>
+    </div>
+
+    <!-- PRODUTOS -->
+    <div id="tab-produtos" style="display:none">
+      <div class="top-bar">
+        <h1>Produtos</h1>
+        <div class="actions">
+          <button class="btn btn-pri" onclick="openAddProduct()"><i class="fas fa-plus"></i> Novo produto</button>
+        </div>
+      </div>
+      <div class="table-wrap">
+        <div class="table-top">
+          <h3 id="prodTableTitle">Todos os produtos</h3>
+          <div class="table-search-wrap"><i class="fas fa-magnifying-glass"></i><input type="text" class="search" id="prodSearch" placeholder="Buscar..." oninput="renderProdTable()"></div>
+        </div>
+        <table><thead><tr><th>Produto</th><th>Categoria</th><th>Cores</th><th>Preço (à vista)</th><th>Ações</th></tr></thead>
+        <tbody id="prodTable"></tbody></table>
+      </div>
+    </div>
+
+    <!-- PRECOS EM LOTE -->
+    <div id="tab-precos" style="display:none">
+      <div class="top-bar"><h1>Preços em lote</h1></div>
+      <div class="bulk-section">
+        <h3>Ajustar preços de uma categoria</h3>
+        <div class="bulk-row">
+          <div class="form-group">
+            <label>Categoria</label>
+            <select id="bulkCat">
+              <option value="todos">Todos</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Tipo de ajuste</label>
+            <select id="bulkType">
+              <option value="percent-up">Aumentar %</option>
+              <option value="percent-down">Diminuir %</option>
+              <option value="fixed-up">Aumentar R$</option>
+              <option value="fixed-down">Diminuir R$</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Valor</label>
+            <input type="number" id="bulkValue" placeholder="Ex: 10">
+          </div>
+          <button class="btn btn-pri" onclick="applyBulk()"><i class="fas fa-check"></i> Aplicar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- DADOS -->
+    <div id="tab-dados" style="display:none">
+      <div class="top-bar"><h1>Exportar / Importar</h1></div>
+      <div class="export-section">
+        <h3>Exportar catálogo</h3>
+        <p>Baixe o arquivo produtos.js atualizado para re-deploy no Netlify.</p>
+        <button class="btn btn-pri" onclick="exportData()"><i class="fas fa-download"></i> Baixar produtos.js</button>
+      </div>
+      <div class="export-section">
+        <h3>Importar catálogo</h3>
+        <p>Cole aqui o JSON do catálogo para substituir os dados atuais.</p>
+        <textarea id="importArea" style="width:100%;height:150px;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:#fff;font-family:monospace;font-size:.72rem;padding:12px;resize:vertical;outline:none;margin-bottom:12px"></textarea>
+        <button class="btn btn-sec" onclick="importData()"><i class="fas fa-upload"></i> Importar</button>
+      </div>
+      <div class="export-section">
+        <h3>Resetar para padrão</h3>
+        <p>Remove todas as alterações feitas no admin e volta ao catálogo original do produtos.js.</p>
+        <button class="btn btn-danger" onclick="resetData()"><i class="fas fa-rotate-left"></i> Resetar tudo</button>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="edit-overlay" id="editOverlay">
+  <div class="edit-modal">
+    <h3 id="editTitle">Editar Produto</h3>
+    <div class="form-row">
+      <div class="form-group"><label>Modelo</label><input type="text" id="eModelo"></div>
+      <div class="form-group"><label>ID</label><input type="text" id="eId" readonly style="opacity:.5"></div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Categoria</label>
+        <select id="eCat">
+          <option value="iphone-lacrado">iPhone Lacrado</option>
+          <option value="iphone-semi">iPhone Seminovo</option>
+          <option value="watch">Apple Watch</option>
+          <option value="airpods">AirPods</option>
+          <option value="ipad">iPad</option>
+          <option value="macbook">MacBook</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Lançamento</label><input type="text" id="eLanc" placeholder="Ex: 2024"></div>
+    </div>
+    <div class="form-group">
+      <label>Destaque?</label>
+      <select id="eDest"><option value="false">Não</option><option value="true">Sim</option></select>
+    </div>
+
+    <h3 style="font-size:.82rem;margin:20px 0 10px;padding-top:14px;border-top:1px solid var(--border)">Memórias e Preços</h3>
+    <div id="eMemsContainer"></div>
+    <button class="btn btn-sec" onclick="addMemField()" style="margin-top:8px"><i class="fas fa-plus"></i> Adicionar memória</button>
+
+    <div class="form-actions">
+      <button class="btn btn-sec" onclick="closeEdit()">Cancelar</button>
+      <button class="btn btn-pri" onclick="saveEdit()"><i class="fas fa-check"></i> Salvar</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script src="produtos.js"></script>
+<script>
+// STATE
+let catalogo = getCatalogo();
+let editingId = null;
+
+// LOGIN
+document.getElementById('loginPass').addEventListener('keydown', function(e){ if(e.key==='Enter') tryLogin() });
+function tryLogin(){
+  const pass = document.getElementById('loginPass').value;
+  if(pass === LOJA.adminSenha){
+    document.getElementById('loginScreen').classList.add('hide');
+    document.getElementById('adminLayout').style.display = 'flex';
+    renderDashboard();
+  } else {
+    document.getElementById('loginError').style.display = 'block';
+    document.getElementById('loginPass').style.borderColor = '#ef4444';
+    setTimeout(()=>{ document.getElementById('loginError').style.display='none'; document.getElementById('loginPass').style.borderColor='' },2000);
+  }
+}
+
+// TABS
+function showTab(tab){
+  document.querySelectorAll('[id^="tab-"]').forEach(el=>el.style.display='none');
+  document.getElementById('tab-'+tab).style.display='block';
+  document.querySelectorAll('.sidebar a').forEach(a=>a.classList.remove('active'));
+  event.currentTarget.classList.add('active');
+  if(tab==='dashboard') renderDashboard();
+  if(tab==='produtos') renderProdTable();
+  if(tab==='precos') renderBulkCats();
+}
+
+// DASHBOARD
+function renderDashboard(){
+  const prices = catalogo.flatMap(p=>p.memorias.map(m=>m.avista));
+  document.getElementById('sTotalProd').textContent = catalogo.length;
+  document.getElementById('sTotalCat').textContent = new Set(catalogo.map(p=>p.cat)).size;
+  document.getElementById('sAvgPrice').textContent = 'R$ '+Math.round(prices.reduce((a,b)=>a+b,0)/prices.length).toLocaleString('pt-BR');
+  document.getElementById('sMinPrice').textContent = 'R$ '+Math.min(...prices).toLocaleString('pt-BR');
+
+  const catCounts = {};
+  CATEGORIAS.forEach(c=>{
+    const items = catalogo.filter(p=>p.cat===c.id);
+    if(!items.length) return;
+    const ps = items.flatMap(p=>p.memorias.map(m=>m.avista));
+    catCounts[c.id] = {nome:c.emoji+' '+c.nome, qtd:items.length, min:Math.min(...ps), max:Math.max(...ps)};
+  });
+  document.getElementById('catTable').innerHTML = Object.values(catCounts).map(c=>
+    '<tr><td>'+c.nome+'</td><td>'+c.qtd+'</td><td>R$ '+c.min.toLocaleString('pt-BR')+'</td><td>R$ '+c.max.toLocaleString('pt-BR')+'</td></tr>'
+  ).join('');
+}
+
+// PRODUCT TABLE
+function renderProdTable(){
+  const q = (document.getElementById('prodSearch').value||'').toLowerCase();
+  const items = catalogo.filter(p=> !q || (p.modelo+' '+p.cat).toLowerCase().includes(q));
+  const catMap = {}; CATEGORIAS.forEach(c=>catMap[c.id]=c);
+
+  document.getElementById('prodTable').innerHTML = items.map(p=>{
+    const cat = catMap[p.cat]||{emoji:'',nome:p.cat};
+    const badge = p.cat==='iphone-semi'?'badge-blue':'badge-green';
+    return '<tr>'+
+      '<td><div class="prod-info"><div class="prod-thumb"><img src="'+p.cores[0].img+'" alt=""></div><div><div class="prod-name">'+p.modelo+'</div><div class="prod-cat">'+p.lancamento+'</div></div></div></td>'+
+      '<td><span class="badge '+badge+'">'+cat.emoji+' '+cat.nome+'</span></td>'+
+      '<td><div class="colors-cell">'+p.cores.map(c=>'<div class="dot" style="background:'+c.hex+'" title="'+c.nome+'"></div>').join('')+'</div></td>'+
+      '<td class="price-cell">R$ '+p.memorias[0].avista.toLocaleString('pt-BR')+'</td>'+
+      '<td><div class="action-btns"><button class="action-btn" onclick="openEdit(\''+p.id+'\')" title="Editar"><i class="fas fa-pen"></i></button><button class="action-btn del" onclick="deleteProd(\''+p.id+'\')" title="Excluir"><i class="fas fa-trash"></i></button></div></td>'+
+    '</tr>';
+  }).join('');
+
+  document.getElementById('prodTableTitle').textContent = items.length+' produto'+(items.length!==1?'s':'');
+}
+
+// EDIT PRODUCT
+function openEdit(id){
+  editingId = id;
+  const p = catalogo.find(x=>x.id===id);
+  document.getElementById('editTitle').textContent = 'Editar: '+p.modelo;
+  document.getElementById('eModelo').value = p.modelo;
+  document.getElementById('eId').value = p.id;
+  document.getElementById('eCat').value = p.cat;
+  document.getElementById('eLanc').value = p.lancamento;
+  document.getElementById('eDest').value = String(p.destaque);
+  renderMemFields(p.memorias);
+  document.getElementById('editOverlay').classList.add('open');
+}
+
+function openAddProduct(){
+  editingId = null;
+  document.getElementById('editTitle').textContent = 'Novo Produto';
+  document.getElementById('eModelo').value = '';
+  document.getElementById('eId').value = 'novo-'+Date.now();
+  document.getElementById('eCat').value = 'iphone-lacrado';
+  document.getElementById('eLanc').value = new Date().getFullYear();
+  document.getElementById('eDest').value = 'false';
+  renderMemFields([{gb:'128GB',avista:0,parcelado:0}]);
+  document.getElementById('editOverlay').classList.add('open');
+}
+
+function renderMemFields(mems){
+  document.getElementById('eMemsContainer').innerHTML = mems.map((m,i)=>
+    '<div class="form-row" style="margin-bottom:8px;align-items:flex-end" data-mem="'+i+'">'+
+    '<div class="form-group"><label>Memória</label><input type="text" class="mem-gb" value="'+m.gb+'"></div>'+
+    '<div class="form-group"><label>À vista (R$)</label><input type="number" class="mem-av" value="'+m.avista+'"></div>'+
+    '<div class="form-group"><label>Parcelado (R$)</label><input type="number" class="mem-parc" value="'+m.parcelado+'"></div>'+
+    '<button class="btn btn-sec" onclick="this.parentElement.remove()" style="margin-bottom:0;height:38px"><i class="fas fa-trash"></i></button>'+
+    '</div>'
+  ).join('');
+}
+
+function addMemField(){
+  const c = document.getElementById('eMemsContainer');
+  const i = c.children.length;
+  const div = document.createElement('div');
+  div.className = 'form-row';
+  div.style.cssText = 'margin-bottom:8px;align-items:flex-end';
+  div.innerHTML = '<div class="form-group"><label>Memória</label><input type="text" class="mem-gb" value=""></div>'+
+    '<div class="form-group"><label>À vista (R$)</label><input type="number" class="mem-av" value="0"></div>'+
+    '<div class="form-group"><label>Parcelado (R$)</label><input type="number" class="mem-parc" value="0"></div>'+
+    '<button class="btn btn-sec" onclick="this.parentElement.remove()" style="margin-bottom:0;height:38px"><i class="fas fa-trash"></i></button>';
+  c.appendChild(div);
+}
+
+function closeEdit(){ document.getElementById('editOverlay').classList.remove('open') }
+document.getElementById('editOverlay').addEventListener('click',function(e){ if(e.target===this) closeEdit() });
+
+function saveEdit(){
+  const modelo = document.getElementById('eModelo').value.trim();
+  const id = document.getElementById('eId').value.trim();
+  const cat = document.getElementById('eCat').value;
+  const lanc = document.getElementById('eLanc').value.trim();
+  const dest = document.getElementById('eDest').value === 'true';
+
+  if(!modelo){toast('Preencha o modelo');return}
+
+  const memRows = document.getElementById('eMemsContainer').querySelectorAll('.form-row');
+  const memorias = [...memRows].map(r=>({
+    gb: r.querySelector('.mem-gb').value.trim(),
+    avista: parseFloat(r.querySelector('.mem-av').value)||0,
+    parcelado: parseFloat(r.querySelector('.mem-parc').value)||0
+  })).filter(m=>m.avista>0);
+
+  if(!memorias.length){toast('Adicione pelo menos uma memória com preço');return}
+
+  if(editingId){
+    const idx = catalogo.findIndex(x=>x.id===editingId);
+    if(idx>=0){
+      catalogo[idx].modelo = modelo;
+      catalogo[idx].cat = cat;
+      catalogo[idx].lancamento = lanc;
+      catalogo[idx].destaque = dest;
+      catalogo[idx].memorias = memorias;
+    }
+  } else {
+    catalogo.push({
+      id: id,
+      cat: cat,
+      modelo: modelo,
+      lancamento: lanc,
+      destaque: dest,
+      cores: [{nome:"Preto",hex:"#1C1C1E",img:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-16-black-select-202409?wid=470&hei=556&fmt=png-alpha"}],
+      memorias: memorias
+    });
+  }
+
+  saveCatalogo();
+  closeEdit();
+  renderProdTable();
+  renderDashboard();
+  showToast('Produto salvo com sucesso!');
+}
+
+function deleteProd(id){
+  if(!confirm('Excluir este produto?')) return;
+  catalogo = catalogo.filter(x=>x.id!==id);
+  saveCatalogo();
+  renderProdTable();
+  renderDashboard();
+  showToast('Produto excluído');
+}
+
+// BULK PRICE
+function renderBulkCats(){
+  const sel = document.getElementById('bulkCat');
+  sel.innerHTML = '<option value="todos">Todos</option>' +
+    CATEGORIAS.map(c=>'<option value="'+c.id+'">'+c.emoji+' '+c.nome+'</option>').join('');
+}
+
+function applyBulk(){
+  const cat = document.getElementById('bulkCat').value;
+  const type = document.getElementById('bulkType').value;
+  const val = parseFloat(document.getElementById('bulkValue').value);
+  if(!val || val<=0){showToast('Informe um valor válido');return}
+  if(!confirm('Aplicar ajuste de preço em '+(cat==='todos'?'TODOS os produtos':'categoria selecionada')+'?')) return;
+
+  let count = 0;
+  catalogo.forEach(p=>{
+    if(cat!=='todos' && p.cat!==cat) return;
+    p.memorias.forEach(m=>{
+      if(type==='percent-up'){m.avista=Math.round(m.avista*(1+val/100));m.parcelado=Math.round(m.parcelado*(1+val/100))}
+      else if(type==='percent-down'){m.avista=Math.round(m.avista*(1-val/100));m.parcelado=Math.round(m.parcelado*(1-val/100))}
+      else if(type==='fixed-up'){m.avista+=val;m.parcelado+=val}
+      else if(type==='fixed-down'){m.avista=Math.max(0,m.avista-val);m.parcelado=Math.max(0,m.parcelado-val)}
+    });
+    count++;
+  });
+
+  saveCatalogo();
+  renderDashboard();
+  showToast(count+' produto'+(count!==1?'s':'')+' atualizado'+(count!==1?'s':''));
+}
+
+// EXPORT / IMPORT
+function exportData(){
+  const header = '/* CATÁLOGO ATUALIZADO VIA ADMIN — '+new Date().toLocaleDateString('pt-BR')+' */\n\n';
+  const json = JSON.stringify(catalogo, null, 2);
+  const content = header + 'const CATALOGO_ADMIN = ' + json + ';\n';
+  const blob = new Blob([content], {type:'text/javascript'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'catalogo_atualizado.js';
+  a.click();
+  showToast('Arquivo baixado!');
+}
+
+function importData(){
+  try{
+    const raw = document.getElementById('importArea').value.trim();
+    const data = JSON.parse(raw);
+    if(!Array.isArray(data)){throw new Error('Deve ser um array')}
+    catalogo = data;
+    saveCatalogo();
+    renderDashboard();
+    renderProdTable();
+    showToast('Catálogo importado com sucesso!');
+  }catch(e){
+    showToast('JSON inválido: '+e.message);
+  }
+}
+
+function resetData(){
+  if(!confirm('Resetar TUDO para o catálogo padrão? Todas as alterações serão perdidas!')) return;
+  localStorage.removeItem('ihome_catalogo');
+  catalogo = [...CATALOGO_PADRAO];
+  renderDashboard();
+  renderProdTable();
+  showToast('Catálogo resetado para o padrão');
+}
+
+// PERSISTENCE
+function saveCatalogo(){
+  localStorage.setItem('ihome_catalogo', JSON.stringify(catalogo));
+}
+
+// TOAST
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),3000);
+}
+</script>
+</body>
+</html>
