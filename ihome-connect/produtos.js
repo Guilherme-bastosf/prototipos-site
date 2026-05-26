@@ -209,9 +209,9 @@ const CATALOGO_PADRAO = [
   {
     id:"iphone-17-pro",cat:"iphone-lacrado",modelo:"iPhone 17 Pro",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-silver-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Laranja Cósmico",hex:"#D4764A",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-cosmicorange-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Azul Intenso",hex:"#2A4B7C",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-deepblue-select?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Prateado",hex:"#E0E0E0",img:"img/iphone-17-pro-silver.png"},
+      {nome:"Laranja Cósmico",hex:"#D4764A",img:"img/iphone-17-pro-orange.png"},
+      {nome:"Azul Intenso",hex:"#2A4B7C",img:"img/iphone-17-pro-blue.png"}
     ],
     memorias:[
       {gb:"256GB",avista:8490,parcelado:9600},
@@ -221,9 +221,9 @@ const CATALOGO_PADRAO = [
   {
     id:"iphone-17-pro-max",cat:"iphone-lacrado",modelo:"iPhone 17 Pro Max",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-silver-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Laranja Cósmico",hex:"#D4764A",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-cosmicorange-select?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Azul Intenso",hex:"#2A4B7C",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-deepblue-select?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Prateado",hex:"#E0E0E0",img:"img/iphone-17-pro-max-silver.png"},
+      {nome:"Laranja Cósmico",hex:"#D4764A",img:"img/iphone-17-pro-max-orange.png"},
+      {nome:"Azul Intenso",hex:"#2A4B7C",img:"img/iphone-17-pro-max-blue.png"}
     ],
     memorias:[
       {gb:"256GB",avista:9490,parcelado:10730},
@@ -327,25 +327,25 @@ const CATALOGO_PADRAO = [
   {
     id:"watch-se",cat:"watch",modelo:"Apple Watch SE",lancamento:"3a ger.",destaque:false,
     cores:[
-      {nome:"Meia-noite",hex:"#1C1C1E",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-se-202509?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Estelar",hex:"#F5E6CE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-se-202509?wid=400&hei=400&fmt=png-alpha"}
+      {nome:"Meia-noite",hex:"#1C1C1E",img:"img/watch-se.png"},
+      {nome:"Estelar",hex:"#F5E6CE",img:"img/watch-se.png"}
     ],
     memorias:[{gb:"40mm",avista:2000,parcelado:2260},{gb:"44mm",avista:2300,parcelado:2600}]
   },
   {
     id:"watch-s11",cat:"watch",modelo:"Apple Watch Series 11",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-s11-202509?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-s11-202509?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Rose",hex:"#E8CDBE",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-s11-202509?wid=400&hei=400&fmt=png-alpha"}
+      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"img/watch-s11.png"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"img/watch-s11.png"},
+      {nome:"Rose",hex:"#E8CDBE",img:"img/watch-s11.png"}
     ],
     memorias:[{gb:"42mm",avista:3650,parcelado:4150},{gb:"46mm",avista:3750,parcelado:4300}]
   },
   {
     id:"watch-ultra2",cat:"watch",modelo:"Apple Watch Ultra 2",lancamento:"2024",destaque:true,
     cores:[
-      {nome:"Titânio Natural",hex:"#C2B8A3",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-ultra3-202509?wid=400&hei=400&fmt=png-alpha"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/watch-compare-ultra3-202509?wid=400&hei=400&fmt=png-alpha"}
+      {nome:"Titânio Natural",hex:"#C2B8A3",img:"img/watch-ultra.png"},
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"img/watch-ultra.png"}
     ],
     memorias:[{gb:"49mm",avista:4950,parcelado:5693}]
   },
