@@ -221,9 +221,9 @@ const CATALOGO_PADRAO = [
   {
     id:"iphone-17-pro-max",cat:"iphone-lacrado",modelo:"iPhone 17 Pro Max",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-finish-silver-202509?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Laranja Cósmico",hex:"#D4764A",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-finish-cosmicorange-202509?wid=470&hei=556&fmt=png-alpha"},
-      {nome:"Azul Intenso",hex:"#2A4B7C",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-finish-deepblue-202509?wid=470&hei=556&fmt=png-alpha"}
+      {nome:"Prateado",hex:"#E0E0E0",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-silver-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Laranja Cósmico",hex:"#D4764A",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-cosmicorange-select?wid=470&hei=556&fmt=png-alpha"},
+      {nome:"Azul Intenso",hex:"#2A4B7C",img:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-17-pro-max-deepblue-select?wid=470&hei=556&fmt=png-alpha"}
     ],
     memorias:[
       {gb:"256GB",avista:9490,parcelado:10730},
