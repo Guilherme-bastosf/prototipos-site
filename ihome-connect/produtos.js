@@ -328,15 +328,15 @@ const CATALOGO_PADRAO = [
     id:"watch-se",cat:"watch",modelo:"Apple Watch SE",lancamento:"3a ger.",destaque:false,
     cores:[
       {nome:"Meia-noite",hex:"#1C1C1E",img:"img/watch-se.png"},
-      {nome:"Estelar",hex:"#F5E6CE",img:"img/watch-se.png"}
+      {nome:"Estelar",hex:"#F5E6CE",img:"img/watch-se-starlight.png"}
     ],
     memorias:[{gb:"40mm",avista:2000,parcelado:2260},{gb:"44mm",avista:2300,parcelado:2600}]
   },
   {
     id:"watch-s11",cat:"watch",modelo:"Apple Watch Series 11",lancamento:"2025",destaque:true,
     cores:[
-      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"img/watch-s11.png"},
-      {nome:"Prateado",hex:"#E0E0E0",img:"img/watch-s11.png"},
+      {nome:"Cinza Espacial",hex:"#6B6B6F",img:"img/watch-s11-spacegray.png"},
+      {nome:"Prateado",hex:"#E0E0E0",img:"img/watch-s11-silver.png"},
       {nome:"Rose",hex:"#E8CDBE",img:"img/watch-s11.png"}
     ],
     memorias:[{gb:"42mm",avista:3650,parcelado:4150},{gb:"46mm",avista:3750,parcelado:4300}]
@@ -345,7 +345,7 @@ const CATALOGO_PADRAO = [
     id:"watch-ultra2",cat:"watch",modelo:"Apple Watch Ultra 2",lancamento:"2024",destaque:true,
     cores:[
       {nome:"Titânio Natural",hex:"#C2B8A3",img:"img/watch-ultra.png"},
-      {nome:"Titânio Preto",hex:"#3C3B3F",img:"img/watch-ultra.png"}
+      {nome:"Titânio Preto",hex:"#3C3B3F",img:"img/watch-ultra-black.png"}
     ],
     memorias:[{gb:"49mm",avista:4950,parcelado:5693}]
   },
