@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iPhone Rio | Catalogo Apple</title>
+<meta name="description" content="iPhone Rio. iPhones originais com NF, 18x sem juros e entrega em shopping RJ.">
+<meta name="theme-color" content="#0A0A0A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pri:#007AFF;--pri2:#0055CC;--accent:#5AC8FA;
+  --black:#0A0A0A;--dark:#111;--card:#141414;--card2:#1A1A1A;
+  --text:#E0E0E0;--gray:#888;--muted:#444;--border:rgba(255,255,255,.08);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --shadow:0 8px 32px rgba(0,0,0,.4);--radius:16px;--tr:all .35s cubic-bezier(.4,0,.2,1);
+  --grad:linear-gradient(135deg,var(--pri),var(--pri2));
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--black);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.container{max-width:1240px;margin:0 auto;padding:0 24px}
+::selection{background:var(--pri);color:#fff}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--black)}::-webkit-scrollbar-thumb{background:var(--muted);border-radius:3px}
+
+/* NAV */
+.nav{background:rgba(10,10,10,.9);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);position:sticky;top:0;z-index:100;padding:12px 0;border-bottom:1px solid var(--border)}
+.nav.scrolled{box-shadow:0 4px 20px rgba(0,0,0,.3)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:#fff}
+.nav-brand .logo-icon{width:34px;height:34px;background:var(--grad);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:.9rem}
+.nav-brand b{font-size:1rem;font-weight:800;letter-spacing:.5px}.nav-brand b span{color:var(--pri)}
+.nav-search{flex:1;max-width:340px;position:relative}
+.nav-search input{width:100%;padding:9px 14px 9px 36px;border-radius:50px;border:1px solid var(--border);background:rgba(255,255,255,.05);color:#fff;font-size:.76rem;font-family:var(--font);outline:none;transition:var(--tr)}
+.nav-search input:focus{border-color:var(--pri);box-shadow:0 0 16px rgba(29,185,84,.1)}
+.nav-search input::placeholder{color:var(--muted)}
+.nav-search i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.72rem}
+.search-clear{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--gray);cursor:pointer;font-size:.75rem;display:none}.search-clear.show{display:block}
+.nav-r{display:flex;gap:8px;flex-shrink:0}
+.nav-btn{padding:8px 16px;border-radius:50px;font-size:.68rem;font-weight:600;text-decoration:none;display:flex;align-items:center;gap:6px;transition:var(--tr);border:none;cursor:pointer}
+.nb-wpp{background:#25D366;color:#fff}.nb-wpp:hover{background:#1EB954}
+.nb-ig{background:transparent;border:1px solid var(--border);color:var(--gray)}.nb-ig:hover{border-color:var(--pri);color:var(--pri)}
+.menu-btn{display:none;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
+
+.mobile-menu{position:fixed;inset:0;background:rgba(10,10,10,.98);z-index:200;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-menu.open{opacity:1;pointer-events:all}
+.mobile-menu .close-menu{position:absolute;top:20px;right:20px;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+.mobile-menu a{color:#fff;text-decoration:none;font-size:1.1rem;font-weight:600}
+
+/* HERO COMPACTO */
+.hero{padding:32px 24px 24px;text-align:center}
+.hero h1{font-size:clamp(1.5rem,4vw,2.2rem);color:#fff;font-weight:900;letter-spacing:-.5px;line-height:1.15;margin-bottom:8px}
+.hero h1 span{color:var(--pri)}
+.hero p{color:var(--gray);font-size:.82rem;margin-bottom:14px}
+.hero-cta{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:50px;background:var(--grad);color:#fff;font-size:.78rem;font-weight:700;text-decoration:none;transition:var(--tr)}.hero-cta:hover{box-shadow:0 6px 20px rgba(29,185,84,.25)}
+
+/* CATALOG CONTROLS */
+.catalog-controls{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;padding:0 24px 14px;max-width:1240px;margin:0 auto}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;flex:1}
+.tab{padding:7px 15px;border-radius:50px;font-size:.67rem;font-weight:600;border:1.5px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;transition:var(--tr);white-space:nowrap}
+.tab.active{background:var(--pri);color:#fff;border-color:var(--pri);box-shadow:0 4px 12px rgba(29,185,84,.2)}
+.tab:hover:not(.active){border-color:rgba(29,185,84,.3);color:var(--pri)}
+.sort-select{padding:7px 12px;border-radius:50px;font-size:.64rem;font-weight:600;border:1.5px solid var(--border);background:var(--card);color:var(--gray);cursor:pointer;outline:none;font-family:var(--font)}
+.sub-filters{display:flex;gap:5px;padding:0 24px 12px;max-width:1240px;margin:0 auto}
+.sub-tab{padding:5px 12px;border-radius:8px;font-size:.62rem;font-weight:600;border:1px solid var(--border);background:transparent;color:var(--gray);cursor:pointer;transition:var(--tr)}
+.sub-tab.active{background:rgba(29,185,84,.12);color:var(--pri);border-color:rgba(29,185,84,.25)}
+.results-info{padding:0 24px 8px;max-width:1240px;margin:0 auto;font-size:.68rem;color:var(--gray)}.results-info strong{color:var(--pri)}
+
+/* PRODUCT GRID */
+.section{padding:0 24px 32px;max-width:1240px;margin:0 auto}
+.cat-head{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border)}
+.cat-head h2{font-size:.98rem;color:#fff;font-weight:800}.cat-head .cnt{font-size:.55rem;color:var(--pri);background:rgba(29,185,84,.1);padding:3px 10px;border-radius:50px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:36px}
+
+/* CARD */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--tr);position:relative}
+.card:hover{border-color:rgba(29,185,84,.25);transform:translateY(-3px);box-shadow:0 12px 36px rgba(0,0,0,.35)}
+.card.destaque-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad);z-index:2}
+.c-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#131313,#1a1a1a);position:relative;padding:16px;overflow:hidden}
+.c-img img{width:75%;height:75%;object-fit:contain;transition:transform .5s cubic-bezier(.4,0,.2,1);filter:drop-shadow(0 8px 20px rgba(0,0,0,.4))}.card:hover .c-img img{transform:scale(1.08)}.c-tag{position:absolute;top:8px;left:8px;padding:4px 10px;border-radius:50px;font-size:.5rem;font-weight:700;text-transform:uppercase;letter-spacing:.5px;z-index:3;color:#fff;backdrop-filter:blur(6px)}
+.t-lacrado{background:rgba(29,185,84,.8)}.t-semi{background:rgba(59,130,246,.8)}.t-dest{background:rgba(255,165,0,.85);color:#000}
+.c-quick{position:absolute;bottom:8px;right:8px;width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.08);backdrop-filter:blur(6px);border:none;color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.6rem;opacity:0;transform:translateY(6px);transition:var(--tr);z-index:3}
+.card:hover .c-quick{opacity:1;transform:translateY(0)}.c-quick:hover{background:var(--pri)}
+.c-body{padding:12px}
+.c-body h3{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:2px;line-height:1.3}
+.c-body .year{font-size:.55rem;color:var(--gray)}
+.swatches{display:flex;gap:4px;margin:8px 0 5px;flex-wrap:wrap}
+.swatch{width:18px;height:18px;border-radius:50%;border:2px solid transparent;cursor:pointer;transition:var(--tr)}.swatch.active{border-color:var(--pri);box-shadow:0 0 0 2px var(--pri)}.swatch:hover{transform:scale(1.15)}
+.cor-nome{font-size:.55rem;color:var(--gray);margin-bottom:6px;min-height:12px}
+.mems{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap}
+.mem{padding:3px 9px;border-radius:6px;font-size:.55rem;font-weight:600;border:1px solid var(--border);color:var(--gray);cursor:pointer;transition:var(--tr)}.mem.active{background:var(--pri);color:#fff;border-color:var(--pri)}.mem:hover:not(.active){border-color:rgba(29,185,84,.3)}
+.prices{margin-bottom:2px}
+.p-main{font-size:.92rem;font-weight:800;color:#fff}.p-main small{font-size:.55rem;color:var(--gray);font-weight:400;margin-left:3px}
+.p-parc{font-size:.56rem;color:var(--gray)}
+.c-buy{display:flex;align-items:center;justify-content:center;gap:5px;background:var(--grad);color:#fff;padding:10px;font-size:.64rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;text-decoration:none;transition:var(--tr);position:relative;overflow:hidden}
+.c-buy::before{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.12),transparent);transition:left .5s}.c-buy:hover::before{left:100%}
+
+/* STORYTELLING */
+.story-section{padding:48px 24px;max-width:1240px;margin:0 auto}
+.story-section h2{text-align:center;font-size:clamp(1.1rem,3vw,1.5rem);font-weight:800;color:#fff;margin-bottom:6px}
+.story-section .sub{text-align:center;font-size:.78rem;color:var(--gray);margin-bottom:28px}
+.story-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.story-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--tr);cursor:pointer;text-decoration:none;color:var(--text);display:block}
+.story-card:hover{border-color:rgba(29,185,84,.2);transform:translateY(-3px);box-shadow:var(--shadow)}
+.story-card-img{height:140px;background:linear-gradient(145deg,#131313,#1a1a1a);display:flex;align-items:center;justify-content:center;padding:20px;position:relative}
+.story-card-img img{height:90%;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(0,0,0,.4))}
+.story-card-tag{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:50px;font-size:.5rem;font-weight:700;background:rgba(29,185,84,.8);color:#fff;text-transform:uppercase;letter-spacing:.5px}
+.story-card-body{padding:16px}
+.story-card-body h3{font-size:.82rem;font-weight:700;color:#fff;margin-bottom:6px;line-height:1.3}
+.story-card-body p{font-size:.7rem;color:var(--gray);line-height:1.5;margin-bottom:10px}
+.story-card-body .story-price{font-size:.75rem;font-weight:700;color:var(--pri)}
+
+/* TRADE-IN */
+.tradein{padding:44px 24px;text-align:center;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(29,185,84,.03),rgba(0,255,136,.01))}
+.tradein h2{font-size:clamp(1.1rem,3vw,1.5rem);color:#fff;font-weight:800;margin-bottom:6px}.tradein h2 i{color:var(--pri);margin-right:6px}
+.tradein p{color:var(--gray);font-size:.8rem;margin-bottom:16px;max-width:460px;margin-left:auto;margin-right:auto;line-height:1.5}
+.tradein-btn{background:var(--grad);color:#fff;padding:12px 26px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.78rem;display:inline-flex;align-items:center;gap:8px;transition:var(--tr)}.tradein-btn:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(29,185,84,.25)}
+
+/* TESTIMONIALS */
+.testimonials{padding:48px 24px;max-width:1240px;margin:0 auto}
+.testimonials h2{text-align:center;font-size:clamp(1.1rem,3vw,1.5rem);color:#fff;font-weight:800;margin-bottom:6px}
+.test-sub{text-align:center;font-size:.78rem;color:var(--gray);margin-bottom:24px}
+.test-wrapper{position:relative;padding:0 20px}
+.test-track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding:4px 0 20px}
+.test-track::-webkit-scrollbar{display:none}
+.test-card{min-width:310px;max-width:310px;scroll-snap-align:start;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;flex-shrink:0;transition:var(--tr)}
+.test-card:hover{border-color:rgba(29,185,84,.15)}
+.test-quote-icon{color:var(--pri);font-size:1.2rem;margin-bottom:10px;opacity:.4}
+.test-text{font-size:.78rem;color:var(--text);line-height:1.65;margin-bottom:16px}
+.test-author{display:flex;align-items:center;gap:12px;padding-top:14px;border-top:1px solid var(--border)}
+.test-avatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:.85rem;flex-shrink:0}
+.test-info{flex:1}
+.test-info .name{font-size:.76rem;color:#fff;font-weight:700;margin-bottom:1px}
+.test-info .role{font-size:.6rem;color:var(--gray)}
+.test-stars{color:#FFD700;font-size:.58rem;letter-spacing:1px;margin-top:2px}
+.test-nav{position:absolute;top:50%;transform:translateY(-60%);width:34px;height:34px;border-radius:50%;background:rgba(10,10,10,.85);backdrop-filter:blur(6px);border:1px solid var(--border);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.7rem;transition:var(--tr);z-index:5}
+.test-nav:hover{background:var(--pri);border-color:var(--pri)}
+.test-prev{left:0}.test-next{right:0}
+
+/* FAQ */
+.faq-section{padding:44px 24px;max-width:700px;margin:0 auto}
+.faq-section h2{text-align:center;font-size:clamp(1.1rem,3vw,1.5rem);color:#fff;font-weight:800;margin-bottom:24px}
+.faq-item{border:1px solid var(--border);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.faq-q{padding:14px 16px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-size:.78rem;font-weight:600;color:#fff;background:var(--card)}
+.faq-q i{color:var(--pri);transition:transform .3s;font-size:.62rem}
+.faq-item.open .faq-q i{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}.faq-item.open .faq-a{max-height:200px}
+.faq-a p{padding:0 16px 14px;font-size:.74rem;color:var(--gray);line-height:1.5}
+
+/* CTA */
+.cta{padding:56px 24px;text-align:center;background:linear-gradient(180deg,transparent,rgba(29,185,84,.03))}
+.cta h2{font-size:clamp(1.2rem,3vw,1.6rem);color:#fff;margin-bottom:8px;font-weight:800}.cta h2 span{color:var(--pri)}
+.cta p{color:var(--gray);font-size:.82rem;margin-bottom:20px;max-width:400px;margin-left:auto;margin-right:auto}
+.cta-btn{background:var(--grad);color:#fff;padding:14px 32px;border-radius:50px;text-decoration:none;font-weight:700;font-size:.82rem;display:inline-flex;align-items:center;gap:8px;transition:var(--tr);box-shadow:0 4px 16px rgba(29,185,84,.2)}.cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(29,185,84,.3)}
+
+/* FOOTER */
+.foot{background:var(--dark);padding:40px 24px 0;border-top:1px solid var(--border)}
+.ft-g{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:24px;max-width:1240px;margin:0 auto;padding-bottom:28px}
+.foot h4{font-size:.64rem;text-transform:uppercase;letter-spacing:2px;color:#fff;margin-bottom:10px;font-weight:700}
+.foot p{font-size:.7rem;color:var(--gray);line-height:1.6}
+.foot a{color:var(--gray);text-decoration:none;font-size:.7rem;display:block;margin-bottom:5px;transition:var(--tr)}.foot a:hover{color:var(--pri)}
+.ft-trust{display:flex;gap:14px;flex-wrap:wrap;margin-top:12px}.ft-trust span{font-size:.6rem;color:var(--muted);display:flex;align-items:center;gap:4px}.ft-trust i{color:var(--pri);font-size:.54rem}
+.ft-s{display:flex;gap:8px;margin-top:10px}.ft-s a{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.72rem;margin:0}.ft-s a:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+.ft-b{border-top:1px solid var(--border);padding:16px 0;display:flex;justify-content:space-between;align-items:center;max-width:1240px;margin:0 auto;flex-wrap:wrap;gap:8px}
+.ft-copy{font-size:.6rem;color:var(--muted)}
+.ft-credits-link{display:flex;align-items:center;gap:6px;text-decoration:none;color:rgba(255,255,255,.35);font-size:.6rem;font-weight:500;transition:var(--tr);padding:4px 12px;border-radius:50px;border:1px solid rgba(255,255,255,.06)}.ft-credits-link:hover{color:var(--pri);border-color:rgba(29,185,84,.2)}.ft-credits-link i{font-size:.5rem}
+
+.wpp{position:fixed;bottom:18px;right:18px;z-index:99}
+.wpp a{width:48px;height:48px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.3rem;text-decoration:none;box-shadow:0 4px 14px rgba(37,211,102,.3);animation:wpP 2.5s infinite}.wpp a:hover{transform:scale(1.08)}
+@keyframes wpP{0%{box-shadow:0 0 0 0 rgba(37,211,102,.35)}70%{box-shadow:0 0 0 12px rgba(37,211,102,0)}100%{box-shadow:0 0 0 0 rgba(37,211,102,0)}}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.8);backdrop-filter:blur(6px);z-index:300;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:20px}
+.modal-overlay.open{opacity:1;pointer-events:all}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;max-width:440px;width:100%;max-height:85vh;overflow-y:auto;transform:translateY(20px);transition:transform .3s;position:relative}.modal-overlay.open .modal{transform:translateY(0)}
+.modal-close{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.08);border:none;color:#fff;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.85rem;display:flex;align-items:center;justify-content:center;z-index:5}.modal-close:hover{background:var(--pri)}
+.modal-img{width:100%;aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#131313,#1a1a1a);padding:24px;border-radius:20px 20px 0 0}.modal-img img{width:58%;object-fit:contain;filter:drop-shadow(0 8px 20px rgba(0,0,0,.5))}
+.modal-body{padding:18px}
+.modal-body h2{font-size:1.1rem;font-weight:800;color:#fff;margin-bottom:3px}
+.modal-body .m-year{font-size:.66rem;color:var(--gray);margin-bottom:12px;display:block}
+.modal-body .m-colors{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+.modal-body .m-color{display:flex;align-items:center;gap:5px;padding:5px 10px;border-radius:50px;border:1px solid var(--border);font-size:.66rem;color:var(--text);cursor:pointer;transition:var(--tr)}.m-color.active{border-color:var(--pri);background:rgba(29,185,84,.08)}
+.modal-body .m-color .dot{width:14px;height:14px;border-radius:50%}
+.modal-body .m-mems{display:flex;gap:5px;margin-bottom:12px;flex-wrap:wrap}
+.modal-body .m-mem{padding:5px 12px;border-radius:8px;font-size:.68rem;font-weight:600;border:1px solid var(--border);color:var(--gray);cursor:pointer;transition:var(--tr)}.m-mem.active{background:var(--pri);color:#fff;border-color:var(--pri)}
+.modal-body .m-price{font-size:1.2rem;font-weight:800;color:#fff;margin-bottom:2px}
+.modal-body .m-parc{font-size:.68rem;color:var(--gray);margin-bottom:12px}
+.modal-body .m-buy{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;padding:12px;border-radius:50px;background:var(--grad);color:#fff;font-size:.78rem;font-weight:700;text-decoration:none;transition:var(--tr)}.m-buy:hover{box-shadow:0 6px 18px rgba(29,185,84,.3)}
+
+#backToTop{position:fixed;bottom:18px;left:18px;width:36px;height:36px;border-radius:50%;background:var(--card);border:1px solid var(--border);color:var(--pri);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.78rem;opacity:0;transform:translateY(10px);transition:var(--tr);z-index:99}
+#backToTop.show{opacity:1;transform:translateY(0)}#backToTop:hover{background:var(--pri);color:#fff;border-color:var(--pri)}
+
+.no-results{text-align:center;padding:40px 24px}.no-results i{font-size:2rem;color:var(--muted);margin-bottom:8px;display:block}.no-results h3{color:#fff;font-size:.9rem;margin-bottom:4px}.no-results p{color:var(--gray);font-size:.78rem}
+
+.reveal{opacity:0;transform:translateY(14px);transition:all .5s cubic-bezier(.4,0,.2,1)}.reveal.visible{opacity:1;transform:translateY(0)}
+
+@media(max-width:1024px){.grid{grid-template-columns:repeat(3,1fr)}.story-grid{grid-template-columns:repeat(2,1fr)}.test-card{min-width:280px;max-width:280px}}
+@media(max-width:768px){
+  .grid{grid-template-columns:repeat(2,1fr);gap:8px}
+  .ft-g{grid-template-columns:1fr}.ft-b{flex-direction:column;text-align:center;gap:6px}
+  .nav-search{display:none}.nav-r .nb-ig{display:none}.menu-btn{display:block}
+  .tabs{gap:3px}.tab{padding:5px 10px;font-size:.6rem}
+  .hero{padding:24px 20px 20px}
+  .story-grid{grid-template-columns:1fr}.story-card-img{height:110px}
+  .oport-slide{padding:20px 16px}.oport-slide-img{width:130px;height:130px}
+  .oport-wrapper{padding:0 14px}.oport-prev{left:0}.oport-next{right:0}
+  .test-card{min-width:270px;max-width:270px;padding:18px}
+  .test-wrapper{padding:0 14px}
+  .test-nav{width:28px;height:28px;font-size:.6rem}
+}
+@media(max-width:420px){.grid{gap:6px}.c-body{padding:10px}.c-body h3{font-size:.72rem}.swatch{width:15px;height:15px}.oport-slide-img{width:110px;height:110px}}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="navbar"><div class="container nav-inner">
+  <a href="#" class="nav-brand"><div class="logo-icon"><i class="fas fa-apple-whole"></i></div><b>iPhone <span>Rio</span></b></a>
+  <div class="nav-search"><i class="fas fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="Buscar produto..."><button class="search-clear" id="searchClear"><i class="fas fa-xmark"></i></button></div>
+  <div class="nav-r">
+    <a href="#" id="navIg" class="nav-btn nb-ig" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="#" id="navWpp" class="nav-btn nb-wpp" target="_blank"><i class="fab fa-whatsapp"></i> Comprar</a>
+    <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+  </div>
+</div></nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="close-menu" id="closeMenu"><i class="fas fa-xmark"></i></button>
+  <a href="#" id="mobIg" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
+  <a href="#" id="mobWpp" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+  <a href="#" onclick="setTab('iphone-lacrado');closeMobile()">iPhone Lacrados</a>
+  <a href="#" onclick="setTab('iphone-semi');closeMobile()">Seminovos</a>
+  <a href="#" onclick="setTab('watch');closeMobile()">Apple Watch</a>
+  <a href="#" onclick="setTab('airpods');closeMobile()">AirPods</a>
+  <a href="#" onclick="setTab('macbook');closeMobile()">MacBook</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <h1 class="reveal">Seu iPhone no <span>iPhone Rio</span></h1>
+  <p class="reveal">Nota fiscal, garantia, até 18x e entrega em mãos no RJ</p>
+  <a href="#catalogTop" class="hero-cta reveal"><i class="fas fa-arrow-down"></i> Ver catálogo</a>
+</section>
+
+<!-- OPORTUNIDADES REMOVIDAS -->
+
+<!-- CATÁLOGO -->
+<div class="catalog-controls" id="catalogTop">
+  <div class="tabs" id="tabs"></div>
+  <select class="sort-select" id="sortSelect"><option value="default">Ordenar</option><option value="price-asc">Menor preço</option><option value="price-desc">Maior preço</option><option value="newest">Mais recente</option><option value="name-asc">A → Z</option></select>
+</div>
+<div class="sub-filters" id="subFilters" style="display:none"></div>
+<div class="results-info" id="resultsInfo"></div>
+<div id="catalogContent"></div>
+
+<!-- STORYTELLING -->
+<section class="story-section">
+  <h2 class="reveal">O Apple ideal para <span style="color:var(--pri)">o seu momento</span></h2>
+  <p class="sub reveal">Cada pessoa tem uma necessidade. Encontre o aparelho certo para a sua.</p>
+  <div class="story-grid" id="storyGrid"></div>
+</section>
+
+<!-- TRADE-IN -->
+<section class="tradein reveal">
+  <h2><i class="fas fa-repeat"></i> Seu iPhone usado vale dinheiro</h2>
+  <p>Aceitamos como parte do pagamento. Avaliamos na hora e você sai com um aparelho novo pagando muito menos.</p>
+  <a href="#" id="tradeinBtn" class="tradein-btn" target="_blank"><i class="fab fa-whatsapp"></i> Consultar valor do meu iPhone</a>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <h2 class="reveal">Quem comprou, <span style="color:var(--pri)">aprovou</span></h2>
+  <p class="test-sub reveal">Resultados reais de quem confiou na iPhone Rio</p>
+  <div class="test-wrapper">
+    <button class="test-nav test-prev" onclick="scrollTest(-1)"><i class="fas fa-chevron-left"></i></button>
+    <div class="test-track" id="testTrack"></div>
+    <button class="test-nav test-next" onclick="scrollTest(1)"><i class="fas fa-chevron-right"></i></button>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <h2 class="reveal">Perguntas frequentes</h2>
+  <div id="faqContent"></div>
+</section>
+
+<!-- CTA -->
+<section class="cta reveal">
+  <h2>Encontrou o seu? <span>Chama no WhatsApp</span></h2>
+  <p>Atendimento rápido e sem enrolação</p>
+  <a href="#" id="ctaBtn" class="cta-btn" target="_blank"><i class="fab fa-whatsapp"></i> Falar agora</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="ft-g">
+    <div>
+      <h4 id="footName"></h4>
+      <p id="footDesc"></p>
+      <div class="ft-trust" id="ftTrust"></div>
+      <div class="ft-s"><a href="#" id="footIg" target="_blank"><i class="fab fa-instagram"></i></a><a href="#" id="footWpp" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+    </div>
+    <div>
+      <h4>Categorias</h4>
+      <a href="#" onclick="setTab('iphone-lacrado')">iPhone Lacrados</a>
+      <a href="#" onclick="setTab('iphone-semi')">Seminovos</a>
+      <a href="#" onclick="setTab('watch')">Apple Watch</a>
+      <a href="#" onclick="setTab('airpods')">AirPods</a>
+      <a href="#" onclick="setTab('macbook')">MacBook</a>
+    </div>
+    <div>
+      <h4>Contato</h4>
+      <a href="#" id="footWppLink" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+      <a href="#" id="footIgLink" target="_blank"><i class="fab fa-instagram"></i> <span class="ig-handle"></span></a>
+      <a href="admin.html" style="margin-top:14px;font-size:.5rem;color:var(--muted)"><i class="fas fa-lock"></i> Admin</a>
+    </div>
+  </div>
+  <div class="ft-b">
+    <span class="ft-copy" id="footCopy"></span>
+    <a href="#" id="footCredits" class="ft-credits-link" target="_blank"><i class="fas fa-code"></i> <span id="footCreditsText"></span></a>
+  </div>
+</footer>
+
+<div class="wpp"><a href="#" id="wppFloat" target="_blank"><i class="fab fa-whatsapp"></i></a></div>
+<button id="backToTop"><i class="fas fa-chevron-up"></i></button>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-xmark"></i></button>
+    <div class="modal-img"><img id="modalImg" src="" alt=""></div>
+    <div class="modal-body">
+      <h2 id="modalTitle"></h2><span class="m-year" id="modalYear"></span>
+      <div class="m-colors" id="modalColors"></div>
+      <div class="m-mems" id="modalMems"></div>
+      <div class="m-price" id="modalPrice"></div>
+      <div class="m-parc" id="modalParc"></div>
+      <a href="#" class="m-buy" id="modalBuy" target="_blank"><i class="fab fa-whatsapp"></i> Comprar via WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<script src="produtos.js"></script>
+<script>
+const wppLink=LOJA.whatsappLink+'?text='+encodeURIComponent(LOJA.whatsappMsg);
+document.getElementById('navIg').href=LOJA.instagramUrl;document.getElementById('navWpp').href=wppLink;
+document.getElementById('mobIg').href=LOJA.instagramUrl;document.getElementById('mobWpp').href=wppLink;
+document.getElementById('tradeinBtn').href=LOJA.whatsappLink+'?text='+encodeURIComponent('Olá! Quero consultar o valor de trade-in do meu iPhone!');
+document.getElementById('ctaBtn').href=wppLink;document.getElementById('wppFloat').href=wppLink;
+document.getElementById('footIg').href=LOJA.instagramUrl;document.getElementById('footWpp').href=wppLink;
+document.getElementById('footWppLink').href=wppLink;document.getElementById('footIgLink').href=LOJA.instagramUrl;
+document.querySelectorAll('.ig-handle').forEach(el=>el.textContent='@'+LOJA.instagram);
+document.getElementById('footName').textContent=LOJA.nome;
+document.getElementById('footDesc').textContent=LOJA.descricao;
+document.getElementById('footCopy').textContent='© '+new Date().getFullYear()+' '+LOJA.nome+'. Todos os direitos reservados.';
+document.getElementById('footCredits').href=LOJA.criadoPorUrl;
+document.getElementById('footCreditsText').textContent='Desenvolvido por '+LOJA.criadoPor;
+document.getElementById('ftTrust').innerHTML=LOJA.diferenciais.map(d=>'<span><i class="fas '+d.icone+'"></i>'+d.texto+'</span>').join('');
+
+const DEPOIMENTOS_REAIS=[
+  {nome:"Lucas Mendes",role:"Comprou iPhone 15 Pro",texto:"Pesquisei bastante antes de comprar e o atendimento da iPhone Rio foi o mais transparente que encontrei. Recebi o aparelho lacrado, com nota fiscal, e conferi tudo na hora da entrega no shopping. Muito satisfeito.",estrelas:5,cor:"linear-gradient(135deg,#1DB954,#0D6B2F)"},
+  {nome:"Amanda Souza",role:"Fez trade-in do iPhone 12",texto:"Tinha um iPhone 12 parado e consegui um desconto real no upgrade pro 16. O processo foi simples: avaliaram meu aparelho, mostraram o valor e fechamos na hora. Saiu muito mais em conta do que eu esperava.",estrelas:5,cor:"linear-gradient(135deg,#E91E63,#9C27B0)"},
+  {nome:"Rafael Oliveira",role:"Comprou iPhone 16 Pro Max",texto:"Comparei o preco com Apple Store, iPlace e Mercado Livre. O valor da iPhone Rio foi o melhor que achei no RJ, e ainda parcelou em 18x sem juros abusivos. Entrega pontual e produto perfeito.",estrelas:5,cor:"linear-gradient(135deg,#FF6B00,#FF9800)"},
+  {nome:"Juliana Pereira",role:"Cliente recorrente",texto:"Segundo aparelho que compro com a iPhone Rio. Da primeira vez peguei um seminovo impecavel, dessa vez fui de lacrado. A confianca que eles passam faz diferenca. Sempre conferem tudo na sua frente.",estrelas:5,cor:"linear-gradient(135deg,#3B82F6,#1D4ED8)"},
+  {nome:"Pedro Henrique",role:"Comprou seminovo iPhone 14 Pro",texto:"Estava receoso com seminovo, mas o aparelho veio com bateria 96%, sem nenhum risco e com garantia. Funcionamento perfeito. Economizei mais de R$ 1.500 em relacao ao lacrado.",estrelas:5,cor:"linear-gradient(135deg,#8B5CF6,#6D28D9)"},
+  {nome:"Carla Rodrigues",role:"Presente para a filha",texto:"Comprei um iPhone 15 de presente e fiquei tranquila do inicio ao fim. Eles mandaram fotos do produto antes, combinaram local seguro pra entrega e ainda ajudaram a configurar o aparelho. Nota 10.",estrelas:5,cor:"linear-gradient(135deg,#EC4899,#BE185D)"}
+];
+document.getElementById('testTrack').innerHTML=DEPOIMENTOS_REAIS.map(d=>
+  '<div class="test-card reveal"><div class="test-quote-icon"><i class="fas fa-quote-left"></i></div><div class="test-text">'+d.texto+'</div><div class="test-author"><div class="test-avatar" style="background:'+d.cor+'">'+d.nome.charAt(0)+'</div><div class="test-info"><div class="name">'+d.nome+'</div><div class="role">'+d.role+'</div><div class="test-stars">'+'★'.repeat(d.estrelas)+'</div></div></div></div>'
+).join('');
+function scrollTest(dir){const t=document.getElementById('testTrack');t.scrollBy({left:dir*330,behavior:'smooth'})}
+
+document.getElementById('faqContent').innerHTML=LOJA.faq.map(f=>
+  '<div class="faq-item reveal" onclick="this.classList.toggle(\'open\')"><div class="faq-q">'+f.p+'<i class="fas fa-chevron-down"></i></div><div class="faq-a"><p>'+f.r+'</p></div></div>'
+).join('');
+
+// STORYTELLING
+const STORIES=[
+  {tag:"Para quem lidera",titulo:"Performance para quem não pode parar",texto:"Se o seu dia é feito de reuniões, planilhas e decisões rápidas, o MacBook Air M3 entrega tudo isso sem travar, sem esquentar e com bateria que dura o dia inteiro.",prod:"macbook-m3",prodNome:"MacBook Air M3",prodPreco:"R$ 7.900",imgFallback:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/macbook-air-midnight-select-20220606?wid=400&hei=400&fmt=png-alpha"},
+  {tag:"Para quem cria",titulo:"A melhor câmera que cabe no bolso",texto:"Se você grava, fotografa e edita direto no celular, o iPhone 16 Pro Max tem a câmera mais avançada da Apple. Qualidade profissional sem precisar de equipamento extra.",prod:"iphone-16-pro-max",prodNome:"iPhone 16 Pro Max",prodPreco:"R$ 7.990",imgFallback:"https://store.storeimages.cdn-apple.com/1/as-images.apple.com/is/iphone-16-pro-max-deserttitanium-select?wid=470&hei=556&fmt=png-alpha"},
+  {tag:"Para o dia a dia",titulo:"Tudo que você precisa, nada que não precisa",texto:"Redes sociais, fotos bonitas, bateria que dura e um preço que faz sentido. O iPhone 15 é a escolha inteligente para quem quer qualidade sem exagero.",prod:"iphone-15",prodNome:"iPhone 15",prodPreco:"R$ 4.450",imgFallback:"https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-15-black-select-202309?wid=470&hei=556&fmt=png-alpha"},
+  {tag:"Para quem treina",titulo:"Seu parceiro de treino no pulso",texto:"GPS, monitor cardíaco, oxímetro e bateria que aguenta dias. O Apple Watch Ultra 2 foi feito para quem leva performance a sério, do asfalto à trilha.",prod:"watch-ultra2",prodNome:"Apple Watch Ultra 2",prodPreco:"R$ 4.950",imgFallback:"img/watch-ultra.png"}
+];
+
+document.getElementById('storyGrid').innerHTML=STORIES.map(s=>{
+  const p=CATALOGO.find(x=>x.id===s.prod);
+  const img=p?p.cores[0].img:s.imgFallback;
+  return '<a href="#" class="story-card reveal" onclick="scrollToProd(\''+s.prod+'\');return false">'+
+    '<div class="story-card-img"><img src="'+img+'" alt="'+s.prodNome+'"><span class="story-card-tag">'+s.tag+'</span></div>'+
+    '<div class="story-card-body"><h3>'+s.titulo+'</h3><p>'+s.texto+'</p>'+
+    '<div class="story-price">'+s.prodNome+' · a partir de '+s.prodPreco+'</div></div></a>';
+}).join('');
+
+function scrollToProd(id){setTab('todos');setTimeout(()=>{const el=document.getElementById('card-'+id);if(el){el.scrollIntoView({behavior:'smooth',block:'center'});el.style.boxShadow='0 0 0 2px var(--pri)';setTimeout(()=>el.style.boxShadow='',2000)}},300)}
+
+// OPORTUNIDADES REMOVIDAS
+
+// STATE
+let activeCat='todos',activeVersion='todos',searchQuery='',sortMode='default';
+const state={};let modalProduct=null,modalState={cor:0,mem:0};
+function getState(id){if(!state[id])state[id]={cor:0,mem:0};return state[id]}
+
+// SEARCH
+const sInput=document.getElementById('searchInput'),sClear=document.getElementById('searchClear');
+sInput.addEventListener('input',function(){searchQuery=this.value.toLowerCase().trim();sClear.classList.toggle('show',searchQuery.length>0);renderCatalog()});
+sClear.addEventListener('click',function(){sInput.value='';searchQuery='';this.classList.remove('show');renderCatalog()});
+document.getElementById('sortSelect').addEventListener('change',function(){sortMode=this.value;renderCatalog()});
+
+// TABS
+function renderTabs(){
+  const cats=CATEGORIAS.filter(c=>c.id!=='oportunidade');
+  document.getElementById('tabs').innerHTML='<button class="tab '+(activeCat==='todos'?'active':'')+'" onclick="setTab(\'todos\')">Todos</button>'+cats.map(c=>'<button class="tab '+(activeCat===c.id?'active':'')+'" onclick="setTab(\''+c.id+'\')">'+c.emoji+' '+c.nome+'</button>').join('');
+}
+function setTab(c){activeCat=c;activeVersion='todos';renderTabs();renderSubFilters();renderCatalog();window.scrollTo({top:document.getElementById('catalogTop').offsetTop-60,behavior:'smooth'})}
+function renderSubFilters(){
+  const el=document.getElementById('subFilters');
+  if(activeCat!=='iphone-lacrado'&&activeCat!=='iphone-semi'){el.style.display='none';return}
+  el.style.display='flex';
+  el.innerHTML=VERSOES_IPHONE.map(v=>'<button class="sub-tab '+(activeVersion===v.id?'active':'')+'" onclick="setVersion(\''+v.id+'\')">'+v.nome+'</button>').join('');
+}
+function setVersion(v){activeVersion=v;renderSubFilters();renderCatalog()}
+
+// FILTER
+function getFilteredProducts(){
+  let items=CATALOGO.filter(p=>p.cat!=='oportunidade');
+  if(activeCat!=='todos')items=items.filter(p=>p.cat===activeCat);
+  if(activeVersion!=='todos'&&(activeCat==='iphone-lacrado'||activeCat==='iphone-semi')){const ver=VERSOES_IPHONE.find(v=>v.id===activeVersion);if(ver&&ver.match)items=items.filter(p=>ver.match(p.modelo))}
+  if(searchQuery)items=items.filter(p=>(p.modelo+' '+p.lancamento+' '+p.cores.map(c=>c.nome).join(' ')+' '+p.memorias.map(m=>m.gb).join(' ')).toLowerCase().includes(searchQuery));
+  if(sortMode==='price-asc')items.sort((a,b)=>a.memorias[0].avista-b.memorias[0].avista);
+  else if(sortMode==='price-desc')items.sort((a,b)=>b.memorias[0].avista-a.memorias[0].avista);
+  else if(sortMode==='newest')items.sort((a,b)=>parseInt(b.lancamento)-parseInt(a.lancamento));
+  else if(sortMode==='name-asc')items.sort((a,b)=>a.modelo.localeCompare(b.modelo));
+  return items;
+}
+
+// RENDER
+function renderCatalog(){
+  const filtered=getFilteredProducts();
+  document.getElementById('resultsInfo').innerHTML=searchQuery?'<strong>'+filtered.length+'</strong> resultado'+(filtered.length!==1?'s':'')+' para "'+searchQuery+'"':'<strong>'+filtered.length+'</strong> produto'+(filtered.length!==1?'s':'');
+  if(!filtered.length){document.getElementById('catalogContent').innerHTML='<div class="no-results"><i class="fas fa-magnifying-glass"></i><h3>Nenhum produto encontrado</h3><p>Tente outro termo ou categoria</p></div>';return}
+  if(activeCat==='todos'&&sortMode==='default'&&!searchQuery){
+    let h='';CATEGORIAS.filter(c=>c.id!=='oportunidade').forEach(cat=>{const items=filtered.filter(p=>p.cat===cat.id);if(!items.length)return;h+='<div class="section"><div class="cat-head reveal"><h2>'+cat.emoji+' '+cat.nome+'</h2><span class="cnt">'+items.length+' modelos</span></div><div class="grid">';items.forEach(p=>h+=renderCard(p));h+='</div></div>'});
+    document.getElementById('catalogContent').innerHTML=h;
+  }else{let h='<div class="section"><div class="grid">';filtered.forEach(p=>h+=renderCard(p));h+='</div></div>';document.getElementById('catalogContent').innerHTML=h}
+  observeAll();
+}
+
+function renderCard(p){
+  const s=getState(p.id),cor=p.cores[s.cor],mem=p.memorias[s.mem];
+  const tagClass=p.cat==='iphone-semi'?'t-semi':p.destaque?'t-dest':'t-lacrado';
+  const tagText=p.cat==='iphone-semi'?'Seminovo':p.destaque?'Destaque':'Lacrado';
+  const parc18=Math.ceil(mem.parcelado/18);
+  const msg=encodeURIComponent('Olá! Quero o '+p.modelo+(mem.gb?' '+mem.gb:'')+' '+cor.nome+'! Vi no catálogo online.');
+  return '<div class="card reveal'+(p.destaque?' destaque-card':'')+'" id="card-'+p.id+'">'+
+    '<div class="c-img"><span class="c-tag '+tagClass+'">'+tagText+'</span>'+
+    '<img id="img-'+p.id+'" src="'+cor.img+'" alt="'+p.modelo+'" loading="lazy">'+
+    '<button class="c-quick" onclick="openModal(\''+p.id+'\')" title="Detalhes"><i class="fas fa-expand"></i></button></div>'+
+    '<div class="c-body"><h3>'+p.modelo+'</h3><span class="year">'+p.lancamento+'</span>'+
+    '<div class="swatches">'+p.cores.map((c,i)=>'<div class="swatch '+(i===s.cor?'active':'')+'" style="background:'+c.hex+'" title="'+c.nome+'" onclick="pickCor(\''+p.id+'\','+i+')"></div>').join('')+'</div>'+
+    '<div class="cor-nome" id="cor-'+p.id+'">'+cor.nome+'</div>'+
+    (p.memorias.length>1?'<div class="mems">'+p.memorias.map((m,i)=>'<span class="mem '+(i===s.mem?'active':'')+'" onclick="pickMem(\''+p.id+'\','+i+')">'+m.gb+'</span>').join('')+'</div>':(mem.gb?'<div class="mems"><span class="mem active">'+mem.gb+'</span></div>':''))+
+    '<div class="prices"><div class="p-main">R$ '+mem.avista.toLocaleString('pt-BR')+'<small>à vista</small></div><div class="p-parc">ou 18x de R$ '+parc18.toLocaleString('pt-BR')+'</div></div></div>'+
+    '<a href="'+LOJA.whatsappLink+'?text='+msg+'" class="c-buy" target="_blank"><i class="fab fa-whatsapp"></i> COMPRAR</a></div>';
+}
+
+function pickCor(id,i){const p=CATALOGO.find(x=>x.id===id);state[id]=state[id]||{cor:0,mem:0};state[id].cor=i;document.getElementById('img-'+id).src=p.cores[i].img;document.getElementById('cor-'+id).textContent=p.cores[i].nome;document.getElementById('card-'+id).querySelectorAll('.swatch').forEach((s,idx)=>s.classList.toggle('active',idx===i))}
+function pickMem(id,i){const p=CATALOGO.find(x=>x.id===id);state[id]=state[id]||{cor:0,mem:0};state[id].mem=i;const mem=p.memorias[i],card=document.getElementById('card-'+id);card.querySelectorAll('.mem').forEach((m,idx)=>m.classList.toggle('active',idx===i));card.querySelector('.p-main').innerHTML='R$ '+mem.avista.toLocaleString('pt-BR')+'<small>à vista</small>';card.querySelector('.p-parc').textContent='ou 18x de R$ '+Math.ceil(mem.parcelado/18).toLocaleString('pt-BR')}
+
+function openModal(id){const p=CATALOGO.find(x=>x.id===id);if(!p)return;modalProduct=p;modalState={cor:0,mem:0};renderModal();document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden'}
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('modalOverlay').addEventListener('click',function(e){if(e.target===this)closeModal()});
+function renderModal(){const p=modalProduct,cor=p.cores[modalState.cor],mem=p.memorias[modalState.mem],parc18=Math.ceil(mem.parcelado/18);const msg=encodeURIComponent('Olá! Quero o '+p.modelo+(mem.gb?' '+mem.gb:'')+' '+cor.nome+'!');const mImgWrap=document.querySelector('.modal-img');document.getElementById('modalImg').src=cor.img;document.getElementById('modalTitle').textContent=p.modelo;document.getElementById('modalYear').textContent=p.lancamento;document.getElementById('modalColors').innerHTML=p.cores.map((c,i)=>'<div class="m-color '+(i===modalState.cor?'active':'')+'" onclick="modalState.cor='+i+';renderModal()"><div class="dot" style="background:'+c.hex+'"></div>'+c.nome+'</div>').join('');document.getElementById('modalMems').innerHTML=p.memorias.map((m,i)=>'<div class="m-mem '+(i===modalState.mem?'active':'')+'" onclick="modalState.mem='+i+';renderModal()">'+(m.gb||'Único')+'</div>').join('');document.getElementById('modalPrice').textContent='R$ '+mem.avista.toLocaleString('pt-BR');document.getElementById('modalParc').textContent='ou 18x de R$ '+parc18.toLocaleString('pt-BR');document.getElementById('modalBuy').href=LOJA.whatsappLink+'?text='+msg}
+
+document.getElementById('menuBtn').addEventListener('click',()=>{document.getElementById('mobileMenu').classList.add('open');document.body.style.overflow='hidden'});
+function closeMobile(){document.getElementById('mobileMenu').classList.remove('open');document.body.style.overflow=''}
+document.getElementById('closeMenu').addEventListener('click',closeMobile);
+window.addEventListener('scroll',()=>{document.getElementById('navbar').classList.toggle('scrolled',scrollY>50);document.getElementById('backToTop').classList.toggle('show',scrollY>400)});
+document.getElementById('backToTop').addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+
+function observeAll(){const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('visible');obs.unobserve(x.target)}})},{threshold:.04,rootMargin:'0px 0px -20px 0px'});document.querySelectorAll('.reveal:not(.visible)').forEach(el=>obs.observe(el))}
+
+renderTabs();renderCatalog();observeAll();
+</script>
+</body>
+</html>
