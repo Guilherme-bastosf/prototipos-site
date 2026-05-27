@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luamar | Climatização e Refrigeração desde 1997</title>
+<meta name="description" content="Luamar Refrigeração. Desde 1997 em climatização, refrigeração e linha branca. Costa Verde - RJ.">
+<meta name="theme-color" content="#2196F3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ============================================================
+   CSS RESET + VARIABLES
+   ============================================================ */
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --pri:#1A237E;
+  --pri-dark:#0D1642;
+  --accent:#42A5F5;
+  --accent-light:#E0F7FA;
+  --white:#FFFFFF;
+  --bg:#F8FAFE;
+  --bg-alt:#EFF5FB;
+  --card:#FFFFFF;
+  --card-border:#E3EBF6;
+  --dark:#0D1B2A;
+  --dark2:#1B2838;
+  --text:#333D4A;
+  --text-light:#6B7B8D;
+  --text-muted:#94A3B8;
+  --shadow-sm:0 2px 8px rgba(13,71,161,.06);
+  --shadow-md:0 8px 30px rgba(13,71,161,.10);
+  --shadow-lg:0 16px 48px rgba(13,71,161,.14);
+  --shadow-card:0 4px 20px rgba(13,71,161,.07);
+  --radius:16px;
+  --radius-sm:10px;
+  --radius-lg:24px;
+  --tr:all .35s cubic-bezier(.4,0,.2,1);
+  --font:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  --font-display:'Playfair Display',Georgia,serif;
+  --grad:linear-gradient(135deg,var(--pri),var(--pri-dark));
+  --grad-accent:linear-gradient(135deg,var(--pri),var(--accent));
+  --grad-dark:linear-gradient(135deg,#0D1B2A,#1B3A5C);
+  --grad-hero:linear-gradient(135deg,#0D1B2A 0%,#0D47A1 50%,#1565C0 100%);
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:var(--font);color:var(--text);background:var(--bg);overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+::selection{background:var(--pri);color:#fff}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--pri);border-radius:3px}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* ============================================================
+   REVEAL ANIMATIONS
+   ============================================================ */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-left.visible{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity .7s ease,transform .7s ease}
+.reveal-right.visible{opacity:1;transform:translateX(0)}
+.reveal-scale{opacity:0;transform:scale(.92);transition:opacity .6s ease,transform .6s ease}
+.reveal-scale.visible{opacity:1;transform:scale(1)}
+
+/* ============================================================
+   NAVBAR
+   ============================================================ */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(227,235,246,.6);transition:var(--tr);padding:0}
+.navbar.scrolled{box-shadow:var(--shadow-md);background:rgba(255,255,255,.97)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-brand .logo-icon{width:42px;height:42px;background:var(--grad);border-radius:12px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;box-shadow:0 4px 12px rgba(33,150,243,.25)}
+.nav-brand .brand-text{font-size:1.2rem;font-weight:800;color:var(--dark);letter-spacing:-.3px}
+.nav-brand .brand-text span{color:var(--pri)}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none}
+.nav-links a{font-size:.85rem;font-weight:600;color:var(--text-light);transition:var(--tr);position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--pri);border-radius:2px;transition:width .3s ease}
+.nav-links a:hover{color:var(--pri)}
+.nav-links a:hover::after{width:100%}
+.nav-cta{display:flex;align-items:center;gap:8px;padding:10px 22px;border-radius:50px;background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;font-size:.8rem;font-weight:700;transition:var(--tr);border:none;cursor:pointer;box-shadow:0 4px 14px rgba(37,211,102,.25)}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,211,102,.35)}
+
+/* MOBILE MENU */
+.menu-toggle{display:none;background:none;border:none;font-size:1.4rem;color:var(--dark);cursor:pointer;padding:8px}
+.mobile-overlay{position:fixed;inset:0;background:rgba(13,27,42,.6);backdrop-filter:blur(4px);z-index:1001;opacity:0;pointer-events:none;transition:opacity .3s}
+.mobile-overlay.open{opacity:1;pointer-events:all}
+.mobile-menu{position:fixed;top:0;right:-320px;width:300px;height:100vh;background:#fff;z-index:1002;transition:right .4s cubic-bezier(.4,0,.2,1);padding:24px;display:flex;flex-direction:column;box-shadow:-10px 0 40px rgba(0,0,0,.15)}
+.mobile-menu.open{right:0}
+.mobile-menu-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:36px}
+.mobile-menu-header .brand-text{font-size:1.1rem;font-weight:800;color:var(--dark)}
+.mobile-menu-header .brand-text span{color:var(--pri)}
+.close-menu{background:none;border:none;font-size:1.3rem;color:var(--text-light);cursor:pointer;padding:8px}
+.mobile-nav-links{list-style:none;display:flex;flex-direction:column;gap:4px}
+.mobile-nav-links a{display:flex;align-items:center;gap:12px;padding:14px 16px;border-radius:var(--radius-sm);font-size:.95rem;font-weight:600;color:var(--text);transition:var(--tr)}
+.mobile-nav-links a i{width:20px;text-align:center;color:var(--pri);font-size:.9rem}
+.mobile-nav-links a:hover{background:var(--bg-alt);color:var(--pri)}
+.mobile-menu-cta{margin-top:auto;padding:14px;border-radius:var(--radius);background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;text-align:center;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center;gap:8px;transition:var(--tr)}
+.mobile-menu-cta:hover{transform:scale(1.02)}
+
+/* ============================================================
+   HERO SECTION
+   ============================================================ */
+.hero{padding:140px 0 80px;background:var(--grad-hero);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(0,188,212,.15) 0%,transparent 70%);border-radius:50%}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-10%;width:500px;height:500px;background:radial-gradient(circle,rgba(33,150,243,.1) 0%,transparent 70%);border-radius:50%}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px;margin:0 auto}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:8px 20px;border-radius:50px;background:rgba(255,255,255,.1);backdrop-filter:blur(10px);color:rgba(255,255,255,.9);font-size:.78rem;font-weight:600;margin-bottom:24px;border:1px solid rgba(255,255,255,.15)}
+.hero-badge i{color:var(--accent)}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5.5vw,3.8rem);color:#fff;font-weight:800;line-height:1.1;margin-bottom:16px;letter-spacing:-.5px}
+.hero h1 span{color:var(--accent);position:relative}
+.hero-sub{font-size:clamp(.95rem,2vw,1.15rem);color:rgba(255,255,255,.75);max-width:560px;margin:0 auto 40px;line-height:1.6;font-weight:400}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-bottom:40px}
+.hero-stat{text-align:center}
+.hero-stat .stat-number{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;color:#fff;line-height:1}
+.hero-stat .stat-label{font-size:.78rem;color:rgba(255,255,255,.6);font-weight:500;margin-top:4px}
+.hero-cta-group{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.hero-cta-primary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:50px;background:#fff;color:var(--pri-dark);font-size:.95rem;font-weight:800;transition:var(--tr);box-shadow:0 8px 30px rgba(0,0,0,.2)}
+.hero-cta-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.3)}
+.hero-cta-secondary{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:50px;background:transparent;color:#fff;font-size:.95rem;font-weight:700;border:2px solid rgba(255,255,255,.3);transition:var(--tr)}
+.hero-cta-secondary:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+
+/* Floating shapes in hero */
+.hero-shapes{position:absolute;inset:0;z-index:1;overflow:hidden;pointer-events:none}
+.h-shape{position:absolute;border-radius:50%;opacity:.06;background:#fff}
+.h-shape-1{width:300px;height:300px;top:10%;right:5%;animation:float 8s ease-in-out infinite}
+.h-shape-2{width:200px;height:200px;bottom:15%;left:8%;animation:float 10s ease-in-out infinite 1s}
+.h-shape-3{width:120px;height:120px;top:30%;left:20%;animation:float 7s ease-in-out infinite 2s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+
+/* ============================================================
+   SECTION HEADERS
+   ============================================================ */
+.section-header{text-align:center;margin-bottom:48px}
+.section-tag{display:inline-flex;align-items:center;gap:6px;padding:6px 18px;border-radius:50px;background:rgba(33,150,243,.08);color:var(--pri);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:14px}
+.section-header h2{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.5rem);color:var(--dark);font-weight:800;line-height:1.15;margin-bottom:12px}
+.section-header h2 span{color:var(--pri)}
+.section-header p{font-size:1rem;color:var(--text-light);max-width:560px;margin:0 auto;line-height:1.6}
+
+/* ============================================================
+   SERVICES SECTION
+   ============================================================ */
+.services{padding:80px 0;background:var(--bg)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.service-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:32px 28px;transition:var(--tr);position:relative;overflow:hidden;cursor:default}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--grad-accent);transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+.service-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:transparent}
+.service-card:hover::before{transform:scaleX(1)}
+.service-icon{width:60px;height:60px;border-radius:14px;background:linear-gradient(135deg,rgba(33,150,243,.1),rgba(0,188,212,.08));display:flex;align-items:center;justify-content:center;margin-bottom:20px;transition:var(--tr)}
+.service-icon i{font-size:1.4rem;color:var(--pri);transition:var(--tr)}
+.service-card:hover .service-icon{background:var(--grad);box-shadow:0 8px 24px rgba(33,150,243,.25)}
+.service-card:hover .service-icon i{color:#fff}
+.service-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.service-card p{font-size:.88rem;color:var(--text-light);line-height:1.6}
+.service-card .service-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-size:.82rem;font-weight:600;color:var(--pri);opacity:0;transform:translateY(6px);transition:var(--tr)}
+.service-card:hover .service-link{opacity:1;transform:translateY(0)}
+
+/* ============================================================
+   PREMIUM SOLUTIONS
+   ============================================================ */
+.premium{padding:80px 0;background:var(--bg-alt)}
+.premium-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.premium-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius-lg);overflow:hidden;transition:var(--tr)}
+.premium-card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg);border-color:transparent}
+.premium-card-header{padding:32px 28px 20px;position:relative}
+.premium-card-icon{width:70px;height:70px;border-radius:18px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;font-size:1.6rem;color:#fff}
+.premium-card:nth-child(1) .premium-card-icon{background:linear-gradient(135deg,#2196F3,#1565C0)}
+.premium-card:nth-child(2) .premium-card-icon{background:linear-gradient(135deg,#00BCD4,#00838F)}
+.premium-card:nth-child(3) .premium-card-icon{background:linear-gradient(135deg,#0D47A1,#1A237E)}
+.premium-card-header h3{font-size:1.2rem;font-weight:800;color:var(--dark);margin-bottom:8px}
+.premium-card-header p{font-size:.88rem;color:var(--text-light);line-height:1.6}
+.premium-card-body{padding:0 28px 28px}
+.premium-features{list-style:none;display:flex;flex-direction:column;gap:10px}
+.premium-features li{display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--text);font-weight:500}
+.premium-features li i{color:var(--pri);font-size:.75rem;flex-shrink:0}
+.premium-card-cta{display:flex;align-items:center;justify-content:center;gap:8px;margin:0 28px 28px;padding:14px;border-radius:var(--radius-sm);background:var(--bg-alt);color:var(--pri);font-weight:700;font-size:.88rem;transition:var(--tr);border:1.5px solid transparent}
+.premium-card:hover .premium-card-cta{background:var(--grad);color:#fff;border-color:transparent;box-shadow:0 8px 24px rgba(33,150,243,.25)}
+
+/* ============================================================
+   DIFFERENTIALS (dark section)
+   ============================================================ */
+.differentials{padding:80px 0;background:var(--grad-dark);position:relative;overflow:hidden}
+.differentials::before{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.diff-header{text-align:center;margin-bottom:48px;position:relative;z-index:2}
+.diff-header .section-tag{background:rgba(255,255,255,.1);color:var(--accent)}
+.diff-header h2{color:#fff}
+.diff-header p{color:rgba(255,255,255,.6)}
+.diff-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;z-index:2}
+.diff-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);padding:32px 24px;text-align:center;transition:var(--tr);backdrop-filter:blur(10px)}
+.diff-card:hover{background:rgba(255,255,255,.1);transform:translateY(-6px);border-color:rgba(0,188,212,.3)}
+.diff-icon{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,rgba(0,188,212,.2),rgba(33,150,243,.15));display:flex;align-items:center;justify-content:center;margin:0 auto 18px;transition:var(--tr)}
+.diff-icon i{font-size:1.3rem;color:var(--accent)}
+.diff-card:hover .diff-icon{background:var(--grad-accent);box-shadow:0 8px 24px rgba(0,188,212,.3)}
+.diff-card:hover .diff-icon i{color:#fff}
+.diff-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.diff-card p{font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.5}
+
+/* ============================================================
+   BRANDS
+   ============================================================ */
+.brands{padding:80px 0;background:var(--bg)}
+.brands-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:20px}
+.brand-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:28px 16px;text-align:center;transition:var(--tr);cursor:default}
+.brand-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:var(--pri)}
+.brand-icon{width:56px;height:56px;border-radius:50%;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:var(--tr)}
+.brand-icon i{font-size:1.2rem;color:var(--pri)}
+.brand-card:hover .brand-icon{background:var(--grad);box-shadow:0 6px 18px rgba(33,150,243,.2)}
+.brand-card:hover .brand-icon i{color:#fff}
+.brand-card h4{font-size:.88rem;font-weight:700;color:var(--dark)}
+
+/* ============================================================
+   ABOUT SECTION
+   ============================================================ */
+.about{padding:80px 0;background:var(--bg-alt)}
+.about-wrapper{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-bottom:48px}
+.about-content h2{font-family:var(--font-display);font-size:clamp(1.6rem,3.5vw,2.2rem);color:var(--dark);font-weight:800;margin-bottom:16px;line-height:1.15}
+.about-content h2 span{color:var(--pri)}
+.about-content p{font-size:.95rem;color:var(--text-light);line-height:1.7;margin-bottom:16px}
+.about-highlights{display:flex;gap:24px;margin-top:24px}
+.about-highlight{display:flex;align-items:center;gap:10px}
+.about-highlight .hl-icon{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,rgba(33,150,243,.1),rgba(0,188,212,.08));display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.about-highlight .hl-icon i{font-size:1rem;color:var(--pri)}
+.about-highlight .hl-text{font-size:.82rem;font-weight:600;color:var(--dark)}
+.about-visual{position:relative}
+.about-visual-box{background:var(--grad);border-radius:var(--radius-lg);padding:48px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;min-height:340px;position:relative;overflow:hidden}
+.about-visual-box::before{content:'';position:absolute;top:-40%;right:-20%;width:300px;height:300px;background:radial-gradient(circle,rgba(255,255,255,.1) 0%,transparent 70%);border-radius:50%}
+.about-visual-box i{font-size:4rem;color:rgba(255,255,255,.25);margin-bottom:20px}
+.about-visual-box .vis-stat{font-size:3.5rem;font-weight:900;color:#fff;line-height:1}
+.about-visual-box .vis-label{font-size:1rem;color:rgba(255,255,255,.8);font-weight:500;margin-top:8px}
+
+.mvv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.mvv-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:32px 28px;transition:var(--tr)}
+.mvv-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.mvv-card-icon{width:50px;height:50px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.2rem;color:#fff}
+.mvv-card:nth-child(1) .mvv-card-icon{background:linear-gradient(135deg,#2196F3,#1565C0)}
+.mvv-card:nth-child(2) .mvv-card-icon{background:linear-gradient(135deg,#00BCD4,#00838F)}
+.mvv-card:nth-child(3) .mvv-card-icon{background:linear-gradient(135deg,#0D47A1,#1A237E)}
+.mvv-card h3{font-size:1.05rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.mvv-card p{font-size:.88rem;color:var(--text-light);line-height:1.6}
+
+/* ============================================================
+   TESTIMONIALS
+   ============================================================ */
+.testimonials{padding:80px 0;background:var(--bg)}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.test-card{background:var(--card);border:1px solid var(--card-border);border-radius:var(--radius);padding:32px;transition:var(--tr);position:relative}
+.test-card::before{content:'\201C';position:absolute;top:16px;right:24px;font-size:4rem;font-family:var(--font-display);color:rgba(33,150,243,.08);line-height:1}
+.test-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--pri)}
+.test-stars{display:flex;gap:3px;margin-bottom:16px}
+.test-stars i{color:#FFB800;font-size:.85rem}
+.test-text{font-size:.92rem;color:var(--text);line-height:1.7;margin-bottom:20px;font-style:italic}
+.test-author{display:flex;align-items:center;gap:14px;padding-top:18px;border-top:1px solid var(--card-border)}
+.test-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1rem;font-weight:700;color:#fff;flex-shrink:0}
+.test-card:nth-child(1) .test-avatar{background:linear-gradient(135deg,#2196F3,#1565C0)}
+.test-card:nth-child(2) .test-avatar{background:linear-gradient(135deg,#00BCD4,#00838F)}
+.test-card:nth-child(3) .test-avatar{background:linear-gradient(135deg,#0D47A1,#1A237E)}
+.test-info .name{font-size:.9rem;font-weight:700;color:var(--dark)}
+.test-info .local{font-size:.78rem;color:var(--text-muted)}
+
+/* ============================================================
+   CTA FINAL
+   ============================================================ */
+.cta-final{padding:80px 0;background:var(--grad-hero);position:relative;overflow:hidden;text-align:center}
+.cta-final::before{content:'';position:absolute;top:-40%;right:-15%;width:500px;height:500px;background:radial-gradient(circle,rgba(0,188,212,.12) 0%,transparent 70%);border-radius:50%}
+.cta-final-content{position:relative;z-index:2;max-width:600px;margin:0 auto}
+.cta-final-icon{width:80px;height:80px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 24px;backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.15)}
+.cta-final-icon i{font-size:2rem;color:#fff}
+.cta-final h2{font-family:var(--font-display);font-size:clamp(1.6rem,4vw,2.5rem);color:#fff;font-weight:800;margin-bottom:12px;line-height:1.15}
+.cta-final p{font-size:1rem;color:rgba(255,255,255,.7);margin-bottom:32px;line-height:1.6}
+.cta-wpp-btn{display:inline-flex;align-items:center;gap:10px;padding:18px 40px;border-radius:50px;background:#25D366;color:#fff;font-size:1.05rem;font-weight:800;transition:var(--tr);box-shadow:0 8px 30px rgba(37,211,102,.3)}
+.cta-wpp-btn:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.45)}
+.cta-wpp-btn i{font-size:1.2rem}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer{background:var(--dark);color:rgba(255,255,255,.7);padding:60px 0 0}
+.footer-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-col h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:16px}
+.footer-about .footer-brand{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.footer-about .footer-brand .logo-icon{width:38px;height:38px;background:var(--grad);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.95rem}
+.footer-about .footer-brand .brand-text{font-size:1.05rem;font-weight:800;color:#fff}
+.footer-about .footer-brand .brand-text span{color:var(--accent)}
+.footer-about p{font-size:.88rem;line-height:1.7;margin-bottom:18px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.6);transition:var(--tr);font-size:.85rem}
+.footer-social a:hover{background:var(--pri);color:#fff;transform:translateY(-2px)}
+.footer-links{list-style:none;display:flex;flex-direction:column;gap:10px}
+.footer-links a{font-size:.88rem;color:rgba(255,255,255,.6);transition:var(--tr);display:flex;align-items:center;gap:8px}
+.footer-links a i{font-size:.5rem;color:var(--pri)}
+.footer-links a:hover{color:#fff;padding-left:4px}
+.footer-contact{list-style:none;display:flex;flex-direction:column;gap:14px}
+.footer-contact li{display:flex;align-items:flex-start;gap:12px;font-size:.88rem}
+.footer-contact li i{color:var(--accent);margin-top:3px;width:16px;text-align:center}
+.footer-bar{border-top:1px solid rgba(255,255,255,.08);padding:20px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.footer-copy{font-size:.8rem;color:rgba(255,255,255,.4)}
+.footer-credits{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:50px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:.72rem;color:rgba(255,255,255,.45);transition:var(--tr);text-decoration:none}
+.footer-credits:hover{border-color:var(--pri);color:var(--pri);background:rgba(33,150,243,.08)}
+.footer-credits i{font-size:.6rem;color:var(--pri)}
+
+/* ============================================================
+   WHATSAPP FLOATING BUTTON
+   ============================================================ */
+.wpp-float{position:fixed;bottom:24px;right:24px;z-index:999;width:60px;height:60px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;box-shadow:0 6px 24px rgba(37,211,102,.4);transition:var(--tr);cursor:pointer;text-decoration:none}
+.wpp-float:hover{transform:scale(1.1);box-shadow:0 8px 32px rgba(37,211,102,.5)}
+.wpp-float::before{content:'';position:absolute;inset:-6px;border-radius:50%;border:2px solid rgba(37,211,102,.4);animation:wpp-pulse 2s ease-out infinite}
+@keyframes wpp-pulse{0%{transform:scale(1);opacity:.6}100%{transform:scale(1.5);opacity:0}}
+.wpp-tooltip{position:absolute;right:72px;top:50%;transform:translateY(-50%);background:#fff;color:var(--dark);padding:10px 16px;border-radius:var(--radius-sm);font-size:.82rem;font-weight:600;white-space:nowrap;box-shadow:var(--shadow-md);opacity:0;pointer-events:none;transition:var(--tr)}
+.wpp-tooltip::after{content:'';position:absolute;right:-6px;top:50%;transform:translateY(-50%);border:6px solid transparent;border-left-color:#fff}
+.wpp-float:hover .wpp-tooltip{opacity:1}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media(max-width:1024px){
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .premium-grid{grid-template-columns:repeat(2,1fr)}
+  .premium-card:last-child{grid-column:span 2;max-width:50%;margin:0 auto}
+  .diff-grid{grid-template-columns:repeat(2,1fr)}
+  .brands-grid{grid-template-columns:repeat(3,1fr)}
+  .about-wrapper{grid-template-columns:1fr}
+  .about-visual{order:-1}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid .footer-about{grid-column:span 2}
+}
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .menu-toggle{display:block}
+  .hero{padding:120px 0 60px}
+  .hero h1{font-size:clamp(1.8rem,6vw,2.4rem)}
+  .hero-stats{gap:24px}
+  .hero-stat .stat-number{font-size:1.8rem}
+  .hero-cta-group{flex-direction:column;align-items:center}
+  .hero-cta-primary,.hero-cta-secondary{width:100%;max-width:300px;justify-content:center}
+  .services-grid{grid-template-columns:1fr}
+  .premium-grid{grid-template-columns:1fr}
+  .premium-card:last-child{grid-column:span 1;max-width:100%}
+  .diff-grid{grid-template-columns:1fr}
+  .brands-grid{grid-template-columns:repeat(2,1fr)}
+  .test-grid{grid-template-columns:1fr}
+  .mvv-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr}
+  .footer-grid .footer-about{grid-column:span 1}
+  .footer-bar{flex-direction:column;text-align:center}
+  .about-highlights{flex-direction:column;gap:12px}
+  .wpp-float{width:54px;height:54px;font-size:1.4rem;bottom:18px;right:18px}
+  .wpp-tooltip{display:none}
+}
+@media(max-width:480px){
+  .container{padding:0 16px}
+  .hero{padding:110px 0 48px}
+  .hero-stats{flex-direction:column;gap:16px}
+  .brands-grid{grid-template-columns:repeat(2,1fr)}
+  section{padding:60px 0}
+  .services,.premium,.differentials,.brands,.about,.testimonials{padding:60px 0}
+  .cta-final{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== NAVBAR ===================== -->
+<nav class="navbar" id="navbar">
+  <div class="container nav-inner" id="navInner"></div>
+</nav>
+
+<!-- ===================== MOBILE MENU ===================== -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu"></div>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero" id="inicio">
+  <div class="hero-shapes">
+    <div class="h-shape h-shape-1"></div>
+    <div class="h-shape h-shape-2"></div>
+    <div class="h-shape h-shape-3"></div>
+  </div>
+  <div class="container hero-content" id="heroContent"></div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section class="services" id="servicos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-snowflake"></i> Nossos Serviços</div>
+      <h2>Soluções que <span>transformam</span> seu ambiente</h2>
+      <p>Oferecemos uma gama completa de serviços de climatização para residências, comércios e indústrias.</p>
+    </div>
+    <div class="services-grid" id="servicesGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== PREMIUM SOLUTIONS ===================== -->
+<section class="premium" id="premium">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-gem"></i> Soluções Premium</div>
+      <h2>Projetos <span>sob medida</span> para você</h2>
+      <p>Soluções diferenciadas para quem busca o máximo em conforto, eficiência e tecnologia.</p>
+    </div>
+    <div class="premium-grid" id="premiumGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== DIFFERENTIALS ===================== -->
+<section class="differentials" id="diferenciais">
+  <div class="container">
+    <div class="diff-header reveal">
+      <div class="section-tag"><i class="fas fa-star"></i> Diferenciais</div>
+      <h2>Por que nos <span>escolher</span>?</h2>
+      <p>Compromisso com excelência, segurança e a satisfação do cliente em cada projeto.</p>
+    </div>
+    <div class="diff-grid" id="diffGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== BRANDS ===================== -->
+<section class="brands" id="marcas">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-certificate"></i> Marcas</div>
+      <h2>Trabalhamos com as <span>melhores marcas</span></h2>
+      <p>Parceiros oficiais dos principais fabricantes de climatização do mercado.</p>
+    </div>
+    <div class="brands-grid" id="brandsGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-wrapper">
+      <div class="about-content reveal-left" id="aboutContent"></div>
+      <div class="about-visual reveal-right" id="aboutVisual"></div>
+    </div>
+    <div class="mvv-grid" id="mvvGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section class="testimonials" id="depoimentos">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="section-tag"><i class="fas fa-quote-left"></i> Depoimentos</div>
+      <h2>O que nossos <span>clientes</span> dizem</h2>
+      <p>A satisfação dos nossos clientes é o maior indicador da qualidade do nosso trabalho.</p>
+    </div>
+    <div class="test-grid" id="testGrid"></div>
+  </div>
+</section>
+
+<!-- ===================== CTA FINAL ===================== -->
+<section class="cta-final" id="ctaFinal">
+  <div class="container cta-final-content" id="ctaContent"></div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid" id="footerGrid"></div>
+    <div class="footer-bar" id="footerBar"></div>
+  </div>
+</footer>
+
+<!-- ===================== WHATSAPP FLOAT ===================== -->
+<a class="wpp-float" id="wppFloat" target="_blank" rel="noopener">
+  <i class="fab fa-whatsapp"></i>
+  <div class="wpp-tooltip">Fale conosco!</div>
+</a>
+
+<script>
+/* ============================================================
+   CONFIG — ALTERE AQUI PARA PERSONALIZAR
+   ============================================================ */
+const CONFIG = {
+  nome: "Luamar",
+  nomeDestaque: "Refrigeração",
+  slogan: "Climatização e Refrigeração desde 1997",
+  descricao: "Refrigeração, climatização e linha branca. Desde 1997 atendendo toda Costa Verde com qualidade.",
+  instagram: "luamar.refrigeracao",
+  instagramUrl: "https://instagram.com/luamar.refrigeracao",
+  whatsapp: "5521999999999",
+  whatsappLink: "https://wa.me/5521999999999",
+  whatsappMsg: "Olá! Gostaria de solicitar um orçamento.",
+  endereco: "Conceição de Jacareí, Mangaratiba - RJ",
+  email: "contato@luamar.com",
+  telefone: "(21) 99999-9999",
+  anos: "27+",
+  clientes: "3.000+",
+  projetos: "1.000+",
+  servicos: [{icone:"fa-snowflake",nome:"Instalação Split",desc:"Instalação profissional de ar condicionado split com garantia."},{icone:"fa-screwdriver-wrench",nome:"Manutenção Preventiva",desc:"Manutenção programada para máxima eficiência."},{icone:"fa-spray-can-sparkles",nome:"Limpeza e Higienização",desc:"Limpeza completa para ar mais puro e saudável."},{icone:"fa-gear",nome:"Conserto e Reparo",desc:"Diagnóstico e reparo rápido de todas as marcas."},{icone:"fa-temperature-low",nome:"Refrigeração",desc:"Câmaras frias, freezers e geladeiras comerciais."},{icone:"fa-box-open",nome:"Linha Branca",desc:"Venda e assistência de geladeiras, máquinas de lavar e mais."}],
+  premiumSolucoes: [
+    {icone:"fa-building",titulo:"Climatização Comercial",desc:"Projetos completos para escritórios, lojas e espaços comerciais.",features:["Cálculo térmico profissional","Projeto técnico","Instalação multi-split","Manutenção incluída"]},
+    {icone:"fa-industry",titulo:"Climatização Industrial",desc:"Soluções para galpões, fábricas e grandes ambientes.",features:["Sistemas de alta capacidade","Dutos inteligentes","Monitoramento","Eficiência energética"]},
+    {icone:"fa-house-chimney",titulo:"Conforto Residencial",desc:"Transforme sua casa com tecnologia e conforto térmico.",features:["Split Inverter","Instalação limpa","Controle por app","Garantia estendida"]}
+  ],
+  diferenciais: [
+    {icone:"fa-user-tie",titulo:"Equipe Certificada",desc:"Técnicos treinados e certificados."},
+    {icone:"fa-file-signature",titulo:"Projetos Técnicos",desc:"Responsabilidade técnica em todos os projetos."},
+    {icone:"fa-shield-halved",titulo:"Garantia Total",desc:"Garantia em todos os serviços."},
+    {icone:"fa-clock",titulo:"Atendimento Ágil",desc:"Resposta rápida para sua necessidade."}
+  ],
+  marcas: ["LG","Samsung","Midea","Carrier","Elgin","Consul"],
+  sobre: {
+    texto1: "Desde 1997 levando conforto e soluções em climatização e refrigeração para toda Costa Verde. São mais de 27 anos de experiência atendendo residências e comércios.",
+    texto2: "Trabalhamos com refrigeração, climatização e linha branca, oferecendo venda, instalação e manutenção com garantia e profissionalismo.",
+    missao: "Oferecer soluções completas em refrigeração e climatização com a experiência de quem está no mercado há mais de 27 anos.",
+    visao: "Ser a principal referência em climatização e refrigeração da Costa Verde, atendendo com excelência e confiança.",
+    valores: "Tradição, qualidade, compromisso, atendimento humanizado e respeito ao cliente."
+  },
+  depoimentos: [{nome:"Marina Santos",local:"Mangaratiba",texto:"Desde 1997 no mercado, confiança total! Instalaram 2 splits perfeitos. Equipe nota 10.",estrelas:5},{nome:"Paulo Ribeiro",local:"Costa Verde",texto:"Comprei minha geladeira e ar condicionado na Luamar. Entrega rápida e instalação impecável.",estrelas:5},{nome:"Cristina Alves",local:"Conceição de Jacareí",texto:"Manutenção excelente, preço justo e atendimento atencioso. Recomendo a todos da região!",estrelas:5}],
+  criadoPor: "Company Bastos",
+  criadoPorUrl: "https://instagram.com/companybastos"
+};
+
+/* ============================================================
+   RENDER ENGINE — CONSTROI TODAS AS SECOES A PARTIR DO CONFIG
+   ============================================================ */
+
+// ---- NAVBAR ----
+function renderNavbar() {
+  const nav = document.getElementById('navInner');
+  nav.innerHTML = `
+    <a href="#inicio" class="nav-brand">
+      <div class="logo-icon"><i class="fas fa-snowflake"></i></div>
+      <div class="brand-text">${CONFIG.nome}<span>${CONFIG.nomeDestaque}</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#inicio">Início</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#contato">Contato</a></li>
+    </ul>
+    <a href="${CONFIG.whatsappLink}?text=${encodeURIComponent(CONFIG.whatsappMsg)}" class="nav-cta" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i> Orçamento
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  `;
+}
+
+// ---- MOBILE MENU ----
+function renderMobileMenu() {
+  const mm = document.getElementById('mobileMenu');
+  mm.innerHTML = `
+    <div class="mobile-menu-header">
+      <div class="brand-text">${CONFIG.nome}<span>${CONFIG.nomeDestaque}</span></div>
+      <button class="close-menu" id="closeMenu" aria-label="Fechar"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#inicio" class="mobile-link"><i class="fas fa-home"></i> Início</a></li>
+      <li><a href="#servicos" class="mobile-link"><i class="fas fa-snowflake"></i> Serviços</a></li>
+      <li><a href="#sobre" class="mobile-link"><i class="fas fa-building"></i> Sobre</a></li>
+      <li><a href="#depoimentos" class="mobile-link"><i class="fas fa-star"></i> Depoimentos</a></li>
+      <li><a href="#contato" class="mobile-link"><i class="fas fa-envelope"></i> Contato</a></li>
+    </ul>
+    <a href="${CONFIG.whatsappLink}?text=${encodeURIComponent(CONFIG.whatsappMsg)}" class="mobile-menu-cta" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+    </a>
+  `;
+}
+
+// ---- HERO ----
+function renderHero() {
+  const hero = document.getElementById('heroContent');
+  hero.innerHTML = `
+    <div class="hero-badge"><i class="fas fa-certificate"></i> Referência em climatização na região</div>
+    <h1>${CONFIG.slogan.replace('Climatização','<span>Climatização</span>')}</h1>
+    <p class="hero-sub">${CONFIG.descricao}. ${CONFIG.nome} ${CONFIG.nomeDestaque} — confiança e qualidade há mais de ${CONFIG.anos.replace('+','')} anos em ${CONFIG.endereco}.</p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="stat-number" data-count="${CONFIG.anos}">${CONFIG.anos}</div>
+        <div class="stat-label">Anos de Experiência</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number" data-count="${CONFIG.clientes}">${CONFIG.clientes}</div>
+        <div class="stat-label">Clientes Atendidos</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-number" data-count="${CONFIG.projetos}">${CONFIG.projetos}</div>
+        <div class="stat-label">Projetos Realizados</div>
+      </div>
+    </div>
+    <div class="hero-cta-group">
+      <a href="${CONFIG.whatsappLink}?text=${encodeURIComponent(CONFIG.whatsappMsg)}" class="hero-cta-primary" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Solicitar Orçamento
+      </a>
+      <a href="#servicos" class="hero-cta-secondary">
+        <i class="fas fa-snowflake"></i> Nossos Serviços
+      </a>
+    </div>
+  `;
+}
+
+// ---- SERVICES ----
+function renderServices() {
+  const grid = document.getElementById('servicesGrid');
+  grid.innerHTML = CONFIG.servicos.map((s, i) => `
+    <div class="service-card reveal" style="transition-delay:${i * 0.08}s">
+      <div class="service-icon"><i class="fas ${s.icone}"></i></div>
+      <h3>${s.nome}</h3>
+      <p>${s.desc}</p>
+      <div class="service-link">Saiba mais <i class="fas fa-arrow-right"></i></div>
+    </div>
+  `).join('');
+}
+
+// ---- PREMIUM SOLUTIONS ----
+function renderPremium() {
+  const grid = document.getElementById('premiumGrid');
+  grid.innerHTML = CONFIG.premiumSolucoes.map((p, i) => `
+    <div class="premium-card reveal" style="transition-delay:${i * 0.1}s">
+      <div class="premium-card-header">
+        <div class="premium-card-icon"><i class="fas ${p.icone}"></i></div>
+        <h3>${p.titulo}</h3>
+        <p>${p.desc}</p>
+      </div>
+      <div class="premium-card-body">
+        <ul class="premium-features">
+          ${p.features.map(f => `<li><i class="fas fa-check-circle"></i> ${f}</li>`).join('')}
+        </ul>
+      </div>
+      <a href="${CONFIG.whatsappLink}?text=${encodeURIComponent('Olá! Tenho interesse em ' + p.titulo + '.')}" class="premium-card-cta" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Solicitar proposta
+      </a>
+    </div>
+  `).join('');
+}
+
+// ---- DIFFERENTIALS ----
+function renderDifferentials() {
+  const grid = document.getElementById('diffGrid');
+  grid.innerHTML = CONFIG.diferenciais.map((d, i) => `
+    <div class="diff-card reveal" style="transition-delay:${i * 0.1}s">
+      <div class="diff-icon"><i class="fas ${d.icone}"></i></div>
+      <h3>${d.titulo}</h3>
+      <p>${d.desc}</p>
+    </div>
+  `).join('');
+}
+
+// ---- BRANDS ----
+function renderBrands() {
+  const grid = document.getElementById('brandsGrid');
+  const brandIcons = {
+    'LG': 'fa-snowflake',
+    'Samsung': 'fa-microchip',
+    'Midea': 'fa-wind',
+    'Carrier': 'fa-fan',
+    'Elgin': 'fa-temperature-low',
+    'Consul': 'fa-gauge-high'
+  };
+  grid.innerHTML = CONFIG.marcas.map((m, i) => `
+    <div class="brand-card reveal" style="transition-delay:${i * 0.06}s">
+      <div class="brand-icon"><i class="fas ${brandIcons[m] || 'fa-snowflake'}"></i></div>
+      <h4>${m}</h4>
+    </div>
+  `).join('');
+}
+
+// ---- ABOUT ----
+function renderAbout() {
+  const content = document.getElementById('aboutContent');
+  content.innerHTML = `
+    <h2>Conheça a <span>${CONFIG.nome} ${CONFIG.nomeDestaque}</span></h2>
+    <p>${CONFIG.sobre.texto1}</p>
+    <p>${CONFIG.sobre.texto2}</p>
+    <div class="about-highlights">
+      <div class="about-highlight">
+        <div class="hl-icon"><i class="fas fa-award"></i></div>
+        <div class="hl-text">${CONFIG.anos} anos<br>de experiência</div>
+      </div>
+      <div class="about-highlight">
+        <div class="hl-icon"><i class="fas fa-users"></i></div>
+        <div class="hl-text">${CONFIG.clientes}<br>clientes satisfeitos</div>
+      </div>
+      <div class="about-highlight">
+        <div class="hl-icon"><i class="fas fa-clipboard-check"></i></div>
+        <div class="hl-text">${CONFIG.projetos}<br>projetos concluídos</div>
+      </div>
+    </div>
+  `;
+
+  const visual = document.getElementById('aboutVisual');
+  visual.innerHTML = `
+    <div class="about-visual-box">
+      <i class="fas fa-snowflake"></i>
+      <div class="vis-stat">${CONFIG.anos}</div>
+      <div class="vis-label">Anos cuidando do seu conforto</div>
+    </div>
+  `;
+
+  const mvv = document.getElementById('mvvGrid');
+  mvv.innerHTML = `
+    <div class="mvv-card reveal">
+      <div class="mvv-card-icon"><i class="fas fa-bullseye"></i></div>
+      <h3>Missão</h3>
+      <p>${CONFIG.sobre.missao}</p>
+    </div>
+    <div class="mvv-card reveal" style="transition-delay:.1s">
+      <div class="mvv-card-icon"><i class="fas fa-eye"></i></div>
+      <h3>Visão</h3>
+      <p>${CONFIG.sobre.visao}</p>
+    </div>
+    <div class="mvv-card reveal" style="transition-delay:.2s">
+      <div class="mvv-card-icon"><i class="fas fa-heart"></i></div>
+      <h3>Valores</h3>
+      <p>${CONFIG.sobre.valores}</p>
+    </div>
+  `;
+}
+
+// ---- TESTIMONIALS ----
+function renderTestimonials() {
+  const grid = document.getElementById('testGrid');
+  grid.innerHTML = CONFIG.depoimentos.map((d, i) => {
+    const initials = d.nome.split(' ').map(n => n[0]).join('');
+    const stars = Array(d.estrelas).fill('<i class="fas fa-star"></i>').join('');
+    return `
+      <div class="test-card reveal" style="transition-delay:${i * 0.1}s">
+        <div class="test-stars">${stars}</div>
+        <p class="test-text">"${d.texto}"</p>
+        <div class="test-author">
+          <div class="test-avatar">${initials}</div>
+          <div class="test-info">
+            <div class="name">${d.nome}</div>
+            <div class="local"><i class="fas fa-map-marker-alt"></i> ${d.local}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// ---- CTA FINAL ----
+function renderCtaFinal() {
+  const cta = document.getElementById('ctaContent');
+  cta.innerHTML = `
+    <div class="cta-final-icon"><i class="fas fa-snowflake"></i></div>
+    <h2>Solicite seu orçamento <span>sem compromisso</span></h2>
+    <p>Fale agora com nossa equipe e descubra a melhor solução de climatização para o seu ambiente. Atendimento rápido e personalizado.</p>
+    <a href="${CONFIG.whatsappLink}?text=${encodeURIComponent(CONFIG.whatsappMsg)}" class="cta-wpp-btn" target="_blank" rel="noopener">
+      <i class="fab fa-whatsapp"></i> Falar no WhatsApp
+    </a>
+  `;
+}
+
+// ---- FOOTER ----
+function renderFooter() {
+  const grid = document.getElementById('footerGrid');
+  grid.innerHTML = `
+    <div class="footer-about">
+      <div class="footer-brand">
+        <div class="logo-icon"><i class="fas fa-snowflake"></i></div>
+        <div class="brand-text">${CONFIG.nome}<span>${CONFIG.nomeDestaque}</span></div>
+      </div>
+      <p>${CONFIG.descricao}. Há mais de ${CONFIG.anos.replace('+','')} anos levando conforto térmico para ${CONFIG.endereco} e região.</p>
+      <div class="footer-social">
+        <a href="${CONFIG.instagramUrl}" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="${CONFIG.whatsappLink}" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:${CONFIG.email}" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+    <div class="footer-col" id="contato">
+      <h3>Links Rápidos</h3>
+      <ul class="footer-links">
+        <li><a href="#inicio"><i class="fas fa-circle"></i> Início</a></li>
+        <li><a href="#servicos"><i class="fas fa-circle"></i> Serviços</a></li>
+        <li><a href="#sobre"><i class="fas fa-circle"></i> Sobre</a></li>
+        <li><a href="#diferenciais"><i class="fas fa-circle"></i> Diferenciais</a></li>
+        <li><a href="#depoimentos"><i class="fas fa-circle"></i> Depoimentos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h3>Contato</h3>
+      <ul class="footer-contact">
+        <li><i class="fas fa-map-marker-alt"></i> <span>${CONFIG.endereco}</span></li>
+        <li><i class="fas fa-phone"></i> <span>${CONFIG.telefone}</span></li>
+        <li><i class="fas fa-envelope"></i> <span>${CONFIG.email}</span></li>
+        <li><i class="fab fa-instagram"></i> <span>@${CONFIG.instagram}</span></li>
+      </ul>
+    </div>
+  `;
+
+  const bar = document.getElementById('footerBar');
+  const year = new Date().getFullYear();
+  bar.innerHTML = `
+    <span class="footer-copy">&copy; ${year} ${CONFIG.nome} ${CONFIG.nomeDestaque}. Todos os direitos reservados.</span>
+    <a href="${CONFIG.criadoPorUrl}" class="footer-credits" target="_blank" rel="noopener">
+      <i class="fas fa-code"></i> Desenvolvido por ${CONFIG.criadoPor}
+    </a>
+  `;
+}
+
+// ---- WHATSAPP FLOAT ----
+function renderWppFloat() {
+  const wpp = document.getElementById('wppFloat');
+  wpp.href = `${CONFIG.whatsappLink}?text=${encodeURIComponent(CONFIG.whatsappMsg)}`;
+}
+
+/* ============================================================
+   INITIALIZE ALL RENDERS
+   ============================================================ */
+function init() {
+  renderNavbar();
+  renderMobileMenu();
+  renderHero();
+  renderServices();
+  renderPremium();
+  renderDifferentials();
+  renderBrands();
+  renderAbout();
+  renderTestimonials();
+  renderCtaFinal();
+  renderFooter();
+  renderWppFloat();
+  initInteractions();
+}
+
+/* ============================================================
+   INTERACTIONS & ANIMATIONS
+   ============================================================ */
+function initInteractions() {
+  // --- Navbar scroll effect ---
+  const navbar = document.getElementById('navbar');
+  let lastScroll = 0;
+  window.addEventListener('scroll', () => {
+    const curr = window.pageYOffset;
+    if (curr > 60) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+    lastScroll = curr;
+  }, { passive: true });
+
+  // --- Mobile menu ---
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileOverlay = document.getElementById('mobileOverlay');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMenu = document.getElementById('closeMenu');
+
+  function openMenu() {
+    mobileOverlay.classList.add('open');
+    mobileMenu.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenuFn() {
+    mobileOverlay.classList.remove('open');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  if (menuToggle) menuToggle.addEventListener('click', openMenu);
+  if (closeMenu) closeMenu.addEventListener('click', closeMenuFn);
+  if (mobileOverlay) mobileOverlay.addEventListener('click', closeMenuFn);
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', closeMenuFn);
+  });
+
+  // --- Reveal animations with IntersectionObserver ---
+  const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+
+  if ('IntersectionObserver' in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealElements.forEach(el => el.classList.add('visible'));
+  }
+
+  // --- Active nav link on scroll ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      if (window.pageYOffset >= sectionTop) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.style.color = '';
+      link.style.setProperty('--after-width', '0');
+      if (link.getAttribute('href') === '#' + current) {
+        link.style.color = 'var(--pri)';
+      }
+    });
+  }, { passive: true });
+
+  // --- Smooth parallax on hero shapes ---
+  window.addEventListener('scroll', () => {
+    const scrolled = window.pageYOffset;
+    const shapes = document.querySelectorAll('.h-shape');
+    shapes.forEach((shape, i) => {
+      const speed = 0.03 * (i + 1);
+      shape.style.transform = `translateY(${scrolled * speed}px)`;
+    });
+  }, { passive: true });
+
+  // --- Service cards hover ripple effect ---
+  document.querySelectorAll('.service-card').forEach(card => {
+    card.addEventListener('mouseenter', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      this.style.setProperty('--ripple-x', x + 'px');
+      this.style.setProperty('--ripple-y', y + 'px');
+    });
+  });
+
+  // --- Counter animation for hero stats ---
+  const statElements = document.querySelectorAll('.stat-number');
+  let statsAnimated = false;
+
+  function animateStats() {
+    if (statsAnimated) return;
+    const heroSection = document.querySelector('.hero');
+    const rect = heroSection.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      statsAnimated = true;
+      statElements.forEach(el => {
+        const text = el.textContent;
+        const numMatch = text.match(/[\d.]+/);
+        if (!numMatch) return;
+        const target = parseFloat(numMatch[0].replace('.', ''));
+        const suffix = text.replace(numMatch[0], '');
+        const hasDecimal = numMatch[0].includes('.');
+        let current = 0;
+        const increment = target / 60;
+        const timer = setInterval(() => {
+          current += increment;
+          if (current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          let displayNum = Math.floor(current);
+          if (hasDecimal) {
+            displayNum = new Intl.NumberFormat('pt-BR').format(displayNum);
+          }
+          el.textContent = displayNum + suffix;
+        }, 25);
+      });
+    }
+  }
+
+  window.addEventListener('scroll', animateStats, { passive: true });
+  animateStats(); // run once on load in case already visible
+
+  // --- Tilt effect on premium cards ---
+  document.querySelectorAll('.premium-card').forEach(card => {
+    card.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width;
+      const y = (e.clientY - rect.top) / rect.height;
+      const rotateX = (y - 0.5) * -6;
+      const rotateY = (x - 0.5) * 6;
+      this.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = '';
+    });
+  });
+
+  // --- Page title with typing effect ---
+  document.title = `${CONFIG.nome} ${CONFIG.nomeDestaque} | ${CONFIG.slogan}`;
+}
+
+/* ============================================================
+   BOOT
+   ============================================================ */
+document.addEventListener('DOMContentLoaded', init);
+</script>
+</body>
+</html>
