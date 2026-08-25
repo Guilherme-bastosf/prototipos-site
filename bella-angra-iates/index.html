@@ -4,325 +4,363 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Bella Angra Iates | Iates de Luxo à Venda em Angra dos Reis</title>
-<meta name="description" content="Bella Angra Iates — Compra e venda de iates de luxo em Angra dos Reis. Embarcações premium, consultoria especializada e pós-venda completo. Encontre o iate dos seus sonhos.">
+<meta name="description" content="Bella Angra Iates — Compra e venda de iates de luxo em Angra dos Reis. Embarcações premium dos melhores estaleiros do mundo. Consultoria especializada e pós-venda completo.">
 <meta property="og:title" content="Bella Angra Iates | Iates de Luxo à Venda">
-<meta property="og:description" content="Compra e venda de iates de luxo em Angra dos Reis. Embarcações premium com consultoria especializada.">
+<meta property="og:description" content="Embarcações selecionadas dos melhores estaleiros do mundo. Assessoria completa na compra do seu iate em Angra dos Reis.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="img/azimut-74/01.jpg">
+<meta property="og:image" content="img/azimut-74/05.jpg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <style>
 /* ============================================
-   BELLA ANGRA IATES — LUXURY YACHT SALES
+   BELLA ANGRA IATES — REBUILD v2.0
+   LUXURY YACHT SALES — ULTRA HIGH-NET-WORTH
    ============================================ */
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
+  --navy-deep: #060E1A;
   --navy: #0C1829;
   --navy-light: #162844;
-  --navy-deep: #060E1A;
   --navy-mid: #0F1F35;
   --gold: #C5A55A;
   --gold-light: #D4BA7A;
   --gold-pale: #E8D9B0;
   --gold-dark: #A68B3C;
   --white: #FAFAFA;
-  --cream: #F5F0E8;
   --text: #C8C4BC;
   --text-light: rgba(255,255,255,.55);
   --gray: #7A7872;
-  --muted: #3A3832;
   --border: rgba(197,165,90,.12);
   --border-gold: rgba(197,165,90,.25);
   --font: 'Montserrat', sans-serif;
   --font-d: 'Cormorant Garamond', Georgia, serif;
   --ease: cubic-bezier(.25,.1,.25,1);
   --transition: all .4s var(--ease);
-  --max-w: 1300px;
+  --max-w: 1340px;
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   font-family: var(--font);
-  color: var(--text);
   background: var(--navy-deep);
+  color: var(--text);
+  line-height: 1.7;
+  font-size: 15px;
+  font-weight: 300;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: 300;
 }
 
+img { display: block; max-width: 100%; }
 a { text-decoration: none; color: inherit; }
-img { max-width: 100%; display: block; }
-ul, ol { list-style: none; }
+ul { list-style: none; }
 
-.container {
-  max-width: var(--max-w);
-  margin: 0 auto;
-  padding: 0 40px;
-}
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(20px, 4vw, 60px); }
 
-/* ============ LOADER ============ */
+/* ---- LOADER ---- */
 .loader {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
   background: var(--navy-deep);
-  z-index: 9999;
-  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 20px;
-  transition: opacity .8s ease, visibility .8s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .6s var(--ease), visibility .6s;
 }
-.loader.hide { opacity: 0; visibility: hidden; pointer-events: none; }
-
-.loader-brand {
-  font-family: var(--font-d);
-  font-size: 2.2rem;
-  color: var(--gold);
-  font-weight: 300;
-  letter-spacing: 8px;
-  text-transform: uppercase;
+.loader.hide {
   opacity: 0;
-  animation: loaderFadeIn 1s ease forwards;
+  visibility: hidden;
+  pointer-events: none;
 }
-.loader-brand span {
-  display: block;
-  font-size: .7rem;
-  font-family: var(--font);
-  letter-spacing: 12px;
-  color: var(--text-light);
-  margin-top: 6px;
-  font-weight: 300;
+.loader-logo {
+  max-height: 90px;
+  width: auto;
+  animation: loaderGlow 2s ease-in-out infinite;
 }
-
 .loader-line {
-  width: 50px; height: 1px;
+  width: 60px;
+  height: 1px;
   background: var(--gold);
-  animation: loaderPulse 1.8s ease-in-out infinite;
+  margin-top: 24px;
+  animation: loaderPulse 1.2s ease-in-out infinite;
+}
+@keyframes loaderGlow {
+  0%, 100% { filter: drop-shadow(0 0 8px rgba(197,165,90,.2)); }
+  50% { filter: drop-shadow(0 0 25px rgba(197,165,90,.5)); }
+}
+@keyframes loaderPulse {
+  0%, 100% { opacity: .3; transform: scaleX(.5); }
+  50% { opacity: 1; transform: scaleX(1); }
 }
 
-@keyframes loaderFadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes loaderPulse { 0%, 100% { width: 50px; opacity: .25; } 50% { width: 120px; opacity: .7; } }
-
-/* ============ NAVIGATION ============ */
+/* ---- NAV ---- */
 .nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 500; padding: 22px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  padding: 20px 0;
   transition: var(--transition);
 }
 .nav.scrolled {
-  background: rgba(6,14,26,.94);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  background: rgba(6,14,26,.92);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
   padding: 14px 0;
   border-bottom: 1px solid var(--border);
 }
-
 .nav-inner {
-  max-width: var(--max-w); margin: 0 auto; padding: 0 40px;
-  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 60px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-
-.nav-logo {
+.nav-brand {
   font-family: var(--font-d);
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 2.2vw, 1.35rem);
+  font-weight: 500;
   color: var(--gold);
-  letter-spacing: 4px;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  font-weight: 400;
+  white-space: nowrap;
 }
-.nav-logo span {
-  font-weight: 300;
-  color: var(--text);
-  opacity: .45;
-  margin-left: 2px;
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 36px;
 }
-
-.nav-links { display: flex; gap: 32px; align-items: center; }
 .nav-links a {
-  color: rgba(255,255,255,.4);
-  font-size: .62rem;
-  font-weight: 400;
-  letter-spacing: 2.5px;
+  font-size: .75rem;
+  font-weight: 500;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  transition: color .3s ease;
+  color: var(--text);
+  transition: color .3s;
   position: relative;
 }
 .nav-links a::after {
   content: '';
-  position: absolute; bottom: -4px; left: 0;
-  width: 0; height: 1px;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
   background: var(--gold);
-  transition: width .3s ease;
+  transition: width .3s var(--ease);
 }
 .nav-links a:hover { color: var(--gold); }
 .nav-links a:hover::after { width: 100%; }
-
 .nav-cta {
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 10px 26px;
-  font-size: .58rem;
-  font-weight: 500;
-  letter-spacing: 2.5px;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
-  transition: var(--transition);
-  margin-left: 12px;
+  color: var(--gold) !important;
+  border: 1px solid var(--gold);
+  padding: 10px 24px;
+  transition: all .3s var(--ease) !important;
 }
+.nav-cta::after { display: none !important; }
 .nav-cta:hover {
-  background: var(--gold);
-  color: var(--navy-deep);
+  background: var(--gold) !important;
+  color: var(--navy-deep) !important;
 }
 
-.menu-btn {
+/* Hamburger */
+.hamburger {
   display: none;
-  background: none; border: none;
-  color: var(--gold);
-  font-size: 1.15rem;
+  flex-direction: column;
+  gap: 5px;
   cursor: pointer;
-  padding: 8px;
+  z-index: 10001;
+  padding: 4px;
 }
+.hamburger span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--gold);
+  transition: var(--transition);
+}
+.hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+.hamburger.active span:nth-child(2) { opacity: 0; }
+.hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Mobile Menu Overlay */
+/* Mobile menu */
 .mobile-menu {
-  position: fixed; inset: 0;
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
   background: rgba(6,14,26,.97);
-  z-index: 490;
-  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px;
-  opacity: 0; visibility: hidden;
-  transition: opacity .4s ease, visibility .4s ease;
+  backdrop-filter: blur(30px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .4s var(--ease);
 }
 .mobile-menu.open { opacity: 1; visibility: visible; }
 .mobile-menu a {
   font-family: var(--font-d);
   font-size: 1.6rem;
-  color: var(--white);
-  font-weight: 300;
-  letter-spacing: 4px;
+  font-weight: 400;
+  color: var(--text);
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transition: color .3s ease;
+  transition: color .3s;
 }
 .mobile-menu a:hover { color: var(--gold); }
-.mobile-menu-close {
-  position: absolute; top: 22px; right: 40px;
-  background: none; border: none;
-  color: var(--gold); font-size: 1.3rem;
-  cursor: pointer;
+.mobile-menu .mob-cta {
+  margin-top: 16px;
+  font-family: var(--font);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  color: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 14px 36px;
+  transition: all .3s var(--ease);
+}
+.mobile-menu .mob-cta:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
 }
 
-/* ============ HERO ============ */
+/* ---- HERO ---- */
 .hero {
-  min-height: 100vh;
   position: relative;
-  display: flex; align-items: center; justify-content: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
 }
 .hero-bg {
-  position: absolute; inset: 0;
-  background: url('img/azimut-74/01.jpg') center/cover no-repeat;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
 }
-.hero-bg::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(6,14,26,.6) 0%,
-    rgba(6,14,26,.25) 35%,
-    rgba(6,14,26,.35) 65%,
-    rgba(6,14,26,.85) 100%
-  );
+.hero-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.05);
+  transition: transform 8s ease-out;
 }
-
+.hero.loaded .hero-bg img { transform: scale(1); }
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg,
+      rgba(6,14,26,.45) 0%,
+      rgba(6,14,26,.25) 35%,
+      rgba(6,14,26,.35) 65%,
+      rgba(6,14,26,.85) 100%
+    );
+}
 .hero-content {
-  position: relative; z-index: 2;
+  position: relative;
+  z-index: 2;
   text-align: center;
   max-width: 820px;
-  padding: 0 40px;
+  padding: 0 24px;
 }
-
 .hero-eyebrow {
-  font-size: .55rem;
-  color: var(--gold);
-  letter-spacing: 7px;
+  font-family: var(--font);
+  font-size: .7rem;
+  font-weight: 500;
+  letter-spacing: 5px;
   text-transform: uppercase;
-  margin-bottom: 22px;
-  font-weight: 400;
-  display: flex; align-items: center; justify-content: center; gap: 16px;
+  color: var(--gold);
+  margin-bottom: 20px;
   opacity: 0;
+  transform: translateY(20px);
 }
-.hero-eyebrow::before,
-.hero-eyebrow::after {
-  content: ''; width: 40px; height: 1px;
-  background: var(--gold); opacity: .35;
-}
-
-.hero h1 {
+.hero-title {
   font-family: var(--font-d);
-  font-size: clamp(2.6rem, 6vw, 5rem);
-  color: var(--white);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
   font-weight: 300;
-  line-height: 1.08;
-  margin-bottom: 22px;
-  letter-spacing: 2px;
+  line-height: 1.1;
+  color: var(--white);
+  margin-bottom: 24px;
   opacity: 0;
+  transform: translateY(30px);
 }
-.hero h1 em {
+.hero-title em {
   color: var(--gold);
   font-style: italic;
   font-weight: 400;
 }
-
-.hero-sub {
-  color: var(--text-light);
-  font-size: .88rem;
+.hero-subtitle {
+  font-size: clamp(.88rem, 1.5vw, 1.05rem);
   font-weight: 300;
-  line-height: 1.85;
-  margin-bottom: 40px;
-  max-width: 520px;
-  margin-left: auto; margin-right: auto;
-  letter-spacing: .5px;
+  color: rgba(255,255,255,.7);
+  line-height: 1.8;
+  max-width: 600px;
+  margin: 0 auto 40px;
   opacity: 0;
+  transform: translateY(20px);
 }
-
-.hero-btns {
-  display: flex; gap: 16px;
+.hero-buttons {
+  display: flex;
+  align-items: center;
   justify-content: center;
+  gap: 16px;
   flex-wrap: wrap;
   opacity: 0;
+  transform: translateY(20px);
 }
-
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 10px;
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   background: var(--gold);
   color: var(--navy-deep);
-  padding: 14px 34px;
-  font-size: .62rem;
-  font-weight: 600;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-family: var(--font);
-  transition: var(--transition);
-  border: none; cursor: pointer;
+  padding: 15px 36px;
+  border: 1px solid var(--gold);
+  transition: all .35s var(--ease);
+  cursor: pointer;
 }
-.btn-primary:hover {
+.btn-gold:hover {
   background: var(--gold-light);
+  border-color: var(--gold-light);
   transform: translateY(-2px);
   box-shadow: 0 8px 30px rgba(197,165,90,.25);
 }
-
 .btn-outline {
-  display: inline-flex; align-items: center; gap: 10px;
-  border: 1px solid rgba(255,255,255,.2);
-  color: var(--white);
-  padding: 14px 34px;
-  font-size: .62rem;
-  font-weight: 500;
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   background: transparent;
-  transition: var(--transition);
+  color: var(--white);
+  padding: 15px 36px;
+  border: 1px solid rgba(255,255,255,.3);
+  transition: all .35s var(--ease);
   cursor: pointer;
 }
 .btn-outline:hover {
@@ -331,751 +369,537 @@ ul, ol { list-style: none; }
   transform: translateY(-2px);
 }
 
+/* Scroll indicator */
 .hero-scroll {
-  position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 2;
-  color: var(--gold); opacity: .4;
-  font-size: .55rem; letter-spacing: 4px; text-transform: uppercase;
-  display: flex; flex-direction: column; align-items: center; gap: 10px;
-  animation: scrollBounce 2.5s ease-in-out infinite;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  opacity: 0;
 }
-@keyframes scrollBounce { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(8px); } }
-
-/* ============ SECTION SHARED ============ */
-section { padding: 120px 0; }
-
-.section-eyebrow {
-  font-size: .55rem;
-  color: var(--gold);
-  letter-spacing: 6px;
+.hero-scroll span {
+  font-size: .6rem;
+  letter-spacing: 3px;
   text-transform: uppercase;
-  font-weight: 400;
-  margin-bottom: 16px;
-  display: flex; align-items: center; gap: 14px;
+  color: rgba(255,255,255,.4);
 }
-.section-eyebrow::before {
-  content: ''; width: 30px; height: 1px;
-  background: var(--gold); opacity: .4;
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+  animation: scrollLine 2s ease-in-out infinite;
+}
+@keyframes scrollLine {
+  0% { transform: scaleY(0); transform-origin: top; }
+  50% { transform: scaleY(1); transform-origin: top; }
+  51% { transform: scaleY(1); transform-origin: bottom; }
+  100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
+/* ---- SECTION SHARED ---- */
+.section { padding: clamp(80px, 10vw, 140px) 0; }
+.section-eyebrow {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
 .section-title {
   font-family: var(--font-d);
   font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 400;
   color: var(--white);
-  font-weight: 300;
-  line-height: 1.15;
-  margin-bottom: 20px;
-  letter-spacing: 1px;
+  line-height: 1.2;
+  margin-bottom: 16px;
 }
-.section-title em { color: var(--gold); font-style: italic; font-weight: 400; }
-
-.section-desc {
+.section-title em {
+  color: var(--gold);
+  font-style: italic;
+}
+.section-subtitle {
+  font-size: .92rem;
+  font-weight: 300;
   color: var(--text-light);
-  font-size: .88rem;
-  font-weight: 300;
-  line-height: 1.8;
-  max-width: 560px;
-  letter-spacing: .3px;
+  max-width: 600px;
+  line-height: 1.7;
 }
-
-.reveal { opacity: 0; transform: translateY(40px); }
-
-/* ============ FLEET / EMBARCACOES ============ */
-#embarcacoes { background: var(--navy-deep); }
-
-.fleet-header {
+.section-header {
   text-align: center;
-  margin-bottom: 60px;
+  margin-bottom: clamp(48px, 6vw, 72px);
 }
-.fleet-header .section-desc { margin: 0 auto; }
+.section-header .section-subtitle { margin: 0 auto; }
+.gold-line {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  margin: 20px auto 0;
+}
 
+/* ---- FLEET GRID ---- */
 .fleet-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
-
 .yacht-card {
   background: var(--navy);
   border: 1px solid var(--border);
   overflow: hidden;
-  transition: var(--transition);
-  cursor: pointer;
+  transition: all .45s var(--ease);
   position: relative;
+  cursor: pointer;
 }
 .yacht-card:hover {
   border-color: var(--border-gold);
   transform: translateY(-6px);
-  box-shadow: 0 20px 60px rgba(0,0,0,.4);
+  box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(197,165,90,.15);
 }
-
 .yacht-card-img {
   position: relative;
-  height: 240px;
+  aspect-ratio: 16/10;
   overflow: hidden;
 }
 .yacht-card-img img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform .6s var(--ease);
 }
 .yacht-card:hover .yacht-card-img img { transform: scale(1.06); }
-
-.yacht-card-badge {
-  position: absolute; top: 14px; left: 14px;
-  background: rgba(6,14,26,.8);
-  backdrop-filter: blur(8px);
-  color: var(--gold);
-  font-size: .55rem;
-  font-weight: 500;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  padding: 6px 14px;
-  border: 1px solid var(--border-gold);
-}
-.yacht-card-photos {
-  position: absolute; bottom: 12px; right: 12px;
-  background: rgba(6,14,26,.75);
-  backdrop-filter: blur(6px);
-  color: var(--text-light);
+.yacht-card-tag {
+  position: absolute;
+  top: 14px;
+  left: 14px;
   font-size: .6rem;
-  padding: 5px 10px;
-  display: flex; align-items: center; gap: 5px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 5px 14px;
+  z-index: 2;
 }
-
-.yacht-card-body { padding: 24px; }
-
+.yacht-card-body {
+  padding: 22px 24px 26px;
+}
 .yacht-card-name {
   font-family: var(--font-d);
-  font-size: 1.4rem;
+  font-size: 1.3rem;
+  font-weight: 500;
   color: var(--white);
-  font-weight: 400;
-  margin-bottom: 10px;
-  letter-spacing: 1px;
+  margin-bottom: 6px;
 }
-
 .yacht-card-specs {
-  display: flex; flex-wrap: wrap; gap: 6px 14px;
-  margin-bottom: 16px;
-}
-.yacht-card-specs span {
-  font-size: .65rem;
-  color: var(--gray);
+  font-size: .72rem;
   font-weight: 400;
+  color: var(--gray);
   letter-spacing: .5px;
-  display: flex; align-items: center; gap: 5px;
+  margin-bottom: 14px;
 }
-.yacht-card-specs span i {
-  color: var(--gold);
-  font-size: .55rem;
-  opacity: .6;
-}
-
-.yacht-card-divider {
-  width: 100%; height: 1px;
-  background: var(--border);
-  margin-bottom: 16px;
-}
-
-.yacht-card-bottom {
-  display: flex; align-items: center; justify-content: space-between;
-}
-
 .yacht-card-price {
   font-family: var(--font-d);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--gold);
-  font-weight: 500;
-  letter-spacing: .5px;
-}
-.yacht-card-price.consult {
-  font-size: .75rem;
-  font-family: var(--font);
-  font-weight: 400;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  opacity: .8;
-}
-
-.yacht-card-cta {
-  font-size: .58rem;
-  color: var(--text-light);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 400;
-  display: flex; align-items: center; gap: 6px;
-  transition: color .3s ease;
-}
-.yacht-card:hover .yacht-card-cta { color: var(--gold); }
-.yacht-card-cta i { font-size: .5rem; transition: transform .3s ease; }
-.yacht-card:hover .yacht-card-cta i { transform: translateX(4px); }
-
-/* ============ MODAL / LIGHTBOX ============ */
-.modal-overlay {
-  position: fixed; inset: 0;
-  background: rgba(6,14,26,.96);
-  z-index: 1000;
-  display: flex; align-items: center; justify-content: center;
-  opacity: 0; visibility: hidden;
-  transition: opacity .4s ease, visibility .4s ease;
-}
-.modal-overlay.open { opacity: 1; visibility: visible; }
-
-.modal {
-  width: 95vw; max-width: 1100px;
-  max-height: 92vh;
-  display: flex; flex-direction: column;
-  position: relative;
-}
-
-.modal-close {
-  position: absolute; top: -10px; right: -10px;
-  background: rgba(197,165,90,.1);
-  border: 1px solid var(--border-gold);
-  color: var(--gold);
-  width: 44px; height: 44px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem;
-  cursor: pointer; z-index: 10;
-  transition: var(--transition);
-}
-.modal-close:hover { background: var(--gold); color: var(--navy-deep); }
-
-.modal-header {
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0 0 20px;
-  border-bottom: 1px solid var(--border);
-  margin-bottom: 20px;
-  flex-wrap: wrap;
-  gap: 12px;
-}
-
-.modal-title {
-  font-family: var(--font-d);
-  font-size: 1.8rem;
-  color: var(--white);
-  font-weight: 400;
-  letter-spacing: 1px;
-}
-
-.modal-price {
-  font-family: var(--font-d);
-  font-size: 1.4rem;
-  color: var(--gold);
-  font-weight: 500;
-}
-
-.modal-viewer {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: var(--navy);
-  overflow: hidden;
   margin-bottom: 16px;
 }
-.modal-viewer img {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  transition: opacity .3s ease;
-}
-
-.modal-arrow {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  background: rgba(6,14,26,.7);
-  backdrop-filter: blur(8px);
-  border: 1px solid var(--border-gold);
-  color: var(--gold);
-  width: 48px; height: 48px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: .9rem;
-  cursor: pointer; z-index: 5;
-  transition: var(--transition);
-}
-.modal-arrow:hover { background: var(--gold); color: var(--navy-deep); }
-.modal-arrow.prev { left: 16px; }
-.modal-arrow.next { right: 16px; }
-
-.modal-counter {
-  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
-  background: rgba(6,14,26,.75);
-  backdrop-filter: blur(6px);
-  color: var(--text-light);
-  font-size: .65rem;
-  letter-spacing: 2px;
-  padding: 6px 16px;
-}
-
-.modal-thumbs {
-  display: flex; gap: 8px;
-  overflow-x: auto;
-  padding-bottom: 8px;
-  margin-bottom: 20px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--gold-dark) var(--navy);
-}
-.modal-thumbs::-webkit-scrollbar { height: 4px; }
-.modal-thumbs::-webkit-scrollbar-track { background: var(--navy); }
-.modal-thumbs::-webkit-scrollbar-thumb { background: var(--gold-dark); }
-
-.modal-thumb {
-  min-width: 80px; height: 56px;
-  cursor: pointer;
-  opacity: .4;
-  transition: opacity .3s ease;
-  border: 2px solid transparent;
-  overflow: hidden;
-  flex-shrink: 0;
-}
-.modal-thumb.active { opacity: 1; border-color: var(--gold); }
-.modal-thumb:hover { opacity: .8; }
-.modal-thumb img { width: 100%; height: 100%; object-fit: cover; }
-
-.modal-specs {
-  display: flex; flex-wrap: wrap; gap: 8px 20px;
-  margin-bottom: 20px;
-}
-.modal-specs span {
-  font-size: .68rem;
-  color: var(--gray);
-  display: flex; align-items: center; gap: 6px;
-}
-.modal-specs span i {
-  color: var(--gold); opacity: .6;
-  font-size: .55rem;
-}
-
-.modal-wpp {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #25D366;
-  color: #fff;
-  padding: 12px 28px;
-  font-size: .62rem;
+.yacht-card-link {
+  font-size: .72rem;
   font-weight: 600;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   text-transform: uppercase;
-  border: none; cursor: pointer;
-  transition: var(--transition);
-  font-family: var(--font);
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all .3s var(--ease);
 }
-.modal-wpp:hover { background: #20bd5a; transform: translateY(-2px); }
+.yacht-card-link:hover { gap: 12px; color: var(--gold-light); }
 
-/* ============ ABOUT ============ */
-#sobre { background: var(--navy); }
+/* Placeholder card for boats without photos */
+.yacht-card-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.yacht-card-placeholder i {
+  font-size: 2rem;
+  color: var(--gold);
+  opacity: .5;
+}
+.yacht-card-placeholder span {
+  font-family: var(--font-d);
+  font-size: .9rem;
+  color: var(--text-light);
+  font-style: italic;
+}
 
+/* ---- ABOUT ---- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: clamp(40px, 6vw, 80px);
   align-items: center;
 }
-
-.about-visual {
+.about-image {
   position: relative;
-  height: 480px;
   overflow: hidden;
+  aspect-ratio: 4/5;
 }
-.about-visual img {
-  width: 100%; height: 100%;
+.about-image img {
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
-.about-visual::after {
+.about-image::after {
   content: '';
-  position: absolute; inset: 0;
+  position: absolute;
+  inset: 0;
   border: 1px solid var(--border-gold);
   pointer-events: none;
 }
-
-.about-accent {
-  position: absolute; bottom: 20px; left: 20px;
-  background: rgba(6,14,26,.85);
-  backdrop-filter: blur(10px);
-  padding: 18px 24px;
-  border: 1px solid var(--border-gold);
-}
-.about-accent-num {
-  font-family: var(--font-d);
-  font-size: 2.4rem;
-  color: var(--gold);
-  font-weight: 400;
-  line-height: 1;
-}
-.about-accent-label {
-  font-size: .55rem;
-  color: var(--text-light);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  margin-top: 4px;
-}
-
+.about-content .section-subtitle { max-width: 100%; }
 .about-text {
+  font-size: .92rem;
+  font-weight: 300;
   color: var(--text);
-  font-size: .88rem;
-  line-height: 1.85;
-  margin-top: 20px;
-  font-weight: 300;
+  line-height: 1.8;
+  margin-bottom: 16px;
 }
-
-.about-highlights {
+.about-stats {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
-  margin-top: 32px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
 }
-.about-highlight {
-  display: flex; align-items: flex-start; gap: 12px;
-}
-.about-highlight i {
+.about-stat-val {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  font-weight: 600;
   color: var(--gold);
-  font-size: .8rem;
-  margin-top: 3px;
-  opacity: .7;
+  margin-bottom: 2px;
 }
-.about-highlight-text h4 {
-  font-size: .72rem;
-  color: var(--white);
+.about-stat-label {
+  font-size: .68rem;
   font-weight: 500;
-  letter-spacing: 1px;
+  color: var(--text-light);
+  letter-spacing: .5px;
   text-transform: uppercase;
-  margin-bottom: 4px;
-}
-.about-highlight-text p {
-  font-size: .78rem;
-  color: var(--gray);
-  font-weight: 300;
-  line-height: 1.6;
 }
 
-/* ============ WHY BUY ============ */
-#vantagens { background: var(--navy-deep); }
-
-.advantages-header { text-align: center; margin-bottom: 60px; }
-.advantages-header .section-desc { margin: 0 auto; }
-
+/* ---- ADVANTAGES ---- */
+.advantages-section {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
 .advantages-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
+  gap: 32px;
 }
-
 .advantage-card {
-  background: var(--navy);
-  border: 1px solid var(--border);
-  padding: 40px 28px;
   text-align: center;
-  transition: var(--transition);
-  position: relative;
-  overflow: hidden;
-}
-.advantage-card::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0;
-  height: 2px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  opacity: 0;
-  transition: opacity .4s ease;
+  padding: 40px 24px;
+  border: 1px solid transparent;
+  transition: all .4s var(--ease);
 }
 .advantage-card:hover {
   border-color: var(--border-gold);
-  transform: translateY(-4px);
+  background: rgba(197,165,90,.03);
 }
-.advantage-card:hover::before { opacity: 1; }
-
 .advantage-icon {
-  width: 56px; height: 56px;
-  margin: 0 auto 22px;
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--border-gold);
-  display: flex; align-items: center; justify-content: center;
   color: var(--gold);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   transition: var(--transition);
 }
 .advantage-card:hover .advantage-icon {
   background: var(--gold);
   color: var(--navy-deep);
 }
-
 .advantage-title {
   font-family: var(--font-d);
-  font-size: 1.2rem;
+  font-size: 1.15rem;
+  font-weight: 500;
   color: var(--white);
-  font-weight: 400;
-  margin-bottom: 12px;
-  letter-spacing: .5px;
+  margin-bottom: 10px;
 }
-
-.advantage-desc {
-  font-size: .78rem;
-  color: var(--gray);
+.advantage-text {
+  font-size: .82rem;
   font-weight: 300;
+  color: var(--text-light);
   line-height: 1.7;
 }
 
-/* ============ BLOG ============ */
-#blog { background: var(--navy); }
-
-.blog-header { text-align: center; margin-bottom: 60px; }
-.blog-header .section-desc { margin: 0 auto; }
-
+/* ---- BLOG ---- */
 .blog-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 28px;
 }
-
 .blog-card {
-  background: var(--navy-deep);
+  background: var(--navy);
   border: 1px solid var(--border);
   overflow: hidden;
-  transition: var(--transition);
+  transition: all .4s var(--ease);
 }
 .blog-card:hover {
   border-color: var(--border-gold);
   transform: translateY(-4px);
 }
-
 .blog-card-img {
-  height: 220px;
+  aspect-ratio: 16/9;
   overflow: hidden;
 }
 .blog-card-img img {
-  width: 100%; height: 100%;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   transition: transform .6s var(--ease);
 }
 .blog-card:hover .blog-card-img img { transform: scale(1.05); }
-
-.blog-card-body { padding: 28px; }
-
+.blog-card-body {
+  padding: 24px;
+}
 .blog-card-tag {
-  font-size: .52rem;
-  color: var(--gold);
-  letter-spacing: 2.5px;
-  text-transform: uppercase;
-  font-weight: 500;
-  margin-bottom: 12px;
-}
-
-.blog-card-title {
-  font-family: var(--font-d);
-  font-size: 1.25rem;
-  color: var(--white);
-  font-weight: 400;
-  line-height: 1.35;
-  margin-bottom: 12px;
-  letter-spacing: .5px;
-}
-
-.blog-card-excerpt {
-  font-size: .8rem;
-  color: var(--gray);
-  font-weight: 300;
-  line-height: 1.7;
-  margin-bottom: 18px;
-}
-
-.blog-card-link {
   font-size: .6rem;
-  color: var(--gold);
+  font-weight: 700;
   letter-spacing: 2px;
   text-transform: uppercase;
-  font-weight: 400;
-  display: inline-flex; align-items: center; gap: 6px;
-  transition: gap .3s ease;
+  color: var(--gold);
+  margin-bottom: 10px;
 }
-.blog-card:hover .blog-card-link { gap: 10px; }
+.blog-card-title {
+  font-family: var(--font-d);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.4;
+  margin-bottom: 10px;
+  transition: color .3s;
+}
+.blog-card:hover .blog-card-title { color: var(--gold); }
+.blog-card-excerpt {
+  font-size: .82rem;
+  font-weight: 300;
+  color: var(--text-light);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+.blog-card-link {
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .3s var(--ease);
+}
+.blog-card-link:hover { gap: 12px; }
 
-/* ============ CTA SECTION ============ */
+/* ---- CTA SECTION ---- */
 .cta-section {
-  padding: 120px 0;
   position: relative;
+  padding: clamp(100px, 12vw, 180px) 0;
   overflow: hidden;
 }
 .cta-bg {
-  position: absolute; inset: 0;
-  background: url('img/schaefer-660/03.jpg') center/cover no-repeat;
+  position: absolute;
+  inset: 0;
 }
-.cta-bg::after {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(6,14,26,.92) 0%,
-    rgba(12,24,41,.88) 50%,
-    rgba(6,14,26,.92) 100%
+.cta-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cta-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+    rgba(6,14,26,.8) 0%,
+    rgba(6,14,26,.7) 50%,
+    rgba(6,14,26,.85) 100%
   );
 }
-
 .cta-content {
-  position: relative; z-index: 2;
+  position: relative;
+  z-index: 2;
   text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
 }
-
-.cta-content .section-title { margin-bottom: 18px; }
-.cta-content .section-desc {
-  margin: 0 auto 36px;
-  max-width: 480px;
-}
-
-/* ============ FOOTER ============ */
-.footer {
-  background: var(--navy-deep);
-  border-top: 1px solid var(--border);
-  padding: 80px 0 40px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr;
-  gap: 40px;
-  margin-bottom: 60px;
-}
-
-.footer-brand-logo {
-  max-width: 180px;
-  margin-bottom: 18px;
-  opacity: .85;
-}
-
-.footer-brand-text {
-  font-size: .8rem;
-  color: var(--gray);
-  font-weight: 300;
-  line-height: 1.7;
-  max-width: 280px;
-}
-
-.footer-col-title {
-  font-size: .6rem;
-  color: var(--gold);
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  font-weight: 500;
+.cta-content .section-title {
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
   margin-bottom: 20px;
 }
+.cta-content .section-subtitle {
+  margin: 0 auto 40px;
+  max-width: 520px;
+}
 
-.footer-links { display: flex; flex-direction: column; gap: 12px; }
-.footer-links a {
-  font-size: .78rem;
-  color: var(--gray);
+/* ---- FOOTER ---- */
+.footer {
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  padding: 60px 0 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+}
+.footer-logo {
+  max-height: 80px;
+  width: auto;
+  margin-bottom: 20px;
+}
+.footer-desc {
+  font-size: .85rem;
   font-weight: 300;
-  transition: color .3s ease;
+  color: var(--text-light);
+  line-height: 1.8;
+  max-width: 320px;
+}
+.footer-heading {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: .82rem;
+  font-weight: 400;
+  color: var(--text-light);
+  transition: color .3s;
 }
 .footer-links a:hover { color: var(--gold); }
-
-.footer-social {
-  display: flex; gap: 12px;
-  margin-top: 16px;
+.footer-contact li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-size: .82rem;
+  color: var(--text-light);
 }
-.footer-social a {
-  width: 38px; height: 38px;
-  border: 1px solid var(--border);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--gray);
-  font-size: .85rem;
-  transition: var(--transition);
-}
-.footer-social a:hover {
-  border-color: var(--gold);
+.footer-contact i {
   color: var(--gold);
+  margin-top: 3px;
+  font-size: .85rem;
+  width: 16px;
+  text-align: center;
 }
-
+.footer-contact a {
+  color: var(--text-light);
+  transition: color .3s;
+}
+.footer-contact a:hover { color: var(--gold); }
 .footer-bottom {
   border-top: 1px solid var(--border);
-  padding-top: 28px;
-  display: flex; align-items: center; justify-content: space-between;
-  flex-wrap: wrap; gap: 12px;
-}
-
-.footer-copy {
-  font-size: .7rem;
+  padding: 20px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: .75rem;
   color: var(--gray);
-  font-weight: 300;
 }
-
-.footer-dev {
-  font-size: .65rem;
-  color: var(--gray);
-  font-weight: 300;
-  transition: color .3s ease;
+.footer-bottom a {
+  color: var(--gold);
+  transition: color .3s;
 }
-.footer-dev:hover { color: var(--gold); }
-.footer-dev span { color: var(--gold); font-weight: 500; }
+.footer-bottom a:hover { color: var(--gold-light); }
 
-/* ============ WHATSAPP FLOAT ============ */
-.wpp-float {
-  position: fixed; bottom: 28px; right: 28px;
-  width: 56px; height: 56px;
+/* ---- FLOATING WHATSAPP ---- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  z-index: 9998;
+  width: 56px;
+  height: 56px;
   background: #25D366;
   border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  font-size: 1.4rem;
-  z-index: 400;
-  box-shadow: 0 4px 20px rgba(37,211,102,.35);
-  transition: var(--transition);
-  animation: wppPulse 3s ease-in-out infinite;
+  font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  transition: all .3s var(--ease);
+  animation: wppPulse 2.5s ease-in-out infinite;
 }
-.wpp-float:hover {
+.whatsapp-float:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 30px rgba(37,211,102,.5);
 }
 @keyframes wppPulse {
-  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.35); }
-  50% { box-shadow: 0 4px 30px rgba(37,211,102,.5), 0 0 0 12px rgba(37,211,102,.08); }
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.4); }
+  50% { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 12px rgba(37,211,102,.1); }
 }
 
-/* ============ RESPONSIVE ============ */
+/* ---- REVEAL ANIMATIONS ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity .7s var(--ease), transform .7s var(--ease);
+}
+.reveal-delay-1 { transition-delay: .1s !important; }
+.reveal-delay-2 { transition-delay: .2s !important; }
+.reveal-delay-3 { transition-delay: .3s !important; }
+.reveal-delay-4 { transition-delay: .4s !important; }
+
+/* ---- RESPONSIVE ---- */
 @media (max-width: 1024px) {
   .fleet-grid { grid-template-columns: repeat(2, 1fr); }
   .advantages-grid { grid-template-columns: repeat(2, 1fr); }
-  .about-grid { grid-template-columns: 1fr; gap: 40px; }
-  .about-visual { height: 360px; }
-  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
 }
-
+@media (max-width: 900px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-image { max-height: 400px; aspect-ratio: 16/9; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+}
 @media (max-width: 768px) {
-  .container { padding: 0 20px; }
-  .nav-inner { padding: 0 20px; }
-  section { padding: 80px 0; }
-
-  .nav-links, .nav-cta { display: none; }
-  .menu-btn { display: block; }
-
-  .hero-content { padding: 0 20px; }
-
-  .fleet-grid { grid-template-columns: 1fr; }
-  .yacht-card-img { height: 220px; }
-
-  .advantages-grid { grid-template-columns: 1fr; }
-
-  .blog-grid { grid-template-columns: 1fr; }
-  .blog-card-img { height: 200px; }
-
-  .about-visual { height: 280px; }
-  .about-highlights { grid-template-columns: 1fr; }
-
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .footer-bottom { flex-direction: column; text-align: center; }
-
-  .modal { width: 98vw; }
-  .modal-close { top: 4px; right: 4px; width: 38px; height: 38px; }
-  .modal-arrow { width: 38px; height: 38px; font-size: .75rem; }
-  .modal-arrow.prev { left: 8px; }
-  .modal-arrow.next { right: 8px; }
-  .modal-header { padding: 0 0 14px; }
-  .modal-title { font-size: 1.3rem; }
-  .modal-price { font-size: 1.1rem; }
-
-  .cta-section { padding: 80px 0; }
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .fleet-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .blog-grid { grid-template-columns: 1fr; max-width: 500px; margin: 0 auto; }
+  .advantages-grid { grid-template-columns: 1fr; max-width: 400px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+  .hero-scroll { display: none; }
 }
-
 @media (max-width: 480px) {
-  .hero h1 { font-size: 2.2rem; }
-  .hero-btns { flex-direction: column; align-items: center; }
-  .btn-primary, .btn-outline { width: 100%; justify-content: center; }
-  .modal-thumb { min-width: 60px; height: 44px; }
+  .hero-buttons { flex-direction: column; width: 100%; }
+  .hero-buttons a { width: 100%; text-align: center; justify-content: center; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); gap: 20px; }
 }
 </style>
 </head>
@@ -1083,155 +907,268 @@ section { padding: 120px 0; }
 
 <!-- LOADER -->
 <div class="loader" id="loader">
-  <div class="loader-brand">
-    Bella Angra
-    <span>Iates de Luxo</span>
-  </div>
+  <img src="img/logo-branca.png" alt="Bella Angra Iates" class="loader-logo">
   <div class="loader-line"></div>
 </div>
 
-<!-- NAVIGATION -->
+<!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-inner">
-    <a href="#" class="nav-logo">Bella Angra <span>Iates</span></a>
-    <ul class="nav-links">
-      <li><a href="#embarcacoes">Embarcações</a></li>
-      <li><a href="#sobre">Sobre</a></li>
-      <li><a href="#blog">Blog</a></li>
-      <li><a href="#contato">Contato</a></li>
-    </ul>
-    <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em um iate. Gostaria de mais informações." class="nav-cta" target="_blank">Fale Conosco</a>
-    <button class="menu-btn" id="menuBtn" aria-label="Menu">
-      <i class="fas fa-bars"></i>
-    </button>
+    <a href="#" class="nav-brand">Bella Angra Iates</a>
+    <div class="nav-links">
+      <a href="#embarcacoes">Embarcações</a>
+      <a href="#sobre">Sobre</a>
+      <a href="blog.html">Blog</a>
+      <a href="#contato">Contato</a>
+      <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em conhecer as embarcações à venda." class="nav-cta" target="_blank" rel="noopener">Fale Conosco</a>
+    </div>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
   </div>
 </nav>
 
 <!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-menu-close" id="menuClose" aria-label="Fechar menu">
-    <i class="fas fa-times"></i>
-  </button>
-  <a href="#embarcacoes" class="mobile-link">Embarcações</a>
-  <a href="#sobre" class="mobile-link">Sobre</a>
-  <a href="#blog" class="mobile-link">Blog</a>
-  <a href="#contato" class="mobile-link">Contato</a>
-  <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em um iate. Gostaria de mais informações." target="_blank" class="mobile-link" style="color:var(--gold);">Fale Conosco</a>
+  <a href="#embarcacoes" class="mob-link">Embarcações</a>
+  <a href="#sobre" class="mob-link">Sobre</a>
+  <a href="blog.html" class="mob-link">Blog</a>
+  <a href="#contato" class="mob-link">Contato</a>
+  <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em conhecer as embarcações à venda." class="mob-cta" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i> Fale Conosco
+  </a>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-bg">
+    <img src="img/azimut-74/05.jpg" alt="Azimut 74 — Iate de luxo navegando em Angra dos Reis" loading="eager">
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow">Angra dos Reis</div>
-    <h1>Iates de <em>Luxo</em><br>à Venda</h1>
-    <p class="hero-sub">Embarcações premium selecionadas com rigor. Consultoria especializada para você encontrar o iate perfeito nas águas mais bonitas do Brasil.</p>
-    <div class="hero-btns">
-      <a href="#embarcacoes" class="btn-primary">
-        <i class="fas fa-anchor"></i> Ver Embarcações
-      </a>
-      <a href="https://wa.me/5524999999999?text=Olá! Gostaria de saber mais sobre os iates à venda." class="btn-outline" target="_blank">
-        <i class="fab fa-whatsapp"></i> WhatsApp
-      </a>
+    <p class="hero-eyebrow">Angra dos Reis — Rio de Janeiro</p>
+    <h1 class="hero-title">Iates de Luxo<br><em>à Venda</em></h1>
+    <p class="hero-subtitle">Embarcações selecionadas dos melhores estaleiros do mundo. Assessoria completa na compra do seu iate.</p>
+    <div class="hero-buttons">
+      <a href="#embarcacoes" class="btn-gold">Ver Embarcações</a>
+      <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em conhecer as embarcações à venda." class="btn-outline" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> WhatsApp</a>
     </div>
   </div>
   <div class="hero-scroll">
-    <span>Explorar</span>
-    <i class="fas fa-chevron-down"></i>
+    <span>Explore</span>
+    <div class="hero-scroll-line"></div>
   </div>
 </section>
 
-<!-- FLEET -->
-<section id="embarcacoes">
+<!-- FLEET SECTION -->
+<section class="section" id="embarcacoes">
   <div class="container">
-    <div class="fleet-header reveal">
-      <div class="section-eyebrow">Frota Exclusiva</div>
-      <h2 class="section-title">Embarcações <em>à Venda</em></h2>
-      <p class="section-desc">Cada embarcação da nossa frota passou por uma rigorosa curadoria. Somente iates que atendem aos nossos padrões de qualidade, manutenção e procedência chegam até você.</p>
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Nosso Portfólio</p>
+      <h2 class="section-title">Embarcações à <em>Venda</em></h2>
+      <p class="section-subtitle">Cada iate é inspecionado e aprovado pela nossa equipe antes de entrar no portfólio.</p>
+      <div class="gold-line"></div>
     </div>
 
-    <div class="fleet-grid" id="fleetGrid">
-      <!-- Cards are injected via JS -->
+    <div class="fleet-grid">
+
+      <!-- 1. Azimut 74 FLY -->
+      <a href="embarcacoes/azimut-74.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/azimut-74/05.jpg" alt="Azimut 74 FLY — Vista exterior" loading="lazy">
+          <span class="yacht-card-tag">Destaque</span>
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Azimut 74 FLY</h3>
+          <p class="yacht-card-specs">2021 &nbsp;|&nbsp; 2x MAN V12 1400HP &nbsp;|&nbsp; 390H</p>
+          <p class="yacht-card-price">R$ 19.800.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 2. Schaefer 660 FLY -->
+      <a href="embarcacoes/schaefer-660.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/schaefer-660/02.jpg" alt="Schaefer 660 FLY — Vista exterior" loading="lazy">
+          <span class="yacht-card-tag">Destaque</span>
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Schaefer 660 FLY</h3>
+          <p class="yacht-card-specs">2023 &nbsp;|&nbsp; 2x Volvo IPS 1200 &nbsp;|&nbsp; 309H</p>
+          <p class="yacht-card-price">R$ 12.990.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 3. Intermarine IM62 -->
+      <a href="embarcacoes/intermarine-im62.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/intermarine-im62/04.jpg" alt="Intermarine IM62 — Vista exterior" loading="lazy">
+          <span class="yacht-card-tag">Destaque</span>
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Intermarine IM62</h3>
+          <p class="yacht-card-specs">2018 &nbsp;|&nbsp; Volvo IPS 1.200 &nbsp;|&nbsp; 876H</p>
+          <p class="yacht-card-price">R$ 12.000.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 4. Azimut 56 FLY -->
+      <a href="embarcacoes/azimut-56-fly.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/azimut-56-fly/03.jpg" alt="Azimut 56 FLY — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Azimut 56 FLY</h3>
+          <p class="yacht-card-specs">2019 &nbsp;|&nbsp; 2x Volvo D11 725HP &nbsp;|&nbsp; 670H</p>
+          <p class="yacht-card-price">R$ 8.000.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 5. Azimut 56 -->
+      <a href="embarcacoes/azimut-56.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/azimut-56/04.jpg" alt="Azimut 56 — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Azimut 56</h3>
+          <p class="yacht-card-specs">2017 &nbsp;|&nbsp; Volvo 725HP &nbsp;|&nbsp; 920H</p>
+          <p class="yacht-card-price">R$ 7.500.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 6. Intermarine 60 FLY -->
+      <a href="embarcacoes/intermarine-60-fly.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/intermarine-60-fly/04.jpg" alt="Intermarine 60 FLY — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Intermarine 60 FLY</h3>
+          <p class="yacht-card-specs">2015 &nbsp;|&nbsp; 2x Volvo D13 900HP &nbsp;|&nbsp; 1.380H</p>
+          <p class="yacht-card-price">R$ 5.500.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 7. Intermarine 60 -->
+      <a href="embarcacoes/intermarine-60.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/intermarine-60/02.jpg" alt="Intermarine 60 — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Intermarine 60</h3>
+          <p class="yacht-card-specs">2012 &nbsp;|&nbsp; 2x Volvo D13 900HP &nbsp;|&nbsp; 960H</p>
+          <p class="yacht-card-price">R$ 5.350.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 8. Ferretti 500 -->
+      <a href="embarcacoes/ferretti-500.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/ferretti-50/04.jpg" alt="Ferretti 500 — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Ferretti 500</h3>
+          <p class="yacht-card-specs">2011 &nbsp;|&nbsp; 2x Cummins 600HP &nbsp;|&nbsp; 920H</p>
+          <p class="yacht-card-price">R$ 3.300.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 9. Phantom 400 HT (NO photos — placeholder) -->
+      <a href="embarcacoes/phantom-400.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <div class="yacht-card-placeholder">
+            <i class="fas fa-ship"></i>
+            <span>Phantom 400 HT</span>
+          </div>
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Phantom 400 HT</h3>
+          <p class="yacht-card-specs">2020 &nbsp;|&nbsp; 2x Volvo D6 &nbsp;|&nbsp; 530H</p>
+          <p class="yacht-card-price">R$ 2.400.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 10. Real Top 40 -->
+      <a href="embarcacoes/real-top-40.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/real-top-40/01.jpg" alt="Real Top 40 — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Real Top 40</h3>
+          <p class="yacht-card-specs">2014 &nbsp;|&nbsp; 2x Volvo D6 435HP &nbsp;|&nbsp; 670H</p>
+          <p class="yacht-card-price">R$ 1.600.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 11. Phantom 385 FLY -->
+      <a href="embarcacoes/phantom-385.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/phanton-385/03.jpg" alt="Phantom 385 FLY — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Phantom 385 FLY</h3>
+          <p class="yacht-card-specs">2006 &nbsp;|&nbsp; 2x Volvo D6 370HP &nbsp;|&nbsp; 1.250H</p>
+          <p class="yacht-card-price">R$ 1.350.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- 12. Intermarine 440 Full -->
+      <a href="embarcacoes/intermarine-440.html" class="yacht-card reveal">
+        <div class="yacht-card-img">
+          <img src="img/intermarine-440/02.jpg" alt="Intermarine 440 Full — Vista exterior" loading="lazy">
+        </div>
+        <div class="yacht-card-body">
+          <h3 class="yacht-card-name">Intermarine 440 Full</h3>
+          <p class="yacht-card-specs">1998 &nbsp;|&nbsp; 2x Volvo Penta 370HP &nbsp;|&nbsp; 198H</p>
+          <p class="yacht-card-price">R$ 850.000</p>
+          <span class="yacht-card-link">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay">
-  <div class="modal" id="modal">
-    <button class="modal-close" id="modalClose" aria-label="Fechar">
-      <i class="fas fa-times"></i>
-    </button>
-    <div class="modal-header">
-      <h3 class="modal-title" id="modalTitle"></h3>
-      <span class="modal-price" id="modalPrice"></span>
-    </div>
-    <div class="modal-viewer" id="modalViewer">
-      <img id="modalMainImg" src="" alt="Foto da embarcação">
-      <button class="modal-arrow prev" id="modalPrev" aria-label="Anterior">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button class="modal-arrow next" id="modalNext" aria-label="Próxima">
-        <i class="fas fa-chevron-right"></i>
-      </button>
-      <div class="modal-counter" id="modalCounter"></div>
-    </div>
-    <div class="modal-thumbs" id="modalThumbs"></div>
-    <div class="modal-specs" id="modalSpecs"></div>
-    <a class="modal-wpp" id="modalWpp" href="#" target="_blank">
-      <i class="fab fa-whatsapp"></i> Tenho Interesse Nesta Embarcação
-    </a>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section id="sobre">
+<!-- ABOUT SECTION -->
+<section class="section" id="sobre" style="background: var(--navy); border-top: 1px solid var(--border);">
   <div class="container">
     <div class="about-grid">
-      <div class="about-visual reveal">
-        <img src="img/schaefer-660/01.jpg" alt="Iate de luxo Schaefer 660" loading="lazy">
-        <div class="about-accent">
-          <div class="about-accent-num">10+</div>
-          <div class="about-accent-label">Anos de Mercado</div>
-        </div>
+      <div class="about-image reveal">
+        <img src="img/azimut-56-fly/03.jpg" alt="Azimut 56 FLY — Embarcação de luxo à venda" loading="lazy">
       </div>
-      <div class="reveal">
-        <div class="section-eyebrow">Sobre Nós</div>
-        <h2 class="section-title">Tradição e <em>Excelência</em> no<br>Mercado Náutico</h2>
-        <p class="about-text">
-          A Bella Angra Iates é referência em compra e venda de embarcações de luxo em Angra dos Reis. Com anos de experiência no mercado náutico, oferecemos uma curadoria rigorosa para garantir que cada iate em nosso portfólio atenda aos mais altos padrões de qualidade, segurança e sofisticação.
-        </p>
-        <p class="about-text" style="margin-top:14px;">
-          Nossa missão é conectar compradores exigentes às embarcações dos seus sonhos, com total transparência, documentação impecável e suporte do início ao fim — inclusive no pós-venda.
-        </p>
-        <div class="about-highlights">
-          <div class="about-highlight">
-            <i class="fas fa-gem"></i>
-            <div class="about-highlight-text">
-              <h4>Expertise</h4>
-              <p>Conhecimento profundo do mercado náutico brasileiro</p>
-            </div>
+      <div class="about-content">
+        <p class="section-eyebrow reveal">Sobre Nós</p>
+        <h2 class="section-title reveal">Tradição e Excelência<br>no Mercado <em>Náutico</em></h2>
+        <p class="about-text reveal">A Bella Angra Iates é referência na compra e venda de embarcações de luxo em Angra dos Reis. Com mais de uma década de atuação, nossa equipe combina conhecimento técnico profundo com um atendimento exclusivo e personalizado para cada cliente.</p>
+        <p class="about-text reveal">Trabalhamos com os melhores estaleiros do Brasil e do mundo — Azimut, Ferretti, Schaefer, Intermarine, Phantom — garantindo que cada embarcação do nosso portfólio atenda aos mais altos padrões de qualidade, segurança e sofisticação.</p>
+        <p class="about-text reveal">Do primeiro contato à entrega das chaves, oferecemos assessoria completa: avaliação técnica, documentação, vistoria, transferência de propriedade e suporte pós-venda. Seu iate dos sonhos está aqui.</p>
+        <div class="about-stats reveal">
+          <div>
+            <p class="about-stat-val">10+</p>
+            <p class="about-stat-label">Anos de Mercado</p>
           </div>
-          <div class="about-highlight">
-            <i class="fas fa-file-contract"></i>
-            <div class="about-highlight-text">
-              <h4>Transparência</h4>
-              <p>Documentação completa e histórico verificável</p>
-            </div>
+          <div>
+            <p class="about-stat-val">50+</p>
+            <p class="about-stat-label">Embarcações Vendidas</p>
           </div>
-          <div class="about-highlight">
-            <i class="fas fa-ship"></i>
-            <div class="about-highlight-text">
-              <h4>Frota Premium</h4>
-              <p>Apenas embarcações de marcas consagradas</p>
-            </div>
+          <div>
+            <p class="about-stat-val">100%</p>
+            <p class="about-stat-label">Satisfação</p>
           </div>
-          <div class="about-highlight">
-            <i class="fas fa-headset"></i>
-            <div class="about-highlight-text">
-              <h4>Pós-Venda</h4>
-              <p>Acompanhamento após a compra do seu iate</p>
-            </div>
+          <div>
+            <p class="about-stat-val"><i class="fas fa-anchor" style="font-size:.9rem"></i></p>
+            <p class="about-stat-label">Angra dos Reis</p>
           </div>
         </div>
       </div>
@@ -1240,94 +1177,98 @@ section { padding: 120px 0; }
 </section>
 
 <!-- ADVANTAGES -->
-<section id="vantagens">
+<section class="section advantages-section">
   <div class="container">
-    <div class="advantages-header reveal">
-      <div class="section-eyebrow">Nossos Diferenciais</div>
-      <h2 class="section-title">Por Que Comprar <em>Conosco</em></h2>
-      <p class="section-desc">Cada detalhe é pensado para que a experiência de adquirir seu iate seja tão especial quanto navegar com ele.</p>
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Por Que Escolher a Bella Angra</p>
+      <h2 class="section-title">Excelência em Cada <em>Detalhe</em></h2>
+      <div class="gold-line"></div>
     </div>
     <div class="advantages-grid">
       <div class="advantage-card reveal">
-        <div class="advantage-icon"><i class="fas fa-award"></i></div>
+        <div class="advantage-icon"><i class="fas fa-gem"></i></div>
         <h3 class="advantage-title">Curadoria Premium</h3>
-        <p class="advantage-desc">Cada embarcação é inspecionada pessoalmente. Verificamos motor, casco, parte elétrica, documentação e histórico de manutenção antes de oferecer.</p>
+        <p class="advantage-text">Cada embarcação é rigorosamente inspecionada e aprovada pela nossa equipe técnica antes de entrar no portfólio.</p>
       </div>
-      <div class="advantage-card reveal">
-        <div class="advantage-icon"><i class="fas fa-shield-halved"></i></div>
+      <div class="advantage-card reveal reveal-delay-1">
+        <div class="advantage-icon"><i class="fas fa-file-shield"></i></div>
         <h3 class="advantage-title">Transparência Total</h3>
-        <p class="advantage-desc">Documentação completa, laudo técnico, horas de motor comprovadas e histórico da embarcação. Você compra com segurança absoluta.</p>
+        <p class="advantage-text">Documentação completa, histórico de manutenção e laudo técnico detalhado de cada embarcação disponível.</p>
       </div>
-      <div class="advantage-card reveal">
+      <div class="advantage-card reveal reveal-delay-2">
         <div class="advantage-icon"><i class="fas fa-compass"></i></div>
         <h3 class="advantage-title">Consultoria Especializada</h3>
-        <p class="advantage-desc">Orientamos na escolha da embarcação ideal para seu perfil: uso, número de passageiros, destinos e investimento. Decisão inteligente.</p>
+        <p class="advantage-text">Orientação personalizada para encontrar a embarcação ideal de acordo com seu perfil de navegação e investimento.</p>
       </div>
-      <div class="advantage-card reveal">
+      <div class="advantage-card reveal reveal-delay-3">
         <div class="advantage-icon"><i class="fas fa-handshake"></i></div>
         <h3 class="advantage-title">Pós-Venda Completo</h3>
-        <p class="advantage-desc">O relacionamento não termina na venda. Oferecemos suporte em marinha, manutenção, seguros e tudo que você precisar após a compra.</p>
+        <p class="advantage-text">Suporte contínuo após a compra: manutenção, documentação, seguro e toda a assistência que você precisar.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- BLOG -->
-<section id="blog">
+<!-- BLOG PREVIEW -->
+<section class="section" id="blog">
   <div class="container">
-    <div class="blog-header reveal">
-      <div class="section-eyebrow">Blog Náutico</div>
-      <h2 class="section-title">Conteúdo <em>Exclusivo</em></h2>
-      <p class="section-desc">Dicas, tendências e informações valiosas para quem ama o mundo náutico.</p>
+    <div class="section-header reveal">
+      <p class="section-eyebrow">Nosso Blog</p>
+      <h2 class="section-title"><em>Blog</em></h2>
+      <p class="section-subtitle">Conteúdo exclusivo sobre o mercado náutico, dicas de navegação e novidades do mundo dos iates.</p>
+      <div class="gold-line"></div>
     </div>
     <div class="blog-grid">
-      <article class="blog-card reveal">
+      <a href="blog.html" class="blog-card reveal">
         <div class="blog-card-img">
-          <img src="img/azimut-74/05.jpg" alt="Interior de iate Azimut 74" loading="lazy">
+          <img src="img/schaefer-660/02.jpg" alt="Guia completo para comprar seu primeiro iate" loading="lazy">
         </div>
         <div class="blog-card-body">
-          <div class="blog-card-tag">Guia de Compra</div>
-          <h3 class="blog-card-title">5 Fatores Essenciais na Hora de Comprar um Iate</h3>
-          <p class="blog-card-excerpt">Do motor à documentação: descubra o que realmente importa na hora de investir em uma embarcação de luxo e evite erros que custam caro.</p>
-          <a href="blog.html" class="blog-card-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+          <p class="blog-card-tag">Guia de Compra</p>
+          <h3 class="blog-card-title">O Guia Completo Para Comprar Seu Primeiro Iate</h3>
+          <p class="blog-card-excerpt">Tudo o que você precisa saber antes de adquirir sua primeira embarcação: desde a escolha do modelo até a documentação.</p>
+          <span class="blog-card-link">Ler Artigo <i class="fas fa-arrow-right"></i></span>
         </div>
-      </article>
-      <article class="blog-card reveal">
+      </a>
+      <a href="blog.html" class="blog-card reveal reveal-delay-1">
         <div class="blog-card-img">
-          <img src="img/schaefer-660/08.jpg" alt="Schaefer 660 em navegação" loading="lazy">
+          <img src="img/azimut-74/05.jpg" alt="Melhores rotas de navegação em Angra dos Reis" loading="lazy">
         </div>
         <div class="blog-card-body">
-          <div class="blog-card-tag">Manutenção</div>
-          <h3 class="blog-card-title">Manutenção Preventiva: Como Preservar o Valor da Sua Embarcação</h3>
-          <p class="blog-card-excerpt">Um iate bem cuidado mantém — e até valoriza — seu investimento. Conheça as práticas indispensáveis de manutenção preventiva.</p>
-          <a href="blog.html" class="blog-card-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+          <p class="blog-card-tag">Navegação</p>
+          <h3 class="blog-card-title">As 10 Melhores Rotas de Navegação em Angra dos Reis</h3>
+          <p class="blog-card-excerpt">Descubra as ilhas mais paradisíacas e os roteiros mais exclusivos para explorar com seu iate em Angra.</p>
+          <span class="blog-card-link">Ler Artigo <i class="fas fa-arrow-right"></i></span>
         </div>
-      </article>
-      <article class="blog-card reveal">
+      </a>
+      <a href="blog.html" class="blog-card reveal reveal-delay-2">
         <div class="blog-card-img">
-          <img src="img/intermarine-60/04.jpg" alt="Iate em Angra dos Reis" loading="lazy">
+          <img src="img/intermarine-60/02.jpg" alt="Manutenção preventiva para embarcações" loading="lazy">
         </div>
         <div class="blog-card-body">
-          <div class="blog-card-tag">Lifestyle</div>
-          <h3 class="blog-card-title">Angra dos Reis: O Paraíso Náutico do Brasil</h3>
-          <p class="blog-card-excerpt">Com 365 ilhas e águas cristalinas, Angra dos Reis é o destino perfeito para quem busca experiências náuticas inesquecíveis.</p>
-          <a href="blog.html" class="blog-card-link">Ler mais <i class="fas fa-arrow-right"></i></a>
+          <p class="blog-card-tag">Manutenção</p>
+          <h3 class="blog-card-title">Manutenção Preventiva: Como Preservar o Valor do Seu Iate</h3>
+          <p class="blog-card-excerpt">Saiba quais cuidados são essenciais para manter sua embarcação em perfeito estado e proteger seu investimento.</p>
+          <span class="blog-card-link">Ler Artigo <i class="fas fa-arrow-right"></i></span>
         </div>
-      </article>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CTA SECTION -->
 <section class="cta-section" id="contato">
-  <div class="cta-bg"></div>
-  <div class="cta-content container reveal">
-    <div class="section-eyebrow" style="justify-content:center;">Vamos Conversar</div>
-    <h2 class="section-title" style="text-align:center;">Encontre o Iate dos<br>Seus <em>Sonhos</em></h2>
-    <p class="section-desc" style="text-align:center;">Nossa equipe está pronta para ajudá-lo a encontrar a embarcação perfeita. Entre em contato e realize o sonho de ter seu próprio iate.</p>
-    <div style="text-align:center;">
-      <a href="https://wa.me/5524999999999?text=Olá! Gostaria de informações sobre iates à venda." class="btn-primary" target="_blank" style="margin-top:8px;">
-        <i class="fab fa-whatsapp"></i> Falar com Especialista
+  <div class="cta-bg">
+    <img src="img/intermarine-im62/04.jpg" alt="Intermarine IM62 — Iate de luxo" loading="lazy">
+  </div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content container">
+    <p class="section-eyebrow reveal">Realize Seu Sonho</p>
+    <h2 class="section-title reveal">Encontre o Iate<br>dos Seus <em>Sonhos</em></h2>
+    <p class="section-subtitle reveal">Fale com nossa equipe de especialistas e descubra a embarcação perfeita para você. Atendimento exclusivo e personalizado.</p>
+    <div class="reveal" style="margin-top: 12px;">
+      <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em conhecer as embarcações à venda." class="btn-gold" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i> Fale no WhatsApp
       </a>
     </div>
   </div>
@@ -1338,406 +1279,140 @@ section { padding: 120px 0; }
   <div class="container">
     <div class="footer-grid">
       <div>
-        <img src="img/logo-branca.png" alt="Bella Angra Iates" class="footer-brand-logo">
-        <p class="footer-brand-text">Referência em compra e venda de iates de luxo em Angra dos Reis. Embarcações premium com consultoria especializada e pós-venda completo.</p>
-        <div class="footer-social">
-          <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="https://wa.me/5524999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-        </div>
+        <img src="img/logo-branca.png" alt="Bella Angra Iates" class="footer-logo">
+        <p class="footer-desc">Referência na compra e venda de embarcações de luxo em Angra dos Reis. Assessoria completa e embarcações selecionadas dos melhores estaleiros do mundo.</p>
       </div>
       <div>
-        <h4 class="footer-col-title">Navegação</h4>
-        <div class="footer-links">
-          <a href="#embarcacoes">Embarcações</a>
-          <a href="#sobre">Sobre Nós</a>
-          <a href="#blog">Blog</a>
-          <a href="#contato">Contato</a>
-        </div>
+        <h4 class="footer-heading">Links</h4>
+        <ul class="footer-links">
+          <li><a href="#embarcacoes">Embarcações</a></li>
+          <li><a href="#sobre">Sobre</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
       </div>
       <div>
-        <h4 class="footer-col-title">Embarcações</h4>
-        <div class="footer-links">
-          <a href="#embarcacoes">Azimut</a>
-          <a href="#embarcacoes">Schaefer</a>
-          <a href="#embarcacoes">Intermarine</a>
-          <a href="#embarcacoes">Ferretti</a>
-          <a href="#embarcacoes">Real</a>
-        </div>
-      </div>
-      <div>
-        <h4 class="footer-col-title">Contato</h4>
-        <div class="footer-links">
-          <a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp" style="margin-right:6px;color:var(--gold);"></i>(24) 99999-9999</a>
-          <a href="https://instagram.com/bella.angra.iates" target="_blank"><i class="fab fa-instagram" style="margin-right:6px;color:var(--gold);"></i>@bella.angra.iates</a>
-          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--gold);"></i>Angra dos Reis, RJ</a>
-        </div>
+        <h4 class="footer-heading">Contato</h4>
+        <ul class="footer-contact">
+          <li>
+            <i class="fab fa-whatsapp"></i>
+            <a href="https://wa.me/5524999999999" target="_blank" rel="noopener">(24) 99999-9999</a>
+          </li>
+          <li>
+            <i class="fab fa-instagram"></i>
+            <a href="https://instagram.com/bella.angra.iates" target="_blank" rel="noopener">@bella.angra.iates</a>
+          </li>
+          <li>
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Angra dos Reis — RJ</span>
+          </li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2026 Bella Angra Iates. Todos os direitos reservados.</p>
-      <a href="https://instagram.com/companybastos" target="_blank" class="footer-dev">Desenvolvido por <span>Company Bastos</span></a>
+      <span>&copy; 2026 Bella Angra Iates. Todos os direitos reservados.</span>
+      <span>Desenvolvido por <a href="https://instagram.com/companybastos" target="_blank" rel="noopener">Company Bastos</a></span>
     </div>
   </div>
 </footer>
 
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/5524999999999?text=Olá! Vi o site e gostaria de informações sobre iates à venda." class="wpp-float" target="_blank" aria-label="WhatsApp">
+<!-- FLOATING WHATSAPP -->
+<a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em conhecer as embarcações à venda." class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <i class="fab fa-whatsapp"></i>
 </a>
 
+<!-- ============================================
+     JAVASCRIPT
+     ============================================ -->
 <script type="module">
-import { animate, inView, stagger } from "https://cdn.jsdelivr.net/npm/motion@12/+esm";
+import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@12/+esm";
 
-/* ============ YACHT DATA ============ */
-const yachts = [
-  {
-    name: "Azimut 74",
-    folder: "azimut-74",
-    photos: 19,
-    year: "2021",
-    length: "74 pés",
-    engine: "2x MAN V12 1400HP",
-    hours: "390H",
-    cabins: "4 suítes",
-    bathrooms: "4 banheiros",
-    passengers: "18 passageiros",
-    price: "R$ 19.800.000",
-    priceRaw: 19800000,
-    badge: "74 pés"
-  },
-  {
-    name: "Schaefer 660 FLY",
-    folder: "schaefer-660",
-    photos: 18,
-    length: "66 pés",
-    price: "R$ 12.990.000",
-    priceRaw: 12990000,
-    badge: "66 pés"
-  },
-  {
-    name: "Intermarine IM62",
-    folder: "intermarine-im62",
-    photos: 10,
-    year: "2018",
-    length: "62 pés",
-    engine: "Volvo IPS 1.200HP",
-    hours: "876H",
-    price: "R$ 12.000.000",
-    priceRaw: 12000000,
-    badge: "62 pés"
-  },
-  {
-    name: "Azimut 56",
-    folder: "azimut-56",
-    photos: 4,
-    year: "2017",
-    length: "56 pés",
-    engine: "Volvo 725HP",
-    hours: "920H",
-    price: "R$ 7.500.000",
-    priceRaw: 7500000,
-    badge: "56 pés"
-  },
-  {
-    name: "Azimut 56 FLY",
-    folder: "azimut-56-fly",
-    photos: 12,
-    length: "56 pés",
-    price: "Consulte-nos",
-    priceRaw: 0,
-    badge: "56 pés"
-  },
-  {
-    name: "Intermarine 60",
-    folder: "intermarine-60",
-    photos: 20,
-    length: "60 pés",
-    price: "Consulte-nos",
-    priceRaw: 0,
-    badge: "60 pés"
-  },
-  {
-    name: "Intermarine 60 FLY",
-    folder: "intermarine-60-fly",
-    photos: 19,
-    length: "60 pés",
-    price: "Consulte-nos",
-    priceRaw: 0,
-    badge: "60 pés"
-  },
-  {
-    name: "Real Top 40",
-    folder: "real-top-40",
-    photos: 1,
-    year: "2014",
-    length: "40 pés",
-    engine: "2x Volvo D6 435HP",
-    hours: "670H",
-    price: "R$ 1.600.000",
-    priceRaw: 1600000,
-    badge: "40 pés"
-  },
-  {
-    name: "Ferretti 50",
-    folder: "ferretti-50",
-    photos: 8,
-    length: "50 pés",
-    price: "Consulte-nos",
-    priceRaw: 0,
-    badge: "50 pés"
-  },
-  {
-    name: "Phanton 385 FLY",
-    folder: "phanton-385",
-    photos: 11,
-    length: "38.5 pés",
-    price: "Consulte-nos",
-    priceRaw: 0,
-    badge: "38.5 pés"
-  },
-  {
-    name: "Intermarine 440 Full",
-    folder: "intermarine-440",
-    photos: 2,
-    year: "1998",
-    length: "44 pés",
-    engine: "2x Volvo Penta 370HP",
-    hours: "198H",
-    passengers: "11 pessoas",
-    price: "R$ 850.000",
-    priceRaw: 850000,
-    badge: "44 pés"
-  }
-];
-
-/* ============ GENERATE PHOTO PATHS ============ */
-function getPhotos(yacht) {
-  const photos = [];
-  for (let i = 1; i <= yacht.photos; i++) {
-    photos.push(`img/${yacht.folder}/${String(i).padStart(2, '0')}.jpg`);
-  }
-  return photos;
-}
-
-/* ============ GENERATE SPEC ITEMS ============ */
-function getSpecItems(y) {
-  const items = [];
-  if (y.year) items.push({ icon: "fa-calendar", text: y.year });
-  if (y.length) items.push({ icon: "fa-ruler-horizontal", text: y.length });
-  if (y.engine) items.push({ icon: "fa-gear", text: y.engine });
-  if (y.hours) items.push({ icon: "fa-clock", text: y.hours });
-  if (y.cabins) items.push({ icon: "fa-bed", text: y.cabins });
-  if (y.bathrooms) items.push({ icon: "fa-bath", text: y.bathrooms });
-  if (y.passengers) items.push({ icon: "fa-users", text: y.passengers });
-  return items;
-}
-
-/* ============ RENDER FLEET CARDS ============ */
-const fleetGrid = document.getElementById("fleetGrid");
-
-yachts.forEach((yacht, idx) => {
-  const specs = getSpecItems(yacht);
-  const isConsult = yacht.priceRaw === 0;
-
-  const cardSpecs = specs.slice(0, 4).map(s =>
-    `<span><i class="fas ${s.icon}"></i>${s.text}</span>`
-  ).join('');
-
-  const card = document.createElement("div");
-  card.className = "yacht-card reveal";
-  card.dataset.index = idx;
-  card.innerHTML = `
-    <div class="yacht-card-img">
-      <img src="img/${yacht.folder}/01.jpg" alt="${yacht.name}" loading="lazy">
-      <div class="yacht-card-badge">${yacht.badge}</div>
-      <div class="yacht-card-photos"><i class="fas fa-images"></i> ${yacht.photos}</div>
-    </div>
-    <div class="yacht-card-body">
-      <h3 class="yacht-card-name">${yacht.name}</h3>
-      <div class="yacht-card-specs">${cardSpecs}</div>
-      <div class="yacht-card-divider"></div>
-      <div class="yacht-card-bottom">
-        <span class="yacht-card-price ${isConsult ? 'consult' : ''}">${yacht.price}</span>
-        <span class="yacht-card-cta">Ver Detalhes <i class="fas fa-arrow-right"></i></span>
-      </div>
-    </div>
-  `;
-
-  card.addEventListener("click", () => openModal(idx));
-  fleetGrid.appendChild(card);
-});
-
-/* ============ MODAL LOGIC ============ */
-const modalOverlay = document.getElementById("modalOverlay");
-const modalTitle = document.getElementById("modalTitle");
-const modalPrice = document.getElementById("modalPrice");
-const modalMainImg = document.getElementById("modalMainImg");
-const modalThumbs = document.getElementById("modalThumbs");
-const modalSpecs = document.getElementById("modalSpecs");
-const modalCounter = document.getElementById("modalCounter");
-const modalWpp = document.getElementById("modalWpp");
-const modalClose = document.getElementById("modalClose");
-const modalPrev = document.getElementById("modalPrev");
-const modalNext = document.getElementById("modalNext");
-
-let currentYacht = null;
-let currentPhotoIdx = 0;
-let currentPhotos = [];
-
-function openModal(yachtIdx) {
-  currentYacht = yachts[yachtIdx];
-  currentPhotos = getPhotos(currentYacht);
-  currentPhotoIdx = 0;
-
-  modalTitle.textContent = currentYacht.name;
-  modalPrice.textContent = currentYacht.price;
-
-  // Specs
-  const specs = getSpecItems(currentYacht);
-  modalSpecs.innerHTML = specs.map(s =>
-    `<span><i class="fas ${s.icon}"></i>${s.text}</span>`
-  ).join('');
-
-  // WhatsApp link
-  const msg = encodeURIComponent(`Olá! Tenho interesse no ${currentYacht.name}. Gostaria de mais informações.`);
-  modalWpp.href = `https://wa.me/5524999999999?text=${msg}`;
-
-  // Thumbnails
-  modalThumbs.innerHTML = '';
-  currentPhotos.forEach((photo, i) => {
-    const thumb = document.createElement("div");
-    thumb.className = `modal-thumb ${i === 0 ? 'active' : ''}`;
-    thumb.innerHTML = `<img src="${photo}" alt="${currentYacht.name} foto ${i + 1}" loading="lazy">`;
-    thumb.addEventListener("click", () => goToPhoto(i));
-    modalThumbs.appendChild(thumb);
-  });
-
-  updateModalPhoto();
-
-  modalOverlay.classList.add("open");
-  document.body.style.overflow = "hidden";
-}
-
-function closeModal() {
-  modalOverlay.classList.remove("open");
-  document.body.style.overflow = "";
-  currentYacht = null;
-}
-
-function goToPhoto(idx) {
-  currentPhotoIdx = idx;
-  updateModalPhoto();
-}
-
-function nextPhoto() {
-  currentPhotoIdx = (currentPhotoIdx + 1) % currentPhotos.length;
-  updateModalPhoto();
-}
-
-function prevPhoto() {
-  currentPhotoIdx = (currentPhotoIdx - 1 + currentPhotos.length) % currentPhotos.length;
-  updateModalPhoto();
-}
-
-function updateModalPhoto() {
-  modalMainImg.src = currentPhotos[currentPhotoIdx];
-  modalMainImg.alt = `${currentYacht.name} - Foto ${currentPhotoIdx + 1}`;
-  modalCounter.textContent = `${currentPhotoIdx + 1} / ${currentPhotos.length}`;
-
-  // Update thumbnail active states
-  const thumbs = modalThumbs.querySelectorAll(".modal-thumb");
-  thumbs.forEach((t, i) => {
-    t.classList.toggle("active", i === currentPhotoIdx);
-  });
-
-  // Scroll active thumb into view
-  const activeThumb = thumbs[currentPhotoIdx];
-  if (activeThumb) {
-    activeThumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
-  }
-}
-
-modalClose.addEventListener("click", closeModal);
-modalPrev.addEventListener("click", prevPhoto);
-modalNext.addEventListener("click", nextPhoto);
-modalOverlay.addEventListener("click", (e) => {
-  if (e.target === modalOverlay) closeModal();
-});
-
-// Keyboard controls
-document.addEventListener("keydown", (e) => {
-  if (!modalOverlay.classList.contains("open")) return;
-  if (e.key === "Escape") closeModal();
-  if (e.key === "ArrowRight") nextPhoto();
-  if (e.key === "ArrowLeft") prevPhoto();
-});
-
-/* ============ LOADER ============ */
-window.addEventListener("load", () => {
+// ---- LOADER ----
+window.addEventListener('load', () => {
   setTimeout(() => {
-    document.getElementById("loader").classList.add("hide");
-  }, 1800);
+    document.getElementById('loader').classList.add('hide');
+    document.querySelector('.hero').classList.add('loaded');
+
+    // Animate hero content sequentially
+    const eyebrow = document.querySelector('.hero-eyebrow');
+    const title = document.querySelector('.hero-title');
+    const subtitle = document.querySelector('.hero-subtitle');
+    const buttons = document.querySelector('.hero-buttons');
+    const scroll = document.querySelector('.hero-scroll');
+
+    animate(eyebrow, { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, easing: [.25,.1,.25,1], delay: 0.2 });
+    animate(title, { opacity: [0, 1], y: [30, 0] }, { duration: 0.8, easing: [.25,.1,.25,1], delay: 0.4 });
+    animate(subtitle, { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, easing: [.25,.1,.25,1], delay: 0.7 });
+    animate(buttons, { opacity: [0, 1], y: [20, 0] }, { duration: 0.7, easing: [.25,.1,.25,1], delay: 0.9 });
+    if (scroll) animate(scroll, { opacity: [0, 1] }, { duration: 0.6, delay: 1.4 });
+  }, 2000);
 });
 
-/* ============ NAV SCROLL ============ */
-const nav = document.getElementById("nav");
+// ---- NAV SCROLL ----
+const nav = document.getElementById('nav');
 let lastScroll = 0;
-window.addEventListener("scroll", () => {
-  const st = window.scrollY;
-  nav.classList.toggle("scrolled", st > 80);
-  lastScroll = st;
-}, { passive: true });
-
-/* ============ MOBILE MENU ============ */
-const menuBtn = document.getElementById("menuBtn");
-const mobileMenu = document.getElementById("mobileMenu");
-const menuCloseBtn = document.getElementById("menuClose");
-
-menuBtn.addEventListener("click", () => mobileMenu.classList.add("open"));
-menuCloseBtn.addEventListener("click", () => mobileMenu.classList.remove("open"));
-document.querySelectorAll(".mobile-link").forEach(link => {
-  link.addEventListener("click", () => mobileMenu.classList.remove("open"));
-});
-
-/* ============ REVEAL ANIMATIONS ============ */
-document.querySelectorAll(".reveal").forEach((el) => {
-  inView(el, () => {
-    animate(el, { opacity: [0, 1], y: [40, 0] }, { duration: 0.8, easing: [.25, .1, .25, 1] });
-  }, { margin: "-60px" });
-});
-
-/* ============ HERO ANIMATIONS ============ */
-const heroEyebrow = document.querySelector(".hero-eyebrow");
-const heroH1 = document.querySelector(".hero h1");
-const heroSub = document.querySelector(".hero-sub");
-const heroBtns = document.querySelector(".hero-btns");
-
-setTimeout(() => {
-  animate(heroEyebrow, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 1.8, easing: [.25,.1,.25,1] });
-  animate(heroH1, { opacity: [0, 1], y: [30, 0] }, { duration: 1, delay: 2.0, easing: [.25,.1,.25,1] });
-  animate(heroSub, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 2.3, easing: [.25,.1,.25,1] });
-  animate(heroBtns, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 2.5, easing: [.25,.1,.25,1] });
-}, 100);
-
-/* ============ TOUCH SWIPE FOR MODAL ============ */
-let touchStartX = 0;
-let touchEndX = 0;
-const modalViewer = document.getElementById("modalViewer");
-
-modalViewer.addEventListener("touchstart", (e) => {
-  touchStartX = e.changedTouches[0].screenX;
-}, { passive: true });
-
-modalViewer.addEventListener("touchend", (e) => {
-  touchEndX = e.changedTouches[0].screenX;
-  const diff = touchStartX - touchEndX;
-  if (Math.abs(diff) > 50) {
-    if (diff > 0) nextPhoto();
-    else prevPhoto();
+window.addEventListener('scroll', () => {
+  const y = window.scrollY;
+  if (y > 60) {
+    nav.classList.add('scrolled');
+  } else {
+    nav.classList.remove('scrolled');
   }
+  lastScroll = y;
 }, { passive: true });
 
-</script>
+// ---- HAMBURGER ----
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  hamburger.classList.toggle('active');
+  mobileMenu.classList.toggle('open');
+  document.body.style.overflow = mobileMenu.classList.contains('open') ? 'hidden' : '';
+});
+// Close on link click
+document.querySelectorAll('.mob-link').forEach(link => {
+  link.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    mobileMenu.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
 
+// ---- REVEAL ON SCROLL (Motion inView) ----
+document.querySelectorAll('.reveal').forEach((el, i) => {
+  inView(el, () => {
+    // Stagger cards in grids
+    const parent = el.parentElement;
+    const isGridChild = parent && (
+      parent.classList.contains('fleet-grid') ||
+      parent.classList.contains('blog-grid') ||
+      parent.classList.contains('advantages-grid')
+    );
+    const siblings = isGridChild ? Array.from(parent.querySelectorAll('.reveal')) : [];
+    const idx = siblings.indexOf(el);
+    const delay = isGridChild ? Math.min(idx * 0.08, 0.4) : 0;
+
+    animate(el, { opacity: [0, 1], y: [30, 0] }, {
+      duration: 0.65,
+      easing: [.25, .1, .25, 1],
+      delay: delay
+    });
+    el.classList.add('visible');
+  }, { amount: 0.15 });
+});
+
+// ---- SMOOTH SCROLL for anchor links ----
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      const offset = 80;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+  });
+});
+</script>
 </body>
 </html>

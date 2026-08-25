@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Azimut 74 Fly 2021 | Bella Angra Iates</title>
+<meta name="description" content="Azimut 74 Fly 2021 — 2x MAN V12 1400 HP, 4 suites, Seakeeper, unico dono. R$ 19.800.000. Iate de luxo a venda em Angra dos Reis.">
+<meta property="og:title" content="Azimut 74 Fly 2021 | Bella Angra Iates">
+<meta property="og:description" content="Azimut 74 Fly 2021 — Iate de luxo italiano com 4 suites, Seakeeper e tecnologia de ponta. A venda em Angra dos Reis.">
+<meta property="og:image" content="../img/azimut-74/01.jpg">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0C1829;
+  --navy-light: #162844;
+  --navy-deep: #060E1A;
+  --navy-mid: #0F1F35;
+  --gold: #C5A55A;
+  --gold-light: #D4BA7A;
+  --gold-pale: #E8D9B0;
+  --gold-dark: #A68B3C;
+  --white: #FAFAFA;
+  --cream: #F5F0E8;
+  --text: #C8C4BC;
+  --text-light: rgba(255,255,255,.55);
+  --gray: #7A7872;
+  --border: rgba(197,165,90,.12);
+  --border-gold: rgba(197,165,90,.25);
+  --font: 'Montserrat', sans-serif;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --ease: cubic-bezier(.25,.1,.25,1);
+  --transition: all .4s var(--ease);
+  --max-w: 1300px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--navy-deep);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul, ol { list-style: none; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============ NAV ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500; padding: 22px 0;
+  transition: var(--transition);
+}
+.nav.scrolled {
+  background: rgba(6,14,26,.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+.nav-inner {
+  display: flex; align-items: center; justify-content: space-between;
+  max-width: var(--max-w); margin: 0 auto; padding: 0 40px;
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.4rem;
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  font-size: .75rem; font-weight: 400; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-light);
+  transition: color .3s ease; position: relative;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-cta {
+  padding: 10px 24px !important;
+  border: 1px solid var(--gold) !important;
+  color: var(--gold) !important;
+  font-size: .7rem !important;
+  letter-spacing: 2px;
+  transition: all .3s ease !important;
+}
+.nav-cta:hover { background: var(--gold) !important; color: var(--navy-deep) !important; }
+
+.menu-btn {
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px; padding: 8px;
+}
+.menu-btn span {
+  width: 24px; height: 1.5px; background: var(--gold); transition: var(--transition);
+}
+
+/* Mobile menu */
+.mobile-menu {
+  position: fixed; inset: 0; background: rgba(6,14,26,.98);
+  backdrop-filter: blur(30px); z-index: 999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  opacity: 0; visibility: hidden; transition: var(--transition);
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: var(--font-d); font-size: 1.6rem; color: var(--text);
+  letter-spacing: 3px; transition: color .3s ease;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.menu-close {
+  position: absolute; top: 28px; right: 28px;
+  background: none; border: none; color: var(--gold);
+  font-size: 1.8rem; cursor: pointer;
+}
+
+/* ============ HERO ============ */
+.hero {
+  position: relative; width: 100%; height: 60vh; min-height: 400px;
+  overflow: hidden; display: flex; align-items: flex-end;
+}
+.hero-bg {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
+.hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(6,14,26,.92) 0%, rgba(6,14,26,.5) 40%, rgba(6,14,26,.2) 100%);
+}
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: var(--max-w); margin: 0 auto; padding: 0 40px 48px;
+  width: 100%;
+}
+.hero-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: .72rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 20px; transition: opacity .3s ease;
+}
+.hero-back:hover { opacity: .7; }
+.hero h1 {
+  font-family: var(--font-d); font-size: 3.2rem; font-weight: 300;
+  color: var(--white); letter-spacing: 2px; line-height: 1.15;
+  margin-bottom: 12px;
+}
+.hero-specs-line {
+  font-size: .8rem; color: var(--text-light); letter-spacing: 2px;
+  text-transform: uppercase; margin-bottom: 14px;
+  display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.hero-specs-line span { opacity: .4; }
+.hero-price {
+  font-family: var(--font-d); font-size: 2rem; color: var(--gold);
+  font-weight: 400; letter-spacing: 1px;
+}
+
+/* ============ GALLERY ============ */
+.gallery-section {
+  padding: 60px 0 40px;
+  background: var(--navy-deep);
+}
+.gallery-main {
+  position: relative; width: 100%;
+  max-height: 600px; aspect-ratio: 16/9;
+  border-radius: 8px; overflow: hidden;
+  background: var(--navy);
+  margin-bottom: 16px;
+}
+.gallery-main img {
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: opacity .4s ease;
+}
+.gallery-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(6,14,26,.7); border: 1px solid var(--border-gold);
+  color: var(--gold); font-size: 1rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: all .3s ease; z-index: 10;
+  backdrop-filter: blur(10px);
+}
+.gallery-arrow:hover { background: var(--gold); color: var(--navy-deep); }
+.gallery-arrow.prev { left: 16px; }
+.gallery-arrow.next { right: 16px; }
+.gallery-counter {
+  position: absolute; bottom: 16px; right: 16px;
+  background: rgba(6,14,26,.7); backdrop-filter: blur(10px);
+  padding: 6px 14px; border-radius: 20px;
+  font-size: .7rem; color: var(--text-light); letter-spacing: 1px;
+  border: 1px solid var(--border);
+}
+.gallery-thumbs {
+  display: flex; gap: 8px; overflow-x: auto;
+  padding: 4px 0 12px; scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) var(--navy);
+}
+.gallery-thumbs::-webkit-scrollbar { height: 4px; }
+.gallery-thumbs::-webkit-scrollbar-track { background: var(--navy); }
+.gallery-thumbs::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+.gallery-thumb {
+  flex-shrink: 0; width: 80px; height: 56px;
+  border-radius: 4px; overflow: hidden; cursor: pointer;
+  border: 2px solid transparent; transition: all .3s ease;
+  opacity: .5;
+}
+.gallery-thumb:hover { opacity: .8; }
+.gallery-thumb.active { border-color: var(--gold); opacity: 1; }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+/* ============ SPECS ============ */
+.specs-section {
+  padding: 60px 0;
+  background: var(--navy);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.specs-title {
+  font-family: var(--font-d); font-size: 2rem; color: var(--white);
+  font-weight: 300; letter-spacing: 2px; margin-bottom: 40px;
+  text-align: center;
+}
+.specs-title::after {
+  content: ''; display: block; width: 60px; height: 1px;
+  background: var(--gold); margin: 16px auto 0;
+}
+.specs-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px;
+}
+.specs-col-title {
+  font-family: var(--font-d); font-size: 1.2rem; color: var(--gold);
+  font-weight: 400; letter-spacing: 1px; margin-bottom: 24px;
+  padding-bottom: 12px; border-bottom: 1px solid var(--border);
+}
+.spec-item {
+  display: flex; align-items: center; gap: 14px;
+  padding: 12px 0; border-bottom: 1px solid var(--border);
+}
+.spec-item:last-child { border-bottom: none; }
+.spec-icon {
+  width: 40px; height: 40px; border-radius: 8px;
+  background: rgba(197,165,90,.08); border: 1px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: .85rem; flex-shrink: 0;
+}
+.spec-label {
+  font-size: .7rem; text-transform: uppercase; letter-spacing: 1.5px;
+  color: var(--gray); margin-bottom: 2px;
+}
+.spec-value {
+  font-size: .9rem; color: var(--white); font-weight: 400;
+}
+
+/* ============ DETAIL SECTIONS ============ */
+.detail-section {
+  padding: 60px 0;
+  border-bottom: 1px solid var(--border);
+}
+.detail-section:nth-child(even) { background: var(--navy); }
+.detail-section:nth-child(odd) { background: var(--navy-deep); }
+.detail-header {
+  display: flex; align-items: center; gap: 14px;
+  margin-bottom: 32px;
+}
+.detail-header-icon {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: rgba(197,165,90,.1); border: 1px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: 1.1rem;
+}
+.detail-header h2 {
+  font-family: var(--font-d); font-size: 1.6rem; color: var(--white);
+  font-weight: 400; letter-spacing: 1px;
+}
+.detail-items {
+  display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px 40px;
+}
+.detail-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 0;
+}
+.detail-check {
+  color: var(--gold); font-size: .8rem; margin-top: 2px; flex-shrink: 0;
+}
+.detail-text {
+  font-size: .88rem; color: var(--text); line-height: 1.6;
+}
+
+/* ============ CTA ============ */
+.cta-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-deep) 100%);
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.cta-section h2 {
+  font-family: var(--font-d); font-size: 2.2rem; color: var(--white);
+  font-weight: 300; letter-spacing: 2px; margin-bottom: 16px;
+}
+.cta-section p {
+  font-size: .9rem; color: var(--text-light); margin-bottom: 36px;
+  max-width: 500px; margin-left: auto; margin-right: auto; line-height: 1.7;
+}
+.cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 16px 40px;
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: #fff; font-size: .85rem; font-weight: 600;
+  letter-spacing: 1px; text-transform: uppercase;
+  border-radius: 50px; transition: all .3s ease;
+  box-shadow: 0 4px 24px rgba(37,211,102,.25);
+}
+.cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(37,211,102,.35);
+}
+.cta-btn i { font-size: 1.1rem; }
+.cta-price {
+  font-family: var(--font-d); font-size: 1.8rem; color: var(--gold);
+  margin-bottom: 8px;
+}
+.cta-cond {
+  font-size: .75rem; color: var(--gray); margin-bottom: 32px;
+  letter-spacing: 1px;
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--navy-deep);
+  padding: 64px 0 32px;
+  border-top: 1px solid var(--border);
+}
+.footer-grid {
+  display: grid; grid-template-columns: 1.5fr repeat(3, 1fr);
+  gap: 48px; margin-bottom: 48px;
+}
+.footer-brand-logo {
+  height: 50px; width: auto; margin-bottom: 16px;
+  object-fit: contain;
+}
+.footer-brand-text {
+  font-size: .8rem; color: var(--text-light); line-height: 1.7;
+  margin-bottom: 20px;
+}
+.footer-col-title {
+  font-family: var(--font-d); font-size: 1.1rem; color: var(--gold);
+  font-weight: 400; letter-spacing: 1px; margin-bottom: 20px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
+.footer-links a {
+  font-size: .78rem; color: var(--text-light); transition: color .3s ease;
+  letter-spacing: .5px;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-social { display: flex; gap: 12px; }
+.footer-social a {
+  width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--border-gold);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gold); font-size: .9rem; transition: all .3s ease;
+}
+.footer-social a:hover { background: var(--gold); color: var(--navy-deep); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-top: 32px; border-top: 1px solid var(--border);
+}
+.footer-copy { font-size: .72rem; color: var(--gray); letter-spacing: .5px; }
+.footer-dev {
+  font-size: .72rem; color: var(--gray); letter-spacing: .5px;
+  transition: color .3s ease;
+}
+.footer-dev:hover { color: var(--gold); }
+.footer-dev span { color: var(--gold); font-weight: 500; }
+
+/* ============ WHATSAPP FLOAT ============ */
+.wpp-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 400;
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #25D366;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 1.5rem;
+  box-shadow: 0 4px 20px rgba(37,211,102,.4);
+  transition: all .3s ease;
+  animation: wppPulse 2s ease-in-out infinite;
+}
+.wpp-float:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,.5); }
+@keyframes wppPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.4); }
+  50% { box-shadow: 0 4px 20px rgba(37,211,102,.4), 0 0 0 12px rgba(37,211,102,.1); }
+}
+
+/* ============ REVEAL ============ */
+.reveal { opacity: 0; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .specs-grid { gap: 24px; }
+  .detail-items { gap: 12px 24px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 0 20px; }
+  .nav-links { display: none; }
+  .menu-btn { display: flex; }
+  .hero { height: 40vh; min-height: 300px; }
+  .hero h1 { font-size: 2rem; }
+  .hero-price { font-size: 1.5rem; }
+  .hero-content { padding: 0 20px 32px; }
+  .specs-grid { grid-template-columns: 1fr; gap: 40px; }
+  .detail-items { grid-template-columns: 1fr; }
+  .gallery-arrow { width: 38px; height: 38px; font-size: .85rem; }
+  .gallery-arrow.prev { left: 8px; }
+  .gallery-arrow.next { right: 8px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; gap: 12px; }
+  .cta-section h2 { font-size: 1.6rem; }
+}
+
+@media (max-width: 480px) {
+  .hero h1 { font-size: 1.6rem; }
+  .hero-specs-line { font-size: .68rem; }
+  .hero-price { font-size: 1.3rem; }
+  .gallery-main { max-height: 280px; }
+  .detail-header h2 { font-size: 1.3rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">Bella Angra Iates</a>
+    <div class="nav-links">
+      <a href="../index.html#embarcacoes">Embarcacoes</a>
+      <a href="../index.html#sobre">Sobre</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+      <a href="https://wa.me/5524999999999?text=Ola! Gostaria de informacoes sobre iates a venda." target="_blank" class="nav-cta">Fale Conosco</a>
+    </div>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Fechar">&times;</button>
+  <a href="../index.html#embarcacoes" class="mobile-link">Embarcacoes</a>
+  <a href="../index.html#sobre" class="mobile-link">Sobre</a>
+  <a href="../blog.html" class="mobile-link">Blog</a>
+  <a href="../index.html#contato" class="mobile-link">Contato</a>
+  <a href="https://wa.me/5524999999999?text=Ola! Gostaria de informacoes sobre iates a venda." target="_blank" class="mobile-link" style="color:var(--gold);">Fale Conosco</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="../img/azimut-74/05.jpg" alt="Azimut 74 Fly - Vista Exterior" class="hero-bg">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <a href="../index.html#embarcacoes" class="hero-back"><i class="fas fa-arrow-left"></i> Voltar para embarcacoes</a>
+    <h1>Azimut 74 Fly</h1>
+    <div class="hero-specs-line">
+      2021 <span>|</span> 74 pes <span>|</span> 2x MAN V12 1400 HP <span>|</span> 390 horas
+    </div>
+    <div class="hero-price">R$ 19.800.000,00</div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-main" id="galleryMain">
+      <img src="../img/azimut-74/01.jpg" alt="Azimut 74 Fly" id="galleryImg">
+      <button class="gallery-arrow prev" id="galleryPrev"><i class="fas fa-chevron-left"></i></button>
+      <button class="gallery-arrow next" id="galleryNext"><i class="fas fa-chevron-right"></i></button>
+      <div class="gallery-counter" id="galleryCounter">1 / 17</div>
+    </div>
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+  </div>
+</section>
+
+<!-- SPECIFICATIONS -->
+<section class="specs-section reveal">
+  <div class="container">
+    <h2 class="specs-title">Especificacoes Tecnicas</h2>
+    <div class="specs-grid">
+      <div>
+        <h3 class="specs-col-title">Informacoes Principais</h3>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-industry"></i></div>
+          <div><div class="spec-label">Fabricante</div><div class="spec-value">Azimut Yachts</div></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-ship"></i></div>
+          <div><div class="spec-label">Modelo</div><div class="spec-value">Azimut 74 Fly</div></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-calendar"></i></div>
+          <div><div class="spec-label">Ano</div><div class="spec-value">2021</div></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-ruler-horizontal"></i></div>
+          <div><div class="spec-label">Tamanho</div><div class="spec-value">74 pes</div></div>
+        </div>
+      </div>
+      <div>
+        <h3 class="specs-col-title">Motorizacao e Performance</h3>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-cogs"></i></div>
+          <div><div class="spec-label">Motorizacao</div><div class="spec-value">2x MAN V12 1400 HP</div></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-tachometer-alt"></i></div>
+          <div><div class="spec-label">Horas de uso</div><div class="spec-value">390 horas</div></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-gas-pump"></i></div>
+          <div><div class="spec-label">Combustivel</div><div class="spec-value">Diesel</div></div>
+        </div>
+        <div class="spec-item">
+          <div class="spec-icon"><i class="fas fa-bed"></i></div>
+          <div><div class="spec-label">Cabines</div><div class="spec-value">4 suites + 4 banheiros + cabine marinheiro</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: Configuracao e Areas Sociais -->
+<section class="detail-section reveal">
+  <div class="container">
+    <div class="detail-header">
+      <div class="detail-header-icon"><i class="fas fa-couch"></i></div>
+      <h2>Configuracao e Areas Sociais</h2>
+    </div>
+    <div class="detail-items">
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">4 suites completas com banheiros privativos</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Cabine de marinheiro independente</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Area gourmet no flybridge</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Lounge e solario de proa</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Plataforma submergivel</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Passarela hidraulica embutida</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Hard top eletrico</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Churrasqueira Kenyon</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Bote de apoio incluso</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: Acabamentos e Conforto -->
+<section class="detail-section reveal">
+  <div class="container">
+    <div class="detail-header">
+      <div class="detail-header-icon"><i class="fas fa-gem"></i></div>
+      <h2>Acabamentos e Conforto</h2>
+    </div>
+    <div class="detail-items">
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Ar-condicionado Dometic em todos os ambientes</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Piso italiano de alta qualidade</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Teca natural nos passadicos</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Geladeira, freezer, frigobar e ice maker</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Cooktop, forno e micro-ondas</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Lava e seca</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">WC eletrico</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: Tecnologia e Navegacao -->
+<section class="detail-section reveal">
+  <div class="container">
+    <div class="detail-header">
+      <div class="detail-header-icon"><i class="fas fa-satellite-dish"></i></div>
+      <h2>Tecnologia e Navegacao</h2>
+    </div>
+    <div class="detail-items">
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Joystick Xenta para manobrabilidade precisa</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">GPS, Radar e Sonda integrados</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Piloto automatico</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Bow thruster e stern thruster</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Flaps Zipwake</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">3o comando de popa</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Cameras de atracagem e seguranca</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: Autonomia e Sistemas de Bordo -->
+<section class="detail-section reveal">
+  <div class="container">
+    <div class="detail-header">
+      <div class="detail-header-icon"><i class="fas fa-bolt"></i></div>
+      <h2>Autonomia e Sistemas de Bordo</h2>
+    </div>
+    <div class="detail-items">
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">2 geradores Onan</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Dessalinizador de agua</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Inversor de energia</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Carregador de baterias</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Tomada de cais</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Guincho eletrico</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: Entretenimento e Conectividade -->
+<section class="detail-section reveal">
+  <div class="container">
+    <div class="detail-header">
+      <div class="detail-header-icon"><i class="fas fa-music"></i></div>
+      <h2>Entretenimento e Conectividade</h2>
+    </div>
+    <div class="detail-items">
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Som Fusion premium integrado</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">TV Smart em multiplos ambientes</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Antena digital</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Starlink — internet satelital de alta velocidade</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL: Diferenciais Tecnicos -->
+<section class="detail-section reveal">
+  <div class="container">
+    <div class="detail-header">
+      <div class="detail-header-icon"><i class="fas fa-award"></i></div>
+      <h2>Diferenciais Tecnicos</h2>
+    </div>
+    <div class="detail-items">
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Seakeeper — estabilizacao giroscopica anti-balanco</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Luzes subaquaticas UltraLED</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Luzes de cortesia em toda a embarcacao</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Unico dono desde zero</span></div>
+      <div class="detail-item"><span class="detail-check"><i class="fas fa-check"></i></span><span class="detail-text">Totalmente revisada e pronta para navegacao</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section reveal">
+  <div class="container">
+    <h2>Interessado nesta embarcacao?</h2>
+    <p>A Azimut 74 Fly 2021 e a combinacao perfeita de potencia, luxo e tecnologia. Entre em contato para agendar uma visita exclusiva.</p>
+    <div class="cta-price">R$ 19.800.000,00</div>
+    <div class="cta-cond">Consulte condicoes especiais</div>
+    <a href="https://wa.me/5524999999999?text=Ola, tenho interesse na Azimut 74 Fly." target="_blank" class="cta-btn">
+      <i class="fab fa-whatsapp"></i> Falar com Consultor
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="../img/logo-branca.png" alt="Bella Angra Iates" class="footer-brand-logo">
+        <p class="footer-brand-text">Referencia em compra e venda de iates de luxo em Angra dos Reis. Embarcacoes premium com consultoria especializada e pos-venda completo.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5524999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Navegacao</h4>
+        <div class="footer-links">
+          <a href="../index.html#embarcacoes">Embarcacoes</a>
+          <a href="../index.html#sobre">Sobre Nos</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../index.html#contato">Contato</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Embarcacoes</h4>
+        <div class="footer-links">
+          <a href="../index.html#embarcacoes">Azimut</a>
+          <a href="../index.html#embarcacoes">Schaefer</a>
+          <a href="../index.html#embarcacoes">Intermarine</a>
+          <a href="../index.html#embarcacoes">Ferretti</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Contato</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp" style="margin-right:6px;color:var(--gold);"></i>(24) 99999-9999</a>
+          <a href="https://instagram.com/bella.angra.iates" target="_blank"><i class="fab fa-instagram" style="margin-right:6px;color:var(--gold);"></i>@bella.angra.iates</a>
+          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--gold);"></i>Angra dos Reis, RJ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Bella Angra Iates. Todos os direitos reservados.</p>
+      <a href="https://instagram.com/companybastos" target="_blank" class="footer-dev">Desenvolvido por <span>Company Bastos</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5524999999999?text=Ola! Vi o site e gostaria de informacoes sobre iates a venda." class="wpp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script type="module">
+import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@12/+esm";
+
+/* ============ GALLERY ============ */
+const photos = [
+  "../img/azimut-74/01.jpg",
+  "../img/azimut-74/02.jpg",
+  "../img/azimut-74/03.jpg",
+  "../img/azimut-74/04.jpg",
+  "../img/azimut-74/07.jpg",
+  "../img/azimut-74/08.jpg",
+  "../img/azimut-74/09.jpg",
+  "../img/azimut-74/10.jpg",
+  "../img/azimut-74/11.jpg",
+  "../img/azimut-74/12.jpg",
+  "../img/azimut-74/13.jpg",
+  "../img/azimut-74/14.jpg",
+  "../img/azimut-74/15.jpg",
+  "../img/azimut-74/16.jpg",
+  "../img/azimut-74/17.jpg",
+  "../img/azimut-74/18.jpg",
+  "../img/azimut-74/19.jpg"
+];
+
+let currentIdx = 0;
+const galleryImg = document.getElementById("galleryImg");
+const galleryCounter = document.getElementById("galleryCounter");
+const galleryThumbs = document.getElementById("galleryThumbs");
+
+// Build thumbnails
+photos.forEach((photo, i) => {
+  const thumb = document.createElement("div");
+  thumb.className = `gallery-thumb ${i === 0 ? "active" : ""}`;
+  thumb.innerHTML = `<img src="${photo}" alt="Foto ${i + 1}" loading="lazy">`;
+  thumb.addEventListener("click", () => goTo(i));
+  galleryThumbs.appendChild(thumb);
+});
+
+function goTo(idx) {
+  currentIdx = idx;
+  galleryImg.src = photos[currentIdx];
+  galleryImg.alt = `Azimut 74 Fly - Foto ${currentIdx + 1}`;
+  galleryCounter.textContent = `${currentIdx + 1} / ${photos.length}`;
+  document.querySelectorAll(".gallery-thumb").forEach((t, i) => {
+    t.classList.toggle("active", i === currentIdx);
+  });
+  const activeThumb = document.querySelectorAll(".gallery-thumb")[currentIdx];
+  if (activeThumb) activeThumb.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+}
+
+document.getElementById("galleryPrev").addEventListener("click", () => {
+  goTo((currentIdx - 1 + photos.length) % photos.length);
+});
+document.getElementById("galleryNext").addEventListener("click", () => {
+  goTo((currentIdx + 1) % photos.length);
+});
+
+// Touch swipe
+let touchStartX = 0;
+const galleryMain = document.getElementById("galleryMain");
+galleryMain.addEventListener("touchstart", (e) => { touchStartX = e.changedTouches[0].screenX; }, { passive: true });
+galleryMain.addEventListener("touchend", (e) => {
+  const diff = touchStartX - e.changedTouches[0].screenX;
+  if (Math.abs(diff) > 50) { diff > 0 ? goTo((currentIdx + 1) % photos.length) : goTo((currentIdx - 1 + photos.length) % photos.length); }
+}, { passive: true });
+
+// Keyboard
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowRight") goTo((currentIdx + 1) % photos.length);
+  if (e.key === "ArrowLeft") goTo((currentIdx - 1 + photos.length) % photos.length);
+});
+
+/* ============ NAV SCROLL ============ */
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 80);
+}, { passive: true });
+
+/* ============ MOBILE MENU ============ */
+document.getElementById("menuBtn").addEventListener("click", () => document.getElementById("mobileMenu").classList.add("open"));
+document.getElementById("menuClose").addEventListener("click", () => document.getElementById("mobileMenu").classList.remove("open"));
+document.querySelectorAll(".mobile-link").forEach(link => {
+  link.addEventListener("click", () => document.getElementById("mobileMenu").classList.remove("open"));
+});
+
+/* ============ REVEAL ANIMATIONS ============ */
+document.querySelectorAll(".reveal").forEach((el) => {
+  inView(el, () => {
+    animate(el, { opacity: [0, 1], y: [40, 0] }, { duration: 0.8, easing: [.25, .1, .25, 1] });
+  }, { margin: "-60px" });
+});
+
+/* ============ HERO ANIMATIONS ============ */
+const heroContent = document.querySelector(".hero-content");
+animate(heroContent, { opacity: [0, 1], y: [30, 0] }, { duration: 1, delay: 0.3, easing: [.25,.1,.25,1] });
+</script>
+</body>
+</html>

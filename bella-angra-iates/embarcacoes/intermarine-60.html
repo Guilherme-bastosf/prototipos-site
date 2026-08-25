@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Intermarine 60 | Bella Angra Iates — Iate de Luxo à Venda</title>
+<meta name="description" content="Intermarine 60 (2012) à venda — 2x Volvo Penta D13 900 HP, plataforma submergível, passarela hidráulica, absolutamente impecável. R$ 5.350.000. Bella Angra Iates, Angra dos Reis.">
+<meta property="og:title" content="Intermarine 60 à Venda | Bella Angra Iates">
+<meta property="og:description" content="Intermarine 60, 2012. 2x Volvo Penta 900 HP. Absolutamente impecável, totalmente revisada. R$ 5.350.000.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="../img/intermarine-60/02.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0C1829;
+  --navy-light: #162844;
+  --navy-deep: #060E1A;
+  --navy-mid: #0F1F35;
+  --gold: #C5A55A;
+  --gold-light: #D4BA7A;
+  --gold-pale: #E8D9B0;
+  --gold-dark: #A68B3C;
+  --white: #FAFAFA;
+  --cream: #F5F0E8;
+  --text: #C8C4BC;
+  --text-light: rgba(255,255,255,.55);
+  --gray: #7A7872;
+  --muted: #3A3832;
+  --border: rgba(197,165,90,.12);
+  --border-gold: rgba(197,165,90,.25);
+  --font: 'Montserrat', sans-serif;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --ease: cubic-bezier(.25,.1,.25,1);
+  --transition: all .4s var(--ease);
+  --max-w: 1300px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--navy-deep);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul, ol { list-style: none; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500; padding: 22px 0;
+  transition: var(--transition);
+}
+.nav.scrolled {
+  background: rgba(6,14,26,.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.15rem;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.nav-logo span {
+  font-weight: 300;
+  color: var(--text);
+  opacity: .45;
+  margin-left: 2px;
+}
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,.4);
+  font-size: .62rem;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: color .3s ease;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width .3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px 26px;
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+  margin-left: 12px;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+.menu-btn {
+  display: none;
+  background: none; border: none;
+  color: var(--gold);
+  font-size: 1.15rem;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.mobile-menu {
+  position: fixed; inset: 0;
+  background: rgba(6,14,26,.97);
+  z-index: 490;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px;
+  opacity: 0; visibility: hidden;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  transition: color .3s ease;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu-close {
+  position: absolute; top: 22px; right: 40px;
+  background: none; border: none;
+  color: var(--gold); font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* ============ HERO BANNER ============ */
+.hero-detail {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  overflow: hidden;
+}
+.hero-detail-bg {
+  position: absolute; inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.hero-detail-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6,14,26,.3) 0%,
+    rgba(6,14,26,.15) 30%,
+    rgba(6,14,26,.5) 70%,
+    rgba(6,14,26,.92) 100%
+  );
+}
+.hero-detail-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 0 40px 50px;
+  max-width: 900px;
+}
+.hero-detail-eyebrow {
+  font-size: .55rem;
+  color: var(--gold);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+  font-weight: 400;
+  opacity: 0;
+}
+.hero-detail-content h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  color: var(--white);
+  font-weight: 300;
+  line-height: 1.1;
+  margin-bottom: 14px;
+  letter-spacing: 2px;
+  opacity: 0;
+}
+.hero-detail-specs {
+  font-size: .78rem;
+  color: var(--text-light);
+  font-weight: 300;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  opacity: 0;
+}
+.hero-detail-specs span {
+  margin: 0 8px;
+  opacity: .3;
+}
+.hero-detail-price {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  color: var(--gold);
+  font-weight: 400;
+  letter-spacing: 1px;
+  opacity: 0;
+}
+
+/* ============ GALLERY ============ */
+.gallery-section {
+  padding: 60px 0 40px;
+  background: var(--navy-deep);
+}
+.gallery-main-wrap {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+.gallery-main {
+  width: 100%;
+  max-height: 600px;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  background: var(--navy);
+  transition: opacity .4s ease;
+}
+.gallery-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(6,14,26,.7);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  width: 48px; height: 48px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+  backdrop-filter: blur(8px);
+}
+.gallery-arrow:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+.gallery-arrow.prev { left: 16px; }
+.gallery-arrow.next { right: 16px; }
+
+.gallery-counter {
+  position: absolute;
+  bottom: 16px; right: 16px;
+  background: rgba(6,14,26,.7);
+  backdrop-filter: blur(8px);
+  padding: 6px 14px;
+  font-size: .65rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  font-weight: 400;
+  z-index: 10;
+  border: 1px solid var(--border-gold);
+}
+
+.gallery-thumbs {
+  display: flex;
+  gap: 8px;
+  max-width: 1100px;
+  margin: 0 auto;
+  overflow-x: auto;
+  padding: 0 0 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--gold-dark) var(--navy);
+}
+.gallery-thumbs::-webkit-scrollbar { height: 4px; }
+.gallery-thumbs::-webkit-scrollbar-track { background: var(--navy); }
+.gallery-thumbs::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 2px; }
+
+.gallery-thumb {
+  flex-shrink: 0;
+  width: 80px; height: 80px;
+  object-fit: cover;
+  cursor: pointer;
+  opacity: .4;
+  transition: opacity .3s ease, border-color .3s ease;
+  border: 2px solid transparent;
+  border-radius: 3px;
+}
+.gallery-thumb:hover { opacity: .7; }
+.gallery-thumb.active {
+  opacity: 1;
+  border-color: var(--gold);
+}
+
+/* ============ SPECS SECTION ============ */
+.specs-section {
+  padding: 60px 0 80px;
+  background: var(--navy-deep);
+}
+.specs-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.specs-header h2 {
+  font-family: var(--font-d);
+  font-size: 2.2rem;
+  color: var(--white);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+}
+.specs-header-line {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  margin: 0 auto;
+  opacity: .5;
+}
+
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.spec-card {
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  border: 1px solid var(--border);
+  padding: 32px;
+  border-radius: 4px;
+  transition: border-color .3s ease;
+}
+.spec-card:hover {
+  border-color: var(--border-gold);
+}
+.spec-card-title {
+  font-family: var(--font-d);
+  font-size: 1.3rem;
+  color: var(--gold);
+  font-weight: 400;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  display: flex; align-items: center; gap: 10px;
+}
+.spec-card-title i {
+  font-size: .9rem;
+  opacity: .7;
+}
+.spec-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255,255,255,.03);
+}
+.spec-item:last-child { border-bottom: none; }
+.spec-item i {
+  color: var(--gold);
+  font-size: .55rem;
+  margin-top: 5px;
+  flex-shrink: 0;
+  opacity: .7;
+}
+.spec-item span {
+  font-size: .82rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* ============ CTA SECTION ============ */
+.cta-section {
+  padding: 80px 0;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+  text-align: center;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.cta-section h2 {
+  font-family: var(--font-d);
+  font-size: 2.2rem;
+  color: var(--white);
+  font-weight: 300;
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+}
+.cta-section p {
+  font-size: .88rem;
+  color: var(--text-light);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 560px;
+  margin: 0 auto 32px;
+}
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 16px 40px;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+  border: none;
+  cursor: pointer;
+}
+.cta-btn:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(197,165,90,.25);
+}
+.cta-btn i { font-size: .9rem; }
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--navy-deep);
+  border-top: 1px solid var(--border);
+  padding: 80px 0 40px;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+.footer-brand-logo {
+  max-width: 180px;
+  margin-bottom: 18px;
+  opacity: .85;
+}
+.footer-brand-text {
+  font-size: .8rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 280px;
+}
+.footer-col-title {
+  font-size: .6rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
+.footer-links a {
+  font-size: .78rem;
+  color: var(--gray);
+  font-weight: 300;
+  transition: color .3s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-social {
+  display: flex; gap: 12px;
+  margin-top: 16px;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray);
+  font-size: .85rem;
+  transition: var(--transition);
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy {
+  font-size: .7rem;
+  color: var(--gray);
+  font-weight: 300;
+}
+.footer-dev {
+  font-size: .65rem;
+  color: var(--gray);
+  font-weight: 300;
+  transition: color .3s ease;
+}
+.footer-dev:hover { color: var(--gold); }
+.footer-dev span { color: var(--gold); font-weight: 500; }
+
+/* ============ WHATSAPP FLOAT ============ */
+.wpp-float {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  z-index: 400;
+  box-shadow: 0 4px 20px rgba(37,211,102,.35);
+  transition: var(--transition);
+  animation: wppPulse 3s ease-in-out infinite;
+}
+.wpp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37,211,102,.5);
+}
+@keyframes wppPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.35); }
+  50% { box-shadow: 0 4px 30px rgba(37,211,102,.5), 0 0 0 12px rgba(37,211,102,.08); }
+}
+
+/* ============ REVEAL ============ */
+.reveal { opacity: 0; }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .container { padding: 0 28px; }
+  .nav-inner { padding: 0 28px; }
+  .specs-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+  .hero-detail { height: 40vh; min-height: 320px; }
+  .hero-detail-content { padding: 0 20px 36px; }
+  .hero-detail-content h1 { font-size: 2rem; }
+  .hero-detail-price { font-size: 1.5rem; }
+  .gallery-arrow { width: 38px; height: 38px; font-size: .8rem; }
+  .gallery-arrow.prev { left: 8px; }
+  .gallery-arrow.next { right: 8px; }
+  .gallery-main-wrap { margin: 0 auto 16px; }
+  .gallery-thumbs { padding: 0 20px 12px; }
+  .specs-grid { grid-template-columns: 1fr; gap: 20px; }
+  .spec-card { padding: 24px; }
+  .cta-section { padding: 60px 0; }
+  .cta-section h2 { font-size: 1.6rem; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .container { padding: 0 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">BELLA ANGRA <span>IATES</span></a>
+    <div class="nav-links">
+      <a href="../index.html#embarcacoes">Embarcações</a>
+      <a href="../index.html#sobre">Sobre</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../index.html#contato">Contato</a>
+      <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse na Intermarine 60. Gostaria de mais informações." target="_blank" class="nav-cta">Fale Conosco</a>
+    </div>
+    <button class="menu-btn" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu">
+  <button class="mobile-menu-close" onclick="this.parentElement.classList.remove('open')" aria-label="Fechar"><i class="fas fa-times"></i></button>
+  <a href="../index.html#embarcacoes" onclick="this.parentElement.classList.remove('open')">Embarcações</a>
+  <a href="../index.html#sobre" onclick="this.parentElement.classList.remove('open')">Sobre</a>
+  <a href="../blog.html" onclick="this.parentElement.classList.remove('open')">Blog</a>
+  <a href="../index.html#contato" onclick="this.parentElement.classList.remove('open')">Contato</a>
+  <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse na Intermarine 60." target="_blank" style="color:var(--gold);">WhatsApp</a>
+</div>
+
+<!-- HERO BANNER -->
+<section class="hero-detail">
+  <div class="hero-detail-bg" style="background-image: url('../img/intermarine-60/02.jpg');"></div>
+  <div class="hero-detail-content">
+    <div class="hero-detail-eyebrow">Intermarine Yachts &bull; 2012</div>
+    <h1>Intermarine 60</h1>
+    <div class="hero-detail-specs">2x Volvo Penta D13 900 HP <span>|</span> 960 horas <span>|</span> Diesel</div>
+    <div class="hero-detail-price">R$ 5.350.000</div>
+  </div>
+</section>
+
+<!-- PHOTO GALLERY -->
+<section class="gallery-section">
+  <div class="container">
+    <div class="gallery-main-wrap">
+      <img src="../img/intermarine-60/01.jpg" alt="Intermarine 60 — Foto 1" class="gallery-main" id="galleryMain">
+      <button class="gallery-arrow prev" onclick="galleryNav(-1)" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
+      <button class="gallery-arrow next" onclick="galleryNav(1)" aria-label="Próxima"><i class="fas fa-chevron-right"></i></button>
+      <div class="gallery-counter" id="galleryCounter">01 / 20</div>
+    </div>
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+  </div>
+</section>
+
+<!-- SPECS + DETAILS -->
+<section class="specs-section">
+  <div class="container">
+    <div class="specs-header reveal">
+      <h2>Especificações Completas</h2>
+      <div class="specs-header-line"></div>
+    </div>
+    <div class="specs-grid">
+
+      <!-- Informações Principais -->
+      <div class="spec-card reveal">
+        <div class="spec-card-title"><i class="fas fa-ship"></i> Informações Principais</div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Estaleiro: Intermarine Yachts</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Modelo: Intermarine 60</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Ano: 2012</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Motorização: 2x Volvo Penta D13 900 HP</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Horas de uso: 960h</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Combustível: Diesel</span></div>
+      </div>
+
+      <!-- Configuração -->
+      <div class="spec-card reveal">
+        <div class="spec-card-title"><i class="fas fa-cogs"></i> Configuração</div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Área gourmet na popa</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Hard top</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Solário na proa</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Plataforma submergível</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Passarela hidráulica</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Churrasqueira elétrica</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Mesa de apoio flybridge e praça de popa</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Suporte para bote/jet ski</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Cabine de marinheiro</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Chuveiro de popa</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Fechamento completo</span></div>
+      </div>
+
+      <!-- Conforto -->
+      <div class="spec-card reveal">
+        <div class="spec-card-title"><i class="fas fa-couch"></i> Conforto</div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Ar-condicionado</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Piso vinílico interno</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Teca natural externo</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Tapete no flybridge</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Cristaleira</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Cafeteira</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Cooktop indução</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Forno elétrico</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Micro-ondas</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>3 frigobares (cozinha + flybridge + cabine marinheiro)</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Geleira</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Boiler</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>WC elétrico</span></div>
+      </div>
+
+      <!-- Tecnologia -->
+      <div class="spec-card reveal">
+        <div class="spec-card-title"><i class="fas fa-satellite-dish"></i> Tecnologia</div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>GPS Raymarine</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Radar</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Sonda</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Rádio VHF</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Piloto automático</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Bow thruster e stern thruster</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Comando eletrônico</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Guincho elétrico</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Farol de busca</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Flaps hidráulicos</span></div>
+      </div>
+
+      <!-- Autonomia -->
+      <div class="spec-card reveal">
+        <div class="spec-card-title"><i class="fas fa-battery-full"></i> Autonomia</div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Gerador Onan</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Inversor</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Carregador de baterias</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Tomada de cais</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Porta-defensas</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Capa de defensas</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Capa total</span></div>
+      </div>
+
+      <!-- Entretenimento -->
+      <div class="spec-card reveal">
+        <div class="spec-card-title"><i class="fas fa-music"></i> Entretenimento</div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Starlink</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Sistema de som JL Audio</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>TV Smart</span></div>
+        <div class="spec-item"><i class="fas fa-check"></i><span>Antena de TV</span></div>
+      </div>
+
+      <!-- Diferenciais -->
+      <div class="spec-card reveal" style="grid-column: 1 / -1;">
+        <div class="spec-card-title"><i class="fas fa-gem"></i> Diferenciais</div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 40px;">
+          <div class="spec-item"><i class="fas fa-check"></i><span>Plataforma submergível</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Passarela hidráulica</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Hard top</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Stobag elétrico</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Luzes subaquáticas e de cortesia</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Touca para flybridge</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Porta para stand up paddle</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>ABSOLUTAMENTE IMPECÁVEL</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Totalmente revisada</span></div>
+          <div class="spec-item"><i class="fas fa-check"></i><span>Pronta para uso imediato</span></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="cta-section">
+  <div class="container reveal">
+    <h2>Interessado nesta embarcação?</h2>
+    <p>Entre em contato conosco para agendar uma visita, solicitar mais informações ou iniciar o processo de aquisição da sua Intermarine 60.</p>
+    <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse na Intermarine 60 (2012) anunciada por R$ 5.350.000. Gostaria de mais informações." target="_blank" class="cta-btn">
+      <i class="fab fa-whatsapp"></i> Falar com Consultor
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="../img/logo-branca.png" alt="Bella Angra Iates" class="footer-brand-logo">
+        <p class="footer-brand-text">Referência em compra e venda de iates de luxo em Angra dos Reis. Embarcações premium com consultoria especializada e pós-venda completo.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5524999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Navegação</h4>
+        <div class="footer-links">
+          <a href="../index.html#embarcacoes">Embarcações</a>
+          <a href="../index.html#sobre">Sobre Nós</a>
+          <a href="../blog.html">Blog</a>
+          <a href="../index.html#contato">Contato</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Embarcações</h4>
+        <div class="footer-links">
+          <a href="../index.html#embarcacoes">Azimut</a>
+          <a href="../index.html#embarcacoes">Schaefer</a>
+          <a href="../index.html#embarcacoes">Intermarine</a>
+          <a href="../index.html#embarcacoes">Ferretti</a>
+          <a href="../index.html#embarcacoes">Real</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Contato</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp" style="margin-right:6px;color:var(--gold);"></i>(24) 99999-9999</a>
+          <a href="https://instagram.com/bella.angra.iates" target="_blank"><i class="fab fa-instagram" style="margin-right:6px;color:var(--gold);"></i>@bella.angra.iates</a>
+          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--gold);"></i>Angra dos Reis, RJ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Bella Angra Iates. Todos os direitos reservados.</p>
+      <a href="https://instagram.com/companybastos" target="_blank" class="footer-dev">Desenvolvido por <span>Company Bastos</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5524999999999?text=Olá! Tenho interesse na Intermarine 60. Gostaria de mais informações." class="wpp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script type="module">
+import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@12/+esm";
+
+/* ============ GALLERY ============ */
+const photos = [];
+for (let i = 1; i <= 20; i++) {
+  photos.push(`../img/intermarine-60/${String(i).padStart(2,'0')}.jpg`);
+}
+
+let current = 0;
+const mainImg = document.getElementById("galleryMain");
+const counter = document.getElementById("galleryCounter");
+const thumbsContainer = document.getElementById("galleryThumbs");
+
+// Build thumbnails
+photos.forEach((src, i) => {
+  const thumb = document.createElement("img");
+  thumb.src = src;
+  thumb.alt = `Intermarine 60 — Foto ${i + 1}`;
+  thumb.className = "gallery-thumb" + (i === 0 ? " active" : "");
+  thumb.addEventListener("click", () => goTo(i));
+  thumbsContainer.appendChild(thumb);
+});
+
+function goTo(index) {
+  current = index;
+  mainImg.style.opacity = "0";
+  setTimeout(() => {
+    mainImg.src = photos[current];
+    mainImg.alt = `Intermarine 60 — Foto ${current + 1}`;
+    mainImg.style.opacity = "1";
+  }, 200);
+  counter.textContent = `${String(current + 1).padStart(2, "0")} / ${photos.length}`;
+  document.querySelectorAll(".gallery-thumb").forEach((t, i) => {
+    t.classList.toggle("active", i === current);
+  });
+  // Scroll thumb into view
+  const activeThumb = thumbsContainer.children[current];
+  if (activeThumb) activeThumb.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+}
+
+window.galleryNav = function(dir) {
+  let next = current + dir;
+  if (next < 0) next = photos.length - 1;
+  if (next >= photos.length) next = 0;
+  goTo(next);
+};
+
+// Keyboard navigation
+document.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowLeft") window.galleryNav(-1);
+  if (e.key === "ArrowRight") window.galleryNav(1);
+});
+
+/* ============ NAV SCROLL ============ */
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 60);
+});
+nav.classList.toggle("scrolled", window.scrollY > 60);
+
+/* ============ REVEAL ANIMATIONS ============ */
+document.querySelectorAll(".reveal").forEach((el) => {
+  inView(el, () => {
+    animate(el, { opacity: [0, 1], y: [40, 0] }, { duration: 0.8, easing: [.25, .1, .25, 1] });
+  }, { margin: "-60px" });
+});
+
+/* ============ HERO ANIMATIONS ============ */
+setTimeout(() => {
+  const eyebrow = document.querySelector(".hero-detail-eyebrow");
+  const h1 = document.querySelector(".hero-detail-content h1");
+  const specs = document.querySelector(".hero-detail-specs");
+  const price = document.querySelector(".hero-detail-price");
+
+  animate(eyebrow, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.2, easing: [.25,.1,.25,1] });
+  animate(h1, { opacity: [0, 1], y: [30, 0] }, { duration: 1, delay: 0.4, easing: [.25,.1,.25,1] });
+  animate(specs, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.6, easing: [.25,.1,.25,1] });
+  animate(price, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.8, easing: [.25,.1,.25,1] });
+}, 100);
+</script>
+
+</body>
+</html>
