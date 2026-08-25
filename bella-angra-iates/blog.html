@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog Náutico | Bella Angra Iates — Dicas e Guias sobre Iates</title>
+<meta name="description" content="Blog da Bella Angra Iates — Guias de compra, manutenção, comparativos de estaleiros, documentação náutica e análises do mercado de iates no Brasil.">
+<meta property="og:title" content="Blog Náutico | Bella Angra Iates">
+<meta property="og:description" content="Dicas, guias e informações valiosas sobre compra, manutenção e mercado de iates de luxo em Angra dos Reis.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="img/azimut-56-fly/04.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* ============================================
+   BELLA ANGRA IATES — BLOG PAGE
+   ============================================ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy: #0C1829;
+  --navy-light: #162844;
+  --navy-deep: #060E1A;
+  --navy-mid: #0F1F35;
+  --gold: #C5A55A;
+  --gold-light: #D4BA7A;
+  --gold-pale: #E8D9B0;
+  --gold-dark: #A68B3C;
+  --white: #FAFAFA;
+  --cream: #F5F0E8;
+  --text: #C8C4BC;
+  --text-light: rgba(255,255,255,.55);
+  --gray: #7A7872;
+  --muted: #3A3832;
+  --border: rgba(197,165,90,.12);
+  --border-gold: rgba(197,165,90,.25);
+  --font: 'Montserrat', sans-serif;
+  --font-d: 'Cormorant Garamond', Georgia, serif;
+  --ease: cubic-bezier(.25,.1,.25,1);
+  --transition: all .4s var(--ease);
+  --max-w: 1300px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font);
+  color: var(--text);
+  background: var(--navy-deep);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 300;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+ul, ol { list-style: none; }
+
+.container {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* ============ NAVIGATION ============ */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0;
+  z-index: 500; padding: 22px 0;
+  transition: var(--transition);
+}
+.nav.scrolled {
+  background: rgba(6,14,26,.94);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.nav-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.15rem;
+  color: var(--gold);
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+.nav-logo span {
+  font-weight: 300;
+  color: var(--text);
+  opacity: .45;
+  margin-left: 2px;
+}
+
+.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links a {
+  color: rgba(255,255,255,.4);
+  font-size: .62rem;
+  font-weight: 400;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: color .3s ease;
+  position: relative;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: -4px; left: 0;
+  width: 0; height: 1px;
+  background: var(--gold);
+  transition: width .3s ease;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+.nav-links a.active { color: var(--gold); }
+.nav-links a.active::after { width: 100%; }
+
+.nav-cta {
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  padding: 10px 26px;
+  font-size: .58rem;
+  font-weight: 500;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  transition: var(--transition);
+  margin-left: 12px;
+}
+.nav-cta:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+.menu-btn {
+  display: none;
+  background: none; border: none;
+  color: var(--gold);
+  font-size: 1.15rem;
+  cursor: pointer;
+  padding: 8px;
+}
+
+/* Mobile Menu Overlay */
+.mobile-menu {
+  position: fixed; inset: 0;
+  background: rgba(6,14,26,.97);
+  z-index: 490;
+  display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 28px;
+  opacity: 0; visibility: hidden;
+  transition: opacity .4s ease, visibility .4s ease;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  color: var(--white);
+  font-weight: 300;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  transition: color .3s ease;
+}
+.mobile-menu a:hover { color: var(--gold); }
+.mobile-menu a.active { color: var(--gold); }
+.mobile-menu-close {
+  position: absolute; top: 22px; right: 40px;
+  background: none; border: none;
+  color: var(--gold); font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* ============ HERO BANNER ============ */
+.blog-hero {
+  min-height: 55vh;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+}
+.blog-hero-bg {
+  position: absolute; inset: 0;
+  background: url('img/azimut-56-fly/04.jpg') center/cover no-repeat;
+}
+.blog-hero-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(6,14,26,.7) 0%,
+    rgba(6,14,26,.35) 35%,
+    rgba(6,14,26,.45) 65%,
+    rgba(6,14,26,.9) 100%
+  );
+}
+
+.blog-hero-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  padding: 0 40px;
+}
+
+.blog-hero-eyebrow {
+  font-size: .55rem;
+  color: var(--gold);
+  letter-spacing: 7px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+  font-weight: 400;
+  display: flex; align-items: center; justify-content: center; gap: 16px;
+  opacity: 0;
+}
+.blog-hero-eyebrow::before,
+.blog-hero-eyebrow::after {
+  content: ''; width: 40px; height: 1px;
+  background: var(--gold); opacity: .35;
+}
+
+.blog-hero h1 {
+  font-family: var(--font-d);
+  font-size: clamp(2.6rem, 5vw, 4.2rem);
+  color: var(--white);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 3px;
+  opacity: 0;
+}
+.blog-hero h1 em {
+  color: var(--gold);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.blog-hero-sub {
+  color: var(--text-light);
+  font-size: .88rem;
+  font-weight: 300;
+  line-height: 1.8;
+  margin-top: 16px;
+  max-width: 520px;
+  margin-left: auto; margin-right: auto;
+  letter-spacing: .5px;
+  opacity: 0;
+}
+
+/* ============ SECTION SHARED ============ */
+.section-eyebrow {
+  font-size: .55rem;
+  color: var(--gold);
+  letter-spacing: 6px;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 14px;
+}
+.section-eyebrow::before {
+  content: ''; width: 30px; height: 1px;
+  background: var(--gold); opacity: .4;
+}
+
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: var(--white);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+.section-title em { color: var(--gold); font-style: italic; font-weight: 400; }
+
+.reveal { opacity: 0; transform: translateY(40px); }
+
+/* ============ BLOG SECTION ============ */
+.blog-section {
+  padding: 100px 0 120px;
+  background: var(--navy-deep);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+/* ============ BLOG CARD ============ */
+.blog-card {
+  background: var(--navy);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  transition: var(--transition);
+  cursor: pointer;
+}
+.blog-card:hover {
+  border-color: var(--border-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 50px rgba(0,0,0,.35);
+}
+.blog-card.expanded {
+  grid-column: 1 / -1;
+  transform: none;
+  cursor: default;
+}
+.blog-card.expanded:hover {
+  transform: none;
+}
+
+.blog-card-img {
+  height: 240px;
+  overflow: hidden;
+  position: relative;
+}
+.blog-card-img img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform .6s var(--ease);
+}
+.blog-card:hover .blog-card-img img { transform: scale(1.05); }
+.blog-card.expanded .blog-card-img {
+  height: 420px;
+}
+.blog-card.expanded .blog-card-img img {
+  transform: none;
+}
+
+.blog-card-img-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(6,14,26,.6) 100%);
+  pointer-events: none;
+}
+
+.blog-card-body { padding: 28px; }
+.blog-card.expanded .blog-card-body { padding: 40px 48px; }
+
+.blog-card-meta {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 14px;
+}
+
+.blog-card-tag {
+  font-size: .52rem;
+  color: var(--navy-deep);
+  background: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 12px;
+}
+
+.blog-card-date {
+  font-size: .68rem;
+  color: var(--gray);
+  font-weight: 300;
+  display: flex; align-items: center; gap: 6px;
+}
+.blog-card-date i {
+  color: var(--gold);
+  opacity: .5;
+  font-size: .55rem;
+}
+
+.blog-card-title {
+  font-family: var(--font-d);
+  font-size: 1.3rem;
+  color: var(--white);
+  font-weight: 400;
+  line-height: 1.35;
+  margin-bottom: 12px;
+  letter-spacing: .5px;
+  transition: color .3s ease;
+}
+.blog-card:hover .blog-card-title { color: var(--gold-light); }
+.blog-card.expanded .blog-card-title {
+  font-size: 2rem;
+  margin-bottom: 8px;
+  color: var(--white);
+}
+
+.blog-card-excerpt {
+  font-size: .8rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.7;
+  margin-bottom: 18px;
+}
+.blog-card.expanded .blog-card-excerpt { display: none; }
+
+.blog-card-link {
+  font-size: .6rem;
+  color: var(--gold);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+  display: inline-flex; align-items: center; gap: 6px;
+  transition: gap .3s ease;
+}
+.blog-card:hover .blog-card-link { gap: 10px; }
+.blog-card.expanded .blog-card-link { display: none; }
+
+/* ============ EXPANDED ARTICLE CONTENT ============ */
+.blog-article-content {
+  display: none;
+  padding-top: 12px;
+}
+.blog-card.expanded .blog-article-content {
+  display: block;
+}
+
+.blog-article-content .article-divider {
+  width: 60px; height: 1px;
+  background: var(--gold);
+  opacity: .3;
+  margin: 20px 0 28px;
+}
+
+.blog-article-content p {
+  font-size: .92rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.95;
+  margin-bottom: 22px;
+  letter-spacing: .2px;
+}
+
+.blog-article-content h3 {
+  font-family: var(--font-d);
+  font-size: 1.45rem;
+  color: var(--gold-light);
+  font-weight: 400;
+  margin-bottom: 14px;
+  margin-top: 8px;
+  letter-spacing: .5px;
+}
+
+.blog-article-content strong {
+  color: var(--white);
+  font-weight: 500;
+}
+
+.blog-article-content ul {
+  margin-bottom: 22px;
+  padding-left: 0;
+}
+.blog-article-content ul li {
+  font-size: .88rem;
+  color: var(--text);
+  font-weight: 300;
+  line-height: 1.85;
+  padding-left: 20px;
+  position: relative;
+  margin-bottom: 8px;
+}
+.blog-article-content ul li::before {
+  content: '';
+  position: absolute; left: 0; top: 10px;
+  width: 6px; height: 6px;
+  background: var(--gold);
+  opacity: .5;
+}
+
+.blog-card-close {
+  display: none;
+  position: absolute; top: 20px; right: 20px;
+  background: rgba(6,14,26,.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-gold);
+  color: var(--gold);
+  width: 44px; height: 44px;
+  align-items: center; justify-content: center;
+  font-size: .9rem;
+  cursor: pointer;
+  z-index: 10;
+  transition: var(--transition);
+}
+.blog-card.expanded .blog-card-close {
+  display: flex;
+}
+.blog-card-close:hover {
+  background: var(--gold);
+  color: var(--navy-deep);
+}
+
+.blog-card-share {
+  display: none;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  align-items: center; gap: 20px;
+}
+.blog-card.expanded .blog-card-share { display: flex; }
+
+.blog-card-share-label {
+  font-size: .6rem;
+  color: var(--gray);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.blog-card-share-icons {
+  display: flex; gap: 10px;
+}
+.blog-card-share-icons a {
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray);
+  font-size: .85rem;
+  transition: var(--transition);
+}
+.blog-card-share-icons a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.blog-card-cta-wpp {
+  display: none;
+  margin-top: 28px;
+}
+.blog-card.expanded .blog-card-cta-wpp { display: block; }
+
+.blog-card-cta-wpp a {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 14px 34px;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-family: var(--font);
+  transition: var(--transition);
+  border: none; cursor: pointer;
+}
+.blog-card-cta-wpp a:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(197,165,90,.25);
+}
+
+/* ============ CTA SECTION ============ */
+.cta-section {
+  padding: 120px 0;
+  position: relative;
+  overflow: hidden;
+}
+.cta-bg {
+  position: absolute; inset: 0;
+  background: url('img/schaefer-660/03.jpg') center/cover no-repeat;
+}
+.cta-bg::after {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(6,14,26,.92) 0%,
+    rgba(12,24,41,.88) 50%,
+    rgba(6,14,26,.92) 100%
+  );
+}
+
+.cta-content {
+  position: relative; z-index: 2;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.cta-content .section-title { margin-bottom: 18px; }
+.cta-content .section-desc {
+  margin: 0 auto 36px;
+  max-width: 480px;
+  color: var(--text-light);
+  font-size: .88rem;
+  font-weight: 300;
+  line-height: 1.8;
+  letter-spacing: .3px;
+}
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gold);
+  color: var(--navy-deep);
+  padding: 14px 34px;
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  font-family: var(--font);
+  transition: var(--transition);
+  border: none; cursor: pointer;
+}
+.btn-primary:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(197,165,90,.25);
+}
+
+/* ============ FOOTER ============ */
+.footer {
+  background: var(--navy-deep);
+  border-top: 1px solid var(--border);
+  padding: 80px 0 40px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 60px;
+}
+
+.footer-brand-logo {
+  max-width: 180px;
+  margin-bottom: 18px;
+  opacity: .85;
+}
+
+.footer-brand-text {
+  font-size: .8rem;
+  color: var(--gray);
+  font-weight: 300;
+  line-height: 1.7;
+  max-width: 280px;
+}
+
+.footer-col-title {
+  font-size: .6rem;
+  color: var(--gold);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.footer-links { display: flex; flex-direction: column; gap: 12px; }
+.footer-links a {
+  font-size: .78rem;
+  color: var(--gray);
+  font-weight: 300;
+  transition: color .3s ease;
+}
+.footer-links a:hover { color: var(--gold); }
+
+.footer-social {
+  display: flex; gap: 12px;
+  margin-top: 16px;
+}
+.footer-social a {
+  width: 38px; height: 38px;
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray);
+  font-size: .85rem;
+  transition: var(--transition);
+}
+.footer-social a:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding-top: 28px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 12px;
+}
+
+.footer-copy {
+  font-size: .7rem;
+  color: var(--gray);
+  font-weight: 300;
+}
+
+.footer-dev {
+  font-size: .65rem;
+  color: var(--gray);
+  font-weight: 300;
+  transition: color .3s ease;
+}
+.footer-dev:hover { color: var(--gold); }
+.footer-dev span { color: var(--gold); font-weight: 500; }
+
+/* ============ WHATSAPP FLOAT ============ */
+.wpp-float {
+  position: fixed; bottom: 28px; right: 28px;
+  width: 56px; height: 56px;
+  background: #25D366;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff;
+  font-size: 1.4rem;
+  z-index: 400;
+  box-shadow: 0 4px 20px rgba(37,211,102,.35);
+  transition: var(--transition);
+  animation: wppPulse 3s ease-in-out infinite;
+}
+.wpp-float:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 30px rgba(37,211,102,.5);
+}
+@keyframes wppPulse {
+  0%, 100% { box-shadow: 0 4px 20px rgba(37,211,102,.35); }
+  50% { box-shadow: 0 4px 30px rgba(37,211,102,.5), 0 0 0 12px rgba(37,211,102,.08); }
+}
+
+/* ============ READING PROGRESS BAR ============ */
+.reading-progress {
+  position: fixed; top: 0; left: 0;
+  width: 0; height: 2px;
+  background: linear-gradient(90deg, var(--gold-dark), var(--gold), var(--gold-light));
+  z-index: 600;
+  transition: width .15s ease;
+}
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 1024px) {
+  .blog-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: repeat(2, 1fr); }
+  .blog-card.expanded .blog-card-body { padding: 32px 36px; }
+  .blog-card.expanded .blog-card-img { height: 340px; }
+}
+
+@media (max-width: 768px) {
+  .container { padding: 0 20px; }
+  .nav-inner { padding: 0 20px; }
+
+  .nav-links, .nav-cta { display: none; }
+  .menu-btn { display: block; }
+
+  .blog-hero { min-height: 45vh; }
+  .blog-hero-content { padding: 0 20px; }
+
+  .blog-section { padding: 60px 0 80px; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .blog-card-img { height: 220px; }
+  .blog-card.expanded .blog-card-img { height: 260px; }
+  .blog-card.expanded .blog-card-body { padding: 24px; }
+  .blog-card.expanded .blog-card-title { font-size: 1.5rem; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+
+  .cta-section { padding: 80px 0; }
+
+  .blog-card-share { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (max-width: 480px) {
+  .blog-hero h1 { font-size: 2rem; }
+  .blog-card.expanded .blog-card-title { font-size: 1.3rem; }
+  .blog-article-content p { font-size: .85rem; }
+  .blog-article-content h3 { font-size: 1.25rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- READING PROGRESS -->
+<div class="reading-progress" id="readingProgress"></div>
+
+<!-- NAVIGATION -->
+<nav class="nav" id="nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Bella Angra <span>Iates</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#embarcacoes">Embarcações</a></li>
+      <li><a href="index.html#sobre">Sobre</a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="index.html#contato">Contato</a></li>
+    </ul>
+    <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em um iate. Gostaria de mais informações." class="nav-cta" target="_blank">Fale Conosco</a>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-menu-close" id="menuClose" aria-label="Fechar menu">
+    <i class="fas fa-times"></i>
+  </button>
+  <a href="index.html#embarcacoes" class="mobile-link">Embarcações</a>
+  <a href="index.html#sobre" class="mobile-link">Sobre</a>
+  <a href="blog.html" class="mobile-link active">Blog</a>
+  <a href="index.html#contato" class="mobile-link">Contato</a>
+  <a href="https://wa.me/5524999999999?text=Olá! Tenho interesse em um iate. Gostaria de mais informações." target="_blank" class="mobile-link" style="color:var(--gold);">Fale Conosco</a>
+</div>
+
+<!-- HERO BANNER -->
+<section class="blog-hero">
+  <div class="blog-hero-bg"></div>
+  <div class="blog-hero-content">
+    <div class="blog-hero-eyebrow">Blog Náutico</div>
+    <h1>Blog <em>Bella Angra</em></h1>
+    <p class="blog-hero-sub">Guias, tendências e informações essenciais para quem busca investir com inteligência no mercado náutico de luxo.</p>
+  </div>
+</section>
+
+<!-- BLOG ARTICLES -->
+<section class="blog-section">
+  <div class="container">
+    <div class="blog-grid" id="blogGrid">
+
+      <!-- ARTICLE 1 -->
+      <article class="blog-card reveal" data-article="1">
+        <div class="blog-card-img">
+          <img src="img/azimut-74/03.jpg" alt="Iate Azimut 74 em Angra dos Reis" loading="lazy">
+          <div class="blog-card-img-overlay"></div>
+          <button class="blog-card-close" aria-label="Fechar artigo"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Guia de Compra</span>
+            <span class="blog-card-date"><i class="fas fa-calendar-alt"></i> 20 de Agosto, 2026</span>
+          </div>
+          <h2 class="blog-card-title">5 Fatores Essenciais na Hora de Comprar um Iate</h2>
+          <p class="blog-card-excerpt">Do motor à documentação: descubra o que realmente importa na hora de investir em uma embarcação de luxo e evite erros que custam caro.</p>
+          <span class="blog-card-link">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
+
+          <div class="blog-article-content">
+            <div class="article-divider"></div>
+
+            <p>Comprar um iate é uma decisão que envolve muito mais do que escolher o modelo mais bonito ou a marca mais famosa. Trata-se de um investimento significativo que, quando feito com critério, pode proporcionar décadas de prazer nas águas. Porém, quando feito de forma precipitada, pode se transformar em uma fonte constante de dor de cabeça e gastos inesperados. Ao longo de anos atuando no mercado náutico de Angra dos Reis, identificamos os cinco fatores que todo comprador inteligente deve avaliar antes de fechar negócio.</p>
+
+            <h3>1. Estado Geral da Embarcação</h3>
+            <p>A primeira impressão visual pode enganar. Um iate com pintura impecável e estofados novos pode esconder problemas estruturais graves no casco, na parte elétrica ou nos sistemas hidráulicos. <strong>Sempre contrate um vistoriador náutico independente</strong> para avaliar a embarcação antes da compra. Esse profissional vai inspecionar a integridade do casco (buscando osmose, delaminações e reparos mal executados), verificar os sistemas de bordo e identificar qualquer problema que possa representar risco ou custo futuro. Uma vistoria completa custa entre R$ 3.000 e R$ 8.000, dependendo do tamanho da embarcação — um investimento irrisório diante do valor total do bem.</p>
+
+            <h3>2. Histórico de Manutenção</h3>
+            <p>Uma embarcação bem mantida conta sua história através de registros. Solicite <strong>todo o histórico de manutenção</strong>: notas fiscais de serviços em estaleiros, registros de troca de óleos, substituição de filtros, revisões do sistema de ar-condicionado, tratamento anti-incrustante do casco e qualquer reparo realizado. Iates que possuem um log book atualizado e completo demonstram que o proprietário anterior tratou o bem com responsabilidade, e isso se reflete diretamente no estado real da embarcação e no seu valor de revenda.</p>
+
+            <h3>3. Motorização e Horas de Uso</h3>
+            <p>Os motores são o coração — e o componente mais caro — de qualquer embarcação. Verifique o <strong>horímetro dos motores</strong> e compare com a idade da embarcação. Um iate de 2018 com 300 horas de uso é bem diferente de um com 2.500 horas. Como referência, motores diesel marítimos de boa procedência (MAN, Volvo Penta, Caterpillar) têm uma vida útil que pode ultrapassar 5.000 horas quando bem mantidos, mas a partir de 2.000 horas já é prudente considerar custos de overhaul nos motores. Além do horímetro, solicite um teste de compressão e análise de óleo — esses exames revelam o verdadeiro estado interno do motor sem precisar abri-lo.</p>
+
+            <h3>4. Documentação e Procedência</h3>
+            <p>A regularidade documental é inegociável. Certifique-se de que a embarcação possui o <strong>Título de Inscrição de Embarcação (TIE)</strong> atualizado junto à Capitania dos Portos, que não há ônus, gravames ou pendências judiciais vinculados ao bem, e que os impostos (como IPVA náutico em alguns estados) estão em dia. Verifique também se a embarcação já foi importada e se toda a documentação aduaneira está regular. Comprar uma embarcação com pendências documentais pode resultar em apreensão do bem ou impossibilidade de transferência — e nesses casos, o prejuízo é total.</p>
+
+            <h3>5. Custo de Manutenção Anual</h3>
+            <p>Muitos compradores de primeira viagem se surpreendem com os custos de manter um iate. A regra geral do mercado indica que <strong>o custo anual de manutenção gira entre 8% e 12% do valor da embarcação</strong>. Isso inclui marina (de R$ 3.000 a R$ 25.000 por mês dependendo do tamanho e localização), seguro (1% a 3% do valor), manutenção preventiva, combustível e tripulação (se aplicável). Faça essa conta antes de comprar. Um iate de R$ 5 milhões pode custar entre R$ 400 mil e R$ 600 mil por ano para manter. Não se trata de assustar — mas de garantir que você fará uma compra sustentável e aproveitará sua embarcação sem preocupações financeiras.</p>
+
+            <div class="blog-card-cta-wpp">
+              <a href="https://wa.me/5524999999999?text=Olá! Li o artigo sobre fatores essenciais na compra de iates e gostaria de orientação." target="_blank">
+                <i class="fab fa-whatsapp"></i> Falar com Nosso Especialista
+              </a>
+            </div>
+
+            <div class="blog-card-share">
+              <span class="blog-card-share-label">Compartilhar</span>
+              <div class="blog-card-share-icons">
+                <a href="https://wa.me/?text=5 Fatores Essenciais na Hora de Comprar um Iate — Bella Angra Iates" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTICLE 2 -->
+      <article class="blog-card reveal" data-article="2">
+        <div class="blog-card-img">
+          <img src="img/schaefer-660/05.jpg" alt="Schaefer 660 em manutenção" loading="lazy">
+          <div class="blog-card-img-overlay"></div>
+          <button class="blog-card-close" aria-label="Fechar artigo"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Manutenção</span>
+            <span class="blog-card-date"><i class="fas fa-calendar-alt"></i> 15 de Agosto, 2026</span>
+          </div>
+          <h2 class="blog-card-title">Manutenção Preventiva: Como Preservar o Valor da Sua Embarcação</h2>
+          <p class="blog-card-excerpt">Um iate bem cuidado mantém — e até valoriza — seu investimento. Conheça as práticas indispensáveis de manutenção preventiva.</p>
+          <span class="blog-card-link">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
+
+          <div class="blog-article-content">
+            <div class="article-divider"></div>
+
+            <p>No mercado náutico, existe um ditado que todo proprietário experiente conhece: <strong>"A manutenção que você adia hoje será o reparo que você paga em dobro amanhã."</strong> Uma embarcação de luxo é um bem que exige atenção constante, e a diferença entre um iate que se valoriza com o tempo e um que perde metade do seu preço em cinco anos está, quase sempre, na qualidade da manutenção preventiva realizada pelo proprietário.</p>
+
+            <h3>Motores: O Coração da Embarcação</h3>
+            <p>Os motores representam entre 30% e 40% do valor total de um iate, e sua manutenção deve seguir rigorosamente o manual do fabricante. <strong>Troca de óleos e filtros a cada 200-250 horas de uso</strong> (ou anualmente, o que vier primeiro), verificação do sistema de arrefecimento, inspeção de correias e mangueiras, e análise periódica de óleo são itens básicos que não podem ser negligenciados. Os impellers (rotores da bomba d'água) devem ser trocados anualmente, independentemente das horas de uso — um impeller que falha durante a navegação pode causar superaquecimento e danos catastróficos ao motor. Mantenha um log book atualizado com todas as intervenções e, a cada 1.000 horas, considere uma revisão completa com teste de compressão.</p>
+
+            <h3>Casco e Obras Vivas</h3>
+            <p>A parte submersa do casco (obras vivas) está em contato constante com a água salgada e é alvo de organismos marinhos que se incrustam na superfície, aumentando o atrito e o consumo de combustível. O <strong>tratamento anti-incrustante deve ser renovado a cada 12 meses</strong>, com lixamento, aplicação de primer e duas a três demãos de tinta anti-fouling de qualidade. Aproveite o momento em que a embarcação está no estaleiro para inspecionar o casco em busca de bolhas (osmose), trincas ou qualquer dano estrutural. Os anodos de zinco — peças sacrificiais que protegem as partes metálicas contra corrosão galvânica — devem ser substituídos quando atingirem 50% de desgaste.</p>
+
+            <h3>Sistemas Elétricos e Eletrônicos</h3>
+            <p>A eletrônica embarcada é particularmente sensível ao ambiente marinho. A umidade salina corrói conectores, oxida terminais e pode comprometer sistemas inteiros se não for controlada. <strong>Inspecione todas as conexões elétricas trimestralmente</strong>, aplique spray anticorrosivo nos conectores e verifique o estado das baterias (tensão, nível de eletrólito e terminais). O gerador, que funciona como a "usina" do iate, deve seguir cronograma de manutenção próprio — similar ao dos motores principais. Sistemas de navegação (GPS, radar, sonda) devem ser calibrados anualmente e atualizados conforme disponibilidade do fabricante.</p>
+
+            <h3>Ar-Condicionado e Sistemas Hidráulicos</h3>
+            <p>O sistema de ar-condicionado marítimo opera em condições muito mais severas que os residenciais — lida com umidade extrema, variação de temperatura e captação de água do mar para resfriamento. <strong>A limpeza dos filtros deve ser mensal</strong>, e a revisão completa do sistema (gás, compressor, trocadores de calor) deve ser anual. Os sistemas hidráulicos (leme, bow thruster, plataforma de popa) exigem verificação de nível e qualidade do fluido a cada 500 horas, além de inspeção de mangueiras e conexões em busca de vazamentos.</p>
+
+            <h3>O Retorno do Investimento em Manutenção</h3>
+            <p>Uma embarcação com manutenção preventiva impecável e documentada pode valer <strong>até 25% a mais</strong> no mercado de usados em comparação com uma similar que foi negligenciada. Além do valor financeiro, a manutenção em dia garante segurança na navegação, confiabilidade mecânica e a tranquilidade de saber que você pode zarpar a qualquer momento sem surpresas desagradáveis. Na Bella Angra Iates, orientamos nossos clientes sobre os melhores estaleiros e profissionais da região de Angra dos Reis, garantindo que seu investimento esteja sempre protegido.</p>
+
+            <div class="blog-card-cta-wpp">
+              <a href="https://wa.me/5524999999999?text=Olá! Li o artigo sobre manutenção preventiva e gostaria de indicações de estaleiros." target="_blank">
+                <i class="fab fa-whatsapp"></i> Falar com Nosso Especialista
+              </a>
+            </div>
+
+            <div class="blog-card-share">
+              <span class="blog-card-share-label">Compartilhar</span>
+              <div class="blog-card-share-icons">
+                <a href="https://wa.me/?text=Manutenção Preventiva de Iates — Bella Angra Iates" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTICLE 3 -->
+      <article class="blog-card reveal" data-article="3">
+        <div class="blog-card-img">
+          <img src="img/intermarine-60/03.jpg" alt="Iate navegando em Angra dos Reis" loading="lazy">
+          <div class="blog-card-img-overlay"></div>
+          <button class="blog-card-close" aria-label="Fechar artigo"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Destinos</span>
+            <span class="blog-card-date"><i class="fas fa-calendar-alt"></i> 10 de Agosto, 2026</span>
+          </div>
+          <h2 class="blog-card-title">Angra dos Reis: O Paraíso Náutico do Brasil</h2>
+          <p class="blog-card-excerpt">Com 365 ilhas e águas cristalinas, Angra dos Reis é o destino perfeito para quem busca experiências náuticas inesquecíveis.</p>
+          <span class="blog-card-link">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
+
+          <div class="blog-article-content">
+            <div class="article-divider"></div>
+
+            <p>Existe um lugar no litoral brasileiro onde o mar é tão calmo que parece um lago, as montanhas da Serra do Mar mergulham direto na água cristalina, e cada curva da costa revela uma nova praia deserta ou uma ilha paradisíaca esperando para ser explorada. Esse lugar é <strong>Angra dos Reis</strong> — e não é por acaso que a cidade se tornou o endereço náutico mais cobiçado do Brasil, reunindo a maior concentração de iates de luxo do país.</p>
+
+            <h3>365 Ilhas, Uma Para Cada Dia</h3>
+            <p>A baía de Angra dos Reis abriga <strong>365 ilhas e mais de 2.000 praias</strong>, formando um arquipélago de beleza incomparável. A Ilha Grande, a mais famosa, é apenas a porta de entrada de um universo náutico que inclui a Ilha de Cataguases (com sua piscina natural de águas turquesa), a Ilha da Gipóia (a segunda maior, com praias desertas e restaurantes exclusivos acessíveis apenas por barco), as Ilhas Botinas (formação rochosa icônica com águas transparentes perfeitas para mergulho), e dezenas de enseadas secretas que só quem tem embarcação própria consegue acessar. Ter um iate em Angra é ter a chave para um paraíso particular — cada fim de semana, um destino diferente.</p>
+
+            <h3>Infraestrutura Náutica de Primeiro Mundo</h3>
+            <p>Angra dos Reis conta com uma <strong>infraestrutura náutica sofisticada</strong> que atende desde lanchas de 30 pés até megaiates. As principais marinas — Marina Verolme, Marina Porto Bracuhy, Marina Porto Frade e Aqua Marine — oferecem vagas molhadas e secas, serviços de abastecimento, eletricidade, água tratada, Wi-Fi, segurança 24 horas e concierge. A região também conta com estaleiros de excelência para manutenção e reparo, lojas de equipamentos náuticos e uma rede de serviços que inclui desde marinheiros profissionais até chefs de cozinha embarcados. É possível manter e operar uma embarcação de alto padrão sem precisar sair da região.</p>
+
+            <h3>O Estilo de Vida Angra</h3>
+            <p>Possuir um iate em Angra dos Reis vai muito além da navegação. É um <strong>estilo de vida completo</strong> que combina natureza exuberante, gastronomia de alto nível, privacidade absoluta e uma comunidade de proprietários que compartilham a mesma paixão pelo mar. Os finais de semana em Angra incluem passeios até praias acessíveis apenas por barco, almoços em restaurantes flutuantes, mergulhos em recifes repletos de vida marinha, e pôr-do-sol contemplados do flybridge do seu iate com vista para as montanhas. É um privilégio que poucos lugares no mundo conseguem oferecer — e que está a menos de 3 horas do Rio de Janeiro e de São Paulo.</p>
+
+            <h3>Por Que Angra É o Melhor Lugar Para Ter Seu Iate</h3>
+            <p>Além da beleza natural e da infraestrutura, Angra oferece vantagens práticas para proprietários de embarcações. O <strong>mar protegido pela baía</strong> garante navegação tranquila durante quase todo o ano, sem as ondulações fortes do mar aberto. A proximidade com os grandes centros (Rio e SP) permite uso frequente da embarcação — diferente de destinos mais distantes onde o iate acaba ficando parado por meses. E o mercado imobiliário náutico da região é maduro, com boa liquidez para compra e venda de embarcações. Na Bella Angra Iates, conhecemos cada baía, cada marina e cada segredo de Angra dos Reis. Estamos prontos para ajudá-lo a encontrar não apenas o iate ideal, mas o estilo de vida que você merece.</p>
+
+            <div class="blog-card-cta-wpp">
+              <a href="https://wa.me/5524999999999?text=Olá! Li o artigo sobre Angra dos Reis e gostaria de conhecer as embarcações disponíveis." target="_blank">
+                <i class="fab fa-whatsapp"></i> Conhecer Embarcações em Angra
+              </a>
+            </div>
+
+            <div class="blog-card-share">
+              <span class="blog-card-share-label">Compartilhar</span>
+              <div class="blog-card-share-icons">
+                <a href="https://wa.me/?text=Angra dos Reis: O Paraíso Náutico do Brasil — Bella Angra Iates" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTICLE 4 -->
+      <article class="blog-card reveal" data-article="4">
+        <div class="blog-card-img">
+          <img src="img/intermarine-im62/01.jpg" alt="Intermarine IM62 comparativo" loading="lazy">
+          <div class="blog-card-img-overlay"></div>
+          <button class="blog-card-close" aria-label="Fechar artigo"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Comparativo</span>
+            <span class="blog-card-date"><i class="fas fa-calendar-alt"></i> 5 de Agosto, 2026</span>
+          </div>
+          <h2 class="blog-card-title">Intermarine vs Azimut: Qual Estaleiro é Ideal Para Você?</h2>
+          <p class="blog-card-excerpt">Dois gigantes do mercado, filosofias diferentes. Compare qualidade construtiva, valor de revenda, conforto e performance.</p>
+          <span class="blog-card-link">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
+
+          <div class="blog-article-content">
+            <div class="article-divider"></div>
+
+            <p>Quando se fala em iates de luxo no Brasil, dois nomes dominam as conversas nas marinas e estaleiros: <strong>Intermarine</strong>, o orgulho da indústria náutica nacional, e <strong>Azimut</strong>, a lendária grife italiana que conquistou o mercado brasileiro. Ambos produzem embarcações excepcionais, mas com filosofias distintas que atendem a perfis diferentes de compradores. Neste comparativo, analisamos os pontos-chave para ajudá-lo a fazer a escolha certa.</p>
+
+            <h3>Qualidade Construtiva</h3>
+            <p>A <strong>Intermarine</strong>, fundada em 1972 em Itajaí (SC), é o maior estaleiro de embarcações de luxo do Brasil. Seus iates são construídos em fibra de vidro com processo de infusão a vácuo — uma tecnologia que garante maior resistência estrutural com menor peso. O acabamento interno é feito com materiais nacionais de alta qualidade, com opção de customização extensiva. Já a <strong>Azimut</strong>, com quase 60 anos de tradição italiana e produção brasileira em Itajaí desde 2010, traz o DNA europeu de design e engenharia, com acabamentos que utilizam materiais importados (couro italiano, madeiras nobres, metais de alta liga) e um nível de detalhamento que reflete a herança artesanal italiana. Em termos puramente construtivos, ambos entregam excelência — mas a Azimut tende a ter acabamento mais refinado nos detalhes, enquanto a Intermarine oferece robustez e praticidade superiores para a navegação tropical brasileira.</p>
+
+            <h3>Valor de Revenda</h3>
+            <p>Este é um fator crucial para quem pensa no iate como investimento. No mercado brasileiro de seminovos, <strong>ambas as marcas mantêm boa liquidez</strong>, mas com comportamentos diferentes. A Azimut, por ser uma marca global com reconhecimento internacional, tende a ter uma depreciação ligeiramente menor nos primeiros cinco anos — especialmente nos modelos maiores (acima de 60 pés). A Intermarine, por sua vez, oferece uma excelente relação custo-benefício na compra, o que significa que a "perda" percentual pode ser menor em termos absolutos. Em ambos os casos, embarcações bem mantidas e com documentação impecável mantêm entre 60% e 70% do valor original após 10 anos — um desempenho muito superior a outros bens de luxo como automóveis esportivos.</p>
+
+            <h3>Conforto e Design de Interiores</h3>
+            <p>Se o conforto a bordo é prioridade, a diferença entre as marcas é mais de estilo do que de qualidade. A <strong>Azimut privilegia o design europeu contemporâneo</strong>: linhas minimalistas, paleta de cores claras (branco, bege, cinza), uso extensivo de vidro e iluminação indireta que cria uma atmosfera de hotel boutique flutuante. Os layouts são otimizados para aproveitar cada centímetro quadrado, resultado de décadas de engenharia italiana. A <strong>Intermarine aposta em um conforto mais robusto e funcional</strong>: interiores amplos com materiais resistentes ao uso intenso, layouts que privilegiam a circulação e o convívio, e uma ergonomia pensada para o uso real da embarcação em águas brasileiras. Ambas oferecem suítes completas, cozinhas equipadas e áreas sociais generosas — a escolha depende do estilo pessoal do comprador.</p>
+
+            <h3>Performance e Navegação</h3>
+            <p>Em termos de performance, a <strong>Azimut investe pesado em tecnologia de propulsão</strong>, sendo pioneira na adoção de sistemas como Volvo IPS (pod drive) e Seakeeper (estabilizador giroscópico) em seus modelos brasileiros. Isso resulta em navegação mais suave, menor consumo de combustível e manobras mais precisas. A <strong>Intermarine também oferece excelente performance</strong>, com opções de motorização potentes e cascos projetados especificamente para as condições de mar do litoral brasileiro — um conhecimento que só um estaleiro nacional com 50 anos de experiência pode ter. Para navegação costeira em Angra dos Reis, ambas entregam performance sobra — mas para quem planeja travessias mais longas ou navegação em mar aberto, vale consultar as especificações técnicas de cada modelo específico.</p>
+
+            <h3>Nossa Recomendação</h3>
+            <p>Na Bella Angra Iates, trabalhamos com ambas as marcas e temos profundo conhecimento de cada modelo. Nossa recomendação é: <strong>não escolha pela marca — escolha pelo modelo específico que atende às suas necessidades.</strong> Um comprador que valoriza status internacional e acabamento europeu tende a se identificar mais com a Azimut. Quem prioriza custo-benefício, robustez e suporte local encontra na Intermarine uma escolha excepcional. Em ambos os casos, estamos aqui para apresentar cada embarcação pessoalmente e ajudá-lo a tomar a decisão mais inteligente.</p>
+
+            <div class="blog-card-cta-wpp">
+              <a href="https://wa.me/5524999999999?text=Olá! Li o comparativo Intermarine vs Azimut e gostaria de ver opções das duas marcas." target="_blank">
+                <i class="fab fa-whatsapp"></i> Comparar Embarcações Disponíveis
+              </a>
+            </div>
+
+            <div class="blog-card-share">
+              <span class="blog-card-share-label">Compartilhar</span>
+              <div class="blog-card-share-icons">
+                <a href="https://wa.me/?text=Intermarine vs Azimut: Qual Estaleiro é Ideal — Bella Angra Iates" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTICLE 5 -->
+      <article class="blog-card reveal" data-article="5">
+        <div class="blog-card-img">
+          <img src="img/ferretti-50/03.jpg" alt="Ferretti 50 documentação náutica" loading="lazy">
+          <div class="blog-card-img-overlay"></div>
+          <button class="blog-card-close" aria-label="Fechar artigo"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Legislação</span>
+            <span class="blog-card-date"><i class="fas fa-calendar-alt"></i> 28 de Julho, 2026</span>
+          </div>
+          <h2 class="blog-card-title">Documentação Náutica: Tudo Que Você Precisa Saber</h2>
+          <p class="blog-card-excerpt">TMAR, habilitação, Capitania dos Portos — entenda cada documento necessário para possuir e navegar com seu iate no Brasil.</p>
+          <span class="blog-card-link">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
+
+          <div class="blog-article-content">
+            <div class="article-divider"></div>
+
+            <p>A burocracia náutica brasileira pode parecer intimidadora à primeira vista, mas quando organizada e compreendida, é um processo relativamente simples que garante a segurança de todos no mar. Possuir um iate no Brasil requer uma série de documentos e habilitações que envolvem tanto o proprietário quanto a embarcação. Neste guia completo, detalhamos tudo que você precisa saber — desde a habilitação para pilotar até os registros da embarcação junto à Marinha do Brasil.</p>
+
+            <h3>Habilitação Náutica: As Categorias</h3>
+            <p>Assim como um carro exige CNH, pilotar uma embarcação no Brasil requer habilitação expedida pela Marinha. As categorias principais são:</p>
+            <ul>
+              <li><strong>Arrais Amador:</strong> Permite conduzir embarcações na navegação interior (rios, lagos, baías protegidas) e em águas abrigadas. É a habilitação de entrada e a mais comum entre proprietários de lanchas e iates que navegam em Angra dos Reis.</li>
+              <li><strong>Mestre Amador:</strong> Amplia a área de navegação para toda a costa brasileira, permitindo navegar entre portos em águas desabrigadas. Essencial para quem pretende fazer travessias costeiras mais longas.</li>
+              <li><strong>Capitão Amador:</strong> A habilitação mais completa, que permite navegação oceânica sem limites de distância da costa. Necessária para quem pretende cruzar o Atlântico ou fazer navegação de longo curso.</li>
+            </ul>
+            <p>Para obter a habilitação, o candidato deve ter no mínimo 18 anos, ser aprovado em exame teórico e prático aplicado pela Capitania dos Portos, e apresentar exames médicos (aptidão física e mental) e CTS (Caderneta de Inscrição e Registro). O exame teórico pode ser preparado com cursos presenciais ou online, e a prova prática é realizada em embarcação fornecida pela própria Capitania ou escola náutica credenciada.</p>
+
+            <h3>TMAR e Registro da Embarcação</h3>
+            <p>A <strong>TMAR (Taxa de Marinha)</strong> é a taxa anual obrigatória que todo proprietário de embarcação deve pagar à Marinha do Brasil. O valor varia conforme o comprimento da embarcação e é relativamente acessível — para um iate de 60 pés, gira em torno de R$ 1.500 a R$ 2.500 anuais. O não pagamento da TMAR pode resultar em multas e na impossibilidade de realizar transferências ou alterações no registro da embarcação.</p>
+            <p>Toda embarcação deve possuir o <strong>TIE (Título de Inscrição de Embarcação)</strong>, documento expedido pela Capitania dos Portos que funciona como o "CRLV" do iate. O TIE contém informações como nome da embarcação, número de inscrição, características técnicas, dados do proprietário e porto de inscrição. Ao comprar uma embarcação, a transferência do TIE é etapa obrigatória e deve ser feita em até 15 dias após a assinatura do contrato de compra e venda.</p>
+
+            <h3>Documentos Obrigatórios a Bordo</h3>
+            <p>Durante a navegação, a embarcação deve portar obrigatoriamente:</p>
+            <ul>
+              <li><strong>TIE atualizado</strong> (original ou cópia autenticada)</li>
+              <li><strong>Habilitação náutica</strong> do condutor (original)</li>
+              <li><strong>TMAR paga</strong> (comprovante do exercício vigente)</li>
+              <li><strong>Seguro DPEM</strong> (Seguro Obrigatório de Danos Pessoais por Embarcação)</li>
+              <li><strong>Lista de equipamentos de segurança</strong> conforme NORMAM-03 (coletes, boias, extintores, sinalizadores, etc.)</li>
+              <li><strong>Termo de Responsabilidade</strong> (para embarcações de esporte e recreio)</li>
+            </ul>
+
+            <h3>Inspeção Naval e NORMAM</h3>
+            <p>Embarcações de recreio com comprimento acima de 24 metros estão sujeitas a <strong>inspeções navais periódicas</strong> realizadas pela Capitania dos Portos. As NORMAMs (Normas da Autoridade Marítima) definem os padrões de segurança, equipamentos obrigatórios e procedimentos que cada tipo de embarcação deve seguir. Para iates de recreio, as principais são a <strong>NORMAM-03</strong> (Amadores, Embarcações de Esporte e/ou Recreio) e a <strong>NORMAM-01</strong> (Embarcações Empregadas na Navegação em Mar Aberto). Manter-se em conformidade com essas normas não é apenas uma obrigação legal — é a garantia de que sua embarcação está equipada para lidar com qualquer situação de emergência no mar.</p>
+
+            <h3>Importação de Embarcações</h3>
+            <p>Para quem considera importar um iate, o processo envolve documentação aduaneira específica, pagamento de <strong>Imposto de Importação (18%), IPI (variável), PIS/COFINS (9,25%)</strong> e ICMS estadual. A importação pode ser feita por pessoa física ou jurídica e requer um despachante aduaneiro especializado em embarcações. Na Bella Angra Iates, auxiliamos nossos clientes em todo o processo documental — seja na compra de embarcações nacionais ou importadas — garantindo que cada papel esteja em ordem para você navegar com total tranquilidade e dentro da lei.</p>
+
+            <div class="blog-card-cta-wpp">
+              <a href="https://wa.me/5524999999999?text=Olá! Li o artigo sobre documentação náutica e gostaria de orientação sobre o processo de compra." target="_blank">
+                <i class="fab fa-whatsapp"></i> Tirar Dúvidas sobre Documentação
+              </a>
+            </div>
+
+            <div class="blog-card-share">
+              <span class="blog-card-share-label">Compartilhar</span>
+              <div class="blog-card-share-icons">
+                <a href="https://wa.me/?text=Documentação Náutica: Tudo Que Você Precisa Saber — Bella Angra Iates" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ARTICLE 6 -->
+      <article class="blog-card reveal" data-article="6">
+        <div class="blog-card-img">
+          <img src="img/azimut-56/01.jpg" alt="Azimut 56 mercado de iates" loading="lazy">
+          <div class="blog-card-img-overlay"></div>
+          <button class="blog-card-close" aria-label="Fechar artigo"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="blog-card-body">
+          <div class="blog-card-meta">
+            <span class="blog-card-tag">Mercado</span>
+            <span class="blog-card-date"><i class="fas fa-calendar-alt"></i> 20 de Julho, 2026</span>
+          </div>
+          <h2 class="blog-card-title">O Mercado de Iates Seminovos no Brasil em 2026</h2>
+          <p class="blog-card-excerpt">Tendências, melhores momentos para comprar, curvas de depreciação e os modelos com melhor custo-benefício do mercado atual.</p>
+          <span class="blog-card-link">Ler artigo completo <i class="fas fa-arrow-right"></i></span>
+
+          <div class="blog-article-content">
+            <div class="article-divider"></div>
+
+            <p>O mercado de iates seminovos no Brasil vive um momento de maturidade e oportunidade. Depois do boom de vendas durante e logo após a pandemia — quando a busca por lazer ao ar livre e experiências privadas impulsionou o segmento náutico como nunca antes — o mercado em 2026 encontra um <strong>equilíbrio saudável entre oferta e demanda</strong>, criando condições excepcionais para compradores inteligentes que sabem identificar as melhores oportunidades.</p>
+
+            <h3>Panorama do Mercado em 2026</h3>
+            <p>O mercado náutico brasileiro registrou um crescimento acumulado de <strong>42% na frota de embarcações de recreio entre 2020 e 2025</strong>, segundo dados da ACOBAR (Associação Brasileira de Construtores de Barcos). Em 2026, o segmento de seminovos ganha força por um fator natural: muitos dos compradores da "onda pandêmica" estão realizando upgrade para embarcações maiores, colocando suas primeiras embarcações à venda — frequentemente com baixas horas de uso e manutenção em dia. Isso cria um <strong>cenário favorável para quem busca iates de 3 a 5 anos de idade com excelente relação custo-benefício.</strong></p>
+
+            <h3>Curvas de Depreciação: O Que Esperar</h3>
+            <p>Entender a depreciação de um iate é fundamental para tomar uma decisão de compra inteligente. No mercado brasileiro, o padrão geral de depreciação segue esta curva:</p>
+            <ul>
+              <li><strong>Ano 1 (zero para seminovo):</strong> Depreciação de 15% a 20% — a maior perda percentual. É por isso que comprar seminovo com 1-2 anos é uma das estratégias mais inteligentes.</li>
+              <li><strong>Anos 2 a 5:</strong> Depreciação de 5% a 8% ao ano. A curva se estabiliza significativamente após o primeiro ano.</li>
+              <li><strong>Anos 5 a 10:</strong> Depreciação de 3% a 5% ao ano, desde que a embarcação seja bem mantida.</li>
+              <li><strong>Acima de 10 anos:</strong> A depreciação praticamente para. Embarcações bem conservadas com mais de 10 anos tendem a estabilizar seu valor, e modelos clássicos de marcas consagradas podem até valorizar.</li>
+            </ul>
+            <p>Um exemplo prático: um Azimut 56 que custou R$ 9 milhões quando zero, pode ser encontrado com 4 anos de uso e 400 horas por valores entre R$ 6,5 milhões e R$ 7,5 milhões — uma <strong>economia de R$ 1,5 a R$ 2,5 milhões</strong> por uma embarcação que ainda tem mais de 90% de sua vida útil pela frente.</p>
+
+            <h3>O Melhor Momento Para Comprar</h3>
+            <p>O mercado náutico brasileiro tem uma sazonalidade clara que pode ser aproveitada pelo comprador estratégico. Os <strong>melhores meses para negociar são entre março e agosto</strong> — período de menor uso das embarcações no Sudeste, quando proprietários que decidiram vender estão mais flexíveis nas negociações. Por outro lado, entre setembro e fevereiro (alta temporada), a demanda aumenta e os preços tendem a subir. Se você está planejando comprar, comece a busca no outono: há mais oferta, os vendedores estão mais motivados, e você terá tempo para vistoriar, negociar e finalizar a documentação antes do verão — quando vai querer estar navegando, não negociando.</p>
+
+            <h3>Modelos com Melhor Custo-Benefício em 2026</h3>
+            <p>Com base na nossa experiência diária no mercado de Angra dos Reis, os modelos que oferecem <strong>melhor relação entre preço, qualidade e custo de manutenção</strong> em 2026 são:</p>
+            <ul>
+              <li><strong>Faixa R$ 800 mil a R$ 2 milhões:</strong> Real Top 40 e Intermarine 440 Full — embarcações robustas e de fácil manutenção, perfeitas para quem está entrando no mundo dos iates.</li>
+              <li><strong>Faixa R$ 4 milhões a R$ 8 milhões:</strong> Azimut 56 e Intermarine 60 — o "sweet spot" do mercado, combinando espaço, conforto e performance com custos de manutenção gerenciáveis.</li>
+              <li><strong>Acima de R$ 10 milhões:</strong> Schaefer 660 e Azimut 74 — para quem busca o topo da linha, esses modelos representam o que há de melhor em embarcações de grande porte no mercado brasileiro.</li>
+            </ul>
+
+            <h3>Tendências Para os Próximos Anos</h3>
+            <p>O mercado náutico brasileiro caminha para uma <strong>digitalização crescente</strong> do processo de compra (tours virtuais 360°, vistorias técnicas digitalizadas, documentação eletrônica) e uma valorização cada vez maior da sustentabilidade — com motorização híbrida e sistemas de dessalinização ganhando espaço nos novos modelos. Para o comprador de seminovos, isso significa que embarcações equipadas com tecnologias mais recentes (IPS, Seakeeper, sistemas de navegação integrados) tendem a manter melhor seu valor. Na Bella Angra Iates, estamos atentos a todas essas tendências e prontos para orientá-lo na escolha da embarcação que será seu melhor investimento no prazer e na qualidade de vida.</p>
+
+            <div class="blog-card-cta-wpp">
+              <a href="https://wa.me/5524999999999?text=Olá! Li a análise de mercado e gostaria de saber quais embarcações com melhor custo-benefício vocês têm disponíveis." target="_blank">
+                <i class="fab fa-whatsapp"></i> Ver Melhores Oportunidades
+              </a>
+            </div>
+
+            <div class="blog-card-share">
+              <span class="blog-card-share-label">Compartilhar</span>
+              <div class="blog-card-share-icons">
+                <a href="https://wa.me/?text=O Mercado de Iates Seminovos em 2026 — Bella Angra Iates" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="cta-bg"></div>
+  <div class="cta-content container reveal">
+    <div class="section-eyebrow" style="justify-content:center;">Vamos Conversar</div>
+    <h2 class="section-title" style="text-align:center;">Encontre o Iate dos<br>Seus <em>Sonhos</em></h2>
+    <p class="cta-content section-desc" style="text-align:center;">Nossa equipe está pronta para ajudá-lo a encontrar a embarcação perfeita. Entre em contato e realize o sonho de ter seu próprio iate.</p>
+    <div style="text-align:center;">
+      <a href="https://wa.me/5524999999999?text=Olá! Gostaria de informações sobre iates à venda." class="btn-primary" target="_blank" style="margin-top:8px;">
+        <i class="fab fa-whatsapp"></i> Falar com Especialista
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <img src="img/logo-branca.png" alt="Bella Angra Iates" class="footer-brand-logo">
+        <p class="footer-brand-text">Referência em compra e venda de iates de luxo em Angra dos Reis. Embarcações premium com consultoria especializada e pós-venda completo.</p>
+        <div class="footer-social">
+          <a href="https://instagram.com/bella.angra.iates" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="https://wa.me/5524999999999" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Navegação</h4>
+        <div class="footer-links">
+          <a href="index.html#embarcacoes">Embarcações</a>
+          <a href="index.html#sobre">Sobre Nós</a>
+          <a href="blog.html">Blog</a>
+          <a href="index.html#contato">Contato</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Embarcações</h4>
+        <div class="footer-links">
+          <a href="index.html#embarcacoes">Azimut</a>
+          <a href="index.html#embarcacoes">Schaefer</a>
+          <a href="index.html#embarcacoes">Intermarine</a>
+          <a href="index.html#embarcacoes">Ferretti</a>
+          <a href="index.html#embarcacoes">Real</a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title">Contato</h4>
+        <div class="footer-links">
+          <a href="https://wa.me/5524999999999" target="_blank"><i class="fab fa-whatsapp" style="margin-right:6px;color:var(--gold);"></i>(24) 99999-9999</a>
+          <a href="https://instagram.com/bella.angra.iates" target="_blank"><i class="fab fa-instagram" style="margin-right:6px;color:var(--gold);"></i>@bella.angra.iates</a>
+          <a href="#"><i class="fas fa-map-marker-alt" style="margin-right:6px;color:var(--gold);"></i>Angra dos Reis, RJ</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Bella Angra Iates. Todos os direitos reservados.</p>
+      <a href="https://instagram.com/companybastos" target="_blank" class="footer-dev">Desenvolvido por <span>Company Bastos</span></a>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5524999999999?text=Olá! Vi o blog e gostaria de informações sobre iates à venda." class="wpp-float" target="_blank" aria-label="WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script type="module">
+import { animate, inView } from "https://cdn.jsdelivr.net/npm/motion@12/+esm";
+
+/* ============ NAV SCROLL ============ */
+const nav = document.getElementById("nav");
+window.addEventListener("scroll", () => {
+  nav.classList.toggle("scrolled", window.scrollY > 80);
+}, { passive: true });
+
+/* ============ READING PROGRESS BAR ============ */
+const progressBar = document.getElementById("readingProgress");
+window.addEventListener("scroll", () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progressBar.style.width = progress + "%";
+}, { passive: true });
+
+/* ============ MOBILE MENU ============ */
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+const menuCloseBtn = document.getElementById("menuClose");
+
+menuBtn.addEventListener("click", () => mobileMenu.classList.add("open"));
+menuCloseBtn.addEventListener("click", () => mobileMenu.classList.remove("open"));
+document.querySelectorAll(".mobile-link").forEach(link => {
+  link.addEventListener("click", () => mobileMenu.classList.remove("open"));
+});
+
+/* ============ BLOG CARD EXPAND / COLLAPSE ============ */
+const blogCards = document.querySelectorAll(".blog-card");
+
+blogCards.forEach(card => {
+  const closeBtn = card.querySelector(".blog-card-close");
+
+  card.addEventListener("click", (e) => {
+    // Don't expand if clicking close button, share links, or CTA
+    if (e.target.closest(".blog-card-close") ||
+        e.target.closest(".blog-card-share-icons") ||
+        e.target.closest(".blog-card-cta-wpp")) return;
+
+    // If already expanded, don't do anything on body click
+    if (card.classList.contains("expanded")) return;
+
+    // Collapse any other expanded card
+    blogCards.forEach(c => {
+      if (c !== card && c.classList.contains("expanded")) {
+        collapseCard(c);
+      }
+    });
+
+    // Expand this card
+    expandCard(card);
+  });
+
+  closeBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    collapseCard(card);
+  });
+});
+
+function expandCard(card) {
+  card.classList.add("expanded");
+
+  // Smooth scroll to card
+  setTimeout(() => {
+    const rect = card.getBoundingClientRect();
+    const navHeight = 80;
+    const targetY = window.scrollY + rect.top - navHeight;
+    window.scrollTo({ top: targetY, behavior: "smooth" });
+  }, 50);
+
+  // Animate article content in
+  const content = card.querySelector(".blog-article-content");
+  if (content) {
+    animate(content, { opacity: [0, 1], y: [30, 0] }, { duration: 0.6, delay: 0.2, easing: [.25,.1,.25,1] });
+  }
+}
+
+function collapseCard(card) {
+  const content = card.querySelector(".blog-article-content");
+  if (content) {
+    animate(content, { opacity: [1, 0], y: [0, 20] }, { duration: 0.3, easing: [.25,.1,.25,1] }).finished.then(() => {
+      card.classList.remove("expanded");
+      // Scroll to top of grid
+      const grid = document.getElementById("blogGrid");
+      const rect = grid.getBoundingClientRect();
+      const navHeight = 100;
+      const targetY = window.scrollY + rect.top - navHeight;
+      window.scrollTo({ top: targetY, behavior: "smooth" });
+    });
+  } else {
+    card.classList.remove("expanded");
+  }
+}
+
+/* ============ REVEAL ANIMATIONS ============ */
+document.querySelectorAll(".reveal").forEach((el) => {
+  inView(el, () => {
+    animate(el, { opacity: [0, 1], y: [40, 0] }, { duration: 0.8, easing: [.25, .1, .25, 1] });
+  }, { margin: "-60px" });
+});
+
+/* ============ HERO ANIMATIONS ============ */
+const heroEyebrow = document.querySelector(".blog-hero-eyebrow");
+const heroH1 = document.querySelector(".blog-hero h1");
+const heroSub = document.querySelector(".blog-hero-sub");
+
+setTimeout(() => {
+  animate(heroEyebrow, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.2, easing: [.25,.1,.25,1] });
+  animate(heroH1, { opacity: [0, 1], y: [30, 0] }, { duration: 1, delay: 0.4, easing: [.25,.1,.25,1] });
+  animate(heroSub, { opacity: [0, 1], y: [20, 0] }, { duration: 0.8, delay: 0.6, easing: [.25,.1,.25,1] });
+}, 100);
+
+/* ============ HANDLE HASH ON LOAD ============ */
+if (window.location.hash) {
+  const articleNum = window.location.hash.replace("#artigo-", "");
+  const targetCard = document.querySelector(`[data-article="${articleNum}"]`);
+  if (targetCard) {
+    setTimeout(() => expandCard(targetCard), 800);
+  }
+}
+
+</script>
+
+</body>
+</html>
